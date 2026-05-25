@@ -1,0 +1,2981 @@
+[
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Types of Chemical Bonds",
+    "type": "mc_static",
+    "difficulty": "easy",
+    "tags": [
+      "ionic_bond",
+      "covalent_bond",
+      "electronegativity"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Which of the following best describes the general rule for classifying a bond as ionic versus covalent?",
+      "options": [
+        "Bonds between a metal and a nonmetal are generally ionic; bonds between two nonmetals are generally covalent.",
+        "Bonds between two atoms of different masses are ionic; bonds between atoms of the same mass are covalent.",
+        "Bonds between large atoms are ionic; bonds between small atoms are covalent.",
+        "Bonds that release heat when formed are ionic; bonds that absorb heat are covalent."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Types of Chemical Bonds",
+    "type": "mc_static",
+    "difficulty": "easy",
+    "tags": [
+      "polar_covalent_bond",
+      "electronegativity",
+      "bond_polarity"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "In a polar covalent bond between atoms X and Y, where X is more electronegative than Y, which atom develops a partial negative charge?",
+      "options": [
+        "Atom X, because its higher electronegativity causes it to attract the shared electrons more strongly.",
+        "Atom Y, because the less electronegative atom must give up electron density.",
+        "Both atoms equally, because the bond is still covalent.",
+        "Neither atom; partial charges only occur in ionic bonds."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Types of Chemical Bonds",
+    "type": "mc_static",
+    "difficulty": "easy",
+    "tags": [
+      "metallic_bonding",
+      "delocalized_electrons",
+      "sea_of_electrons"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Which of the following best describes metallic bonding?",
+      "options": [
+        "An array of positive metal ion cores surrounded by delocalized valence electrons shared throughout the entire metal lattice.",
+        "Pairs of electrons localized between adjacent metal atoms, forming discrete bonds.",
+        "Alternating cations and anions arranged in a three-dimensional lattice held together by electrostatic attractions.",
+        "Molecules held together by induced dipole interactions in a regular crystal array."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Types of Chemical Bonds",
+    "type": "mc_static",
+    "difficulty": "medium",
+    "tags": [
+      "bond_type_prediction",
+      "electronegativity",
+      "continuum"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Which of the following statements about the ionic-covalent bonding continuum is correct according to the AP Chemistry curriculum?",
+      "options": [
+        "All polar covalent bonds have some ionic character, and the boundary between ionic and covalent bonding is not distinct but is a continuum.",
+        "A bond is either purely ionic or purely covalent; there is no intermediate bond type.",
+        "A bond is classified as ionic only when the electronegativity difference is exactly 1.7.",
+        "Covalent bonds can never have any ionic character regardless of the electronegativity difference."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Types of Chemical Bonds",
+    "type": "mc_static",
+    "difficulty": "medium",
+    "tags": [
+      "nonpolar_covalent",
+      "electronegativity",
+      "bond_type"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Which of the following bonds is best classified as nonpolar covalent?",
+      "options": [
+        "C–H, because carbon and hydrogen have very similar electronegativities.",
+        "H–F, because fluorine has the highest electronegativity of all elements.",
+        "Na–Cl, because sodium and chlorine are in the same period.",
+        "O–H, because oxygen and hydrogen are both nonmetals."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Types of Chemical Bonds",
+    "type": "mc_static",
+    "difficulty": "hard",
+    "tags": [
+      "bond_type_prediction",
+      "properties",
+      "ionic_vs_covalent"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "A student has two unknown compounds. Compound A dissolves in water and conducts electricity as a solution; Compound B does not conduct electricity in solution and has a low melting point. Which conclusion is best supported by these observations?",
+      "options": [
+        "Compound A is ionic and Compound B is molecular (covalent), because ionic compounds dissociate into ions in solution while molecular compounds do not.",
+        "Compound A is covalent and Compound B is ionic, because low melting points indicate stronger bonds.",
+        "Both compounds are ionic; the difference in conductivity reflects different ion concentrations.",
+        "Both compounds are covalent; the conductivity of Compound A is due to delocalized electrons."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Intramolecular Force and Potential Energy",
+    "type": "mc_static",
+    "difficulty": "easy",
+    "tags": [
+      "potential_energy_curve",
+      "bond_length",
+      "bond_energy"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "On a potential energy vs. internuclear distance graph for a diatomic molecule, what does the minimum point on the curve represent?",
+      "options": [
+        "The equilibrium bond length, where the potential energy is lowest and the attractive and repulsive forces are balanced.",
+        "The point at which the molecule has its highest kinetic energy.",
+        "The bond dissociation energy, which is the energy required to break the bond.",
+        "The point at which repulsive forces become zero."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Intramolecular Force and Potential Energy",
+    "type": "mc_static",
+    "difficulty": "medium",
+    "tags": [
+      "bond_order",
+      "bond_length",
+      "bond_energy"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Which of the following correctly ranks the C–C, C=C, and C≡C bonds in order of increasing bond length (shortest to longest)?",
+      "options": [
+        "C≡C < C=C < C–C",
+        "C–C < C=C < C≡C",
+        "C=C < C–C < C≡C",
+        "C≡C < C–C < C=C"
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Intramolecular Force and Potential Energy",
+    "type": "mc_static",
+    "difficulty": "medium",
+    "tags": [
+      "bond_order",
+      "bond_energy",
+      "bond_length"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Which of the following correctly states the relationship between bond order, bond energy, and bond length?",
+      "options": [
+        "Higher bond order → shorter bond length and greater bond energy.",
+        "Higher bond order → longer bond length and greater bond energy.",
+        "Higher bond order → shorter bond length and lower bond energy.",
+        "Higher bond order → longer bond length and lower bond energy."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Intramolecular Force and Potential Energy",
+    "type": "mc_static",
+    "difficulty": "hard",
+    "tags": [
+      "potential_energy_curve",
+      "ionic_interaction",
+      "coulombs_law"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Two ionic compounds, LiF and CsI, are compared. Based on the potential energy vs. internuclear distance model and Coulomb's law, which compound has a deeper potential energy well (lower minimum energy) and why?",
+      "options": [
+        "LiF, because Li⁺ and F⁻ are smaller ions so the distance between ion centers is shorter, producing stronger electrostatic attraction per Coulomb's law.",
+        "CsI, because Cs⁺ and I⁻ are larger ions that can hold more electrons and thus attract each other more strongly.",
+        "LiF, because lithium has a lower mass than cesium, making its bonds inherently stronger.",
+        "CsI, because larger ions are more polarizable and experience greater London dispersion forces."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Structure of Ionic Solids",
+    "type": "mc_static",
+    "difficulty": "easy",
+    "tags": [
+      "ionic_solid",
+      "crystal_lattice",
+      "coulombs_law"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "In an ionic crystal, how are the cations and anions arranged?",
+      "options": [
+        "In a systematic, periodic 3-D array that maximizes attractive forces between oppositely charged ions while minimizing repulsive forces between like-charged ions.",
+        "Randomly distributed throughout the solid with no long-range order.",
+        "In discrete neutral ion pairs arranged in a loose lattice.",
+        "In separate layers, with all cations in one layer and all anions in another."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Structure of Ionic Solids",
+    "type": "mc_static",
+    "difficulty": "medium",
+    "tags": [
+      "lattice_energy",
+      "coulombs_law",
+      "ionic_charge",
+      "ionic_radius"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Which of the following ionic compounds is predicted to have the highest lattice energy?",
+      "options": [
+        "MgO, because it has doubly charged ions (Mg²⁺ and O²⁻) and small ionic radii.",
+        "KBr, because potassium and bromine are in the same period of the periodic table.",
+        "NaCl, because it is the most common ionic compound and has well-studied properties.",
+        "CsF, because fluorine has the highest electronegativity."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Structure of Ionic Solids",
+    "type": "mc_static",
+    "difficulty": "medium",
+    "tags": [
+      "ionic_solid",
+      "brittleness",
+      "properties"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Ionic crystals are typically brittle. Which of the following best explains this property at the particulate level?",
+      "options": [
+        "When an ionic crystal is struck, ions shift so that like charges align, creating strong repulsive forces that cause the crystal to fracture along planes.",
+        "Ionic crystals have delocalized electrons that allow cracks to propagate easily through the material.",
+        "The covalent bonds between ions in the lattice are too rigid to accommodate any mechanical stress.",
+        "Ionic crystals dissolve easily in water, which weakens their internal structure under mechanical stress."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Structure of Ionic Solids",
+    "type": "mc_static",
+    "difficulty": "hard",
+    "tags": [
+      "lattice_energy",
+      "ionic_radius",
+      "charge",
+      "coulombs_law"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Which of the following best explains why CaO has a higher melting point than KF, even though both are ionic compounds with a 1:1 cation:anion ratio?",
+      "options": [
+        "Ca²⁺ and O²⁻ have charges of ±2, producing much stronger electrostatic attractions than K⁺ and F⁻ with charges of ±1, and the smaller Ca²⁺ and O²⁻ ions reduce the interionic distance further.",
+        "CaO has a more symmetric crystal structure than KF, which increases its melting point.",
+        "Calcium has a higher atomic mass than potassium, requiring more energy to break the lattice.",
+        "Oxygen is more electronegative than fluorine, forming stronger ionic bonds with calcium."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Structure of Metals and Alloys",
+    "type": "mc_static",
+    "difficulty": "easy",
+    "tags": [
+      "metallic_bonding",
+      "malleability",
+      "conductivity"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Which macroscopic property of metals is best explained by the presence of delocalized valence electrons (the 'sea of electrons' model)?",
+      "options": [
+        "Electrical conductivity, because delocalized electrons can move freely through the metal in response to a voltage.",
+        "High melting point, because delocalized electrons prevent atoms from vibrating.",
+        "Chemical inertness, because delocalized electrons shield the metal ions from reactions.",
+        "Brittleness, because delocalized electrons create rigid bonds between metal ions."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Structure of Metals and Alloys",
+    "type": "mc_static",
+    "difficulty": "medium",
+    "tags": [
+      "alloys",
+      "interstitial_alloy",
+      "substitutional_alloy"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Steel is an alloy of iron and carbon. What type of alloy is steel, and what structural feature classifies it as this type?",
+      "options": [
+        "Interstitial alloy, because carbon atoms are much smaller than iron atoms and occupy the spaces between iron atoms in the lattice.",
+        "Substitutional alloy, because carbon atoms replace iron atoms at lattice sites.",
+        "Interstitial alloy, because carbon and iron have nearly identical atomic radii.",
+        "Substitutional alloy, because carbon atoms are distributed randomly throughout the iron lattice."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Structure of Metals and Alloys",
+    "type": "mc_static",
+    "difficulty": "medium",
+    "tags": [
+      "alloys",
+      "substitutional_alloy",
+      "atomic_radius"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Brass is an alloy composed of copper and zinc. Given that copper and zinc have similar atomic radii, what type of alloy is brass?",
+      "options": [
+        "Substitutional alloy, because zinc atoms substitute for copper atoms at lattice positions due to their comparable atomic radii.",
+        "Interstitial alloy, because zinc atoms fit into the spaces between copper atoms.",
+        "Substitutional alloy, because zinc and copper are both transition metals.",
+        "Interstitial alloy, because zinc is slightly larger than copper and distorts the lattice."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Structure of Metals and Alloys",
+    "type": "mc_static",
+    "difficulty": "hard",
+    "tags": [
+      "alloys",
+      "properties",
+      "metallic_bonding",
+      "interstitial_alloy"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Adding carbon to iron to make steel significantly increases the hardness and tensile strength of the metal. Which of the following best explains this observation at the particulate level?",
+      "options": [
+        "Carbon atoms in the interstitial positions of the iron lattice impede the sliding of iron atom layers past one another, resisting deformation.",
+        "Carbon atoms replace iron atoms and form stronger covalent bonds with neighboring iron atoms.",
+        "The added carbon increases the density of delocalized electrons, strengthening metallic bonds.",
+        "Carbon forms a separate ionic layer between iron layers, which locks the layers in place."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Lewis Diagrams",
+    "type": "mc_static",
+    "difficulty": "easy",
+    "tags": [
+      "lewis_structure",
+      "valence_electrons",
+      "octet_rule"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": {
+      "type": "smiles",
+      "value": "O=C=O",
+      "caption": "Carbon dioxide (CO2)"
+    },
+    "content": {
+      "stem": "How many total valence electrons are used in the correct Lewis structure of CO₂?",
+      "options": [
+        "16 (C contributes 4, each O contributes 6)",
+        "12 (C contributes 4, each O contributes 4)",
+        "18 (C contributes 6, each O contributes 6)",
+        "8 (C contributes 4, each O contributes 2)"
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Lewis Diagrams",
+    "type": "mc_static",
+    "difficulty": "easy",
+    "tags": [
+      "lewis_structure",
+      "lone_pairs",
+      "valence_electrons"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": {
+      "type": "smiles",
+      "value": "N",
+      "caption": "Ammonia (NH3)"
+    },
+    "content": {
+      "stem": "In the correct Lewis structure of NH₃, how many lone pairs are on the nitrogen atom?",
+      "options": [
+        "1 lone pair",
+        "0 lone pairs",
+        "2 lone pairs",
+        "3 lone pairs"
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Lewis Diagrams",
+    "type": "mc_static",
+    "difficulty": "medium",
+    "tags": [
+      "lewis_structure",
+      "expanded_octet",
+      "valence_electrons"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": {
+      "type": "smiles",
+      "value": "FP(F)(F)(F)F",
+      "caption": "Phosphorus pentafluoride (PF5)"
+    },
+    "content": {
+      "stem": "How many total valence electrons are in the Lewis structure of PF₅, and does phosphorus obey the octet rule in this molecule?",
+      "options": [
+        "40 total valence electrons; phosphorus has 10 electrons around it (expanded octet).",
+        "32 total valence electrons; phosphorus obeys the octet rule with 8 electrons around it.",
+        "40 total valence electrons; phosphorus obeys the octet rule because P is in Period 3.",
+        "35 total valence electrons; phosphorus has an odd-electron structure."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Lewis Diagrams",
+    "type": "mc_static",
+    "difficulty": "medium",
+    "tags": [
+      "lewis_structure",
+      "polyatomic_ion",
+      "valence_electrons"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "What is the total number of valence electrons used in the Lewis structure of the nitrate ion (NO₃⁻)?",
+      "options": [
+        "24 (N: 5, each O: 6 × 3 = 18, plus 1 for the negative charge)",
+        "23 (N: 5, each O: 6 × 3 = 18)",
+        "25 (N: 5, each O: 6 × 3 = 18, plus 2 for the negative charge)",
+        "22 (N: 4, each O: 6 × 3 = 18)"
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Lewis Diagrams",
+    "type": "mc_static",
+    "difficulty": "hard",
+    "tags": [
+      "lewis_structure",
+      "odd_electron",
+      "radical",
+      "limitations"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": {
+      "type": "smiles",
+      "value": "[N]=O",
+      "caption": "Nitrogen monoxide (NO)"
+    },
+    "content": {
+      "stem": "Which of the following best describes a limitation of the Lewis structure model as applied to nitrogen monoxide (NO)?",
+      "options": [
+        "NO has 11 valence electrons (an odd number), so no Lewis structure can be drawn that gives both atoms a full octet; the Lewis model cannot accurately represent odd-electron species.",
+        "NO cannot form a Lewis structure because nitrogen and oxygen are both nonmetals.",
+        "NO violates the Lewis model because the bond between N and O is purely ionic.",
+        "The Lewis structure of NO requires d-orbital involvement, which the model does not support."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Resonance and Formal Charge",
+    "type": "mc_static",
+    "difficulty": "easy",
+    "tags": [
+      "resonance",
+      "delocalization",
+      "equivalent_structures"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": {
+      "type": "smiles",
+      "value": "[O-][N+](=O)[O-]",
+      "caption": "Nitrate ion (NO3-)"
+    },
+    "content": {
+      "stem": "Which of the following best describes why resonance structures are used for the nitrate ion (NO₃⁻)?",
+      "options": [
+        "All three N–O bonds in NO₃⁻ are experimentally identical in length and energy, so no single Lewis structure adequately represents the molecule; resonance shows the electron density is delocalized.",
+        "The nitrate ion rapidly switches between three distinct structures, spending equal time in each.",
+        "Resonance structures are used because the octet rule cannot be satisfied for nitrogen in NO₃⁻.",
+        "Each resonance structure represents a different isotope of nitrogen."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Resonance and Formal Charge",
+    "type": "mc_static",
+    "difficulty": "medium",
+    "tags": [
+      "formal_charge",
+      "lewis_structure",
+      "best_structure"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": {
+      "type": "smiles",
+      "value": "O=C=O",
+      "caption": "Carbon dioxide (CO2)"
+    },
+    "content": {
+      "stem": "The formal charge on carbon in the correct Lewis structure of CO₂ (O=C=O) is calculated as: FC = (valence electrons) − (lone pair electrons) − ½(bonding electrons). What is the formal charge on carbon?",
+      "options": [
+        "0 (FC = 4 − 0 − ½(8) = 0)",
+        "+2 (FC = 4 − 0 − 4 = 0 is wrong; carbon has +2)",
+        "−2 (FC = 4 − 4 − 4 = −4, adjusted)",
+        "+4 (FC = 4 − 0 − 0 = 4)"
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Resonance and Formal Charge",
+    "type": "mc_static",
+    "difficulty": "medium",
+    "tags": [
+      "formal_charge",
+      "best_lewis_structure",
+      "octet_rule"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": {
+      "type": "smiles",
+      "value": "S=O",
+      "caption": "Sulfur dioxide (SO2) - representative structure"
+    },
+    "content": {
+      "stem": "Two possible Lewis structures for SO₂ can be drawn: one with a single bond between S and one O and a double bond to the other O, and one where both S–O bonds are equivalent (resonance). Which criterion is used to determine that neither single structure is the best model?",
+      "options": [
+        "The experimental observation that both S–O bonds are identical in length and energy indicates delocalization, making resonance the better model.",
+        "The formal charge on sulfur is zero in both structures, so either one is acceptable.",
+        "The structure with two double bonds is preferred because it gives sulfur a lower formal charge.",
+        "The Lewis structure with the most lone pairs on the central atom is always preferred."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Resonance and Formal Charge",
+    "type": "mc_static",
+    "difficulty": "hard",
+    "tags": [
+      "formal_charge",
+      "resonance",
+      "best_lewis_structure"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Two Lewis structures for SCN⁻ are proposed: Structure A has S=C=N⁻ (double bonds on each side of C) and Structure B has ⁻S–C≡N. Using formal charge, which is the preferred structure and why?",
+      "options": [
+        "Structure B (⁻S–C≡N) is preferred because formal charges are closer to zero on C and N (FC on C = 0, N = 0, S = −1), minimizing formal charge separation.",
+        "Structure A is preferred because both double bonds distribute charge equally across all atoms.",
+        "Structure B is preferred because sulfur always carries a triple bond in thiocyanate.",
+        "Neither structure is valid because SCN⁻ cannot be represented by Lewis structures."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "VSEPR and Molecular Geometry",
+    "type": "mc_static",
+    "difficulty": "easy",
+    "tags": [
+      "vsepr",
+      "molecular_geometry",
+      "electron_geometry"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": {
+      "type": "smiles",
+      "value": "O",
+      "caption": "Water (H2O)"
+    },
+    "content": {
+      "stem": "What is the molecular geometry of water (H₂O)?",
+      "options": [
+        "Bent, because oxygen has 2 bonding pairs and 2 lone pairs, and lone pairs compress the bond angle below 109.5°.",
+        "Linear, because the two hydrogen atoms are on opposite sides of the oxygen.",
+        "Tetrahedral, because oxygen has four electron groups around it.",
+        "Trigonal planar, because oxygen has three electron groups."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "VSEPR and Molecular Geometry",
+    "type": "mc_static",
+    "difficulty": "easy",
+    "tags": [
+      "vsepr",
+      "molecular_geometry",
+      "linear"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": {
+      "type": "smiles",
+      "value": "O=C=O",
+      "caption": "Carbon dioxide (CO2)"
+    },
+    "content": {
+      "stem": "What is the molecular geometry of CO₂?",
+      "options": [
+        "Linear, because carbon has 2 bonding groups and no lone pairs, giving 180° bond angles.",
+        "Bent, because the double bonds create lone-pair-like repulsion.",
+        "Trigonal planar, because carbon has three electron groups.",
+        "Tetrahedral, because each double bond counts as two electron pairs."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "VSEPR and Molecular Geometry",
+    "type": "mc_static",
+    "difficulty": "medium",
+    "tags": [
+      "vsepr",
+      "molecular_geometry",
+      "lone_pairs",
+      "bond_angle"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": {
+      "type": "smiles",
+      "value": "N",
+      "caption": "Ammonia (NH3)"
+    },
+    "content": {
+      "stem": "The bond angle in NH₃ is approximately 107°, which is less than the ideal tetrahedral angle of 109.5°. Which of the following best explains this?",
+      "options": [
+        "The lone pair on nitrogen occupies more space than a bonding pair, compressing the H–N–H bond angles below 109.5°.",
+        "The three hydrogen atoms repel each other more strongly than they repel the lone pair.",
+        "Nitrogen uses sp² hybridization in NH₃, giving ideal bond angles of 120°.",
+        "The lone pair is located in a p orbital perpendicular to the molecular plane and has no effect on bond angles."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "VSEPR and Molecular Geometry",
+    "type": "mc_static",
+    "difficulty": "medium",
+    "tags": [
+      "vsepr",
+      "molecular_geometry",
+      "trigonal_pyramidal"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": {
+      "type": "smiles",
+      "value": "N",
+      "caption": "Ammonia (NH3)"
+    },
+    "content": {
+      "stem": "What is the correct electron geometry and molecular geometry of NH₃?",
+      "options": [
+        "Electron geometry: tetrahedral; molecular geometry: trigonal pyramidal.",
+        "Electron geometry: trigonal planar; molecular geometry: trigonal pyramidal.",
+        "Electron geometry: tetrahedral; molecular geometry: tetrahedral.",
+        "Electron geometry: trigonal pyramidal; molecular geometry: bent."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "VSEPR and Molecular Geometry",
+    "type": "mc_static",
+    "difficulty": "medium",
+    "tags": [
+      "vsepr",
+      "molecular_geometry",
+      "trigonal_bipyramidal"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": {
+      "type": "smiles",
+      "value": "FP(F)(F)(F)F",
+      "caption": "Phosphorus pentafluoride (PF5)"
+    },
+    "content": {
+      "stem": "What is the molecular geometry of PF₅?",
+      "options": [
+        "Trigonal bipyramidal, because phosphorus has 5 bonding pairs and 0 lone pairs.",
+        "Octahedral, because phosphorus is surrounded by 5 fluorine atoms.",
+        "Square pyramidal, because there are 5 bonding pairs arranged around phosphorus.",
+        "Trigonal planar, because the 5 bonds arrange in a flat plane around phosphorus."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "VSEPR and Molecular Geometry",
+    "type": "mc_static",
+    "difficulty": "hard",
+    "tags": [
+      "vsepr",
+      "molecular_geometry",
+      "square_planar",
+      "lone_pairs"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": {
+      "type": "smiles",
+      "value": "F[Xe](F)(F)F",
+      "caption": "Xenon tetrafluoride (XeF4)"
+    },
+    "content": {
+      "stem": "XeF₄ has 6 electron groups around xenon (4 bonding pairs and 2 lone pairs). What is the molecular geometry of XeF₄?",
+      "options": [
+        "Square planar, because the 2 lone pairs occupy axial positions opposite each other in an octahedral electron geometry, leaving the 4 F atoms in a square plane.",
+        "Octahedral, because xenon has 6 electron groups around it.",
+        "Seesaw, because the 2 lone pairs are in equatorial positions of a trigonal bipyramidal geometry.",
+        "Square pyramidal, because one lone pair is axial and the other is equatorial."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "VSEPR and Molecular Geometry",
+    "type": "mc_static",
+    "difficulty": "hard",
+    "tags": [
+      "vsepr",
+      "seesaw",
+      "lone_pairs",
+      "trigonal_bipyramidal"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": {
+      "type": "smiles",
+      "value": "FS(F)(F)F",
+      "caption": "Sulfur tetrafluoride (SF4)"
+    },
+    "content": {
+      "stem": "SF₄ has 5 electron groups around sulfur (4 bonding pairs and 1 lone pair). The lone pair occupies an equatorial position in the trigonal bipyramidal electron geometry. What is the molecular geometry of SF₄?",
+      "options": [
+        "Seesaw (also called sawhorse or disphenoidal), because the lone pair in the equatorial position causes the axial F atoms to bend toward the equatorial F atoms.",
+        "Trigonal bipyramidal, because lone pairs are counted the same as bonding pairs in VSEPR.",
+        "Trigonal pyramidal, because there are 3 bonding pairs and 1 lone pair in the base.",
+        "Square planar, because sulfur has 4 fluorine atoms arranged symmetrically."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Hybridization",
+    "type": "mc_static",
+    "difficulty": "easy",
+    "tags": [
+      "hybridization",
+      "sp3",
+      "tetrahedral"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": {
+      "type": "smiles",
+      "value": "C",
+      "caption": "Methane (CH4)"
+    },
+    "content": {
+      "stem": "What is the hybridization of the carbon atom in methane (CH₄), and what bond angle is associated with this hybridization?",
+      "options": [
+        "sp³ hybridization; 109.5° bond angles.",
+        "sp² hybridization; 120° bond angles.",
+        "sp hybridization; 180° bond angles.",
+        "sp³d hybridization; 90° and 120° bond angles."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Hybridization",
+    "type": "mc_static",
+    "difficulty": "medium",
+    "tags": [
+      "hybridization",
+      "sp2",
+      "trigonal_planar",
+      "pi_bond"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": {
+      "type": "smiles",
+      "value": "C=C",
+      "caption": "Ethylene (H2C=CH2)"
+    },
+    "content": {
+      "stem": "In ethylene (H₂C=CH₂), what hybridization do the carbon atoms have, and what types of bonds make up the C=C double bond?",
+      "options": [
+        "sp² hybridization; the double bond consists of one sigma bond (from sp² orbital overlap) and one pi bond (from unhybridized p orbital overlap).",
+        "sp³ hybridization; the double bond consists of two sigma bonds.",
+        "sp hybridization; the double bond consists of one sigma and one pi bond.",
+        "sp² hybridization; the double bond consists of two pi bonds."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Hybridization",
+    "type": "mc_static",
+    "difficulty": "medium",
+    "tags": [
+      "hybridization",
+      "sp",
+      "linear",
+      "triple_bond"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": {
+      "type": "smiles",
+      "value": "C#N",
+      "caption": "Hydrogen cyanide (HCN)"
+    },
+    "content": {
+      "stem": "In hydrogen cyanide (HCN, written H–C≡N), what is the hybridization of carbon and nitrogen, and what is the bond angle at carbon?",
+      "options": [
+        "Both carbon and nitrogen are sp hybridized; bond angle at carbon is 180°.",
+        "Carbon is sp² and nitrogen is sp³; bond angle at carbon is 120°.",
+        "Both carbon and nitrogen are sp³ hybridized; bond angle at carbon is 109.5°.",
+        "Carbon is sp and nitrogen is sp²; bond angle at carbon is 180°."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Hybridization",
+    "type": "mc_static",
+    "difficulty": "hard",
+    "tags": [
+      "hybridization",
+      "sigma_pi_bonds",
+      "geometric_isomers",
+      "pi_bond"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": {
+      "type": "smiles",
+      "value": "C=C",
+      "caption": "Alkene C=C double bond (geometric isomers)"
+    },
+    "content": {
+      "stem": "Which of the following correctly explains why geometric (cis-trans) isomers exist for molecules with C=C double bonds but not for molecules with C–C single bonds?",
+      "options": [
+        "The pi bond in a C=C double bond prevents free rotation about the bond axis because rotating the pi bond would require breaking the sideways overlap of the p orbitals; the C–C single bond has only sigma bond overlap, allowing free rotation.",
+        "The C=C bond is shorter than the C–C bond, which locks the atoms in position.",
+        "The sp² hybridization of the C=C carbons makes the bonds rigid, whereas sp³ carbons in a C–C bond can rotate freely because they are tetrahedral.",
+        "C=C double bonds have greater bond energy than C–C single bonds, making rotation energetically impossible."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Molecular Polarity",
+    "type": "mc_static",
+    "difficulty": "easy",
+    "tags": [
+      "molecular_polarity",
+      "dipole_moment",
+      "symmetry"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": {
+      "type": "smiles",
+      "value": "O=C=O",
+      "caption": "Carbon dioxide (CO2)"
+    },
+    "content": {
+      "stem": "CO₂ has two polar C=O bonds, yet it is a nonpolar molecule. Which of the following best explains this?",
+      "options": [
+        "CO₂ is linear, so the two bond dipoles point in exactly opposite directions and cancel each other out, resulting in a net dipole moment of zero.",
+        "CO₂ is nonpolar because carbon and oxygen have similar electronegativities.",
+        "CO₂ is nonpolar because the two C=O double bonds share electrons equally.",
+        "CO₂ is nonpolar because it is a gas at room temperature."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Molecular Polarity",
+    "type": "mc_static",
+    "difficulty": "medium",
+    "tags": [
+      "molecular_polarity",
+      "dipole_moment",
+      "symmetry",
+      "vsepr"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Which of the following molecules has a nonzero dipole moment (is polar)?",
+      "options": [
+        "H₂O, because its bent geometry means the two O–H bond dipoles do not cancel.",
+        "BF₃, because fluorine is more electronegative than boron.",
+        "CCl₄, because the four C–Cl bonds are all polar.",
+        "BCl₃, because boron has an incomplete octet."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Molecular Polarity",
+    "type": "mc_static",
+    "difficulty": "hard",
+    "tags": [
+      "molecular_polarity",
+      "dipole_moment",
+      "lone_pairs",
+      "geometry"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Both NF₃ and BF₃ have three fluorine atoms bonded to a central atom, but NF₃ is polar while BF₃ is nonpolar. Which of the following best explains this difference?",
+      "options": [
+        "NF₃ is trigonal pyramidal due to the lone pair on nitrogen, so the bond dipoles do not cancel; BF₃ is trigonal planar with no lone pair, so the bond dipoles cancel symmetrically.",
+        "NF₃ is polar because N–F bonds are more polar than B–F bonds.",
+        "BF₃ is nonpolar because boron is less electronegative than nitrogen.",
+        "NF₃ is polar because nitrogen has more valence electrons than boron."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Bond Length and Bond Energy",
+    "type": "mc_static",
+    "difficulty": "easy",
+    "tags": [
+      "bond_energy",
+      "bond_order",
+      "sigma_pi_bonds"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Which of the following bonds has the highest bond energy?",
+      "options": [
+        "C≡C (triple bond), because it has three bonding interactions (1 sigma + 2 pi) giving it the highest bond order.",
+        "C–C (single bond), because sigma bonds are stronger than pi bonds.",
+        "C=C (double bond), because two bonds are always stronger than one.",
+        "C–H (single bond), because hydrogen is lighter and the bond vibrates at a higher frequency."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Bond Length and Bond Energy",
+    "type": "mc_static",
+    "difficulty": "medium",
+    "tags": [
+      "bond_length",
+      "atomic_radius",
+      "bond_order"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Which factor MOST directly explains why a C–Cl bond is longer than a C–F bond?",
+      "options": [
+        "Chlorine has a larger atomic radius than fluorine because it has more electron shells, increasing the internuclear distance.",
+        "The C–Cl bond has a higher bond order than the C–F bond.",
+        "Chlorine is less electronegative than fluorine, which lengthens the bond by reducing the sharing of electrons.",
+        "Carbon forms a stronger bond with fluorine than with chlorine, which compresses the C–F bond."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Bond Length and Bond Energy",
+    "type": "mc_static",
+    "difficulty": "hard",
+    "tags": [
+      "bond_energy",
+      "sigma_pi_bonds",
+      "bond_order"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "In a C=C double bond, the bond energy is 614 kJ/mol, while a C–C single bond has energy 347 kJ/mol. The pi bond energy is approximately 614 − 347 = 267 kJ/mol, which is less than the sigma bond energy of 347 kJ/mol. Which of the following best explains why pi bonds are weaker than sigma bonds?",
+      "options": [
+        "Pi bonds involve lateral (side-by-side) overlap of p orbitals, which produces less effective orbital overlap than the head-on overlap in sigma bonds.",
+        "Pi bonds are weaker because they involve more electrons than sigma bonds.",
+        "Pi bonds are weaker because they form between unhybridized orbitals that are farther from the nucleus.",
+        "Pi bonds are weaker because they can rotate freely, which reduces orbital overlap."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Types of Chemical Bonds",
+    "type": "mc_numeric",
+    "difficulty": "easy",
+    "tags": [
+      "electronegativity",
+      "bond_polarity"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Two elements have electronegativities of {{a}} and {{b}} (Pauling scale). What is the electronegativity difference between them?",
+      "params": {
+        "a": {
+          "min": 0.8,
+          "max": 2,
+          "step": 0.2
+        },
+        "b": {
+          "min": 3,
+          "max": 4,
+          "step": 0.2
+        }
+      },
+      "answer_formula": "b - a",
+      "precision": 1,
+      "unit": "Pauling units",
+      "distractors": [
+        {
+          "formula": "b + a",
+          "error_type": "added_electronegativities_instead_of_finding_difference"
+        },
+        {
+          "formula": "b - 3 * a",
+          "error_type": "subtracted_three_times_the_lower_electronegativity_instead_of_once"
+        },
+        {
+          "formula": "b - 2 * a",
+          "error_type": "subtracted_twice_the_lower_electronegativity_instead_of_once"
+        }
+      ]
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Bond Length and Bond Energy",
+    "type": "mc_numeric",
+    "difficulty": "easy",
+    "tags": [
+      "bond_energy",
+      "enthalpy",
+      "bond_breaking"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "A reaction requires breaking {{a}} moles of O–H bonds. If the bond energy of an O–H bond is {{b}} kJ/mol, how much energy (in kJ) is required to break all these bonds?",
+      "params": {
+        "a": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "b": {
+          "min": 400,
+          "max": 500,
+          "step": 20
+        }
+      },
+      "answer_formula": "a * b",
+      "precision": 0,
+      "unit": "kJ",
+      "distractors": [
+        {
+          "formula": "a + b",
+          "error_type": "added_moles_and_bond_energy_instead_of_multiplying"
+        },
+        {
+          "formula": "b / a",
+          "error_type": "divided_bond_energy_by_moles_instead_of_multiplying"
+        },
+        {
+          "formula": "a * b * 2",
+          "error_type": "incorrectly_doubled_the_result"
+        }
+      ]
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Bond Length and Bond Energy",
+    "type": "mc_numeric",
+    "difficulty": "easy",
+    "tags": [
+      "bond_energy",
+      "enthalpy",
+      "bond_forming"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "A reaction forms {{a}} moles of N–H bonds. If the bond energy of an N–H bond is {{b}} kJ/mol, how much energy (in kJ) is released when all these bonds form? (Bond formation releases energy.)",
+      "params": {
+        "a": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "b": {
+          "min": 380,
+          "max": 420,
+          "step": 10
+        }
+      },
+      "answer_formula": "a * b",
+      "precision": 0,
+      "unit": "kJ",
+      "distractors": [
+        {
+          "formula": "a + b",
+          "error_type": "added_instead_of_multiplied"
+        },
+        {
+          "formula": "b - a",
+          "error_type": "subtracted_moles_from_bond_energy_instead_of_multiplying"
+        },
+        {
+          "formula": "a * b / 2",
+          "error_type": "halved_result_incorrectly"
+        }
+      ]
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Bond Length and Bond Energy",
+    "type": "mc_numeric",
+    "difficulty": "medium",
+    "tags": [
+      "bond_energy",
+      "enthalpy_of_reaction",
+      "hess_law_bond_energy"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Using bond energies, estimate ΔH for a reaction that breaks {{a}} kJ of bonds and forms {{b}} kJ of bonds. (ΔH = energy to break bonds − energy released forming bonds)",
+      "params": {
+        "a": {
+          "min": 300,
+          "max": 800,
+          "step": 50
+        },
+        "b": {
+          "min": 400,
+          "max": 900,
+          "step": 50
+        }
+      },
+      "answer_formula": "a - b",
+      "precision": 0,
+      "unit": "kJ/mol",
+      "distractors": [
+        {
+          "formula": "a - 2 * b",
+          "error_type": "subtracted_double_the_bond_formation_energy_instead_of_single"
+        },
+        {
+          "formula": "a + b",
+          "error_type": "added_bond_breaking_and_forming_energies_instead_of_subtracting"
+        },
+        {
+          "formula": "(a + b) / 2",
+          "error_type": "averaged_the_two_energies_instead_of_subtracting"
+        }
+      ],
+      "allow_negative": true
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Lewis Diagrams",
+    "type": "mc_numeric",
+    "difficulty": "easy",
+    "tags": [
+      "lewis_structure",
+      "valence_electrons",
+      "electron_count"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "A neutral molecule has a central atom from Group {{a}} and is bonded to {{b}} hydrogen atoms (each contributing 1 valence electron). Assuming the central atom contributes its group number of valence electrons, how many total valence electrons does this molecule have?",
+      "params": {
+        "a": {
+          "min": 4,
+          "max": 7,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "answer_formula": "a + b",
+      "precision": 0,
+      "unit": "electrons",
+      "distractors": [
+        {
+          "formula": "a * b",
+          "error_type": "multiplied_group_number_by_hydrogen_count_instead_of_adding"
+        },
+        {
+          "formula": "a - b",
+          "error_type": "subtracted_hydrogen_count_from_group_number"
+        },
+        {
+          "formula": "2 * a + b",
+          "error_type": "double_counted_the_central_atom_valence_electrons"
+        }
+      ]
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Resonance and Formal Charge",
+    "type": "mc_numeric",
+    "difficulty": "medium",
+    "tags": [
+      "formal_charge",
+      "lewis_structure",
+      "calculation"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Formal charge is calculated as: FC = (valence electrons of free atom) − (lone pair electrons on atom) − ½(bonding electrons on atom). An atom has {{a}} valence electrons in its free state, {{b}} lone-pair electrons in the Lewis structure, and 4 bonding electrons. What is the formal charge?",
+      "params": {
+        "a": {
+          "min": 4,
+          "max": 7,
+          "step": 1
+        },
+        "b": {
+          "min": 2,
+          "max": 6,
+          "step": 2
+        }
+      },
+      "answer_formula": "a - b - 2",
+      "precision": 0,
+      "unit": "",
+      "distractors": [
+        {
+          "formula": "a - b - 4",
+          "error_type": "subtracted_all_bonding_electrons_instead_of_half"
+        },
+        {
+          "formula": "a + b - 2",
+          "error_type": "added_lone_pair_electrons_instead_of_subtracting"
+        },
+        {
+          "formula": "a - b",
+          "error_type": "forgot_to_subtract_the_half_bonding_electron_contribution"
+        }
+      ],
+      "allow_negative": true
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Structure of Ionic Solids",
+    "type": "mc_numeric",
+    "difficulty": "medium",
+    "tags": [
+      "lattice_energy",
+      "coulombs_law",
+      "ionic_charge"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Lattice energy is proportional to (q₊ × q₋) / r, where q₊ and q₋ are the ionic charges and r is the interionic distance. Compound A has ionic charges of +{{a}} and −1, while Compound B has ionic charges of +1 and −1, with the same interionic distance. By what factor is Compound A's lattice energy greater than Compound B's?",
+      "params": {
+        "a": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "answer_formula": "a",
+      "precision": 0,
+      "unit": "× greater",
+      "distractors": [
+        {
+          "formula": "a * a",
+          "error_type": "squared_the_charge_factor_incorrectly"
+        },
+        {
+          "formula": "a + 1",
+          "error_type": "added_1_to_charge_instead_of_using_ratio_directly"
+        },
+        {
+          "formula": "a / 2",
+          "error_type": "halved_the_charge_factor_incorrectly"
+        }
+      ]
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Structure of Ionic Solids",
+    "type": "mc_numeric",
+    "difficulty": "medium",
+    "tags": [
+      "lattice_energy",
+      "ionic_radius",
+      "coulombs_law"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Lattice energy is proportional to 1/r (interionic distance). If Compound X has an interionic distance of {{a}} pm and Compound Y has an interionic distance of {{b}} pm ({{b}} > {{a}}), what is the ratio of lattice energy of X to lattice energy of Y? (Express as a decimal.)",
+      "params": {
+        "a": {
+          "min": 200,
+          "max": 300,
+          "step": 20
+        },
+        "b": {
+          "min": 320,
+          "max": 400,
+          "step": 20
+        }
+      },
+      "answer_formula": "b / a",
+      "precision": 2,
+      "unit": "(ratio X:Y)",
+      "distractors": [
+        {
+          "formula": "a / b",
+          "error_type": "calculated_ratio_of_Y_to_X_instead_of_X_to_Y"
+        },
+        {
+          "formula": "b - a",
+          "error_type": "subtracted_distances_instead_of_taking_ratio"
+        },
+        {
+          "formula": "(a + b) / 2",
+          "error_type": "averaged_interionic_distances_instead_of_finding_ratio"
+        }
+      ]
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "VSEPR and Molecular Geometry",
+    "type": "mc_numeric",
+    "difficulty": "easy",
+    "tags": [
+      "vsepr",
+      "electron_groups",
+      "lone_pairs"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "A central atom has {{a}} total electron groups, of which {{b}} are lone pairs. How many bonding pairs surround the central atom?",
+      "params": {
+        "a": {
+          "min": 3,
+          "max": 6,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 2,
+          "step": 1
+        }
+      },
+      "answer_formula": "a - b",
+      "precision": 0,
+      "unit": "bonding pairs",
+      "distractors": [
+        {
+          "formula": "a + b",
+          "error_type": "added_lone_pairs_instead_of_subtracting"
+        },
+        {
+          "formula": "a * b",
+          "error_type": "multiplied_total_groups_by_lone_pairs"
+        },
+        {
+          "formula": "b - a",
+          "error_type": "subtracted_total_from_lone_pairs_reversing_the_direction"
+        }
+      ]
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Bond Length and Bond Energy",
+    "type": "mc_numeric",
+    "difficulty": "medium",
+    "tags": [
+      "bond_energy",
+      "enthalpy",
+      "stoichiometry"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "A diatomic molecule A₂ has a bond energy of {{a}} kJ/mol. How much energy (in kJ) is required to completely dissociate {{b}} moles of A₂ into individual atoms?",
+      "params": {
+        "a": {
+          "min": 150,
+          "max": 500,
+          "step": 50
+        },
+        "b": {
+          "min": 2,
+          "max": 8,
+          "step": 2
+        }
+      },
+      "answer_formula": "a * b",
+      "precision": 0,
+      "unit": "kJ",
+      "distractors": [
+        {
+          "formula": "a + b",
+          "error_type": "added_bond_energy_and_moles_instead_of_multiplying"
+        },
+        {
+          "formula": "a / b",
+          "error_type": "divided_bond_energy_by_moles_instead_of_multiplying"
+        },
+        {
+          "formula": "a * b * 2",
+          "error_type": "doubled_the_result_incorrectly_treating_each_molecule_as_having_two_bonds"
+        }
+      ]
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Resonance and Formal Charge",
+    "type": "mc_numeric",
+    "difficulty": "medium",
+    "tags": [
+      "formal_charge",
+      "valence_electrons",
+      "polyatomic_ion"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "An anion has a charge of −{{a}}. It is formed from a neutral molecule that has {{b}} total valence electrons. How many valence electrons does the anion have?",
+      "params": {
+        "a": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "b": {
+          "min": 16,
+          "max": 32,
+          "step": 2
+        }
+      },
+      "answer_formula": "b + a",
+      "precision": 0,
+      "unit": "electrons",
+      "distractors": [
+        {
+          "formula": "b - a",
+          "error_type": "subtracted_charge_instead_of_adding_electrons_for_negative_charge"
+        },
+        {
+          "formula": "b * a",
+          "error_type": "multiplied_valence_electrons_by_charge_instead_of_adding"
+        },
+        {
+          "formula": "b + a + 2",
+          "error_type": "added_extra_2_electrons_incorrectly"
+        }
+      ]
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Intramolecular Force and Potential Energy",
+    "type": "mc_numeric",
+    "difficulty": "medium",
+    "tags": [
+      "bond_energy",
+      "bond_order",
+      "potential_energy"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "A single bond X–X has a bond energy of {{a}} kJ/mol. If a double bond X=X has approximately {{b}} times the bond energy of a single X–X bond, what is the estimated bond energy of X=X?",
+      "params": {
+        "a": {
+          "min": 200,
+          "max": 400,
+          "step": 50
+        },
+        "b": {
+          "min": 1.5,
+          "max": 2,
+          "step": 0.5
+        }
+      },
+      "answer_formula": "a * b",
+      "precision": 0,
+      "unit": "kJ/mol",
+      "distractors": [
+        {
+          "formula": "a + b",
+          "error_type": "added_factor_to_single_bond_energy_instead_of_multiplying"
+        },
+        {
+          "formula": "a / b",
+          "error_type": "divided_single_bond_energy_by_factor_instead_of_multiplying"
+        },
+        {
+          "formula": "a * b + 50",
+          "error_type": "added_extra_50_kJ_to_the_product_without_justification"
+        }
+      ]
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Lewis Diagrams",
+    "type": "mc_numeric",
+    "difficulty": "medium",
+    "tags": [
+      "lewis_structure",
+      "valence_electrons",
+      "cation"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "A cation has a charge of +{{a}}. It is formed from a neutral atom that has {{b}} valence electrons. How many valence electrons remain in the cation?",
+      "params": {
+        "a": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "b": {
+          "min": 4,
+          "max": 8,
+          "step": 1
+        }
+      },
+      "answer_formula": "b - a",
+      "precision": 0,
+      "unit": "electrons",
+      "distractors": [
+        {
+          "formula": "b + a",
+          "error_type": "added_charge_instead_of_subtracting_electrons_for_positive_charge"
+        },
+        {
+          "formula": "a * b",
+          "error_type": "multiplied_valence_electrons_by_charge"
+        },
+        {
+          "formula": "b - a + 3",
+          "error_type": "miscounted_by_adding_3_extra_electrons_to_the_valence_count"
+        }
+      ]
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Structure of Ionic Solids",
+    "type": "mc_numeric",
+    "difficulty": "hard",
+    "tags": [
+      "lattice_energy",
+      "born_haber",
+      "coulombs_law"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Lattice energy scales proportionally with (q₊ × |q₋|). Compound A has singly charged ions (q₊ = 1, q₋ = −1). Compound B has charges of q₊ = +{{a}} and q₋ = −{{b}}, with the same interionic distance. By what factor is Compound B's lattice energy greater than Compound A's?",
+      "params": {
+        "a": {
+          "min": 2,
+          "max": 3,
+          "step": 1
+        },
+        "b": {
+          "min": 2,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "answer_formula": "a * b",
+      "precision": 0,
+      "unit": "× greater",
+      "distractors": [
+        {
+          "formula": "(a + b) * 2",
+          "error_type": "doubled_the_sum_of_charges_instead_of_multiplying_them"
+        },
+        {
+          "formula": "a * b + 1",
+          "error_type": "added_1_to_the_product_incorrectly"
+        },
+        {
+          "formula": "(a + b) / 2",
+          "error_type": "averaged_the_charges_instead_of_finding_their_product"
+        }
+      ]
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Bond Length and Bond Energy",
+    "type": "mc_numeric",
+    "difficulty": "hard",
+    "tags": [
+      "bond_energy",
+      "resonance",
+      "bond_order"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "A molecule with resonance has {{a}} equivalent bonds. If the total bond energy for all these equivalent bonds together is {{b}} kJ/mol, what is the average bond energy per bond?",
+      "params": {
+        "a": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        },
+        "b": {
+          "min": 600,
+          "max": 1200,
+          "step": 100
+        }
+      },
+      "answer_formula": "b / a",
+      "precision": 0,
+      "unit": "kJ/mol",
+      "distractors": [
+        {
+          "formula": "b * a",
+          "error_type": "multiplied_total_energy_by_number_of_bonds_instead_of_dividing"
+        },
+        {
+          "formula": "b - a",
+          "error_type": "subtracted_number_of_bonds_from_total_energy"
+        },
+        {
+          "formula": "b + a",
+          "error_type": "added_number_of_bonds_to_total_energy"
+        }
+      ]
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "VSEPR and Molecular Geometry",
+    "type": "mc_numeric",
+    "difficulty": "hard",
+    "tags": [
+      "bond_angle",
+      "lone_pairs",
+      "vsepr"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "The ideal tetrahedral bond angle is 109.5°. Each lone pair on a central atom reduces the observed bond angle by approximately {{a}}° relative to the last lone pair's effect. If a molecule has 2 lone pairs on its central atom (like H₂O), and the baseline tetrahedral angle is 109.5°, what is the approximate observed bond angle? (Subtract {{a}}° twice from 109.5°.)",
+      "params": {
+        "a": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "answer_formula": "109.5 - 2 * a",
+      "precision": 1,
+      "unit": "degrees",
+      "distractors": [
+        {
+          "formula": "109.5 - a",
+          "error_type": "subtracted_lone_pair_effect_only_once_instead_of_twice"
+        },
+        {
+          "formula": "109.5 + 2 * a",
+          "error_type": "added_lone_pair_effect_instead_of_subtracting"
+        },
+        {
+          "formula": "120 - 2 * a",
+          "error_type": "used_trigonal_planar_baseline_instead_of_tetrahedral"
+        }
+      ]
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Intramolecular Force and Potential Energy",
+    "type": "mc_numeric",
+    "difficulty": "hard",
+    "tags": [
+      "bond_energy",
+      "enthalpy",
+      "net_reaction"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Using bond energies, ΔH ≈ (sum of energies of bonds broken) − (sum of energies of bonds formed). A reaction breaks {{a}} C–H bonds (413 kJ/mol each) and {{b}} Cl–Cl bonds (242 kJ/mol each), then forms {{a}} C–Cl bonds (339 kJ/mol each) and {{b}} H–Cl bonds (427 kJ/mol each). What is the estimated ΔH?",
+      "params": {
+        "a": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "answer_formula": "a * 413 + b * 242 - a * 339 - b * 427",
+      "precision": 0,
+      "unit": "kJ/mol",
+      "distractors": [
+        {
+          "formula": "a * 413 + b * 242 + a * 339 + b * 427",
+          "error_type": "added_all_bond_energies_instead_of_subtracting_bonds_formed"
+        },
+        {
+          "formula": "a * 339 + b * 427 - a * 413 - b * 242",
+          "error_type": "subtracted_bonds_broken_from_bonds_formed_reversing_sign"
+        },
+        {
+          "formula": "a * 413 - b * 242 - a * 339 + b * 427",
+          "error_type": "mixed_up_signs_for_Cl_Cl_and_HCl_bond_contributions"
+        }
+      ],
+      "allow_negative": true
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Types of Chemical Bonds",
+    "type": "mc_numeric",
+    "difficulty": "medium",
+    "tags": [
+      "bond_polarity",
+      "electronegativity_difference"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Element A has electronegativity {{a}} and Element B has electronegativity {{b}} (where {{b}} > {{a}}). If the bond dipole magnitude is proportional to the electronegativity difference, and a reference bond with Δ EN = 1.0 has a dipole of 1.00 D, what is the relative dipole of the A–B bond? (Assume linear proportionality.)",
+      "params": {
+        "a": {
+          "min": 1,
+          "max": 2.5,
+          "step": 0.5
+        },
+        "b": {
+          "min": 3,
+          "max": 4,
+          "step": 0.5
+        }
+      },
+      "answer_formula": "b - a",
+      "precision": 1,
+      "unit": "D (relative)",
+      "distractors": [
+        {
+          "formula": "b + a",
+          "error_type": "added_electronegativities_instead_of_finding_their_difference"
+        },
+        {
+          "formula": "b - 3 * a",
+          "error_type": "subtracted_triple_the_lower_electronegativity_instead_of_single_difference"
+        },
+        {
+          "formula": "(b - a) / 2",
+          "error_type": "halved_the_electronegativity_difference_incorrectly"
+        }
+      ]
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Lewis Diagrams",
+    "type": "mc_numeric",
+    "difficulty": "hard",
+    "tags": [
+      "lewis_structure",
+      "lone_pairs",
+      "valence_electrons"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "A molecule has {{a}} total valence electrons and {{b}} bonding pairs. How many lone-pair electrons remain?",
+      "params": {
+        "a": {
+          "min": 8,
+          "max": 24,
+          "step": 2
+        },
+        "b": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "answer_formula": "a - 2 * b",
+      "precision": 0,
+      "unit": "electrons",
+      "distractors": [
+        {
+          "formula": "a - b",
+          "error_type": "subtracted_bonding_pairs_instead_of_bonding_electrons_did_not_multiply_by_2"
+        },
+        {
+          "formula": "a + 2 * b",
+          "error_type": "added_bonding_electrons_instead_of_subtracting"
+        },
+        {
+          "formula": "a * b",
+          "error_type": "multiplied_total_valence_electrons_by_bonding_pairs"
+        }
+      ]
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Structure of Ionic Solids",
+    "type": "mc_numeric",
+    "difficulty": "hard",
+    "tags": [
+      "lattice_energy",
+      "melting_point",
+      "coulombs_law",
+      "ionic_radius"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "For an ionic compound, lattice energy ∝ (q₊ × |q₋|) / r. Compound P has q₊ = {{a}}, q₋ = −1, and interionic distance r = {{b}} pm. Compound Q has q₊ = 1, q₋ = −1, and interionic distance r = {{b}} pm. What is the ratio of lattice energy of P to lattice energy of Q?",
+      "params": {
+        "a": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        },
+        "b": {
+          "min": 200,
+          "max": 300,
+          "step": 20
+        }
+      },
+      "answer_formula": "a",
+      "precision": 0,
+      "unit": "(ratio P:Q)",
+      "distractors": [
+        {
+          "formula": "a + 1",
+          "error_type": "added_1_to_charge_ratio_instead_of_recognizing_direct_proportionality"
+        },
+        {
+          "formula": "a * b",
+          "error_type": "multiplied_charge_by_distance_instead_of_just_using_charge_ratio"
+        },
+        {
+          "formula": "a / b",
+          "error_type": "divided_charge_by_distance_rather_than_using_charge_ratio_alone"
+        }
+      ]
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Types of Chemical Bonds",
+    "type": "fr_static",
+    "difficulty": "easy",
+    "tags": [
+      "ionic_bond",
+      "definition"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "What type of chemical bond results from the complete transfer of one or more valence electrons from a metal to a nonmetal, creating oppositely charged ions held together by electrostatic attraction?",
+      "accepted_answers": [
+        "ionic bond",
+        "ionic bonding",
+        "electrostatic attraction"
+      ],
+      "semantic_fallback": true
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Types of Chemical Bonds",
+    "type": "fr_static",
+    "difficulty": "easy",
+    "tags": [
+      "metallic_bonding",
+      "sea_of_electrons"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "In the metallic bonding model, the valence electrons of metal atoms are not localized between any two atoms but instead move freely throughout the lattice. What common phrase is used to describe these delocalized valence electrons in a metal?",
+      "accepted_answers": [
+        "sea of electrons",
+        "electron sea",
+        "delocalized electrons",
+        "sea of delocalized electrons"
+      ],
+      "semantic_fallback": true
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Structure of Metals and Alloys",
+    "type": "fr_static",
+    "difficulty": "easy",
+    "tags": [
+      "alloys",
+      "interstitial_alloy",
+      "substitutional_alloy"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "What type of alloy forms when atoms of significantly different radii combine, with the smaller atoms occupying the gaps (spaces) between the larger atoms in the metal lattice?",
+      "accepted_answers": [
+        "interstitial alloy",
+        "interstitial"
+      ],
+      "semantic_fallback": true
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Lewis Diagrams",
+    "type": "fr_static",
+    "difficulty": "easy",
+    "tags": [
+      "octet_rule",
+      "lewis_structure"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "What rule states that atoms in Lewis structures tend to have 8 electrons (4 pairs) in their valence shell, giving them the electron configuration of a noble gas?",
+      "accepted_answers": [
+        "octet rule",
+        "the octet rule"
+      ],
+      "semantic_fallback": true
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Resonance and Formal Charge",
+    "type": "fr_static",
+    "difficulty": "medium",
+    "tags": [
+      "resonance",
+      "delocalization",
+      "definition"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "When more than one valid Lewis structure can be drawn for a molecule or ion by changing only the positions of electrons (not atoms), these structures are called what? The actual molecule is a hybrid of all of them.",
+      "accepted_answers": [
+        "resonance structures",
+        "resonance",
+        "resonance forms",
+        "resonance hybrids"
+      ],
+      "semantic_fallback": true
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "VSEPR and Molecular Geometry",
+    "type": "fr_static",
+    "difficulty": "medium",
+    "tags": [
+      "vsepr",
+      "electron_pair_repulsion",
+      "molecular_geometry"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "What theory uses the repulsion between electron pairs (both bonding pairs and lone pairs) around a central atom to predict the three-dimensional shape of a molecule?",
+      "accepted_answers": [
+        "vsepr theory",
+        "vsepr",
+        "valence shell electron pair repulsion theory",
+        "valence shell electron pair repulsion"
+      ],
+      "semantic_fallback": true
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "VSEPR and Molecular Geometry",
+    "type": "fr_static",
+    "difficulty": "medium",
+    "tags": [
+      "molecular_geometry",
+      "trigonal_pyramidal",
+      "vsepr"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": {
+      "type": "smiles",
+      "value": "N",
+      "caption": "Ammonia (NH3)"
+    },
+    "content": {
+      "stem": "What is the molecular geometry (shape) of ammonia (NH₃), which has a central nitrogen atom with 3 bonding pairs and 1 lone pair?",
+      "accepted_answers": [
+        "trigonal pyramidal",
+        "trigonal-pyramidal",
+        "pyramidal"
+      ],
+      "semantic_fallback": true
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Hybridization",
+    "type": "fr_static",
+    "difficulty": "medium",
+    "tags": [
+      "hybridization",
+      "sigma_bond",
+      "pi_bond",
+      "definition"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "In orbital overlap theory, what type of bond results from the direct (head-on) overlap of atomic orbitals along the bond axis, and is found in all covalent bonds (single, double, and triple)?",
+      "accepted_answers": [
+        "sigma bond",
+        "sigma",
+        "σ bond"
+      ],
+      "semantic_fallback": true
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Hybridization",
+    "type": "fr_static",
+    "difficulty": "medium",
+    "tags": [
+      "hybridization",
+      "pi_bond",
+      "double_bond",
+      "triple_bond"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "What type of bond results from the lateral (side-by-side) overlap of parallel p orbitals, is present in double and triple bonds (but not single bonds), and prevents free rotation around the bond?",
+      "accepted_answers": [
+        "pi bond",
+        "pi",
+        "π bond"
+      ],
+      "semantic_fallback": true
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Molecular Polarity",
+    "type": "fr_static",
+    "difficulty": "hard",
+    "tags": [
+      "molecular_polarity",
+      "dipole_moment",
+      "bond_dipoles"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "A molecule can have polar bonds and yet be nonpolar overall. What geometric condition must be satisfied for the individual bond dipoles to cancel each other and produce a zero net dipole moment?",
+      "accepted_answers": [
+        "the molecule must be symmetrical so that bond dipoles cancel",
+        "the bond dipoles must be equal and opposite and cancel due to molecular symmetry",
+        "the molecule must have a symmetrical geometry with no lone pairs on the central atom",
+        "symmetric arrangement of bond dipoles"
+      ],
+      "semantic_fallback": true
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Resonance and Formal Charge",
+    "type": "fr_static",
+    "difficulty": "hard",
+    "tags": [
+      "formal_charge",
+      "best_lewis_structure",
+      "octet_rule"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "When choosing among several possible Lewis structures for the same molecule, which two criteria based on formal charge are used to identify the best (most accurate) Lewis structure?",
+      "accepted_answers": [
+        "formal charges should be as close to zero as possible and negative formal charge should be on the more electronegative atom",
+        "minimize formal charges and place negative formal charge on the most electronegative atom",
+        "smallest formal charges and negative charge on electronegative atom"
+      ],
+      "semantic_fallback": true
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Bond Length and Bond Energy",
+    "type": "fr_static",
+    "difficulty": "hard",
+    "tags": [
+      "bond_length",
+      "bond_energy",
+      "bond_order",
+      "relationship"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Describe the relationship between bond order, bond length, and bond energy. Your answer should address the direction of all three relationships.",
+      "accepted_answers": [
+        "as bond order increases bond length decreases and bond energy increases",
+        "higher bond order means shorter bond length and greater bond energy",
+        "bond order and bond energy are directly proportional while bond order and bond length are inversely proportional"
+      ],
+      "semantic_fallback": true
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Bond Length and Bond Energy",
+    "type": "fr_numeric",
+    "difficulty": "medium",
+    "tags": [
+      "bond_energy",
+      "enthalpy",
+      "calculation"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Using bond energies, estimate ΔH (in kJ/mol) for a reaction in which {{a}} C–H bonds (413 kJ/mol each) and {{b}} O=O bonds (498 kJ/mol each) are broken, and {{a}} C=O bonds (799 kJ/mol each) and {{b}} O–H bonds (463 kJ/mol each) are formed. (ΔH = bonds broken − bonds formed)",
+      "params": {
+        "a": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 2,
+          "step": 1
+        }
+      },
+      "answer_formula": "a * 413 + b * 498 - a * 799 - b * 463",
+      "precision": 0,
+      "unit": "kJ/mol",
+      "tolerance": 0,
+      "semantic_fallback": false,
+      "allow_negative": true
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Resonance and Formal Charge",
+    "type": "fr_numeric",
+    "difficulty": "medium",
+    "tags": [
+      "formal_charge",
+      "lewis_structure",
+      "calculation"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Calculate the formal charge on an atom that has {{a}} valence electrons in its free state, {{b}} lone-pair electrons in its Lewis structure, and 6 bonding electrons shared with neighboring atoms. (FC = valence electrons − lone pair electrons − ½ × bonding electrons)",
+      "params": {
+        "a": {
+          "min": 4,
+          "max": 7,
+          "step": 1
+        },
+        "b": {
+          "min": 0,
+          "max": 6,
+          "step": 2
+        }
+      },
+      "answer_formula": "a - b - 3",
+      "precision": 0,
+      "unit": "",
+      "tolerance": 0,
+      "semantic_fallback": false,
+      "allow_negative": true
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Structure of Ionic Solids",
+    "type": "fr_numeric",
+    "difficulty": "hard",
+    "tags": [
+      "lattice_energy",
+      "coulombs_law",
+      "charge_distance"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "A simplified lattice energy model gives U ∝ (q₊ × |q₋|) / r. Compound A has q₊ = {{a}}, |q₋| = {{b}}, and interionic distance r = 200 pm. What is the relative lattice energy of Compound A compared to a reference compound with q₊ = 1, |q₋| = 1, and r = 200 pm? Express as a ratio (A / reference).",
+      "params": {
+        "a": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "answer_formula": "a * b",
+      "precision": 0,
+      "unit": "(dimensionless ratio)",
+      "tolerance": 0,
+      "semantic_fallback": false
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Bond Length and Bond Energy",
+    "type": "fr_numeric",
+    "difficulty": "hard",
+    "tags": [
+      "bond_energy",
+      "enthalpy",
+      "combustion"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Estimate ΔH (in kJ/mol) for a reaction using bond energies. The reaction breaks {{a}} N–H bonds (391 kJ/mol each) and {{b}} O=O bonds (498 kJ/mol each), and forms {{b}} N=O bonds (631 kJ/mol each) and {{a}} O–H bonds (463 kJ/mol each).",
+      "params": {
+        "a": {
+          "min": 2,
+          "max": 6,
+          "step": 2
+        },
+        "b": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "answer_formula": "a * 391 + b * 498 - b * 631 - a * 463",
+      "precision": 0,
+      "unit": "kJ/mol",
+      "tolerance": 0,
+      "semantic_fallback": false,
+      "allow_negative": true
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Types of Solids",
+    "type": "mc_static",
+    "difficulty": "easy",
+    "tags": [
+      "covalent_network_solid",
+      "types_of_solids",
+      "properties"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Which of the following best describes a covalent network solid?",
+      "options": [
+        "A solid in which all atoms are held together by a continuous, three-dimensional network of covalent bonds extending throughout the entire crystal.",
+        "A solid composed of discrete molecules held together by intermolecular forces such as London dispersion forces.",
+        "A solid composed of alternating cations and anions arranged in a regular lattice held by electrostatic attraction.",
+        "A solid in which positive ion cores are surrounded by a sea of delocalized electrons."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Types of Solids",
+    "type": "mc_static",
+    "difficulty": "easy",
+    "tags": [
+      "types_of_solids",
+      "classification",
+      "properties"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Which of the following correctly matches each solid type with the primary force holding its particles together?",
+      "options": [
+        "Ionic solid — electrostatic attraction; metallic solid — delocalized electrons; molecular solid — intermolecular forces; covalent network solid — covalent bonds throughout.",
+        "Ionic solid — covalent bonds; metallic solid — ionic bonds; molecular solid — metallic bonds; covalent network solid — electrostatic attraction.",
+        "Ionic solid — delocalized electrons; metallic solid — covalent bonds; molecular solid — electrostatic attraction; covalent network solid — intermolecular forces.",
+        "Ionic solid — intermolecular forces; metallic solid — electrostatic attraction; molecular solid — covalent bonds; covalent network solid — delocalized electrons."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Types of Solids",
+    "type": "mc_static",
+    "difficulty": "medium",
+    "tags": [
+      "covalent_network_solid",
+      "diamond",
+      "properties",
+      "high_melting_point"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Diamond has an extremely high melting point (about 3550 °C) and is one of the hardest known substances. Which of the following best explains these properties?",
+      "options": [
+        "Diamond is a covalent network solid in which every carbon atom is bonded to four other carbon atoms by strong covalent bonds extending throughout the entire crystal, so enormous energy is required to break the lattice.",
+        "Diamond is an ionic solid in which the carbon ions are held by very strong electrostatic forces that resist deformation.",
+        "Diamond is a molecular solid with exceptionally strong London dispersion forces because carbon atoms are very polarizable.",
+        "Diamond is a metallic solid whose delocalized electrons create unusually strong metallic bonds between carbon atoms."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Types of Solids",
+    "type": "mc_static",
+    "difficulty": "medium",
+    "tags": [
+      "metallic_solid",
+      "properties",
+      "malleability",
+      "conductivity"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Unlike ionic solids, metallic solids are malleable (can be hammered into sheets) rather than brittle. Which of the following best explains this difference using the sea-of-electrons model?",
+      "options": [
+        "When layers of metal atoms shift under stress, the delocalized electron sea adjusts continuously to maintain bonding throughout, so the solid bends rather than fractures; in ionic solids, shifting layers bring like charges adjacent, causing repulsion and fracture.",
+        "Metal atoms form weaker bonds than ions, so they can slide past each other without breaking the lattice.",
+        "The delocalized electrons in metals flow away from the stress point, reducing local bonding and allowing layers to slip.",
+        "Metals are malleable because they contain no anions that could repel each other when layers shift."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Types of Solids",
+    "type": "mc_static",
+    "difficulty": "hard",
+    "tags": [
+      "types_of_solids",
+      "comparison",
+      "melting_point",
+      "conductivity"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "A student compares four solids: (I) NaCl, (II) Cu, (III) SiO₂, (IV) CO₂(s). Which ranking of melting points from lowest to highest is correct, and which solid type explains the lowest melting point?",
+      "options": [
+        "CO₂(s) < NaCl < Cu < SiO₂; CO₂ is a molecular solid held only by weak London dispersion forces, giving it the lowest melting point.",
+        "NaCl < CO₂(s) < Cu < SiO₂; ionic solids always have lower melting points than molecular solids.",
+        "Cu < CO₂(s) < NaCl < SiO₂; metals have the lowest melting points because delocalized electrons are weakly bonded.",
+        "SiO₂ < NaCl < Cu < CO₂(s); covalent network solids always have the lowest melting points."
+      ],
+      "correct_index": 0
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Types of Solids",
+    "type": "mc_numeric",
+    "difficulty": "medium",
+    "tags": [
+      "types_of_solids",
+      "melting_point_comparison",
+      "coulombs_law"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Solid A (molecular) melts at {{a}} °C and Solid B (covalent network) melts at {{b}} °C. By how many degrees Celsius does B's melting point exceed A's?",
+      "params": {
+        "a": {
+          "min": -100,
+          "max": 50,
+          "step": 25
+        },
+        "b": {
+          "min": 1000,
+          "max": 3000,
+          "step": 500
+        }
+      },
+      "answer_formula": "b - a",
+      "precision": 0,
+      "unit": "°C",
+      "distractors": [
+        {
+          "formula": "a - b",
+          "error_type": "subtracted_in_wrong_order_giving_negative_value"
+        },
+        {
+          "formula": "(b - a) * 2",
+          "error_type": "doubled_the_melting_point_difference_instead_of_reporting_it_directly"
+        },
+        {
+          "formula": "(b - a) / 2",
+          "error_type": "halved_the_difference_incorrectly"
+        }
+      ]
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Types of Solids",
+    "type": "mc_numeric",
+    "difficulty": "medium",
+    "tags": [
+      "metallic_solid",
+      "conductivity",
+      "free_electrons"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "A metal sample contains {{a}} moles of atoms, each contributing {{b}} delocalized (free) valence electrons to the electron sea. How many total moles of free electrons are in the sample?",
+      "params": {
+        "a": {
+          "min": 2,
+          "max": 8,
+          "step": 2
+        },
+        "b": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "answer_formula": "a * b",
+      "precision": 0,
+      "unit": "mol electrons",
+      "distractors": [
+        {
+          "formula": "a * b + b",
+          "error_type": "added_one_extra_electron_per_atom_after_multiplying"
+        },
+        {
+          "formula": "a * b * 2",
+          "error_type": "doubled_the_total_electron_count_incorrectly"
+        },
+        {
+          "formula": "a * b - b",
+          "error_type": "subtracted_one_electron_per_atom_from_product_instead_of_using_direct_multiply"
+        }
+      ]
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Types of Solids",
+    "type": "mc_numeric",
+    "difficulty": "hard",
+    "tags": [
+      "types_of_solids",
+      "lattice_energy",
+      "covalent_network",
+      "bond_energy"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "In a covalent network solid, each interior atom forms {{a}} covalent bonds, and each bond has an energy of {{b}} kJ/mol. Using the approximation that the energy per atom ≈ (number of bonds × bond energy) / 2 (dividing by 2 to avoid double-counting), what is the estimated energy per atom in kJ/mol?",
+      "params": {
+        "a": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        },
+        "b": {
+          "min": 300,
+          "max": 500,
+          "step": 50
+        }
+      },
+      "answer_formula": "a * b / 2",
+      "precision": 0,
+      "unit": "kJ/mol per atom",
+      "distractors": [
+        {
+          "formula": "a * b",
+          "error_type": "forgot_to_divide_by_2_to_avoid_double_counting_shared_bonds"
+        },
+        {
+          "formula": "a + b",
+          "error_type": "added_bond_count_and_bond_energy_instead_of_multiplying"
+        },
+        {
+          "formula": "b / a",
+          "error_type": "divided_bond_energy_by_bond_count_instead_of_multiplying_then_halving"
+        }
+      ]
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Types of Solids",
+    "type": "fr_static",
+    "difficulty": "medium",
+    "tags": [
+      "covalent_network_solid",
+      "examples",
+      "properties"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Name one example of a covalent network solid (other than diamond) that is known for its extremely high melting point and hardness due to its continuous three-dimensional network of covalent bonds.",
+      "accepted_answers": [
+        "silicon dioxide",
+        "sio2",
+        "quartz",
+        "silicon carbide",
+        "sic",
+        "boron nitride"
+      ],
+      "semantic_fallback": true
+    }
+  },
+  {
+    "subject": "AP Chemistry",
+    "unit": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+    "unit_exam_weight_pct": 9,
+    "deck": "Types of Solids",
+    "type": "fr_numeric",
+    "difficulty": "medium",
+    "tags": [
+      "covalent_network_solid",
+      "bond_energy",
+      "sublimation"
+    ],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "A small covalent network solid fragment contains {{a}} covalent bonds, each with a bond energy of {{b}} kJ/mol. Assuming all bonds must be broken to vaporize the solid, how much total energy (in kJ) is required?",
+      "params": {
+        "a": {
+          "min": 2,
+          "max": 8,
+          "step": 2
+        },
+        "b": {
+          "min": 300,
+          "max": 500,
+          "step": 50
+        }
+      },
+      "answer_formula": "a * b",
+      "precision": 0,
+      "unit": "kJ",
+      "tolerance": 0,
+      "semantic_fallback": false
+    }
+  }
+]
