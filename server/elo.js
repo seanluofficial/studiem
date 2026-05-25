@@ -1,9 +1,15 @@
 const { createClient } = require('@supabase/supabase-js');
 
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
-);
+let _supabase = null;
+function getSupabase() {
+  if (!_supabase) {
+    _supabase = createClient(
+      process.env.SUPABASE_URL,
+      process.env.SUPABASE_SERVICE_ROLE_KEY
+    );
+  }
+  return _supabase;
+}
 
 const K = 32;
 
@@ -21,6 +27,8 @@ async function updateElo(state, winnerSocketId) {
   const userId2 = state.players[sid2].userId;
 
   // Fetch current ratings (default 1000 if no row yet)
+  const supabase = getSupabase();
+
   const { data: rows } = await supabase
     .from('elo_ratings')
     .select('user_id, rating')
