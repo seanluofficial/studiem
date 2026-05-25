@@ -1,0 +1,4 @@
+web/node_modules
+web/.next
+server/node_modules
+.git
