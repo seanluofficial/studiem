@@ -73,7 +73,7 @@ function startBattle(roomId) {
   const state = battles.get(roomId);
   if (!state) return;
 
-  state.questions = pickQuestions(10);
+  state.questions = pickQuestions(1);
 
   // Send each player their first question independently
   for (const socketId of Object.keys(state.players)) {
