@@ -4,14 +4,13 @@ let socket: Socket | null = null;
 
 export function getSocket(): Socket {
   if (!socket) {
-    // In development, hit the local server directly.
-    // In production, connect to the same Vercel origin — next.config.ts rewrites
-    // /socket.io/* to Railway server-to-server, avoiding CORS entirely.
-    const isDev = process.env.NODE_ENV === 'development';
-    const url = isDev
-      ? (process.env.NEXT_PUBLIC_SOCKET_URL ?? 'http://localhost:4000')
-      : undefined; // undefined → socket.io uses window.location (same origin)
-    socket = io(url as string, { autoConnect: false });
+    const rawUrl = process.env.NEXT_PUBLIC_SOCKET_URL ?? 'http://localhost:4000';
+    const isDev = rawUrl.includes('localhost');
+    // Dev: connect directly to local server.
+    // Prod: connect to same Vercel origin — next.config.ts rewrites /socket.io/* to Railway.
+    const url = isDev ? rawUrl : window.location.origin;
+    console.log('[socket] init →', url);
+    socket = io(url, { autoConnect: false });
   }
   return socket;
 }

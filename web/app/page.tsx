@@ -80,7 +80,10 @@ export default function Home() {
 
   useEffect(() => {
     const socket = getSocket();
+    console.log('[page] calling socket.connect()');
     socket.connect();
+    socket.on('connect', () => console.log('[socket] connected, id:', socket.id));
+    socket.on('connect_error', (err) => console.error('[socket] connect_error:', err.message, err));
 
     socket.on('queue_joined', () => setAppPhase('queuing'));
     socket.on('queue_left', () => setAppPhase('idle'));

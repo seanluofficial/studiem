@@ -18,7 +18,7 @@ app.use(cors());
 
 const server = http.createServer(app);
 const io = new Server(server, {
-  cors: { origin: true, credentials: false },
+  cors: { origin: '*' },
 });
 
 // ─── State ────────────────────────────────────────────────────────────────────
@@ -249,7 +249,10 @@ io.on('connection', (socket) => {
   });
 });
 
-app.get('/health', (_, res) => res.json({ ok: true, queue: queue.length, battles: battles.size }));
+app.get('/health', (_, res) => {
+  console.log('[health] ping');
+  res.json({ ok: true, queue: queue.length, battles: battles.size });
+});
 
 const PORT = process.env.PORT || 4000;
 server.listen(PORT, '0.0.0.0', () => console.log(`Battle server on :${PORT}`));
