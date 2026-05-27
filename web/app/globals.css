@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0f0f14;
+  --foreground: #e8e8f0;
+  --accent-blue: #4f46e5;
+  --accent-gold: #eab308;
 }
 
 @theme inline {
@@ -12,15 +14,54 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Question slide-in animation */
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.question-enter {
+  animation: slide-in 0.18s ease-out both;
+}
+
+/* ELO delta count-up animation */
+@keyframes elo-pop {
+  0%   { transform: scale(0.8); opacity: 0; }
+  60%  { transform: scale(1.12); }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+.elo-animate {
+  animation: elo-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* Score bar animate */
+@keyframes bar-grow {
+  from { width: 0; }
+}
+
+.score-bar {
+  animation: bar-grow 0.3s ease-out both;
+}
+
+/* Sharp button baseline — override rounded Tailwind defaults */
+button {
+  border-radius: 0;
+}
+
+input, select, textarea {
+  border-radius: 0;
 }

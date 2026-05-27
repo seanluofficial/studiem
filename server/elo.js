@@ -16,7 +16,6 @@ function getSupabase() {
 const K = 32;
 
 function calcNewRating(myRating, oppRating, result) {
-  // result: 1 = win, 0 = loss, 0.5 = tie
   const expected = 1 / (1 + Math.pow(10, (oppRating - myRating) / 400));
   return Math.round(myRating + K * (result - expected));
 }
@@ -27,15 +26,15 @@ async function updateElo(state, winnerSocketId) {
 
   const userId1 = state.players[sid1].userId;
   const userId2 = state.players[sid2].userId;
+  const subject = state.subject ?? 'AP Chemistry';
 
-  // Fetch current ratings (default 1000 if no row yet)
   const supabase = getSupabase();
 
   const { data: rows } = await supabase
     .from('elo_ratings')
     .select('user_id, rating')
     .in('user_id', [userId1, userId2])
-    .eq('subject', 'apchem');
+    .eq('subject', subject);
 
   const ratingMap = Object.fromEntries((rows ?? []).map(r => [r.user_id, r.rating]));
   const r1 = ratingMap[userId1] ?? 1000;
@@ -50,27 +49,24 @@ async function updateElo(state, winnerSocketId) {
   const new1 = calcNewRating(r1, r2, result1);
   const new2 = calcNewRating(r2, r1, result2);
 
-  // Upsert ratings
   await supabase.from('elo_ratings').upsert([
-    { user_id: userId1, subject: 'apchem', rating: new1, updated_at: new Date().toISOString() },
-    { user_id: userId2, subject: 'apchem', rating: new2, updated_at: new Date().toISOString() },
+    { user_id: userId1, subject, rating: new1, updated_at: new Date().toISOString() },
+    { user_id: userId2, subject, rating: new2, updated_at: new Date().toISOString() },
   ], { onConflict: 'user_id,subject' });
 
-  // Record battle
+  const score1 = state.progress?.[sid1]?.score ?? 0;
+  const score2 = state.progress?.[sid2]?.score ?? 0;
+
   await supabase.from('battles').insert({
     player1_id: userId1,
     player2_id: userId2,
     winner_id: tied ? null : (p1Wins ? userId1 : userId2),
-    subject: 'apchem',
-    scores: {
-      [userId1]: state.progress[sid1].score,
-      [userId2]: state.progress[sid2].score,
-    },
+    subject,
+    scores: { [userId1]: score1, [userId2]: score2 },
   });
 
-  console.log(`[elo] ${userId1}: ${r1} → ${new1}  |  ${userId2}: ${r2} → ${new2}`);
+  console.log(`[elo] ${userId1}: ${r1}→${new1}  |  ${userId2}: ${r2}→${new2}  (${subject})`);
 
-  // Return deltas keyed by socketId so client can look up their own
   return {
     [sid1]: { before: r1, after: new1, delta: new1 - r1 },
     [sid2]: { before: r2, after: new2, delta: new2 - r2 },

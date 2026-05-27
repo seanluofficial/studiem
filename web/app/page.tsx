@@ -1,12 +1,30 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { getSocket } from '@/lib/socket';
 import { createClient } from '@/lib/supabase/client';
 import BattleRoom from '@/components/BattleRoom';
 
-type AppPhase = 'idle' | 'queuing' | 'countdown' | 'battle' | 'finished' | 'disconnected' | 'complete';
+const MVP_SUBJECTS = [
+  'AP Biology',
+  'AP Chemistry',
+  'AP US History',
+  'AP Psychology',
+  'AP Calculus AB',
+];
+
+type AppPhase =
+  | 'idle'
+  | 'queuing'
+  | 'countdown'
+  | 'battle'
+  | 'waiting_opponent'
+  | 'finished'
+  | 'disconnected'
+  | 'complete'
+  | 'paywall';
 
 interface Question {
   id: string;
@@ -23,9 +41,9 @@ interface BattleState {
   selectedIndex: number | null;
   correctIndex: number | null;
   lastCorrect: boolean | null;
+  opponentAnswer: number | null;
   myScore: number;
   oppScore: number;
-  oppQIndex: number;
 }
 
 export default function Home() {
@@ -33,15 +51,17 @@ export default function Home() {
   const [appPhase, setAppPhase] = useState<AppPhase>('idle');
   const [userId, setUserId] = useState<string | null>(null);
   const [displayName, setDisplayName] = useState('');
+  const [subject, setSubject] = useState('AP Chemistry');
   const [roomId, setRoomId] = useState<string | null>(null);
   const [opponent, setOpponent] = useState<{ displayName: string } | null>(null);
   const [countdown, setCountdown] = useState(3);
+  const [reconnectCountdown, setReconnectCountdown] = useState<number | null>(null);
   const [winner, setWinner] = useState<string | null>(null);
   const [finalScores, setFinalScores] = useState<Record<string, number>>({});
   const [myElo, setMyElo] = useState<number | null>(null);
   const [eloDelta, setEloDelta] = useState<number | null>(null);
-  const [disconnectCountdown, setDisconnectCountdown] = useState(5);
   const [opponentElo, setOpponentElo] = useState<number | null>(null);
+  const [paywallResetAt, setPaywallResetAt] = useState<string | null>(null);
   const [battle, setBattle] = useState<BattleState>({
     phase: 'question',
     question: null,
@@ -50,12 +70,12 @@ export default function Home() {
     selectedIndex: null,
     correctIndex: null,
     lastCorrect: null,
+    opponentAnswer: null,
     myScore: 0,
     oppScore: 0,
-    oppQIndex: 0,
   });
 
-  // Load logged-in user's profile
+  // Load user profile and ELO
   useEffect(() => {
     const supabase = createClient();
     supabase.auth.getUser().then(async ({ data: { user } }) => {
@@ -68,41 +88,77 @@ export default function Home() {
         .single();
       if (data) setDisplayName(data.display_name);
 
-      // Load current ELO
       const { data: eloRow } = await supabase
         .from('elo_ratings')
         .select('rating')
         .eq('user_id', user.id)
-        .eq('subject', 'apchem')
+        .eq('subject', subject)
         .single();
       setMyElo(eloRow?.rating ?? 1000);
     });
-  }, [router]);
+  }, [router, subject]);
+
+  // Refresh ELO when subject changes
+  useEffect(() => {
+    if (!userId) return;
+    const supabase = createClient();
+    supabase
+      .from('elo_ratings')
+      .select('rating')
+      .eq('user_id', userId)
+      .eq('subject', subject)
+      .single()
+      .then(({ data }) => setMyElo(data?.rating ?? 1000));
+  }, [userId, subject]);
+
+  const resetBattleState = useCallback(() => {
+    setBattle({
+      phase: 'question',
+      question: null,
+      qIndex: 0,
+      qTotal: 0,
+      selectedIndex: null,
+      correctIndex: null,
+      lastCorrect: null,
+      opponentAnswer: null,
+      myScore: 0,
+      oppScore: 0,
+    });
+    setRoomId(null);
+    setOpponent(null);
+    setWinner(null);
+    setFinalScores({});
+    setEloDelta(null);
+    setReconnectCountdown(null);
+  }, []);
 
   useEffect(() => {
     const socket = getSocket();
-    console.log('[page] calling socket.connect()');
     socket.connect();
-    socket.on('connect', () => console.log('[socket] connected, id:', socket.id));
-    socket.on('connect_error', (err) => console.error('[socket] connect_error:', err.message, err));
+    socket.on('connect', () => console.log('[socket] connected:', socket.id));
+    socket.on('connect_error', (err) => console.error('[socket] error:', err.message));
 
     socket.on('queue_joined', () => setAppPhase('queuing'));
     socket.on('queue_left', () => setAppPhase('idle'));
 
-    socket.on('match_found', ({ roomId, opponent }) => {
-      setRoomId(roomId);
-      setOpponent(opponent);
+    socket.on('queue_timeout', () => {
+      setAppPhase('idle');
+    });
+
+    socket.on('match_found', ({ roomId: rid, opponent: opp }) => {
+      setRoomId(rid);
+      setOpponent(opp);
       setOpponentElo(null);
       setAppPhase('countdown');
 
-      // Fetch opponent's ELO from Supabase
       createClient()
         .from('elo_ratings')
         .select('rating')
-        .eq('user_id', opponent.userId)
-        .eq('subject', 'apchem')
+        .eq('user_id', opp.userId)
+        .eq('subject', subject)
         .single()
         .then(({ data }) => setOpponentElo(data?.rating ?? 1000));
+
       let n = 3;
       setCountdown(n);
       const t = setInterval(() => {
@@ -112,7 +168,7 @@ export default function Home() {
       }, 1000);
     });
 
-    // New independent-racing events
+    // Synchronized: both players receive the same question simultaneously
     socket.on('question', ({ index, total, question }) => {
       setAppPhase('battle');
       setBattle(prev => ({
@@ -124,61 +180,81 @@ export default function Home() {
         selectedIndex: null,
         correctIndex: null,
         lastCorrect: null,
+        opponentAnswer: null,
       }));
     });
 
-    // Per-player result — only this player sees it immediately
-    socket.on('question_result', ({ correct_index, your_answer, correct, score, opponent_score }) => {
+    // After this player answers, show waiting state
+    socket.on('waiting_for_opponent', () => {
+      setAppPhase('waiting_opponent');
+    });
+
+    // Both players answered — broadcast to both with each other's answer
+    socket.on('question_result', ({ correct_index, results, scores }: {
+      correct_index: number;
+      results: Record<string, { answer: number; correct: boolean }>;
+      scores: Record<string, number>;
+    }) => {
+      const myId = getSocket().id ?? '';
+      const myResult = results[myId];
+      const oppEntry = Object.entries(results).find(([id]) => id !== myId);
+      const oppResult = oppEntry?.[1];
+      const myScore = scores[myId] ?? 0;
+      const oppId = Object.keys(scores).find(id => id !== myId);
+      const oppScore = oppId ? (scores[oppId] ?? 0) : 0;
+
       setBattle(prev => ({
         ...prev,
         phase: 'reveal',
         correctIndex: correct_index,
-        selectedIndex: your_answer ?? prev.selectedIndex,
-        lastCorrect: correct,
-        myScore: score,
-        oppScore: opponent_score,
+        selectedIndex: myResult?.answer ?? prev.selectedIndex,
+        lastCorrect: myResult?.correct ?? false,
+        opponentAnswer: oppResult?.answer ?? null,
+        myScore,
+        oppScore,
       }));
+      setAppPhase('battle');
     });
 
-    // Opponent made progress (answered or timed out)
-    socket.on('opponent_progress', ({ score, questionIndex }) => {
-      setBattle(prev => ({ ...prev, oppScore: score, oppQIndex: questionIndex }));
-    });
-
-    socket.on('you_finished', ({ score, opponent_score }) => {
-      setBattle(prev => ({ ...prev, myScore: score, oppScore: opponent_score }));
-      setAppPhase('finished');
-    });
-
-    socket.on('battle_complete', ({ scores, winner, eloDeltas }) => {
+    socket.on('battle_complete', ({ scores, winner: w, eloDeltas }) => {
       setFinalScores(scores);
-      setWinner(winner);
+      setWinner(w);
       const myId = getSocket().id;
       if (myId && eloDeltas?.[myId]) {
-        const { after, delta } = eloDeltas[myId];
-        setMyElo(after);
-        setEloDelta(delta);
+        setMyElo(eloDeltas[myId].after);
+        setEloDelta(eloDeltas[myId].delta);
       }
       setAppPhase('complete');
     });
 
+    socket.on('battle_limit_reached', ({ resetAt }) => {
+      setPaywallResetAt(resetAt);
+      setAppPhase('paywall');
+    });
+
     socket.on('opponent_disconnected', () => {
-      setAppPhase('disconnected');
-      let n = 5;
-      setDisconnectCountdown(n);
-      const t = setInterval(() => {
-        n--;
-        setDisconnectCountdown(n);
-        if (n <= 0) clearInterval(t);
-      }, 1000);
+      setReconnectCountdown(30);
+    });
+
+    socket.on('opponent_reconnect_countdown', ({ seconds }) => {
+      setReconnectCountdown(seconds);
+      if (seconds <= 0) setReconnectCountdown(null);
+    });
+
+    socket.on('opponent_reconnected', () => {
+      setReconnectCountdown(null);
     });
 
     return () => { socket.disconnect(); };
-  }, []);
+  }, [subject]);
 
   function joinQueue() {
     const socket = getSocket();
-    socket.emit('join_queue', { userId: userId ?? socket.id, displayName, elo: 1000 });
+    socket.emit('join_queue', { userId: userId ?? socket.id, displayName, elo: myElo ?? 1000, subject });
+  }
+
+  function leaveQueue() {
+    getSocket().emit('leave_queue');
   }
 
   async function handleSignOut() {
@@ -186,14 +262,42 @@ export default function Home() {
     router.push('/login');
   }
 
-  function leaveQueue() {
-    getSocket().emit('leave_queue');
-  }
-
   function submitAnswer(index: number) {
     if (battle.selectedIndex !== null || battle.phase === 'reveal') return;
     setBattle(prev => ({ ...prev, selectedIndex: index }));
     getSocket().emit('submit_answer', { roomId, answerIndex: index });
+  }
+
+  function playAgain(sameOpponent = false) {
+    void sameOpponent; // cosmetic distinction for now — both re-queue
+    resetBattleState();
+    setAppPhase('queuing');
+    const socket = getSocket();
+    socket.emit('join_queue', { userId: userId ?? socket.id, displayName, elo: myElo ?? 1000, subject });
+  }
+
+  // ── Paywall screen ─────────────────────────────────────────────────────────
+  if (appPhase === 'paywall') {
+    const resetTime = paywallResetAt
+      ? new Date(paywallResetAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      : 'midnight UTC';
+    return (
+      <main className="min-h-screen bg-[#0f0f14] text-white flex flex-col items-center justify-center gap-6 px-4">
+        <div className="text-4xl">⚔️</div>
+        <h2 className="text-2xl font-bold text-center">Daily limit reached</h2>
+        <p className="text-gray-400 text-center max-w-sm">
+          You&apos;ve used your 3 free battles today. Resets at {resetTime}.
+        </p>
+        <p className="text-indigo-400 font-semibold text-lg">Premium — $2.99/mo</p>
+        <p className="text-gray-500 text-sm text-center">Unlimited battles, unlimited challenges</p>
+        <button
+          onClick={() => setAppPhase('idle')}
+          className="bg-gray-800 hover:bg-gray-700 text-gray-300 px-6 py-2 text-sm transition"
+        >
+          Back to lobby
+        </button>
+      </main>
+    );
   }
 
   // ── Complete screen ────────────────────────────────────────────────────────
@@ -205,50 +309,77 @@ export default function Home() {
     const tied = winner === null;
 
     return (
-      <main className="min-h-screen bg-gray-950 text-white flex flex-col items-center justify-center gap-6">
-        <h2 className="text-3xl font-bold">{tied ? "It's a tie!" : iWon ? 'You win! 🏆' : 'You lose'}</h2>
-        <p className="text-gray-400">{myScore} – {oppScore} vs {opponent?.displayName}</p>
+      <main className="min-h-screen bg-[#0f0f14] text-white flex flex-col items-center justify-center gap-6 px-4">
+        <h2 className="text-3xl font-bold">
+          {tied ? "Draw" : iWon ? 'Victory' : 'Defeat'}
+        </h2>
+        <p className="text-gray-400 text-lg">
+          {myScore} – {oppScore}
+          <span className="text-gray-600 text-sm ml-2">vs {opponent?.displayName}</span>
+        </p>
         {eloDelta !== null && (
-          <p className={`text-lg font-semibold ${eloDelta >= 0 ? 'text-green-400' : 'text-red-400'}`}>
-            {eloDelta >= 0 ? '+' : ''}{eloDelta} ELO → {myElo}
+          <p className={`text-2xl font-bold tabular-nums ${eloDelta >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+            {eloDelta >= 0 ? '+' : ''}{eloDelta} ELO
+            <span className="text-gray-400 text-base font-normal ml-2">→ {myElo}</span>
           </p>
         )}
-        <button onClick={() => window.location.reload()}
-          className="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-8 py-3 rounded-lg transition">
-          Play Again
+        <div className="flex gap-4 mt-2">
+          <button
+            onClick={() => playAgain(true)}
+            className="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-6 py-3 transition"
+          >
+            Rematch
+          </button>
+          <button
+            onClick={() => playAgain(false)}
+            className="bg-gray-700 hover:bg-gray-600 text-white font-semibold px-6 py-3 transition"
+          >
+            New Opponent
+          </button>
+        </div>
+        <button onClick={() => { resetBattleState(); setAppPhase('idle'); }} className="text-xs text-gray-600 hover:text-gray-400 transition">
+          Back to lobby
         </button>
       </main>
     );
   }
 
-  // ── Opponent disconnected — countdown to win screen ───────────────────────
-  if (appPhase === 'disconnected') {
+  // ── Disconnected — reconnect countdown ────────────────────────────────────
+  if (reconnectCountdown !== null) {
     return (
-      <main className="min-h-screen bg-gray-950 text-white flex flex-col items-center justify-center gap-4">
-        <p className="text-2xl font-bold text-yellow-400">Opponent disconnected</p>
-        <p className="text-7xl font-bold text-indigo-400">{disconnectCountdown}</p>
-        <p className="text-gray-500 text-sm">You win!</p>
+      <main className="min-h-screen bg-[#0f0f14] text-white flex flex-col items-center justify-center gap-4">
+        <p className="text-xl font-bold text-yellow-400">Opponent disconnected</p>
+        <p className="text-6xl font-bold text-indigo-400 tabular-nums">{reconnectCountdown}</p>
+        <p className="text-gray-500 text-sm">Waiting for them to reconnect…</p>
       </main>
     );
   }
 
-  // ── Finished — waiting for opponent ───────────────────────────────────────
-  if (appPhase === 'finished') {
+  if (appPhase === 'disconnected') {
     return (
-      <main className="min-h-screen bg-gray-950 text-white flex flex-col items-center justify-center gap-4">
-        <p className="text-2xl font-bold">You finished!</p>
-        <p className="text-gray-400">
-          Your score: <strong className="text-white">{battle.myScore}</strong>
-          {' · '}
-          {opponent?.displayName}: <strong className="text-white">{battle.oppScore}</strong>
-        </p>
-        <p className="text-gray-500 animate-pulse text-sm">Waiting for opponent to finish…</p>
+      <main className="min-h-screen bg-[#0f0f14] text-white flex flex-col items-center justify-center gap-4">
+        <p className="text-xl font-bold text-yellow-400">Opponent disconnected</p>
+        <p className="text-gray-500 text-sm">Waiting for result…</p>
       </main>
+    );
+  }
+
+  // ── Waiting for opponent after answering ──────────────────────────────────
+  if (appPhase === 'waiting_opponent' && battle.question) {
+    const socket = getSocket();
+    return (
+      <BattleRoom
+        battle={{ ...battle, phase: 'reveal' }}
+        opponent={opponent!}
+        mySocketId={socket.id!}
+        onSubmit={submitAnswer}
+        waitingForOpponent
+      />
     );
   }
 
   // ── Battle screen ──────────────────────────────────────────────────────────
-  if (appPhase === 'battle') {
+  if (appPhase === 'battle' && battle.question) {
     const socket = getSocket();
     return (
       <BattleRoom
@@ -256,36 +387,65 @@ export default function Home() {
         opponent={opponent!}
         mySocketId={socket.id!}
         onSubmit={submitAnswer}
+        waitingForOpponent={false}
       />
     );
   }
 
   // ── Lobby / queue / countdown ──────────────────────────────────────────────
   return (
-    <main className="min-h-screen bg-gray-950 text-white flex flex-col items-center justify-center gap-8">
+    <main className="min-h-screen bg-[#0f0f14] text-white flex flex-col items-center justify-center gap-8 px-4">
       <h1 className="text-4xl font-bold tracking-tight">StudyArena</h1>
 
       {appPhase === 'idle' && (
-        <div className="flex flex-col items-center gap-4">
+        <div className="flex flex-col items-center gap-5 w-full max-w-sm">
           {displayName && (
             <p className="text-gray-400 text-sm">
-              Playing as <strong className="text-white">{displayName}</strong>
-              {myElo !== null && <span className="ml-2 text-indigo-400 font-semibold">{myElo} ELO</span>}
+              <strong className="text-white">{displayName}</strong>
+              {myElo !== null && <span className="ml-2 text-yellow-400 font-semibold">{myElo} ELO</span>}
             </p>
           )}
-          <button onClick={joinQueue} disabled={!displayName}
-            className="bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 text-white font-semibold px-8 py-3 rounded-lg transition">
+
+          {/* Subject picker */}
+          <div className="w-full">
+            <label className="block text-xs text-gray-500 mb-1 uppercase tracking-wider">Subject</label>
+            <div className="flex flex-col gap-1">
+              {MVP_SUBJECTS.map(s => (
+                <button
+                  key={s}
+                  onClick={() => setSubject(s)}
+                  className={`text-left px-4 py-2 text-sm transition ${
+                    subject === s
+                      ? 'bg-indigo-600 text-white'
+                      : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white'
+                  }`}
+                >
+                  {s}
+                  {s !== 'AP Chemistry' && <span className="ml-2 text-xs text-gray-600">Coming soon</span>}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <button
+            onClick={joinQueue}
+            disabled={!displayName || subject !== 'AP Chemistry'}
+            className="w-full bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 text-white font-bold px-8 py-3 transition tracking-wide"
+          >
             Find Match
           </button>
-          <button onClick={handleSignOut} className="text-xs text-gray-600 hover:text-gray-400 transition">
-            Sign out
-          </button>
+
+          <div className="flex gap-4 text-xs text-gray-600">
+            <Link href="/profile" className="hover:text-gray-400 transition">Profile</Link>
+            <Link href="/leaderboard" className="hover:text-gray-400 transition">Leaderboard</Link>
+            <button onClick={handleSignOut} className="hover:text-gray-400 transition">Sign out</button>
+          </div>
         </div>
       )}
 
       {appPhase === 'queuing' && (
         <div className="flex flex-col items-center gap-4">
-          <p className="text-gray-400 animate-pulse">Searching for opponent…</p>
+          <p className="text-gray-400 animate-pulse">Searching for opponent in {subject}…</p>
           <button onClick={leaveQueue} className="text-sm text-gray-500 hover:text-gray-300 transition">Cancel</button>
         </div>
       )}
@@ -293,12 +453,12 @@ export default function Home() {
       {appPhase === 'countdown' && (
         <div className="flex flex-col items-center gap-4">
           <p className="text-gray-400">
-            Matched vs <span className="text-white font-semibold">{opponent?.displayName}</span>
+            vs <span className="text-white font-semibold">{opponent?.displayName}</span>
             {opponentElo !== null && (
-              <span className="ml-2 text-indigo-400 font-semibold">{opponentElo} ELO</span>
+              <span className="ml-2 text-yellow-400 font-semibold">{opponentElo} ELO</span>
             )}
           </p>
-          <p className="text-6xl font-bold text-indigo-400">{countdown}</p>
+          <p className="text-7xl font-bold text-indigo-400 tabular-nums">{countdown}</p>
         </div>
       )}
     </main>

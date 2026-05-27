@@ -1,9 +1,66 @@
+require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
+const { createClient } = require('@supabase/supabase-js');
+const ws = require('ws');
 
 const CONTENT_DIR = path.join(__dirname, '..', 'content', 'apchem');
 
-// ─── Load all MC cards from every unit*.json ──────────────────────────────────
+// ─── Supabase (lazy) ──────────────────────────────────────────────────────────
+
+let _supabase = null;
+function getSupabase() {
+  if (!_supabase) {
+    _supabase = createClient(
+      process.env.SUPABASE_URL,
+      process.env.SUPABASE_SERVICE_ROLE_KEY,
+      { realtime: { transport: ws } }
+    );
+  }
+  return _supabase;
+}
+
+// ─── DB query ─────────────────────────────────────────────────────────────────
+
+async function pickQuestionsFromDB(subject, n) {
+  const supabase = getSupabase();
+
+  const { data: cards, error: cardsErr } = await supabase
+    .from('source_cards')
+    .select('id')
+    .eq('subject', subject)
+    .eq('reviewed', true);
+
+  if (cardsErr) throw cardsErr;
+  if (!cards || cards.length === 0) throw new Error(`No reviewed cards for subject: ${subject}`);
+
+  const cardIds = cards.map(c => c.id);
+
+  const { data: variants, error: varErr } = await supabase
+    .from('question_variants')
+    .select('id, rendered_stem, rendered_options, correct_index')
+    .in('source_card_id', cardIds)
+    .not('rendered_options', 'is', null)
+    .limit(n * 5);
+
+  if (varErr) throw varErr;
+  if (!variants || variants.length === 0) throw new Error(`No variants for subject: ${subject}`);
+
+  // Shuffle
+  for (let i = variants.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [variants[i], variants[j]] = [variants[j], variants[i]];
+  }
+
+  return variants.slice(0, n).map(row => ({
+    id: row.id,
+    stem: row.rendered_stem,
+    options: row.rendered_options,
+    correct_index: row.correct_index,
+  }));
+}
+
+// ─── JSON fallback helpers ────────────────────────────────────────────────────
 
 function loadAllCards() {
   const files = fs.readdirSync(CONTENT_DIR)
@@ -22,16 +79,12 @@ function loadAllCards() {
   return cards;
 }
 
-// ─── Evaluate a formula string with named param variables ─────────────────────
-
 function evalFormula(formula, params) {
   const keys = Object.keys(params);
   const vals = keys.map(k => params[k]);
   // eslint-disable-next-line no-new-func
   return new Function(...keys, `return (${formula})`).call(null, ...vals);
 }
-
-// ─── Sample random params for a numeric card ─────────────────────────────────
 
 function sampleParams(paramDefs) {
   const result = {};
@@ -43,13 +96,9 @@ function sampleParams(paramDefs) {
   return result;
 }
 
-// ─── Substitute {{var}} in a string ──────────────────────────────────────────
-
 function fillTemplate(str, params) {
   return str.replace(/\{\{(\w+)\}\}/g, (_, k) => params[k] ?? `{{${k}}}`);
 }
-
-// ─── Render any MC card into a battle-ready question object ──────────────────
 
 function renderCard(card) {
   if (card.type === 'mc_static') {
@@ -61,13 +110,10 @@ function renderCard(card) {
     };
   }
 
-  // mc_numeric: sample params, compute values, build options
   const { stem, params: paramDefs, answer_formula, precision = 2, unit = '', distractors } = card.content;
 
-  // Try up to 10 param samples to find one where all options are distinct
   for (let attempt = 0; attempt < 10; attempt++) {
     const params = sampleParams(paramDefs);
-
     const fmt = (v) => {
       const n = parseFloat(v.toFixed(precision));
       return unit ? `${n} ${unit}` : String(n);
@@ -78,7 +124,6 @@ function renderCard(card) {
     if (!isFinite(answerVal)) continue;
 
     const answerStr = fmt(answerVal);
-
     const distractorStrs = [];
     let ok = true;
     for (const d of distractors) {
@@ -91,50 +136,51 @@ function renderCard(card) {
     }
     if (!ok) continue;
 
-    // Shuffle answer into options
     const options = [answerStr, ...distractorStrs];
-    // Fisher-Yates shuffle
     for (let i = options.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [options[i], options[j]] = [options[j], options[i]];
     }
 
-    const correct_index = options.indexOf(answerStr);
-
     return {
       id: `${answer_formula}_${JSON.stringify(params)}`,
       stem: fillTemplate(stem, params),
       options,
-      correct_index,
+      correct_index: options.indexOf(answerStr),
     };
   }
 
-  // Fallback: couldn't find clean params — skip this card (caller should retry)
   return null;
 }
 
-// ─── Pick N random battle questions ──────────────────────────────────────────
-
 let cachedCards = null;
-
-function pickQuestions(n = 10) {
+function pickQuestionsFromJSON(n) {
   if (!cachedCards) cachedCards = loadAllCards();
-
   const pool = [...cachedCards];
-  // Shuffle pool
   for (let i = pool.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [pool[i], pool[j]] = [pool[j], pool[i]];
   }
-
   const questions = [];
   for (const card of pool) {
     if (questions.length >= n) break;
     const q = renderCard(card);
     if (q) questions.push(q);
   }
-
   return questions;
+}
+
+// ─── Public API ───────────────────────────────────────────────────────────────
+
+async function pickQuestions(subject, n = 10) {
+  if (process.env.SUPABASE_URL) {
+    try {
+      return await pickQuestionsFromDB(subject, n);
+    } catch (err) {
+      console.warn('[questions] DB failed, falling back to JSON:', err.message);
+    }
+  }
+  return pickQuestionsFromJSON(n);
 }
 
 module.exports = { pickQuestions };
