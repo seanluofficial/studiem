@@ -78,15 +78,16 @@ Both sides of a battle are equal — the challenger and the challenged are the s
 - Both players receive the **same 10 questions** drawn from the selected deck
 - Questions are AI-generated variants (no two battles use identical phrasing)
 - Per-question flow:
-  - Question appears simultaneously for both players
-  - Each player answers independently (no visibility into opponent's answer)
+  - Both players receive the same 10 questions simultaneously at battle start
+  - Each player answers independently and advances to the next question immediately — no waiting for the opponent
   - No per-question timer — players answer at their own pace
-  - Round ends when **both players have answered**
+  - Opponent's live score and question progress are visible in the header throughout
 - Scoring:
-  - **Accuracy is primary** — correct answers earn points
-  - **Speed is the tiebreaker** — if both players score equally, the faster total time wins
+  - **Accuracy is primary** — correct answers earn points (1 point each, 10 max)
+  - **Speed is the tiebreaker** — if both players score equally, the player who finished faster wins
+  - Total battle time is measured from question delivery to the last answer submitted
   - Final score is displayed after all 10 questions
-- Post-battle: result screen shows win/loss, point breakdown, ELO delta, and correct answers
+- Post-battle: result screen shows win/loss, score, ELO delta, and Rematch / New Opponent buttons
 
 ### 6.3 Async Challenge Mode (MVP)
 - Player sends a challenge link to a friend
@@ -153,19 +154,18 @@ Both sides of a battle are equal — the challenger and the challenged are the s
 ### Battle State Machine
 
 ```
-LOBBY → COUNTDOWN (3s) → QUESTION_1…10 → REVEAL → COMPLETE
+LOBBY → COUNTDOWN (3s) → RACING (Q1…10, independent per player) → FINISHED → COMPLETE
 ```
 
 - **LOBBY:** Both players confirmed, deck selected, waiting for countdown
-- **COUNTDOWN:** 3-second animated countdown before Q1 appears
-- **QUESTION_N:** Question visible; player submits answer; UI locks that player's answer; waits for opponent
-- **REVEAL:** After both answer, brief reveal (correct answer, both players' answers, time delta) — 2 seconds
-- **COMPLETE:** Final score, ELO change, rematch / new opponent buttons
+- **COUNTDOWN:** 3-second animated countdown; same 10 questions sent to both players simultaneously
+- **RACING:** Each player answers and advances independently; correct answer + score shown immediately after each answer; opponent's live score visible in header; player who finishes all 10 first sees a "waiting" screen until both are done
+- **COMPLETE:** Final score, ELO change, Rematch / New Opponent buttons
 
 ### Disconnect Handling
-- If a player disconnects mid-battle: 30-second reconnect grace period
-- After 30 seconds: disconnected player forfeits; opponent wins and receives full ELO gain
-- Rematch button available on the result screen
+- If a player disconnects mid-battle: 10-second reconnect grace period; remaining player sees a countdown
+- If they reconnect within 10 seconds: battle resumes from their current question
+- After 10 seconds: disconnected player forfeits; opponent wins and receives full ELO gain
 
 ### Matchmaking
 - Public queue matches players on the **same deck** within an ELO bracket (±200 ELO)
