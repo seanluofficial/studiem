@@ -6,7 +6,7 @@ import { getSocket } from '@/lib/socket';
 import { createClient } from '@/lib/supabase/client';
 import BattleRoom from '@/components/BattleRoom';
 
-type AppPhase = 'idle' | 'queuing' | 'countdown' | 'battle' | 'finished' | 'complete';
+type AppPhase = 'idle' | 'queuing' | 'countdown' | 'battle' | 'finished' | 'disconnected' | 'complete';
 
 interface Question {
   id: string;
@@ -40,6 +40,7 @@ export default function Home() {
   const [finalScores, setFinalScores] = useState<Record<string, number>>({});
   const [myElo, setMyElo] = useState<number | null>(null);
   const [eloDelta, setEloDelta] = useState<number | null>(null);
+  const [disconnectCountdown, setDisconnectCountdown] = useState(5);
   const [opponentElo, setOpponentElo] = useState<number | null>(null);
   const [battle, setBattle] = useState<BattleState>({
     phase: 'question',
@@ -162,9 +163,14 @@ export default function Home() {
     });
 
     socket.on('opponent_disconnected', () => {
-      const socket = getSocket();
-      setWinner(socket.id ?? null);
-      setAppPhase('complete');
+      setAppPhase('disconnected');
+      let n = 5;
+      setDisconnectCountdown(n);
+      const t = setInterval(() => {
+        n--;
+        setDisconnectCountdown(n);
+        if (n <= 0) clearInterval(t);
+      }, 1000);
     });
 
     return () => { socket.disconnect(); };
@@ -211,6 +217,17 @@ export default function Home() {
           className="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-8 py-3 rounded-lg transition">
           Play Again
         </button>
+      </main>
+    );
+  }
+
+  // ── Opponent disconnected — countdown to win screen ───────────────────────
+  if (appPhase === 'disconnected') {
+    return (
+      <main className="min-h-screen bg-gray-950 text-white flex flex-col items-center justify-center gap-4">
+        <p className="text-2xl font-bold text-yellow-400">Opponent disconnected</p>
+        <p className="text-7xl font-bold text-indigo-400">{disconnectCountdown}</p>
+        <p className="text-gray-500 text-sm">You win!</p>
       </main>
     );
   }

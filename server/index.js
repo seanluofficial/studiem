@@ -19,6 +19,8 @@ app.use(cors());
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: { origin: '*' },
+  pingTimeout: 5000,
+  pingInterval: 10000,
 });
 
 // ─── State ────────────────────────────────────────────────────────────────────
@@ -143,10 +145,12 @@ async function endBattle(roomId) {
 
   // Update ELO in Supabase then broadcast result with deltas
   let eloDeltas = {};
+  console.log('[elo] updating for room', roomId, '— winner socket:', winner);
   try {
     eloDeltas = await updateElo(state, winner);
+    console.log('[elo] deltas:', JSON.stringify(eloDeltas));
   } catch (err) {
-    console.error('[elo] update failed:', err.message);
+    console.error('[elo] update failed:', err);
   }
 
   io.to(roomId).emit('battle_complete', { scores, winner, eloDeltas });
@@ -236,10 +240,12 @@ io.on('connection', (socket) => {
         const remaining = Object.keys(state.players).find(id => id !== socket.id);
         if (remaining) {
           io.to(remaining).emit('opponent_disconnected');
-          // Award remaining player a win by marking disconnected player as done with 0
+          // Mark both as done; skip you_finished/finishPlayer to avoid weird UI
           state.progress[socket.id].done = true;
-          state.progress[socket.id].score = -1; // ensures remaining player wins
-          finishPlayer(roomId, remaining); // this will trigger endBattle since both done
+          state.progress[socket.id].score = 0;
+          state.progress[remaining].done = true;
+          // Delay endBattle 5 s so client can show the countdown first
+          setTimeout(() => endBattle(roomId), 5000);
         } else {
           battles.delete(roomId);
         }
