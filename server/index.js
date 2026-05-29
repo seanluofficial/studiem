@@ -48,9 +48,6 @@ const queue = [];
 // progress[socketId] = { questionIndex, score, done, finishedAt }
 const battles = new Map();
 
-// userId → { roomId, oldSocketId, timer, intervalTimer }
-const pendingReconnects = new Map();
-
 // ─── Matchmaking ──────────────────────────────────────────────────────────────
 
 function tryMatch() {
@@ -267,21 +264,26 @@ function finishPlayer(roomId, socketId) {
   if (allDone) endBattle(roomId);
 }
 
-async function endBattle(roomId) {
+async function endBattle(roomId, forfeitedBy = null) {
   const state = battles.get(roomId);
-  if (!state) return;
+  if (!state || state.ending) return;
+  state.ending = true;
 
   const sids = Object.keys(state.players);
   const scores = Object.fromEntries(sids.map(sid => [sid, state.progress[sid].score]));
 
-  const [s1, s2] = sids.map(sid => scores[sid]);
-  const [t1, t2] = sids.map(sid => state.progress[sid].finishedAt ?? Date.now());
-
   let winner = null;
-  if (s1 > s2) winner = sids[0];
-  else if (s2 > s1) winner = sids[1];
-  else if (t1 < t2) winner = sids[0]; // same score — faster player wins
-  else if (t2 < t1) winner = sids[1];
+  if (forfeitedBy) {
+    // Disconnecting player forfeits — remaining player wins regardless of score.
+    winner = sids.find(id => id !== forfeitedBy) ?? null;
+  } else {
+    const [s1, s2] = sids.map(sid => scores[sid]);
+    const [t1, t2] = sids.map(sid => state.progress[sid].finishedAt ?? Date.now());
+    if (s1 > s2) winner = sids[0];
+    else if (s2 > s1) winner = sids[1];
+    else if (t1 < t2) winner = sids[0]; // same score — faster player wins
+    else if (t2 < t1) winner = sids[1];
+  }
 
   const stateForElo = { ...state };
 
@@ -298,12 +300,18 @@ async function endBattle(roomId) {
     try { await updateStreak(userId); } catch (err) { console.error('[streak]', err); }
   }
 
-  io.to(roomId).emit('battle_complete', { scores, winner, eloDeltas });
+  io.to(roomId).emit('battle_complete', {
+    scores,
+    winner,
+    eloDeltas,
+    forfeit: !!forfeitedBy,
+    forfeitedBy: forfeitedBy ?? null,
+  });
   battles.delete(roomId);
-  console.log(`[complete] ${roomId} — ${JSON.stringify(scores)}`);
+  console.log(`[complete] ${roomId} — ${JSON.stringify(scores)}${forfeitedBy ? ` (forfeit by ${forfeitedBy})` : ''}`);
 }
 
-// ─── Disconnect / reconnect ───────────────────────────────────────────────────
+// ─── Disconnect ───────────────────────────────────────────────────────────────
 
 function handleDisconnect(socketId) {
   const qi = queue.findIndex(p => p.socketId === socketId);
@@ -320,74 +328,16 @@ function handleDisconnect(socketId) {
       break;
     }
 
-    let countdown = 10;
+    // Immediate forfeit — no grace period. Prevents dodge-via-disconnect.
+    if (state.progress[socketId]) {
+      state.progress[socketId].done = true;
+      state.progress[socketId].finishedAt = Date.now();
+    }
     io.to(remainingId).emit('opponent_disconnected');
-    io.to(remainingId).emit('opponent_reconnect_countdown', { seconds: countdown });
-
-    const intervalTimer = setInterval(() => {
-      countdown--;
-      io.to(remainingId).emit('opponent_reconnect_countdown', { seconds: countdown });
-    }, 1000);
-
-    const timer = setTimeout(() => {
-      clearInterval(intervalTimer);
-      pendingReconnects.delete(player.userId);
-      const currentState = battles.get(roomId);
-      if (!currentState) return;
-      // Forfeit disconnected player
-      if (currentState.progress[socketId]) {
-        currentState.progress[socketId].done = true;
-        currentState.progress[socketId].finishedAt = Date.now();
-        currentState.progress[socketId].score = 0;
-      }
-      endBattle(roomId);
-    }, 10000);
-
-    pendingReconnects.set(player.userId, { roomId, oldSocketId: socketId, timer, intervalTimer });
-    console.log(`[disconnect] ${player.displayName} — 10s grace in ${roomId}`);
+    console.log(`[disconnect] ${player.displayName} forfeited ${roomId}`);
+    endBattle(roomId, socketId);
     break;
   }
-}
-
-function handleReconnect(socket, userId, displayName) {
-  const pending = pendingReconnects.get(userId);
-  if (!pending) return false;
-
-  clearTimeout(pending.timer);
-  clearInterval(pending.intervalTimer);
-  pendingReconnects.delete(userId);
-
-  const state = battles.get(pending.roomId);
-  if (!state) return false;
-
-  const { oldSocketId } = pending;
-  if (state.players[oldSocketId]) {
-    state.players[socket.id] = { ...state.players[oldSocketId], socketId: socket.id };
-    delete state.players[oldSocketId];
-    state.progress[socket.id] = state.progress[oldSocketId];
-    delete state.progress[oldSocketId];
-  }
-
-  socket.join(pending.roomId);
-
-  const otherId = Object.keys(state.players).find(id => id !== socket.id);
-  if (otherId) io.to(otherId).emit('opponent_reconnected');
-
-  // Resume: send current question for this player
-  const prog = state.progress[socket.id];
-  if (prog && !prog.done) {
-    const q = state.questions[prog.questionIndex];
-    if (q) {
-      socket.emit('question', {
-        index: prog.questionIndex,
-        total: state.questions.length,
-        question: q,
-      });
-    }
-  }
-
-  console.log(`[reconnect] ${displayName} resumed ${pending.roomId}`);
-  return true;
 }
 
 // ─── Socket events ────────────────────────────────────────────────────────────
@@ -396,9 +346,6 @@ io.on('connection', (socket) => {
   console.log(`[connect] ${socket.id}`);
 
   socket.on('join_queue', ({ userId, displayName, elo = 1000, subject = 'AP Chemistry' }) => {
-    // Check if this is a reconnect
-    if (userId && handleReconnect(socket, userId, displayName)) return;
-
     const existing = queue.findIndex(p => p.socketId === socket.id);
     if (existing !== -1) queue.splice(existing, 1);
 

@@ -21,7 +21,6 @@ type AppPhase =
   | 'countdown'
   | 'battle'
   | 'finished'
-  | 'disconnected'
   | 'complete';
 
 interface Question {
@@ -54,8 +53,8 @@ export default function Home() {
   const [roomId, setRoomId] = useState<string | null>(null);
   const [opponent, setOpponent] = useState<{ displayName: string } | null>(null);
   const [countdown, setCountdown] = useState(3);
-  const [reconnectCountdown, setReconnectCountdown] = useState<number | null>(null);
   const [winner, setWinner] = useState<string | null>(null);
+  const [forfeit, setForfeit] = useState<{ forfeitedBy: string | null } | null>(null);
   const [finalScores, setFinalScores] = useState<Record<string, number>>({});
   const [myElo, setMyElo] = useState<number | null>(null);
   const [eloDelta, setEloDelta] = useState<number | null>(null);
@@ -127,9 +126,9 @@ export default function Home() {
     setRoomId(null);
     setOpponent(null);
     setWinner(null);
+    setForfeit(null);
     setFinalScores({});
     setEloDelta(null);
-    setReconnectCountdown(null);
   }, []);
 
   useEffect(() => {
@@ -211,9 +210,10 @@ export default function Home() {
       setAppPhase('finished');
     });
 
-    socket.on('battle_complete', ({ scores, winner: w, eloDeltas }) => {
+    socket.on('battle_complete', ({ scores, winner: w, eloDeltas, forfeit: didForfeit, forfeitedBy }) => {
       setFinalScores(scores);
       setWinner(w);
+      setForfeit(didForfeit ? { forfeitedBy: forfeitedBy ?? null } : null);
       const myId = getSocket().id;
       if (myId && eloDeltas?.[myId]) {
         setMyElo(eloDeltas[myId].after);
@@ -223,16 +223,7 @@ export default function Home() {
     });
 
     socket.on('opponent_disconnected', () => {
-      setReconnectCountdown(30);
-    });
-
-    socket.on('opponent_reconnect_countdown', ({ seconds }) => {
-      setReconnectCountdown(seconds);
-      if (seconds <= 0) setReconnectCountdown(null);
-    });
-
-    socket.on('opponent_reconnected', () => {
-      setReconnectCountdown(null);
+      // Informational only — server will immediately send battle_complete.
     });
 
     return () => { socket.disconnect(); };
@@ -278,11 +269,17 @@ export default function Home() {
     const iWon = winner === socket.id;
     const tied = winner === null;
 
+    const wasForfeit = forfeit !== null;
     return (
       <main className="min-h-screen bg-[#0f0f14] text-white flex flex-col items-center justify-center gap-6 px-4">
         <h2 className="text-3xl font-bold">
           {tied ? "Draw" : iWon ? 'Victory' : 'Defeat'}
         </h2>
+        {wasForfeit && (
+          <p className={`text-sm font-semibold ${iWon ? 'text-green-400' : 'text-yellow-400'}`}>
+            {iWon ? 'Your opponent disconnected. You win!' : 'You disconnected — counted as a loss.'}
+          </p>
+        )}
         <p className="text-gray-400 text-lg">
           {myScore} – {oppScore}
           <span className="text-gray-600 text-sm ml-2">vs {opponent?.displayName}</span>
@@ -307,26 +304,6 @@ export default function Home() {
             Return to Lobby
           </button>
         </div>
-      </main>
-    );
-  }
-
-  // ── Disconnected — reconnect countdown ────────────────────────────────────
-  if (reconnectCountdown !== null) {
-    return (
-      <main className="min-h-screen bg-[#0f0f14] text-white flex flex-col items-center justify-center gap-4">
-        <p className="text-xl font-bold text-yellow-400">Opponent disconnected</p>
-        <p className="text-6xl font-bold text-indigo-400 tabular-nums">{reconnectCountdown}</p>
-        <p className="text-gray-500 text-sm">Waiting for them to reconnect…</p>
-      </main>
-    );
-  }
-
-  if (appPhase === 'disconnected') {
-    return (
-      <main className="min-h-screen bg-[#0f0f14] text-white flex flex-col items-center justify-center gap-4">
-        <p className="text-xl font-bold text-yellow-400">Opponent disconnected</p>
-        <p className="text-gray-500 text-sm">Waiting for result…</p>
       </main>
     );
   }
