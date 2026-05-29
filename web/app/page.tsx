@@ -32,7 +32,7 @@ interface Question {
 }
 
 interface BattleState {
-  phase: 'question' | 'reveal';
+  phase: 'question' | 'reveal' | 'waiting';
   question: Question | null;
   qIndex: number;
   qTotal: number;
@@ -145,19 +145,12 @@ export default function Home() {
       setAppPhase('idle');
     });
 
-    socket.on('match_found', ({ roomId: rid, opponent: opp }) => {
+    socket.on('match_found', ({ roomId: rid, opponent: opp, myElo: serverMyElo }) => {
       setRoomId(rid);
       setOpponent(opp);
-      setOpponentElo(null);
+      setOpponentElo(opp?.elo ?? 1000);
+      if (typeof serverMyElo === 'number') setMyElo(serverMyElo);
       setAppPhase('countdown');
-
-      createClient()
-        .from('elo_ratings')
-        .select('rating')
-        .eq('user_id', opp.userId)
-        .eq('subject', subject)
-        .single()
-        .then(({ data }) => setOpponentElo(data?.rating ?? 1000));
 
       let n = 3;
       setCountdown(n);
@@ -206,6 +199,11 @@ export default function Home() {
     // Opponent answered — update their score display
     socket.on('opponent_progress', ({ score, questionIndex }: { score: number; questionIndex: number }) => {
       setBattle(prev => ({ ...prev, oppScore: score, oppQIndex: questionIndex }));
+    });
+
+    // Both players' reveal finished, but opponent hasn't answered yet — show waiting overlay
+    socket.on('waiting_for_opponent', ({ myScore, opponentScore }: { myScore: number; opponentScore: number }) => {
+      setBattle(prev => ({ ...prev, phase: 'waiting', myScore, oppScore: opponentScore }));
     });
 
     socket.on('you_finished', ({ score, opponent_score }: { score: number; opponent_score: number }) => {
@@ -342,6 +340,9 @@ export default function Home() {
         opponent={opponent!}
         mySocketId={socket.id!}
         onSubmit={submitAnswer}
+        myElo={myElo}
+        opponentElo={opponentElo}
+        displayName={displayName}
       />
     );
   }

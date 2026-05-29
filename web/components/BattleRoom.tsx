@@ -11,7 +11,7 @@ interface Question {
 }
 
 interface BattleState {
-  phase: 'question' | 'reveal';
+  phase: 'question' | 'reveal' | 'waiting';
   question: Question | null;
   qIndex: number;
   qTotal: number;
@@ -29,9 +29,12 @@ interface Props {
   opponent: { displayName: string };
   mySocketId: string;
   onSubmit: (index: number) => void;
+  myElo: number | null;
+  opponentElo: number | null;
+  displayName: string;
 }
 
-export default function BattleRoom({ battle, opponent, onSubmit }: Props) {
+export default function BattleRoom({ battle, opponent, onSubmit, myElo, opponentElo, displayName }: Props) {
   const { phase, question, qIndex, qTotal, selectedIndex, correctIndex, lastCorrect, opponentAnswer, myScore, oppScore } = battle;
   const [reportSent, setReportSent] = useState(false);
 
@@ -52,6 +55,37 @@ export default function BattleRoom({ battle, opponent, onSubmit }: Props) {
     return (
       <main className="min-h-screen bg-[#0f0f14] text-white flex items-center justify-center">
         <p className="text-gray-400 animate-pulse">Loading question…</p>
+      </main>
+    );
+  }
+
+  if (phase === 'waiting') {
+    return (
+      <main className="min-h-screen bg-[#0f0f14] text-white flex flex-col items-center justify-center gap-8 px-4">
+        <p className="text-sm uppercase tracking-widest text-gray-500">Waiting for opponent…</p>
+        <div className="flex items-end justify-center gap-10 w-full max-w-xl">
+          <div className="flex flex-col items-center gap-2">
+            <p className="text-xs uppercase tracking-wider text-gray-500">{displayName || 'You'}</p>
+            <p className="text-6xl font-bold text-white tabular-nums">{myScore}</p>
+            {myElo !== null && (
+              <p className="text-sm text-yellow-400 font-semibold tabular-nums">{myElo} ELO</p>
+            )}
+          </div>
+          <p className="text-3xl text-gray-700 font-bold mb-3">vs</p>
+          <div className="flex flex-col items-center gap-2">
+            <p className="text-xs uppercase tracking-wider text-gray-500">{opponent.displayName}</p>
+            <p className="text-6xl font-bold text-white tabular-nums">{oppScore}</p>
+            {opponentElo !== null && (
+              <p className="text-sm text-yellow-400 font-semibold tabular-nums">{opponentElo} ELO</p>
+            )}
+          </div>
+        </div>
+        <p className="text-xs text-gray-600 tabular-nums">Q {qIndex}/{qTotal}</p>
+        <div className="flex gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse [animation-delay:150ms]" />
+          <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse [animation-delay:300ms]" />
+        </div>
       </main>
     );
   }

@@ -103,8 +103,8 @@ function createBattle(p1, p2) {
     subject: p1.subject,
     battleStartedAt: null,
     progress: {
-      [p1.socketId]: { questionIndex: 0, score: 0, done: false, finishedAt: null },
-      [p2.socketId]: { questionIndex: 0, score: 0, done: false, finishedAt: null },
+      [p1.socketId]: { questionIndex: 0, score: 0, done: false, finishedAt: null, answeredCurrent: false, readyToAdvance: false },
+      [p2.socketId]: { questionIndex: 0, score: 0, done: false, finishedAt: null, answeredCurrent: false, readyToAdvance: false },
     },
   };
 
@@ -114,11 +114,13 @@ function createBattle(p1, p2) {
 
   io.to(p1.socketId).emit('match_found', {
     roomId,
-    opponent: { userId: p2.userId, displayName: p2.displayName },
+    opponent: { userId: p2.userId, displayName: p2.displayName, elo: p2.elo ?? 1000 },
+    myElo: p1.elo ?? 1000,
   });
   io.to(p2.socketId).emit('match_found', {
     roomId,
-    opponent: { userId: p1.userId, displayName: p1.displayName },
+    opponent: { userId: p1.userId, displayName: p1.displayName, elo: p1.elo ?? 1000 },
+    myElo: p2.elo ?? 1000,
   });
 
   console.log(`[match] ${p1.displayName} vs ${p2.displayName} → ${roomId} (${p1.subject})`);
@@ -168,13 +170,15 @@ function handleAnswer(roomId, socketId, answerIndex) {
   if (!state) return;
 
   const prog = state.progress[socketId];
-  if (!prog || prog.done) return;
+  if (!prog || prog.done || prog.answeredCurrent) return;
 
   const q = state.questions[prog.questionIndex];
   if (!q) return;
 
   const correct = answerIndex === q.correct_index;
   if (correct) prog.score++;
+  prog.answeredCurrent = true;
+  prog.readyToAdvance = false;
 
   // Immediate per-player feedback
   io.to(socketId).emit('question_result', {
@@ -185,26 +189,64 @@ function handleAnswer(roomId, socketId, answerIndex) {
     opponent_score: getOpponentScore(state, socketId),
   });
 
-  prog.questionIndex++;
-
-  // Tell opponent about progress
+  // Tell opponent about progress (score updated; index advances when both ready)
   const oppId = Object.keys(state.players).find(id => id !== socketId);
   if (oppId) {
     io.to(oppId).emit('opponent_progress', {
       score: prog.score,
       questionIndex: prog.questionIndex,
       done: prog.done,
+      answeredCurrent: true,
     });
   }
 
-  // Advance this player after a short reveal
+  // After the reveal window, mark this player ready and try to advance both
   setTimeout(() => {
-    if (prog.questionIndex >= state.questions.length) {
-      finishPlayer(roomId, socketId);
-    } else {
-      sendNextQuestion(roomId, socketId);
-    }
+    const currentState = battles.get(roomId);
+    if (!currentState) return;
+    const currentProg = currentState.progress[socketId];
+    if (!currentProg || currentProg.done) return;
+    currentProg.readyToAdvance = true;
+    tryAdvanceQuestion(roomId);
   }, 1500);
+}
+
+function tryAdvanceQuestion(roomId) {
+  const state = battles.get(roomId);
+  if (!state) return;
+  const sids = Object.keys(state.players);
+
+  const allReady = sids.every(sid => {
+    const p = state.progress[sid];
+    return !p || p.done || p.readyToAdvance;
+  });
+
+  if (allReady) {
+    for (const sid of sids) {
+      const p = state.progress[sid];
+      if (!p || p.done) continue;
+      p.questionIndex++;
+      p.answeredCurrent = false;
+      p.readyToAdvance = false;
+      if (p.questionIndex >= state.questions.length) {
+        finishPlayer(roomId, sid);
+      } else {
+        sendNextQuestion(roomId, sid);
+      }
+    }
+    return;
+  }
+
+  // Someone is ready but waiting on the opponent — show waiting overlay
+  for (const sid of sids) {
+    const p = state.progress[sid];
+    if (p && p.readyToAdvance && !p.done) {
+      io.to(sid).emit('waiting_for_opponent', {
+        myScore: p.score,
+        opponentScore: getOpponentScore(state, sid),
+      });
+    }
+  }
 }
 
 function finishPlayer(roomId, socketId) {
