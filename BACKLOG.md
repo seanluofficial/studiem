@@ -80,7 +80,7 @@ Legend:
   Accept: migration file exists with correct SQL.  
   Validate: SQL is syntactically valid.
 
-- [ ] **#12 Google OAuth**  
+- [x] **#12 Google OAuth**  
   Enable Google OAuth in `web/app/login/page.tsx`. Add a "Continue with Google" button that calls `supabase.auth.signInWithOAuth({ provider: 'google' })`. Handle the OAuth callback in `web/app/auth/callback/route.ts` (create if not exists). Ensure profile row is created on first Google login (trigger or upsert in callback).  
   Accept: Google button appears on login page; clicking it initiates OAuth flow.  
   Validate: `cd web; npx tsc --noEmit; cd ..`  
