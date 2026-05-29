@@ -26,7 +26,8 @@ export async function middleware(request: NextRequest) {
 
   // Redirect unauthenticated users away from the game
   const isAuthRoute = request.nextUrl.pathname.startsWith('/login') ||
-                      request.nextUrl.pathname.startsWith('/signup');
+                      request.nextUrl.pathname.startsWith('/signup') ||
+                      request.nextUrl.pathname.startsWith('/auth/');
 
   if (!user && !isAuthRoute) {
     const url = request.nextUrl.clone();
