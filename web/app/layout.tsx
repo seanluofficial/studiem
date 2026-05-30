@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Barlow_Condensed, Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Atmosphere from "@/components/Atmosphere";
 
 const barlowCondensed = Barlow_Condensed({
   weight: ['600', '700', '800'],
@@ -33,7 +34,10 @@ export default function RootLayout({
       lang="en"
       className={`${barlowCondensed.variable} ${inter.variable} ${geistMono.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col antialiased">{children}</body>
+      <body className="min-h-full flex flex-col antialiased">
+        <Atmosphere />
+        {children}
+      </body>
     </html>
   );
 }

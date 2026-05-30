@@ -98,3 +98,179 @@ body {
 
 /* Sharp corners globally */
 button, input, select, textarea { border-radius: 0; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   GAME-GRADE DESIGN SYSTEM  (additive — single source of visual truth)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ─── Rank-tier accent vars ──────────────────────────────────────────────
+   Used by lib/rank.ts + RankBadge. Gold tier maps near the 1000 default. */
+:root {
+  --tier-bronze:   #A06A3C;
+  --tier-silver:   #B8BCC4;
+  --tier-gold:     #C9A84C;
+  --tier-platinum: #5FD3C4;
+  --tier-diamond:  #6EA8FF;
+  --tier-master:   #C96AE0;
+
+  /* Atmosphere tuning knobs */
+  --glow-gold: rgba(201, 168, 76, 0.10);
+  --vignette:  rgba(0, 0, 0, 0.55);
+}
+
+/* ─── Ambient background system ──────────────────────────────────────────
+   A fixed, behind-everything layer. Mount ONCE globally (layout via
+   <Atmosphere/>). Provides: soft gold radial glows, a vignette, and a faint
+   film-grain. CSS-only, no images shipped. */
+.atmosphere {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  /* Two soft gold glows (top, and lower-right) layered over a vignette. */
+  background:
+    radial-gradient(60rem 40rem at 50% -10%, var(--glow-gold), transparent 70%),
+    radial-gradient(45rem 45rem at 110% 110%, rgba(201,168,76,0.06), transparent 65%),
+    radial-gradient(120% 120% at 50% 40%, transparent 55%, var(--vignette) 100%);
+}
+/* Faint film-grain via a tiny tiled SVG noise data-uri. ~3% opacity. */
+.atmosphere::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='120' height='120' filter='url(%23n)'/></svg>");
+  background-size: 120px 120px;
+}
+/* A focused gold radial glow for "key moments" (VS, victory). Drop behind a
+   hero element with position:relative; the glow itself is a sibling/::before.
+   Provided as a utility you can place on a centered absolutely-positioned div. */
+.glow-focus {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(40rem 30rem at 50% 50%, rgba(201,168,76,0.18), transparent 70%);
+  z-index: 0;
+}
+
+/* ─── Depth / panel surfaces ─────────────────────────────────────────────
+   Matte layered surfaces. Square corners. 1px border + a 1px top inner
+   highlight ("lit edge") so panels read as physically lit from above.
+   Elevation ladder:  bg #0A0A0A  <  .panel #141414  <  .panel-raised #1C1C1C */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: inset 0 1px 0 rgba(245, 240, 232, 0.04);
+}
+.panel-raised {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  box-shadow:
+    inset 0 1px 0 rgba(245, 240, 232, 0.06),
+    0 8px 24px rgba(0, 0, 0, 0.45);
+}
+/* A 1px gold rule — the brand's primary divider. Use as a top/bottom border
+   accent or a standalone <div className="rule-gold" />. */
+.rule-gold {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.55), transparent);
+}
+/* Hairline gold top accent for a panel header (apply to a panel). */
+.panel-accent-top { border-top: 1px solid rgba(201, 168, 76, 0.5); }
+
+/* ─── Buttons ────────────────────────────────────────────────────────────
+   .btn-gold  — primary CTA: gold foil, near-black text, hover sheen sweep.
+   .btn-ghost — secondary: matte panel, hairline border, gold-on-hover.
+   Both are condensed/uppercase-ready (pair with font-display uppercase
+   tracking-[0.18em]). Square corners. Keep your own padding/size classes. */
+.btn-gold {
+  position: relative;
+  overflow: hidden;
+  background: var(--gold);
+  color: var(--bg);
+  border: 1px solid var(--gold-bright);
+  transition: background-color 0.15s ease, box-shadow 0.2s ease;
+}
+.btn-gold:hover:not(:disabled) {
+  background: var(--gold-bright);
+  box-shadow: 0 0 0 1px rgba(212,181,101,0.4), 0 6px 20px rgba(201,168,76,0.18);
+}
+/* Sheen: a diagonal light streak that sweeps across on hover. */
+.btn-gold::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,0.45), transparent);
+  transform: skewX(-18deg);
+  pointer-events: none;
+}
+.btn-gold:hover:not(:disabled)::before { animation: sheen-sweep 0.7s ease-out; }
+.btn-gold:disabled { opacity: 0.3; cursor: not-allowed; }
+
+.btn-ghost {
+  background: var(--surface);
+  color: rgba(245, 240, 232, 0.55);
+  border: 1px solid var(--border);
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.btn-ghost:hover:not(:disabled) {
+  background: var(--surface-2);
+  color: var(--text);
+  border-color: rgba(201, 168, 76, 0.4);
+}
+.btn-ghost:disabled { opacity: 0.3; cursor: not-allowed; }
+
+/* Shared focus-visible ring for accessibility on all custom controls. */
+.btn-gold:focus-visible,
+.btn-ghost:focus-visible {
+  outline: 2px solid var(--gold-bright);
+  outline-offset: 2px;
+}
+
+/* ─── Gold foil text (for hero wordmarks / VICTORY) ──────────────────────
+   Subtle vertical foil gradient. Pair with font-display font-black. */
+.text-foil {
+  background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold) 55%, #9C7F33 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ─── Confident motion vocabulary ────────────────────────────────────────
+   Snappy + premium, not bouncy/toy. */
+@keyframes sheen-sweep {
+  from { left: -120%; }
+  to   { left: 140%; }
+}
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.55; }
+  50%       { opacity: 1; }
+}
+@keyframes vs-clash {
+  0%   { opacity: 0; transform: scale(1.4); letter-spacing: 0.4em; }
+  55%  { opacity: 1; transform: scale(0.96); letter-spacing: 0.1em; }
+  100% { opacity: 1; transform: scale(1);   letter-spacing: 0.15em; }
+}
+@keyframes count-in {
+  0%   { opacity: 0; transform: scale(1.35); filter: blur(4px); }
+  100% { opacity: 1; transform: scale(1);   filter: blur(0); }
+}
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-glow-pulse { animation: glow-pulse 2.4s ease-in-out infinite; }
+.animate-vs-clash   { animation: vs-clash 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.animate-count-in   { animation: count-in 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.animate-rise-in    { animation: rise-in 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+
+/* Respect reduced-motion: kill ambient/looping motion. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-glow-pulse,
+  .btn-gold:hover::before { animation: none; }
+}
