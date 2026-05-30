@@ -53,13 +53,22 @@ Do NOT run `npm run build` in the loop — it's slow. TypeScript + syntax check 
 
 ## Current State (as of last commit)
 
-- Email/password auth via Supabase works
-- Matchmaking queue works
-- Battle sends 10 questions per player drawn from Supabase DB (`question_variants` table)
-- Synchronized per-question flow: both players advance in lockstep; reveal shows correct answer + both choices
+- Email/password auth + Google OAuth via Supabase works
+- Matchmaking queue works (ELO-bracketed ±200, widens to ±400 after 30s)
+- Battle sends **1 question per player** (set to 1 for testing — change `pickQuestions(state.subject, 1)` in server/index.js to increase)
+- **Async per-player flow** — each player answers at their own pace, no lockstep waiting between questions. When a player finishes all questions they wait for the opponent to finish, then results are shown. Do NOT change this to a synchronized/lockstep flow.
 - ELO updates after battle; subject selection flows through matchmaking, ELO, and battle records
 - ~1009 AP Chemistry cards across Units 1–9 imported into `source_cards` / `question_variants`
-- Free tier (3 battles/day) and premium flag schema in place; Stripe integration pending
+- Full frontend redesign: gold/black Studiem theme, Barlow Condensed + Inter fonts
+- Free tier limits removed — all users play unlimited battles
+- Disconnect = immediate forfeit (no grace period dodge window)
+
+## IMPORTANT — Do not revert these behaviors
+The PRD describes aspirational features. The actual implemented behavior takes precedence:
+- Battle flow is **async/independent per player**, not synchronized lockstep
+- Question count is **1 for testing** — do not change it back to 10 unless explicitly asked
+- Free tier battle limits are **disabled** — do not re-enable the battles_today check
+- Result screen has **Play Again + Return to Lobby only** — no Rematch button
 
 ## Autonomous Loop Protocol
 

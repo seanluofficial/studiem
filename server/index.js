@@ -130,7 +130,7 @@ async function startBattle(roomId) {
   const state = battles.get(roomId);
   if (!state) return;
 
-  state.questions = await pickQuestions(state.subject, 10);
+  state.questions = await pickQuestions(state.subject, 1);
   state.battleStartedAt = Date.now();
   // Send each player their first question independently
   for (const sid of Object.keys(state.players)) {
@@ -382,7 +382,7 @@ app.post('/challenge', async (req, res) => {
       return res.status(503).json({ error: 'Database not configured' });
     }
 
-    const questions = await pickQuestions(subject, 10);
+    const questions = await pickQuestions(subject, 1);
     const questionIds = questions.map(q => q.id);
 
     const supabase = getSupabase();
