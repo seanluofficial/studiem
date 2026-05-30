@@ -365,78 +365,88 @@ export default function Home() {
 
         {/* ── Idle ── */}
         {appPhase === 'idle' && (
-          <div className="relative flex flex-col items-center gap-8 w-full max-w-sm">
-            <div className="glow-focus" />
+          <div className="w-full max-w-5xl mx-auto animate-fade-up">
+            <div className="flex flex-col lg:flex-row gap-6 items-start">
 
-            {/* Lockup */}
-            <div className="relative z-10 flex flex-col items-center gap-3 animate-rise-in">
-              <h1 className="font-display font-black text-5xl uppercase tracking-[0.2em] text-foil">
-                STUDIEM
-              </h1>
-              <div className="rule-gold w-24" />
-              {displayName && (
-                <div className="flex flex-col items-center gap-2">
-                  <p className="text-[#F5F0E8]/35 text-[11px] uppercase tracking-[0.25em]">
-                    Welcome back, {displayName}
-                  </p>
-                  <RankBadge elo={myElo} size="md" />
+              {/* ── Left: Player card ── */}
+              <div className="w-full lg:w-64 flex-shrink-0 flex flex-col gap-3">
+                <div className="border border-[#2A2A2A] bg-[#141414] p-6 flex flex-col gap-5">
+                  <div>
+                    <p className="text-[10px] text-[#F5F0E8]/25 uppercase tracking-[0.3em] mb-2">Your ELO</p>
+                    <p className="font-display font-black text-5xl tabular-nums text-[#C9A84C] leading-none">{myElo ?? 1000}</p>
+                  </div>
+                  <div className="h-px bg-[#2A2A2A]" />
+                  <div>
+                    <p className="text-[10px] text-[#F5F0E8]/25 uppercase tracking-[0.3em] mb-1">Player</p>
+                    <p className="text-sm text-[#F5F0E8]/70 font-medium truncate">{displayName || '—'}</p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-[#F5F0E8]/25 uppercase tracking-[0.3em] mb-1">Subject</p>
+                    <p className="text-sm text-[#C9A84C] font-semibold">{subject.replace('AP ', '')}</p>
+                  </div>
                 </div>
-              )}
-            </div>
+                <button
+                  onClick={handleSignOut}
+                  className="text-[#F5F0E8]/15 hover:text-[#F5F0E8]/40 text-[10px] uppercase tracking-[0.3em] transition-colors text-left px-1 py-1"
+                >
+                  Sign out
+                </button>
+              </div>
 
-            {/* Subject selector */}
-            <div className="panel relative z-10 w-full px-5 py-5 animate-rise-in" style={{ animationDelay: '0.08s' }}>
-              <p className="text-[11px] text-[#F5F0E8]/30 uppercase tracking-[0.25em] mb-4">Select Subject</p>
-              <div className="flex flex-col gap-1.5">
-                {MVP_SUBJECTS.map(s => (
-                  <button
-                    key={s}
-                    onClick={() => setSubject(s)}
-                    className={`w-full flex items-center text-left px-4 py-3 text-sm transition-all border ${
-                      subject === s
-                        ? 'border-[#C9A84C] bg-[#C9A84C]/10 text-[#C9A84C] font-semibold'
-                        : 'border-[#2A2A2A] bg-[#1C1C1C] text-[#F5F0E8]/45 hover:border-[#C9A84C]/30 hover:text-[#F5F0E8]/80'
-                    }`}
-                  >
-                    <span
-                      className={`inline-block w-1.5 h-1.5 mr-3 flex-shrink-0 transition-colors ${
-                        subject === s ? 'bg-[#C9A84C]' : 'bg-[#2A2A2A]'
-                      }`}
-                      aria-hidden="true"
-                    />
-                    <span className="flex-1">{s}</span>
-                    {s !== 'AP Chemistry' && (
-                      <span className="ml-2 text-[10px] uppercase tracking-[0.18em] text-[#F5F0E8]/20">Coming soon</span>
-                    )}
-                  </button>
-                ))}
+              {/* ── Right: Subject + CTA ── */}
+              <div className="flex-1 flex flex-col gap-5">
+                <div>
+                  <p className="text-[10px] text-[#F5F0E8]/25 uppercase tracking-[0.3em] mb-4">Select Subject</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                    {MVP_SUBJECTS.map(s => {
+                      const isLive = s === 'AP Chemistry';
+                      const isSelected = subject === s;
+                      return (
+                        <button
+                          key={s}
+                          onClick={() => isLive && setSubject(s)}
+                          disabled={!isLive}
+                          className={`relative flex flex-col items-start px-5 py-4 border transition-all text-left ${
+                            isSelected
+                              ? 'border-[#C9A84C] bg-[#C9A84C]/10'
+                              : isLive
+                              ? 'border-[#2A2A2A] bg-[#141414] hover:border-[#C9A84C]/40 hover:bg-[#1C1C1C]'
+                              : 'border-[#1C1C1C] bg-[#0D0D0D] opacity-40 cursor-not-allowed'
+                          }`}
+                        >
+                          <div className="flex items-center justify-between w-full mb-2">
+                            <span className={`text-[9px] uppercase tracking-[0.3em] font-bold ${
+                              isSelected ? 'text-[#C9A84C]' : isLive ? 'text-[#22C55E]' : 'text-[#F5F0E8]/20'
+                            }`}>
+                              {isLive ? 'Live' : 'Soon'}
+                            </span>
+                            {isSelected && (
+                              <span className="w-1.5 h-1.5 bg-[#C9A84C]" />
+                            )}
+                          </div>
+                          <span className={`font-display font-bold text-sm uppercase tracking-wide leading-tight ${
+                            isSelected ? 'text-[#C9A84C]' : isLive ? 'text-[#F5F0E8]/80' : 'text-[#F5F0E8]/25'
+                          }`}>
+                            {s.replace('AP ', '')}
+                          </span>
+                          <span className={`text-[10px] mt-0.5 ${isSelected ? 'text-[#C9A84C]/60' : 'text-[#F5F0E8]/20'}`}>
+                            AP {s.includes('Calculus') ? 'Exam' : 'Exam'}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <button
+                  onClick={joinQueue}
+                  disabled={!displayName || subject !== 'AP Chemistry'}
+                  className="w-full bg-[#C9A84C] hover:bg-[#D4B565] disabled:opacity-30 disabled:cursor-not-allowed text-[#0A0A0A] font-display font-black text-xl uppercase tracking-[0.2em] py-5 transition-colors"
+                >
+                  Find Match
+                </button>
               </div>
             </div>
-
-            <div
-              className="relative z-10 w-full flex flex-col items-center gap-2 animate-rise-in"
-              style={{ animationDelay: '0.16s' }}
-            >
-              <button
-                onClick={joinQueue}
-                disabled={!displayName || subject !== 'AP Chemistry'}
-                className="btn-gold w-full font-display font-black text-xl uppercase tracking-[0.2em] py-4"
-              >
-                Find Match
-              </button>
-              {subject !== 'AP Chemistry' && (
-                <p className="text-[#F5F0E8]/30 text-[10px] uppercase tracking-[0.2em]">
-                  Available in AP Chemistry only
-                </p>
-              )}
-            </div>
-
-            <button
-              onClick={handleSignOut}
-              className="relative z-10 text-[#F5F0E8]/20 hover:text-[#F5F0E8]/50 text-xs uppercase tracking-widest transition-colors"
-            >
-              Sign out
-            </button>
           </div>
         )}
 
