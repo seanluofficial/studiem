@@ -90,7 +90,7 @@ export default function Home() {
         .select('rating')
         .eq('user_id', user.id)
         .eq('subject', subject)
-        .single();
+        .maybeSingle();
       setMyElo(eloRow?.rating ?? 1000);
     });
   }, [router, subject]);
