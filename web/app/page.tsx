@@ -261,7 +261,7 @@ export default function Home() {
     const oppScore = Object.entries(finalScores).find(([id]) => id !== socket.id)?.[1] ?? battle.oppScore;
     const myTimeMs = finalTimes[socket.id ?? ''] ?? null;
     const oppTimeMs = Object.entries(finalTimes).find(([id]) => id !== socket.id)?.[1] ?? null;
-    const fmtTime = (ms: number | null) => ms != null ? `${(ms / 1000).toFixed(1)}s` : null;
+    const fmtTime = (ms: number | null) => ms != null ? `${(ms / 1000).toFixed(2)}s` : null;
     const iWon = winner === socket.id;
     const tied = winner === null;
     const wasForfeit = forfeit !== null;

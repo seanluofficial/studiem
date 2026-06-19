@@ -37,6 +37,18 @@ const C = {
 
 const NUM_NUMERIC_VARIANTS = 8;
 
+function shuffleOptions(options, correctIndex) {
+  const correct = options[correctIndex];
+  const wrong = options.filter((_, i) => i !== correctIndex);
+  for (let i = wrong.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [wrong[i], wrong[j]] = [wrong[j], wrong[i]];
+  }
+  const newIdx = Math.floor(Math.random() * 4);
+  const newOpts = [...wrong.slice(0, newIdx), correct, ...wrong.slice(newIdx)];
+  return { options: newOpts, correctIndex: newIdx };
+}
+
 function contentHash(content) {
   return crypto.createHash('sha256').update(JSON.stringify(content)).digest('hex');
 }
@@ -161,11 +173,12 @@ async function importUnit(unitNum, cards) {
       if (!sc || sc.type !== 'mc_static') continue;
       const original = batch.find(c => contentHash(c.content) === row.content_hash);
       if (!original) continue;
+      const shuffled = shuffleOptions(original.content.options, original.content.correct_index);
       variantCandidates.push({
         source_card_id:   sc.id,
         rendered_stem:    original.content.stem,
-        rendered_options: original.content.options,
-        correct_index:    original.content.correct_index,
+        rendered_options: shuffled.options,
+        correct_index:    shuffled.correctIndex,
         correct_value:    null,
         param_values:     null,
       });
@@ -206,11 +219,12 @@ async function importUnit(unitNum, cards) {
 
       if (hasFixedParams) {
         // New format: params are direct values, options already pre-rendered
+        const numShuffled = shuffleOptions(original.content.options, original.content.correct_index);
         numericCandidates.push({
           source_card_id:   sc.id,
           rendered_stem:    fillTemplate(original.content.stem, original.content.params),
-          rendered_options: original.content.options,
-          correct_index:    original.content.correct_index,
+          rendered_options: numShuffled.options,
+          correct_index:    numShuffled.correctIndex,
           correct_value:    original.content.computed_answer ?? null,
           param_values:     original.content.params,
         });

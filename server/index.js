@@ -100,8 +100,8 @@ function createBattle(p1, p2) {
     subject: p1.subject,
     battleStartedAt: null,
     progress: {
-      [p1.socketId]: { questionIndex: 0, score: 0, done: false, finishedAt: null, answeredCurrent: false, readyToAdvance: false },
-      [p2.socketId]: { questionIndex: 0, score: 0, done: false, finishedAt: null, answeredCurrent: false, readyToAdvance: false },
+      [p1.socketId]: { questionIndex: 0, score: 0, done: false, startedAt: null, finishedAt: null, answeredCurrent: false, readyToAdvance: false },
+      [p2.socketId]: { questionIndex: 0, score: 0, done: false, startedAt: null, finishedAt: null, answeredCurrent: false, readyToAdvance: false },
     },
   };
 
@@ -149,6 +149,8 @@ function sendNextQuestion(roomId, socketId) {
     finishPlayer(roomId, socketId);
     return;
   }
+
+  if (prog.questionIndex === 0) prog.startedAt = Date.now();
 
   io.to(socketId).emit('question', {
     index: prog.questionIndex,
@@ -273,8 +275,8 @@ async function endBattle(roomId, forfeitedBy = null) {
   const scores = Object.fromEntries(sids.map(sid => [sid, state.progress[sid].score]));
 
   const timeTakenMs = Object.fromEntries(
-    sids.map(sid => [sid, state.battleStartedAt && state.progress[sid].finishedAt
-      ? state.progress[sid].finishedAt - state.battleStartedAt
+    sids.map(sid => [sid, state.progress[sid].startedAt && state.progress[sid].finishedAt
+      ? state.progress[sid].finishedAt - state.progress[sid].startedAt
       : null])
   );
 
