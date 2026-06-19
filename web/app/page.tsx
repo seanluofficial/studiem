@@ -202,7 +202,7 @@ export default function Home() {
       setAppPhase('finished');
     });
 
-    socket.on('battle_complete', ({ scores, winner: w, timeTakenMs, eloDeltas, forfeit: didForfeit, forfeitedBy }: { scores: Record<string, number>; winner: string | null; timeTakenMs: Record<string, number | null>; eloDeltas: Record<string, number>; forfeit: boolean; forfeitedBy: string | null }) => {
+    socket.on('battle_complete', ({ scores, winner: w, timeTakenMs, eloDeltas, forfeit: didForfeit, forfeitedBy }: { scores: Record<string, number>; winner: string | null; timeTakenMs: Record<string, number | null>; eloDeltas: Record<string, { after: number; delta: number }>; forfeit: boolean; forfeitedBy: string | null }) => {
       setFinalScores(scores);
       setFinalTimes(timeTakenMs ?? {});
       setWinner(w);
