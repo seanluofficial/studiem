@@ -38,6 +38,15 @@ function getSupabase() {
   return _supabase;
 }
 
+// ─── Constants ────────────────────────────────────────────────────────────────
+
+const KNOWN_SUBJECTS = new Set(['AP Chemistry', 'AP Biology', 'AP US History', 'AP Psychology', 'AP Calculus AB']);
+const ELO_MIN = 100;
+const ELO_MAX = 3000;
+const DISPLAY_NAME_MAX = 32;
+const CLIENT_TIME_MIN_MS = 500;   // no human answers in <500ms
+const CLIENT_TIME_MAX_MS = 300000; // 5-minute ceiling
+
 // ─── State ────────────────────────────────────────────────────────────────────
 
 // queue entry: { socketId, userId, displayName, elo, subject, joinedAt }
@@ -45,7 +54,7 @@ const queue = [];
 
 // roomId → { roomId, players, questions, subject, battleStartedAt, progress }
 // players[socketId] = { socketId, userId, displayName, elo, subject }
-// progress[socketId] = { questionIndex, score, done, finishedAt }
+// progress[socketId] = { questionIndex, score, done, startedAt, finishedAt, clientTimeTakenMs }
 const battles = new Map();
 
 // ─── Matchmaking ──────────────────────────────────────────────────────────────
@@ -88,7 +97,7 @@ function tryMatch() {
 setInterval(tryMatch, 5000);
 
 function createBattle(p1, p2) {
-  const roomId = `battle_${Date.now()}`;
+  const roomId = `battle_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
 
   const state = {
     roomId,
@@ -100,8 +109,8 @@ function createBattle(p1, p2) {
     subject: p1.subject,
     battleStartedAt: null,
     progress: {
-      [p1.socketId]: { questionIndex: 0, score: 0, done: false, startedAt: null, finishedAt: null, answeredCurrent: false, readyToAdvance: false },
-      [p2.socketId]: { questionIndex: 0, score: 0, done: false, startedAt: null, finishedAt: null, answeredCurrent: false, readyToAdvance: false },
+      [p1.socketId]: { questionIndex: 0, score: 0, done: false, startedAt: null, finishedAt: null, clientTimeTakenMs: null, answeredCurrent: false, readyToAdvance: false },
+      [p2.socketId]: { questionIndex: 0, score: 0, done: false, startedAt: null, finishedAt: null, clientTimeTakenMs: null, answeredCurrent: false, readyToAdvance: false },
     },
   };
 
@@ -174,7 +183,9 @@ function handleAnswer(roomId, socketId, answerIndex, clientTimeTakenMs) {
   const q = state.questions[prog.questionIndex];
   if (!q) return;
 
-  if (typeof clientTimeTakenMs === 'number' && clientTimeTakenMs > 0) {
+  if (typeof clientTimeTakenMs === 'number' &&
+      clientTimeTakenMs >= CLIENT_TIME_MIN_MS &&
+      clientTimeTakenMs <= CLIENT_TIME_MAX_MS) {
     prog.clientTimeTakenMs = clientTimeTakenMs;
   }
 
@@ -288,12 +299,20 @@ async function endBattle(roomId, forfeitedBy = null) {
     winner = sids.find(id => id !== forfeitedBy) ?? null;
   } else {
     const [s1, s2] = sids.map(sid => scores[sid]);
-    const [t1, t2] = sids.map(sid => state.progress[sid].finishedAt ?? Date.now());
     if (s1 > s2) winner = sids[0];
     else if (s2 > s1) winner = sids[1];
-    else if (t1 < t2) winner = sids[0]; // same score — faster player wins
-    else if (t2 < t1) winner = sids[1];
-    else winner = sids[0]; // identical ms — arbitrary but no draws
+    else {
+      // Equal scores — faster answer wins.
+      // Prefer client-reported time (same value shown on result screen).
+      // Fall back to server-side per-player delta if client time wasn't received.
+      const ct1 = state.progress[sids[0]].clientTimeTakenMs;
+      const ct2 = state.progress[sids[1]].clientTimeTakenMs;
+      const t1 = ct1 ?? (state.progress[sids[0]].finishedAt - state.progress[sids[0]].startedAt);
+      const t2 = ct2 ?? (state.progress[sids[1]].finishedAt - state.progress[sids[1]].startedAt);
+      if (t1 < t2) winner = sids[0];
+      else if (t2 < t1) winner = sids[1];
+      else winner = sids[0]; // true tie — arbitrary, no draws
+    }
   }
 
   const stateForElo = { ...state };
@@ -357,13 +376,31 @@ function handleDisconnect(socketId) {
 io.on('connection', (socket) => {
   console.log(`[connect] ${socket.id}`);
 
-  socket.on('join_queue', ({ userId, displayName, elo = 1000, subject = 'AP Chemistry' }) => {
+  socket.on('join_queue', ({ userId, displayName, elo, subject }) => {
+    // Reject if socket is already in an active battle
+    for (const state of battles.values()) {
+      if (state.players[socket.id]) {
+        socket.emit('queue_error', { error: 'Already in a battle' });
+        return;
+      }
+    }
+
+    // Validate and sanitize inputs
+    const safeName = typeof displayName === 'string' ? displayName.trim().slice(0, DISPLAY_NAME_MAX) : '';
+    if (!safeName) { socket.emit('queue_error', { error: 'Display name required' }); return; }
+
+    const safeSubject = typeof subject === 'string' && KNOWN_SUBJECTS.has(subject) ? subject : null;
+    if (!safeSubject) { socket.emit('queue_error', { error: 'Unknown subject' }); return; }
+
+    const rawElo = typeof elo === 'number' && isFinite(elo) ? elo : 1000;
+    const safeElo = Math.max(ELO_MIN, Math.min(ELO_MAX, Math.round(rawElo)));
+
     const existing = queue.findIndex(p => p.socketId === socket.id);
     if (existing !== -1) queue.splice(existing, 1);
 
-    queue.push({ socketId: socket.id, userId, displayName, elo, subject, joinedAt: Date.now() });
+    queue.push({ socketId: socket.id, userId, displayName: safeName, elo: safeElo, subject: safeSubject, joinedAt: Date.now() });
     socket.emit('queue_joined', { position: queue.length });
-    console.log(`[queue] ${displayName} joined (${subject}, elo=${elo}, queue=${queue.length})`);
+    console.log(`[queue] ${safeName} joined (${safeSubject}, elo=${safeElo}, queue=${queue.length})`);
     tryMatch();
   });
 
@@ -449,9 +486,19 @@ app.post('/challenge/:id/submit', async (req, res) => {
     let resolvedUpdate = {};
     if (!isChallenger && challenge.challenger_answers) {
       const cs = challenge.challenger_score ?? 0;
-      const winnerId = score > cs ? userId
+      const ct = challenge.challenger_time_ms ?? null;
+      let winnerId = score > cs ? userId
         : cs > score ? challenge.challenger_id
         : null;
+      // Score tie — faster time wins
+      if (winnerId === null) {
+        const opponentTime = typeof timeMs === 'number' && isFinite(timeMs) ? timeMs : null;
+        if (opponentTime !== null && ct !== null) {
+          winnerId = opponentTime < ct ? userId : challenge.challenger_id;
+        } else {
+          winnerId = challenge.challenger_id; // fallback — no draws
+        }
+      }
       resolvedUpdate = { status: 'completed', winner_id: winnerId };
 
       // Update ELO
