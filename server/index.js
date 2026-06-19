@@ -164,7 +164,7 @@ function getOpponentScore(state, mySocketId) {
   return oppId ? (state.progress[oppId]?.score ?? 0) : 0;
 }
 
-function handleAnswer(roomId, socketId, answerIndex) {
+function handleAnswer(roomId, socketId, answerIndex, clientTimeTakenMs) {
   const state = battles.get(roomId);
   if (!state) return;
 
@@ -173,6 +173,10 @@ function handleAnswer(roomId, socketId, answerIndex) {
 
   const q = state.questions[prog.questionIndex];
   if (!q) return;
+
+  if (typeof clientTimeTakenMs === 'number' && clientTimeTakenMs > 0) {
+    prog.clientTimeTakenMs = clientTimeTakenMs;
+  }
 
   const correct = answerIndex === q.correct_index;
   if (correct) prog.score++;
@@ -275,9 +279,7 @@ async function endBattle(roomId, forfeitedBy = null) {
   const scores = Object.fromEntries(sids.map(sid => [sid, state.progress[sid].score]));
 
   const timeTakenMs = Object.fromEntries(
-    sids.map(sid => [sid, state.progress[sid].startedAt && state.progress[sid].finishedAt
-      ? state.progress[sid].finishedAt - state.progress[sid].startedAt
-      : null])
+    sids.map(sid => [sid, state.progress[sid].clientTimeTakenMs ?? null])
   );
 
   let winner = null;
@@ -370,8 +372,8 @@ io.on('connection', (socket) => {
     if (i !== -1) { queue.splice(i, 1); socket.emit('queue_left'); }
   });
 
-  socket.on('submit_answer', ({ roomId, answerIndex }) => {
-    handleAnswer(roomId, socket.id, answerIndex);
+  socket.on('submit_answer', ({ roomId, answerIndex, clientTimeTakenMs }) => {
+    handleAnswer(roomId, socket.id, answerIndex, clientTimeTakenMs);
   });
 
   socket.on('disconnect', () => {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { getSocket } from '@/lib/socket';
 import { createClient } from '@/lib/supabase/client';
@@ -61,6 +61,8 @@ export default function Home() {
   const [myElo, setMyElo] = useState<number | null>(null);
   const [eloDelta, setEloDelta] = useState<number | null>(null);
   const [opponentElo, setOpponentElo] = useState<number | null>(null);
+  const questionStartedAt = useRef<number | null>(null);
+
   const [battle, setBattle] = useState<BattleState>({
     phase: 'question',
     question: null,
@@ -109,6 +111,7 @@ export default function Home() {
   }, [userId, subject]);
 
   const resetBattleState = useCallback(() => {
+    questionStartedAt.current = null;
     setBattle({
       phase: 'question',
       question: null,
@@ -156,6 +159,7 @@ export default function Home() {
     });
 
     socket.on('question', ({ index, total, question }) => {
+      if (index === 0) questionStartedAt.current = Date.now();
       setAppPhase('battle');
       setBattle(prev => ({
         ...prev,
@@ -239,7 +243,8 @@ export default function Home() {
   function submitAnswer(index: number) {
     if (battle.selectedIndex !== null || battle.phase === 'reveal') return;
     setBattle(prev => ({ ...prev, selectedIndex: index }));
-    getSocket().emit('submit_answer', { roomId, answerIndex: index });
+    const clientTimeTakenMs = questionStartedAt.current != null ? Date.now() - questionStartedAt.current : null;
+    getSocket().emit('submit_answer', { roomId, answerIndex: index, clientTimeTakenMs });
   }
 
   function playAgain() {
