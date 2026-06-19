@@ -272,6 +272,12 @@ async function endBattle(roomId, forfeitedBy = null) {
   const sids = Object.keys(state.players);
   const scores = Object.fromEntries(sids.map(sid => [sid, state.progress[sid].score]));
 
+  const timeTakenMs = Object.fromEntries(
+    sids.map(sid => [sid, state.battleStartedAt && state.progress[sid].finishedAt
+      ? state.progress[sid].finishedAt - state.battleStartedAt
+      : null])
+  );
+
   let winner = null;
   if (forfeitedBy) {
     // Disconnecting player forfeits — remaining player wins regardless of score.
@@ -283,6 +289,7 @@ async function endBattle(roomId, forfeitedBy = null) {
     else if (s2 > s1) winner = sids[1];
     else if (t1 < t2) winner = sids[0]; // same score — faster player wins
     else if (t2 < t1) winner = sids[1];
+    else winner = sids[0]; // identical ms — arbitrary but no draws
   }
 
   const stateForElo = { ...state };
@@ -303,6 +310,7 @@ async function endBattle(roomId, forfeitedBy = null) {
   io.to(roomId).emit('battle_complete', {
     scores,
     winner,
+    timeTakenMs,
     eloDeltas,
     forfeit: !!forfeitedBy,
     forfeitedBy: forfeitedBy ?? null,

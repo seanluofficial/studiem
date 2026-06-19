@@ -57,6 +57,7 @@ export default function Home() {
   const [winner, setWinner] = useState<string | null>(null);
   const [forfeit, setForfeit] = useState<{ forfeitedBy: string | null } | null>(null);
   const [finalScores, setFinalScores] = useState<Record<string, number>>({});
+  const [finalTimes, setFinalTimes] = useState<Record<string, number | null>>({});
   const [myElo, setMyElo] = useState<number | null>(null);
   const [eloDelta, setEloDelta] = useState<number | null>(null);
   const [opponentElo, setOpponentElo] = useState<number | null>(null);
@@ -201,8 +202,9 @@ export default function Home() {
       setAppPhase('finished');
     });
 
-    socket.on('battle_complete', ({ scores, winner: w, eloDeltas, forfeit: didForfeit, forfeitedBy }) => {
+    socket.on('battle_complete', ({ scores, winner: w, timeTakenMs, eloDeltas, forfeit: didForfeit, forfeitedBy }: { scores: Record<string, number>; winner: string | null; timeTakenMs: Record<string, number | null>; eloDeltas: Record<string, number>; forfeit: boolean; forfeitedBy: string | null }) => {
       setFinalScores(scores);
+      setFinalTimes(timeTakenMs ?? {});
       setWinner(w);
       setForfeit(didForfeit ? { forfeitedBy: forfeitedBy ?? null } : null);
       const myId = getSocket().id;
@@ -257,6 +259,9 @@ export default function Home() {
     const socket = getSocket();
     const myScore = finalScores[socket.id ?? ''] ?? battle.myScore;
     const oppScore = Object.entries(finalScores).find(([id]) => id !== socket.id)?.[1] ?? battle.oppScore;
+    const myTimeMs = finalTimes[socket.id ?? ''] ?? null;
+    const oppTimeMs = Object.entries(finalTimes).find(([id]) => id !== socket.id)?.[1] ?? null;
+    const fmtTime = (ms: number | null) => ms != null ? `${(ms / 1000).toFixed(1)}s` : null;
     const iWon = winner === socket.id;
     const tied = winner === null;
     const wasForfeit = forfeit !== null;
@@ -294,12 +299,18 @@ export default function Home() {
               <div className="flex flex-col items-center gap-2 flex-1">
                 <p className="text-[11px] text-[#F5F0E8]/40 uppercase tracking-[0.18em] truncate max-w-[8rem]">{displayName || 'You'}</p>
                 <p className="font-display font-black text-6xl tabular-nums text-[#F5F0E8]">{myScore}</p>
+                {fmtTime(myTimeMs) && (
+                  <p className="text-[11px] text-[#C9A84C]/70 uppercase tracking-[0.2em] tabular-nums">{fmtTime(myTimeMs)}</p>
+                )}
                 <RankBadge elo={myElo} size="sm" />
               </div>
               <span className="font-display font-black text-2xl uppercase tracking-[0.1em] text-[#2A2A2A] select-none">vs</span>
               <div className="flex flex-col items-center gap-2 flex-1">
                 <p className="text-[11px] text-[#F5F0E8]/40 uppercase tracking-[0.18em] truncate max-w-[8rem]">{opponent?.displayName ?? 'Opponent'}</p>
                 <p className="font-display font-black text-6xl tabular-nums text-[#F5F0E8]">{oppScore}</p>
+                {fmtTime(oppTimeMs) && (
+                  <p className="text-[11px] text-[#C9A84C]/70 uppercase tracking-[0.2em] tabular-nums">{fmtTime(oppTimeMs)}</p>
+                )}
                 <RankBadge elo={opponentElo} size="sm" />
               </div>
             </div>
