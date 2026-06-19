@@ -399,7 +399,7 @@ export default function Home() {
                   <p className="text-[10px] text-[#F5F0E8]/25 uppercase tracking-[0.3em] mb-4">Select Subject</p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
                     {MVP_SUBJECTS.map(s => {
-                      const isLive = s === 'AP Chemistry';
+                      const isLive = s === 'AP Chemistry' || s === 'AP Biology';
                       const isSelected = subject === s;
                       return (
                         <button
@@ -440,7 +440,7 @@ export default function Home() {
 
                 <button
                   onClick={joinQueue}
-                  disabled={!displayName || subject !== 'AP Chemistry'}
+                  disabled={!displayName || (subject !== 'AP Chemistry' && subject !== 'AP Biology')}
                   className="w-full bg-[#C9A84C] hover:bg-[#D4B565] disabled:opacity-30 disabled:cursor-not-allowed text-[#0A0A0A] font-display font-black text-xl uppercase tracking-[0.2em] py-5 transition-colors"
                 >
                   Find Match

@@ -26,7 +26,10 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
   auth: { persistSession: false },
 });
 
-const CLEAN_DIR = path.join(__dirname, '..', 'content', 'apchem');
+const dirArg = process.argv.find(a => a.startsWith('--dir='));
+const CLEAN_DIR = dirArg
+  ? path.resolve(__dirname, '..', dirArg.slice('--dir='.length))
+  : path.join(__dirname, '..', 'content', 'apchem');
 const C = {
   reset:'\x1b[0m', bold:'\x1b[1m',
   green:'\x1b[32m', yellow:'\x1b[33m', red:'\x1b[31m', cyan:'\x1b[36m', gray:'\x1b[90m',
@@ -198,16 +201,32 @@ async function importUnit(unitNum, cards) {
       const original = batch.find(c => contentHash(c.content) === row.content_hash);
       if (!original) continue;
 
-      const seen = new Set();
-      let generated = 0;
-      for (let attempt = 0; attempt < NUM_NUMERIC_VARIANTS * 5 && generated < NUM_NUMERIC_VARIANTS; attempt++) {
-        const v = renderNumericVariant(original);
-        if (!v) continue;
-        const key = JSON.stringify(v.param_values);
-        if (seen.has(key)) continue;
-        seen.add(key);
-        numericCandidates.push({ source_card_id: sc.id, ...v });
-        generated++;
+      const firstParamVal = original.content.params && Object.values(original.content.params)[0];
+      const hasFixedParams = typeof firstParamVal === 'number';
+
+      if (hasFixedParams) {
+        // New format: params are direct values, options already pre-rendered
+        numericCandidates.push({
+          source_card_id:   sc.id,
+          rendered_stem:    fillTemplate(original.content.stem, original.content.params),
+          rendered_options: original.content.options,
+          correct_index:    original.content.correct_index,
+          correct_value:    original.content.computed_answer ?? null,
+          param_values:     original.content.params,
+        });
+      } else {
+        // Old format: params are {min, max, step} ranges — generate NUM_NUMERIC_VARIANTS variants
+        const seen = new Set();
+        let generated = 0;
+        for (let attempt = 0; attempt < NUM_NUMERIC_VARIANTS * 5 && generated < NUM_NUMERIC_VARIANTS; attempt++) {
+          const v = renderNumericVariant(original);
+          if (!v) continue;
+          const key = JSON.stringify(v.param_values);
+          if (seen.has(key)) continue;
+          seen.add(key);
+          numericCandidates.push({ source_card_id: sc.id, ...v });
+          generated++;
+        }
       }
     }
 
@@ -263,7 +282,7 @@ async function main() {
     const unitNum = parseInt(file.match(/unit(\d+)/)[1], 10);
     let cards;
     try {
-      cards = JSON.parse(fs.readFileSync(path.join(CLEAN_DIR, file), 'utf8'));
+      cards = JSON.parse(fs.readFileSync(path.join(CLEAN_DIR, file), 'utf8').replace(/^﻿/, ''));
     } catch (e) {
       console.error(`${C.red}Failed to parse ${file}: ${e.message}${C.reset}`);
       continue;
