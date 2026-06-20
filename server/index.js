@@ -332,7 +332,11 @@ async function endBattle(roomId, forfeitedBy = null) {
   const scores = Object.fromEntries(sids.map(sid => [sid, state.progress[sid].score]));
 
   const timeTakenMs = Object.fromEntries(
-    sids.map(sid => [sid, state.progress[sid].clientTimeTakenMs ?? null])
+    sids.map(sid => {
+      const prog = state.progress[sid];
+      const serverFallback = (prog.finishedAt && prog.startedAt) ? prog.finishedAt - prog.startedAt : null;
+      return [sid, prog.clientTimeTakenMs ?? serverFallback];
+    })
   );
 
   let winner = null;

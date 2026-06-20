@@ -13,7 +13,6 @@ import FriendsPanel, { type IncomingChallenge } from '@/components/FriendsPanel'
 function AnimatedEloSection({ before, after }: { before: number | null; after: number | null }) {
   const [counter, setCounter] = useState<number | null>(null);
   const [showDelta, setShowDelta] = useState(false);
-  const [showFinalBadge, setShowFinalBadge] = useState(false);
 
   useEffect(() => {
     if (before === null || after === null) return;
@@ -21,7 +20,6 @@ function AnimatedEloSection({ before, after }: { before: number | null; after: n
     const toElo: number = after;
     setCounter(fromElo);
     setShowDelta(false);
-    setShowFinalBadge(false);
     const DELAY = 700;
     const DURATION = 1600;
     let rafId: number;
@@ -33,8 +31,7 @@ function AnimatedEloSection({ before, after }: { before: number | null; after: n
         const t = Math.min(elapsed / DURATION, 1);
         const eased = 1 - Math.pow(1 - t, 3);
         setCounter(Math.round(fromElo + (toElo - fromElo) * eased));
-        if (t >= 1) setShowFinalBadge(true);
-        else rafId = requestAnimationFrame(tick);
+        if (t < 1) rafId = requestAnimationFrame(tick);
       }
       rafId = requestAnimationFrame(tick);
     }, DELAY);
@@ -46,7 +43,6 @@ function AnimatedEloSection({ before, after }: { before: number | null; after: n
 
   return (
     <div className="flex flex-col items-center gap-1.5">
-      <RankBadge elo={before} size="sm" />
       {delta !== null && delta !== 0 && (
         <p className={`text-xs font-display font-bold tabular-nums transition-all duration-300 ${
           showDelta ? 'opacity-100' : 'opacity-0'
@@ -55,9 +51,7 @@ function AnimatedEloSection({ before, after }: { before: number | null; after: n
         </p>
       )}
       <p className="font-display font-black text-xl tabular-nums text-[#F5F0E8]">{counter}</p>
-      {showFinalBadge && after !== null && (
-        <RankBadge elo={after} size="sm" className="animate-rise-in" />
-      )}
+      <RankBadge elo={counter} size="sm" />
     </div>
   );
 }
