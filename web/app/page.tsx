@@ -9,6 +9,7 @@ import NavBar from '@/components/NavBar';
 import RankBadge from '@/components/RankBadge';
 import AddFriendButton from '@/components/AddFriendButton';
 import FriendsPanel, { type IncomingChallenge } from '@/components/FriendsPanel';
+import PracticeMode, { type PracticeQuestion } from '@/components/PracticeMode';
 
 function AnimatedEloSection({ before, after }: { before: number | null; after: number | null }) {
   const [counter, setCounter] = useState<number | null>(null);
@@ -70,7 +71,9 @@ type AppPhase =
   | 'countdown'
   | 'battle'
   | 'finished'
-  | 'complete';
+  | 'complete'
+  | 'practice-select'
+  | 'practice';
 
 interface Question {
   id: string;
@@ -113,6 +116,10 @@ export default function Home() {
   const [opponentEloAfter, setOpponentEloAfter] = useState<number | null>(null);
   const [opponentEloDelta, setOpponentEloDelta] = useState<number | null>(null);
   const [isOpponentFriend, setIsOpponentFriend] = useState(false);
+  const [practiceUnit, setPracticeUnit] = useState<string | null>(null);
+  const [practiceUnits, setPracticeUnits] = useState<string[]>([]);
+  const [practiceUnitsLoading, setPracticeUnitsLoading] = useState(false);
+  const [practiceQuestions, setPracticeQuestions] = useState<PracticeQuestion[]>([]);
   const questionStartedAt = useRef<number | null>(null);
   const userIdRef = useRef<string | null>(null);
 
@@ -349,6 +356,59 @@ export default function Home() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  async function startPracticeSelect() {
+    setPracticeUnitsLoading(true);
+    setAppPhase('practice-select');
+    const supabase = createClient();
+    const { data } = await supabase
+      .from('source_cards')
+      .select('unit')
+      .eq('subject', subject)
+      .eq('reviewed', true);
+    const units = [...new Set((data ?? []).map((r: { unit: string }) => r.unit))].sort();
+    setPracticeUnits(units);
+    setPracticeUnitsLoading(false);
+  }
+
+  async function startPractice(unit: string) {
+    setPracticeUnit(unit);
+    setAppPhase('practice');
+    const supabase = createClient();
+    const { data: cards } = await supabase
+      .from('source_cards')
+      .select('id, content')
+      .eq('subject', subject)
+      .eq('unit', unit)
+      .eq('reviewed', true);
+    if (!cards || cards.length === 0) { setAppPhase('practice-select'); return; }
+    const cardIds = cards.map(c => c.id);
+    interface CardContent { correct_explanation?: string }
+    const contentMap: Record<string, CardContent | null> = Object.fromEntries(
+      cards.map(c => [c.id, c.content as CardContent | null])
+    );
+    const { data: variants } = await supabase
+      .from('question_variants')
+      .select('id, rendered_stem, rendered_options, correct_index, source_card_id')
+      .in('source_card_id', cardIds)
+      .limit(150);
+    const shuffled = [...(variants ?? [])].sort(() => Math.random() - 0.5).slice(0, 20);
+    const questions: PracticeQuestion[] = shuffled.map(v => ({
+      id: v.id as string,
+      stem: v.rendered_stem as string,
+      options: (v.rendered_options as string[]) ?? [],
+      correctIndex: (v.correct_index as number) ?? 0,
+      correctExplanation: contentMap[v.source_card_id as string]?.correct_explanation ?? null,
+    }));
+    setPracticeQuestions(questions);
+  }
+
+  function exitPractice() {
+    setPracticeUnit(null);
+    setPracticeUnits([]);
+    setPracticeQuestions([]);
+    setAppPhase('idle');
+  }
+
   function joinQueue() {
     const socket = getSocket();
     socket.emit('join_queue', { userId: userId ?? socket.id, displayName, elo: myElo ?? 1000, subject });
@@ -390,6 +450,19 @@ export default function Home() {
   function handleDeclineChallenge(challengeId: string) {
     getSocket().emit('decline_friend_challenge', { challengeId });
     setIncomingChallenge(null);
+  }
+
+  // ── Practice ──────────────────────────────────────────────────────────────
+  if (appPhase === 'practice') {
+    return (
+      <PracticeMode
+        questions={practiceQuestions}
+        subject={subject}
+        unit={practiceUnit ?? ''}
+        onEnd={exitPractice}
+        onRetry={() => { if (practiceUnit) startPractice(practiceUnit); }}
+      />
+    );
   }
 
   // ── Complete ───────────────────────────────────────────────────────────────
@@ -620,7 +693,61 @@ export default function Home() {
                 >
                   Find Match
                 </button>
+                <button
+                  onClick={startPracticeSelect}
+                  disabled={!displayName}
+                  className="w-full text-[#F5F0E8]/35 hover:text-[#F5F0E8]/65 disabled:opacity-20 disabled:cursor-not-allowed text-sm font-display font-bold uppercase tracking-[0.2em] py-2 transition-colors"
+                >
+                  Practice Solo
+                </button>
               </div>
+            </div>
+          </div>
+        )}
+
+        {/* ── Practice Select ── */}
+        {appPhase === 'practice-select' && (
+          <div className="w-full max-w-xl mx-auto animate-fade-up">
+            <button
+              onClick={exitPractice}
+              className="text-[#F5F0E8]/25 hover:text-[#F5F0E8]/60 text-xs uppercase tracking-widest mb-8 block transition-colors"
+            >
+              ← Back
+            </button>
+            <div className="flex flex-col gap-5">
+              <div>
+                <p className="text-[10px] text-[#F5F0E8]/25 uppercase tracking-[0.3em] mb-1">Practice Mode</p>
+                <h2 className="font-display font-black text-3xl uppercase tracking-[0.1em] text-[#F5F0E8]">
+                  {subject.replace('AP ', '')}
+                </h2>
+              </div>
+              <p className="text-[10px] text-[#F5F0E8]/30 uppercase tracking-[0.25em]">Select a unit</p>
+              {practiceUnitsLoading ? (
+                <div className="flex gap-2">
+                  <span className="w-2 h-2 bg-[#C9A84C] dot-1" />
+                  <span className="w-2 h-2 bg-[#C9A84C] dot-2" />
+                  <span className="w-2 h-2 bg-[#C9A84C] dot-3" />
+                </div>
+              ) : practiceUnits.length === 0 ? (
+                <p className="text-[#F5F0E8]/25 text-sm uppercase tracking-widest">No practice questions available yet.</p>
+              ) : (
+                <div className="flex flex-col gap-2">
+                  {practiceUnits.map(unit => (
+                    <button
+                      key={unit}
+                      onClick={() => startPractice(unit)}
+                      className="text-left panel hover:bg-[#1C1C1C] hover:border-[#C9A84C]/40 px-5 py-4 transition-all group"
+                    >
+                      <p className="text-[9px] text-[#F5F0E8]/25 uppercase tracking-[0.2em] mb-1">
+                        {unit.match(/^Unit \d+/)?.[0] ?? 'Unit'}
+                      </p>
+                      <p className="font-display font-bold text-sm uppercase tracking-wide text-[#F5F0E8]/70 group-hover:text-[#F5F0E8] transition-colors">
+                        {unit.replace(/^Unit \d+: /, '')}
+                      </p>
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         )}
