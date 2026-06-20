@@ -44,18 +44,56 @@ const KNOWN_SUBJECTS = new Set(['AP Chemistry', 'AP Biology', 'AP US History', '
 const ELO_MIN = 100;
 const ELO_MAX = 3000;
 const DISPLAY_NAME_MAX = 32;
-const CLIENT_TIME_MIN_MS = 500;   // no human answers in <500ms
-const CLIENT_TIME_MAX_MS = 300000; // 5-minute ceiling
+const CLIENT_TIME_MIN_MS = 500;
+const CLIENT_TIME_MAX_MS = 300000;
+const FRIEND_CHALLENGE_TTL_MS = 5 * 60 * 1000; // 5 minutes
 
-// ─── State ────────────────────────────────────────────────────────────────────
+// ─── Battle state ─────────────────────────────────────────────────────────────
 
 // queue entry: { socketId, userId, displayName, elo, subject, joinedAt }
 const queue = [];
 
 // roomId → { roomId, players, questions, subject, battleStartedAt, progress }
-// players[socketId] = { socketId, userId, displayName, elo, subject }
-// progress[socketId] = { questionIndex, score, done, startedAt, finishedAt, clientTimeTakenMs }
 const battles = new Map();
+
+// ─── Presence & social state ──────────────────────────────────────────────────
+
+const userSockets      = new Map(); // userId → Set<socketId>
+const socketToUser     = new Map(); // socketId → userId
+const userActivity     = new Map(); // userId → { subject, phase } | null
+const userProfiles     = new Map(); // userId → { displayName, elo }
+const directChallenges = new Map(); // challengeId → { fromUserId, toUserId, subject, timerId }
+
+// ─── Presence helpers ─────────────────────────────────────────────────────────
+
+async function getAcceptedFriendIds(userId) {
+  if (!process.env.SUPABASE_URL) return [];
+  try {
+    const supabase = getSupabase();
+    const { data } = await supabase
+      .from('friendships')
+      .select('requester_id, addressee_id')
+      .or(`requester_id.eq.${userId},addressee_id.eq.${userId}`)
+      .eq('status', 'accepted');
+    if (!data) return [];
+    return data.map(r => r.requester_id === userId ? r.addressee_id : r.requester_id);
+  } catch {
+    return [];
+  }
+}
+
+async function emitToOnlineFriends(userId, event, data) {
+  try {
+    const friendIds = await getAcceptedFriendIds(userId);
+    for (const fid of friendIds) {
+      if (userSockets.has(fid)) {
+        io.to(`user:${fid}`).emit(event, data);
+      }
+    }
+  } catch (err) {
+    console.error('[presence] emitToOnlineFriends failed:', err);
+  }
+}
 
 // ─── Matchmaking ──────────────────────────────────────────────────────────────
 
@@ -64,7 +102,6 @@ function tryMatch() {
 
   const now = Date.now();
 
-  // Expire players in queue > 60s
   for (let i = queue.length - 1; i >= 0; i--) {
     const p = queue[i];
     if (now - p.joinedAt >= 60000) {
@@ -74,7 +111,6 @@ function tryMatch() {
     }
   }
 
-  // Find a match for each waiting player
   for (let i = 0; i < queue.length; i++) {
     const p1 = queue[i];
     const elapsed = now - p1.joinedAt;
@@ -93,7 +129,6 @@ function tryMatch() {
   }
 }
 
-// Run matchmaking on a 5-second interval (supplements event-driven matching)
 setInterval(tryMatch, 5000);
 
 function createBattle(p1, p2) {
@@ -130,6 +165,18 @@ function createBattle(p1, p2) {
   });
 
   console.log(`[match] ${p1.displayName} vs ${p2.displayName} → ${roomId} (${p1.subject})`);
+
+  // Notify friends of activity change
+  for (const p of [p1, p2]) {
+    if (p.userId) {
+      userActivity.set(p.userId, { subject: p.subject, phase: 'battle' });
+      emitToOnlineFriends(p.userId, 'friend_activity_update', {
+        userId: p.userId,
+        activity: { subject: p.subject, phase: 'battle' },
+      }).catch(() => {});
+    }
+  }
+
   setTimeout(() => startBattle(roomId), 3000);
 }
 
@@ -141,7 +188,6 @@ async function startBattle(roomId) {
 
   state.questions = await pickQuestions(state.subject, 1);
   state.battleStartedAt = Date.now();
-  // Send each player their first question independently
   for (const sid of Object.keys(state.players)) {
     sendNextQuestion(roomId, sid);
   }
@@ -194,7 +240,6 @@ function handleAnswer(roomId, socketId, answerIndex, clientTimeTakenMs) {
   prog.answeredCurrent = true;
   prog.readyToAdvance = false;
 
-  // Immediate per-player feedback
   io.to(socketId).emit('question_result', {
     correct_index: q.correct_index,
     your_answer: answerIndex,
@@ -203,7 +248,6 @@ function handleAnswer(roomId, socketId, answerIndex, clientTimeTakenMs) {
     opponent_score: getOpponentScore(state, socketId),
   });
 
-  // Tell opponent about progress (score updated; index advances when both ready)
   const oppId = Object.keys(state.players).find(id => id !== socketId);
   if (oppId) {
     io.to(oppId).emit('opponent_progress', {
@@ -214,7 +258,6 @@ function handleAnswer(roomId, socketId, answerIndex, clientTimeTakenMs) {
     });
   }
 
-  // After the reveal window, mark this player ready and try to advance both
   setTimeout(() => {
     const currentState = battles.get(roomId);
     if (!currentState) return;
@@ -251,7 +294,6 @@ function tryAdvanceQuestion(roomId) {
     return;
   }
 
-  // Someone is ready but waiting on the opponent — show waiting overlay
   for (const sid of sids) {
     const p = state.progress[sid];
     if (p && p.readyToAdvance && !p.done) {
@@ -295,23 +337,19 @@ async function endBattle(roomId, forfeitedBy = null) {
 
   let winner = null;
   if (forfeitedBy) {
-    // Disconnecting player forfeits — remaining player wins regardless of score.
     winner = sids.find(id => id !== forfeitedBy) ?? null;
   } else {
     const [s1, s2] = sids.map(sid => scores[sid]);
     if (s1 > s2) winner = sids[0];
     else if (s2 > s1) winner = sids[1];
     else {
-      // Equal scores — faster answer wins.
-      // Prefer client-reported time (same value shown on result screen).
-      // Fall back to server-side per-player delta if client time wasn't received.
       const ct1 = state.progress[sids[0]].clientTimeTakenMs;
       const ct2 = state.progress[sids[1]].clientTimeTakenMs;
       const t1 = ct1 ?? (state.progress[sids[0]].finishedAt - state.progress[sids[0]].startedAt);
       const t2 = ct2 ?? (state.progress[sids[1]].finishedAt - state.progress[sids[1]].startedAt);
       if (t1 < t2) winner = sids[0];
       else if (t2 < t1) winner = sids[1];
-      else winner = sids[0]; // true tie — arbitrary, no draws
+      else winner = sids[0];
     }
   }
 
@@ -324,7 +362,6 @@ async function endBattle(roomId, forfeitedBy = null) {
     console.error('[elo] update failed:', err);
   }
 
-  // Update streaks
   for (const sid of sids) {
     const { userId } = state.players[sid];
     try { await updateStreak(userId); } catch (err) { console.error('[streak]', err); }
@@ -338,6 +375,18 @@ async function endBattle(roomId, forfeitedBy = null) {
     forfeit: !!forfeitedBy,
     forfeitedBy: forfeitedBy ?? null,
   });
+
+  // Notify friends players are back to idle
+  for (const [, player] of Object.entries(state.players)) {
+    if (player.userId) {
+      userActivity.delete(player.userId);
+      emitToOnlineFriends(player.userId, 'friend_activity_update', {
+        userId: player.userId,
+        activity: null,
+      }).catch(() => {});
+    }
+  }
+
   battles.delete(roomId);
   console.log(`[complete] ${roomId} — ${JSON.stringify(scores)}${forfeitedBy ? ` (forfeit by ${forfeitedBy})` : ''}`);
 }
@@ -359,7 +408,6 @@ function handleDisconnect(socketId) {
       break;
     }
 
-    // Immediate forfeit — no grace period. Prevents dodge-via-disconnect.
     if (state.progress[socketId]) {
       state.progress[socketId].done = true;
       state.progress[socketId].finishedAt = Date.now();
@@ -369,6 +417,29 @@ function handleDisconnect(socketId) {
     endBattle(roomId, socketId);
     break;
   }
+
+  // Presence cleanup
+  const userId = socketToUser.get(socketId);
+  if (userId) {
+    socketToUser.delete(socketId);
+    const sockets = userSockets.get(userId);
+    if (sockets) {
+      sockets.delete(socketId);
+      if (sockets.size === 0) {
+        userSockets.delete(userId);
+        userActivity.delete(userId);
+        emitToOnlineFriends(userId, 'friend_offline', { userId }).catch(() => {});
+
+        // Cancel pending direct challenges for this user
+        for (const [cid, dc] of directChallenges.entries()) {
+          if (dc.fromUserId === userId || dc.toUserId === userId) {
+            clearTimeout(dc.timerId);
+            directChallenges.delete(cid);
+          }
+        }
+      }
+    }
+  }
 }
 
 // ─── Socket events ────────────────────────────────────────────────────────────
@@ -376,8 +447,31 @@ function handleDisconnect(socketId) {
 io.on('connection', (socket) => {
   console.log(`[connect] ${socket.id}`);
 
+  // ── Presence ──────────────────────────────────────────────────────────────
+
+  socket.on('register_presence', async ({ userId }) => {
+    if (!userId || typeof userId !== 'string') return;
+
+    socketToUser.set(socket.id, userId);
+    if (!userSockets.has(userId)) userSockets.set(userId, new Set());
+    userSockets.get(userId).add(socket.id);
+    socket.join(`user:${userId}`);
+
+    try {
+      const friendIds = await getAcceptedFriendIds(userId);
+      const onlineIds = friendIds.filter(fid => userSockets.has(fid));
+      socket.emit('presence_init', { onlineUserIds: onlineIds });
+      for (const fid of onlineIds) {
+        io.to(`user:${fid}`).emit('friend_online', { userId });
+      }
+    } catch (err) {
+      console.error('[presence] register_presence failed:', err);
+    }
+  });
+
+  // ── Matchmaking ───────────────────────────────────────────────────────────
+
   socket.on('join_queue', ({ userId, displayName, elo, subject }) => {
-    // Reject if socket is already in an active battle
     for (const state of battles.values()) {
       if (state.players[socket.id]) {
         socket.emit('queue_error', { error: 'Already in a battle' });
@@ -385,7 +479,6 @@ io.on('connection', (socket) => {
       }
     }
 
-    // Validate and sanitize inputs
     const safeName = typeof displayName === 'string' ? displayName.trim().slice(0, DISPLAY_NAME_MAX) : '';
     if (!safeName) { socket.emit('queue_error', { error: 'Display name required' }); return; }
 
@@ -401,17 +494,174 @@ io.on('connection', (socket) => {
     queue.push({ socketId: socket.id, userId, displayName: safeName, elo: safeElo, subject: safeSubject, joinedAt: Date.now() });
     socket.emit('queue_joined', { position: queue.length });
     console.log(`[queue] ${safeName} joined (${safeSubject}, elo=${safeElo}, queue=${queue.length})`);
+
+    // Cache profile for friend challenge display names
+    if (userId) userProfiles.set(userId, { displayName: safeName, elo: safeElo });
+
+    // Notify friends of queuing activity
+    const qUserId = socketToUser.get(socket.id) ?? userId;
+    if (qUserId) {
+      userActivity.set(qUserId, { subject: safeSubject, phase: 'queuing' });
+      emitToOnlineFriends(qUserId, 'friend_activity_update', {
+        userId: qUserId,
+        activity: { subject: safeSubject, phase: 'queuing' },
+      }).catch(() => {});
+    }
+
     tryMatch();
   });
 
   socket.on('leave_queue', () => {
     const i = queue.findIndex(p => p.socketId === socket.id);
     if (i !== -1) { queue.splice(i, 1); socket.emit('queue_left'); }
+
+    const userId = socketToUser.get(socket.id);
+    if (userId) {
+      userActivity.delete(userId);
+      emitToOnlineFriends(userId, 'friend_activity_update', { userId, activity: null }).catch(() => {});
+    }
   });
 
   socket.on('submit_answer', ({ roomId, answerIndex, clientTimeTakenMs }) => {
     handleAnswer(roomId, socket.id, answerIndex, clientTimeTakenMs);
   });
+
+  // ── Messaging ─────────────────────────────────────────────────────────────
+
+  socket.on('send_message', async ({ toUserId, content }) => {
+    const fromUserId = socketToUser.get(socket.id);
+    if (!fromUserId || !toUserId || typeof content !== 'string') return;
+
+    const safeContent = content.trim().slice(0, 500);
+    if (!safeContent || !process.env.SUPABASE_URL) return;
+
+    const supabase = getSupabase();
+
+    // Verify accepted friendship (not blocked)
+    const { data: friendship } = await supabase
+      .from('friendships')
+      .select('status')
+      .or(`and(requester_id.eq.${fromUserId},addressee_id.eq.${toUserId}),and(requester_id.eq.${toUserId},addressee_id.eq.${fromUserId})`)
+      .eq('status', 'accepted')
+      .maybeSingle();
+
+    if (!friendship) return;
+
+    const { data: msg, error } = await supabase
+      .from('messages')
+      .insert({ sender_id: fromUserId, receiver_id: toUserId, content: safeContent })
+      .select('id, created_at')
+      .single();
+
+    if (error || !msg) { console.error('[msg] insert failed:', error); return; }
+
+    io.to(`user:${toUserId}`).emit('new_message', {
+      messageId: msg.id,
+      fromUserId,
+      content: safeContent,
+      sentAt: msg.created_at,
+    });
+
+    // Prune conversation to last 50
+    try {
+      const { data: old } = await supabase
+        .from('messages')
+        .select('id')
+        .or(`and(sender_id.eq.${fromUserId},receiver_id.eq.${toUserId}),and(sender_id.eq.${toUserId},receiver_id.eq.${fromUserId})`)
+        .order('created_at', { ascending: false })
+        .range(50, 9999);
+      if (old && old.length > 0) {
+        await supabase.from('messages').delete().in('id', old.map(m => m.id));
+      }
+    } catch (err) {
+      console.error('[msg] prune failed:', err);
+    }
+  });
+
+  socket.on('mark_messages_read', async ({ fromUserId }) => {
+    const myUserId = socketToUser.get(socket.id);
+    if (!myUserId || !fromUserId || !process.env.SUPABASE_URL) return;
+    const supabase = getSupabase();
+    await supabase
+      .from('messages')
+      .update({ read_at: new Date().toISOString() })
+      .eq('sender_id', fromUserId)
+      .eq('receiver_id', myUserId)
+      .is('read_at', null);
+  });
+
+  // ── Direct challenges ─────────────────────────────────────────────────────
+
+  socket.on('friend_challenge', async ({ toUserId, subject }) => {
+    const fromUserId = socketToUser.get(socket.id);
+    if (!fromUserId || !toUserId || !KNOWN_SUBJECTS.has(subject) || !process.env.SUPABASE_URL) return;
+
+    const supabase = getSupabase();
+    const { data: friendship } = await supabase
+      .from('friendships')
+      .select('status')
+      .or(`and(requester_id.eq.${fromUserId},addressee_id.eq.${toUserId}),and(requester_id.eq.${toUserId},addressee_id.eq.${fromUserId})`)
+      .eq('status', 'accepted')
+      .maybeSingle();
+
+    if (!friendship) return;
+
+    const challengeId = `dc_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+    const fromProfile = userProfiles.get(fromUserId) ?? { displayName: 'A friend', elo: 1000 };
+
+    const timerId = setTimeout(() => {
+      directChallenges.delete(challengeId);
+      io.to(`user:${fromUserId}`).emit('friend_challenge_expired', { challengeId });
+      io.to(`user:${toUserId}`).emit('friend_challenge_expired', { challengeId });
+    }, FRIEND_CHALLENGE_TTL_MS);
+
+    directChallenges.set(challengeId, { fromUserId, toUserId, subject, timerId });
+
+    io.to(`user:${toUserId}`).emit('friend_challenge_received', {
+      challengeId,
+      fromUserId,
+      fromDisplayName: fromProfile.displayName,
+      fromElo: fromProfile.elo,
+      subject,
+    });
+  });
+
+  socket.on('accept_friend_challenge', ({ challengeId }) => {
+    const myUserId = socketToUser.get(socket.id);
+    const dc = directChallenges.get(challengeId);
+    if (!dc || dc.toUserId !== myUserId) return;
+
+    clearTimeout(dc.timerId);
+    directChallenges.delete(challengeId);
+
+    const fromSockets = userSockets.get(dc.fromUserId);
+    if (!fromSockets || fromSockets.size === 0) {
+      socket.emit('friend_challenge_expired', { challengeId });
+      return;
+    }
+
+    const fromSocketId = [...fromSockets][0];
+    const fromProfile = userProfiles.get(dc.fromUserId) ?? { displayName: 'Player', elo: 1000 };
+    const toProfile   = userProfiles.get(myUserId)       ?? { displayName: 'Player', elo: 1000 };
+
+    const p1 = { socketId: fromSocketId, userId: dc.fromUserId, displayName: fromProfile.displayName, elo: fromProfile.elo, subject: dc.subject };
+    const p2 = { socketId: socket.id,    userId: myUserId,      displayName: toProfile.displayName,   elo: toProfile.elo,   subject: dc.subject };
+
+    createBattle(p1, p2);
+  });
+
+  socket.on('decline_friend_challenge', ({ challengeId }) => {
+    const myUserId = socketToUser.get(socket.id);
+    const dc = directChallenges.get(challengeId);
+    if (!dc || dc.toUserId !== myUserId) return;
+
+    clearTimeout(dc.timerId);
+    directChallenges.delete(challengeId);
+
+    io.to(`user:${dc.fromUserId}`).emit('friend_challenge_declined', { challengeId });
+  });
+
+  // ── Core ──────────────────────────────────────────────────────────────────
 
   socket.on('disconnect', () => {
     console.log(`[disconnect] ${socket.id}`);
@@ -421,15 +671,25 @@ io.on('connection', (socket) => {
 
 // ─── HTTP ─────────────────────────────────────────────────────────────────────
 
-// Challenge creation endpoint (task #15)
+// Invite code lookup
+app.get('/invite/:code', async (req, res) => {
+  if (!process.env.SUPABASE_URL) return res.status(503).json({ error: 'Database not configured' });
+  const supabase = getSupabase();
+  const { data, error } = await supabase
+    .from('profiles')
+    .select('id, display_name')
+    .eq('invite_code', req.params.code.toUpperCase())
+    .maybeSingle();
+  if (error || !data) return res.status(404).json({ error: 'No user found with that code' });
+  return res.json({ userId: data.id, displayName: data.display_name });
+});
+
+// Async challenge creation
 app.post('/challenge', async (req, res) => {
   try {
     const { challengerId, subject = 'AP Chemistry' } = req.body;
     if (!challengerId) return res.status(400).json({ error: 'challengerId required' });
-
-    if (!process.env.SUPABASE_URL) {
-      return res.status(503).json({ error: 'Database not configured' });
-    }
+    if (!process.env.SUPABASE_URL) return res.status(503).json({ error: 'Database not configured' });
 
     const questions = await pickQuestions(subject, 1);
     const questionIds = questions.map(q => q.id);
@@ -444,7 +704,6 @@ app.post('/challenge', async (req, res) => {
     }).select('id').single();
 
     if (error) throw error;
-
     return res.json({ challengeId: data.id, questions });
   } catch (err) {
     console.error('[challenge] create failed:', err);
@@ -452,21 +711,16 @@ app.post('/challenge', async (req, res) => {
   }
 });
 
-// Challenge submission endpoint
 app.post('/challenge/:id/submit', async (req, res) => {
   try {
     const { id } = req.params;
     const { userId, answers, timeMs } = req.body;
     if (!userId || !answers) return res.status(400).json({ error: 'userId and answers required' });
-
     if (!process.env.SUPABASE_URL) return res.status(503).json({ error: 'Database not configured' });
 
     const supabase = getSupabase();
     const { data: challenge, error: fetchErr } = await supabase
-      .from('challenges')
-      .select('*')
-      .eq('id', id)
-      .single();
+      .from('challenges').select('*').eq('id', id).single();
 
     if (fetchErr || !challenge) return res.status(404).json({ error: 'Challenge not found' });
     if (challenge.status !== 'pending') return res.status(400).json({ error: 'Challenge already completed' });
@@ -482,33 +736,22 @@ app.post('/challenge/:id/submit', async (req, res) => {
       ? { challenger_answers: answers, challenger_score: score, challenger_time_ms: timeMs }
       : { opponent_id: userId, opponent_answers: answers, opponent_score: score, opponent_time_ms: timeMs };
 
-    // Resolve if opponent just submitted (challenger already submitted)
     let resolvedUpdate = {};
     if (!isChallenger && challenge.challenger_answers) {
       const cs = challenge.challenger_score ?? 0;
       const ct = challenge.challenger_time_ms ?? null;
-      let winnerId = score > cs ? userId
-        : cs > score ? challenge.challenger_id
-        : null;
-      // Score tie — faster time wins
+      let winnerId = score > cs ? userId : cs > score ? challenge.challenger_id : null;
       if (winnerId === null) {
-        const opponentTime = typeof timeMs === 'number' && isFinite(timeMs) ? timeMs : null;
-        if (opponentTime !== null && ct !== null) {
-          winnerId = opponentTime < ct ? userId : challenge.challenger_id;
-        } else {
-          winnerId = challenge.challenger_id; // fallback — no draws
-        }
+        const ot = typeof timeMs === 'number' && isFinite(timeMs) ? timeMs : null;
+        if (ot !== null && ct !== null) winnerId = ot < ct ? userId : challenge.challenger_id;
+        else winnerId = challenge.challenger_id;
       }
       resolvedUpdate = { status: 'completed', winner_id: winnerId };
 
-      // Update ELO
       try {
         const stateForElo = {
           subject: challenge.subject,
-          players: {
-            'p1': { userId: challenge.challenger_id, elo: 1000 },
-            'p2': { userId, elo: 1000 },
-          },
+          players: { p1: { userId: challenge.challenger_id, elo: 1000 }, p2: { userId, elo: 1000 } },
           progress: { p1: { score: cs }, p2: { score } },
         };
         await updateElo(stateForElo, winnerId === challenge.challenger_id ? 'p1' : winnerId === userId ? 'p2' : null);
@@ -516,7 +759,6 @@ app.post('/challenge/:id/submit', async (req, res) => {
     }
 
     await supabase.from('challenges').update({ ...update, ...resolvedUpdate }).eq('id', id);
-
     return res.json({ score, total: questions.length, ...resolvedUpdate });
   } catch (err) {
     console.error('[challenge] submit failed:', err);
@@ -530,8 +772,7 @@ app.get('/challenge/:id', async (req, res) => {
   const { data, error } = await supabase
     .from('challenges')
     .select('id, subject, questions_json, status, expires_at, challenger_id, challenger_score, opponent_score, winner_id')
-    .eq('id', req.params.id)
-    .single();
+    .eq('id', req.params.id).single();
   if (error || !data) return res.status(404).json({ error: 'Not found' });
   return res.json(data);
 });

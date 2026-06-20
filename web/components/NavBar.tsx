@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import RankBadge from '@/components/RankBadge';
 
@@ -5,12 +7,14 @@ interface NavBarProps {
   displayName?: string | null;
   elo?: number | null;
   subject?: string | null;
+  onFriendsClick?: () => void;
+  friendsBadge?: number;
 }
 
-export default function NavBar({ displayName, elo, subject }: NavBarProps) {
+export default function NavBar({ displayName, elo, subject, onFriendsClick, friendsBadge }: NavBarProps) {
   return (
     <nav className="fixed top-0 left-0 right-0 h-12 bg-[#0A0A0A]/95 border-b border-[#2A2A2A] flex items-stretch justify-between pl-5 pr-3 z-50 backdrop-blur-[2px]">
-      {/* Left: wordmark, home link */}
+      {/* Left: wordmark */}
       <Link
         href="/"
         className="flex items-center font-display font-black tracking-[0.22em] text-base text-foil uppercase hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#C9A84C]/60"
@@ -36,12 +40,23 @@ export default function NavBar({ displayName, elo, subject }: NavBarProps) {
               )}
             </div>
 
-            {/* Hairline gold divider between identity and nav */}
             <div className="w-px self-stretch my-2.5 bg-gradient-to-b from-transparent via-[#C9A84C]/55 to-transparent" />
           </>
         )}
 
         <div className="flex items-stretch">
+          {onFriendsClick && (
+            <button
+              onClick={onFriendsClick}
+              className="relative flex items-center px-4 text-[#F5F0E8]/45 hover:text-[#C9A84C] text-[11px] font-display font-bold uppercase tracking-[0.18em] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#C9A84C]/60"
+              aria-label="Friends panel"
+            >
+              Friends
+              {friendsBadge != null && friendsBadge > 0 && (
+                <span className="absolute top-2 right-2 w-1.5 h-1.5 bg-[#EF4444]" />
+              )}
+            </button>
+          )}
           <Link
             href="/profile"
             className="flex items-center px-4 text-[#F5F0E8]/45 hover:text-[#C9A84C] text-[11px] font-display font-bold uppercase tracking-[0.18em] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#C9A84C]/60"

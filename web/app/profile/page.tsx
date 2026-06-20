@@ -5,6 +5,7 @@ import NavBar from '@/components/NavBar';
 import RankBadge from '@/components/RankBadge';
 import Panel from '@/components/ui/Panel';
 import { eloToTier } from '@/lib/rank';
+import AddFriendButton from '@/components/AddFriendButton';
 
 const MVP_SUBJECTS = [
   'AP Biology',
@@ -14,25 +15,34 @@ const MVP_SUBJECTS = [
   'AP Calculus AB',
 ];
 
-export default async function ProfilePage() {
+interface PageProps {
+  searchParams: Promise<{ id?: string }>;
+}
+
+export default async function ProfilePage({ searchParams }: PageProps) {
+  const { id: targetId } = await searchParams;
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect('/login');
+
+  // Viewing own profile or another user's profile
+  const profileUserId = targetId ?? user.id;
+  const isSelf = profileUserId === user.id;
 
   const [profileRes, eloRes, battlesRes] = await Promise.all([
     supabase
       .from('profiles')
       .select('display_name, current_streak, longest_streak')
-      .eq('id', user.id)
+      .eq('id', profileUserId)
       .single(),
     supabase
       .from('elo_ratings')
       .select('subject, rating')
-      .eq('user_id', user.id),
+      .eq('user_id', profileUserId),
     supabase
       .from('battles')
       .select('id, subject, scores, winner_id, created_at, player1_id, player2_id')
-      .or(`player1_id.eq.${user.id},player2_id.eq.${user.id}`)
+      .or(`player1_id.eq.${profileUserId},player2_id.eq.${profileUserId}`)
       .order('created_at', { ascending: false })
       .limit(10),
   ]);
@@ -41,10 +51,31 @@ export default async function ProfilePage() {
   const eloRows = eloRes.data ?? [];
   const recentBattles = battlesRes.data ?? [];
 
+  // Friendship status (only needed when viewing another user)
+  let friendshipStatus: 'none' | 'pending_sent' | 'pending_received' | 'accepted' = 'none';
+  let friendshipId: string | null = null;
+  if (!isSelf) {
+    const { data: fs } = await supabase
+      .from('friendships')
+      .select('id, status, requester_id')
+      .or(
+        `and(requester_id.eq.${user.id},addressee_id.eq.${profileUserId}),` +
+        `and(requester_id.eq.${profileUserId},addressee_id.eq.${user.id})`
+      )
+      .maybeSingle();
+    if (fs) {
+      friendshipId = fs.id;
+      if (fs.status === 'accepted') friendshipStatus = 'accepted';
+      else if (fs.status === 'pending') {
+        friendshipStatus = fs.requester_id === user.id ? 'pending_sent' : 'pending_received';
+      }
+    }
+  }
+
   const opponentIds = [
     ...new Set(
       recentBattles
-        .map(b => (b.player1_id === user.id ? b.player2_id : b.player1_id))
+        .map(b => (b.player1_id === profileUserId ? b.player2_id : b.player1_id))
         .filter(Boolean)
     ),
   ] as string[];
@@ -61,7 +92,7 @@ export default async function ProfilePage() {
 
   let wins = 0, losses = 0;
   for (const b of recentBattles) {
-    if (b.winner_id === user.id) wins++;
+    if (b.winner_id === profileUserId) wins++;
     else if (b.winner_id !== null) losses++;
   }
 
@@ -71,11 +102,11 @@ export default async function ProfilePage() {
 
   return (
     <>
-      <NavBar displayName={profile?.display_name} elo={topElo} />
+      <NavBar displayName={isSelf ? profile?.display_name : undefined} elo={isSelf ? topElo : undefined} />
       <main className="min-h-screen bg-transparent text-[#F5F0E8] px-5 pt-20 pb-16 flex flex-col items-center gap-8">
         <div className="w-full max-w-2xl relative z-10">
           <Link
-            href="/"
+            href={isSelf ? '/' : '/leaderboard'}
             className="text-[#F5F0E8]/25 hover:text-[#F5F0E8]/60 text-xs uppercase tracking-widest transition-colors"
           >
             ← Back
@@ -105,14 +136,24 @@ export default async function ProfilePage() {
               </div>
 
               {/* Name + rank */}
-              <div className="min-w-0 flex flex-col gap-2.5">
+              <div className="min-w-0 flex flex-col gap-2.5 flex-1">
                 <p className="text-[#F5F0E8]/30 text-[10px] uppercase tracking-[0.3em]">
-                  Player Profile
+                  {isSelf ? 'Player Profile' : 'Player'}
                 </p>
                 <h1 className="font-display font-black text-3xl sm:text-4xl uppercase tracking-wider text-[#F5F0E8] truncate leading-none">
                   {profile?.display_name ?? '—'}
                 </h1>
-                <RankBadge elo={topElo} size="lg" className="self-start mt-0.5" />
+                <div className="flex items-center gap-3">
+                  <RankBadge elo={topElo} size="lg" className="self-start mt-0.5" />
+                  {!isSelf && (
+                    <AddFriendButton
+                      viewerId={user.id}
+                      targetId={profileUserId}
+                      initialStatus={friendshipStatus}
+                      friendshipId={friendshipId}
+                    />
+                  )}
+                </div>
               </div>
             </div>
 
@@ -204,14 +245,14 @@ export default async function ProfilePage() {
           ) : (
             <Panel className="flex flex-col">
               {recentBattles.map((b, i) => {
-                const oppId = b.player1_id === user.id ? b.player2_id : b.player1_id;
+                const oppId = b.player1_id === profileUserId ? b.player2_id : b.player1_id;
                 const opponentName = oppId ? (opponentNameMap[oppId] ?? 'Unknown') : 'Unknown';
                 const scoresObj = b.scores as Record<string, number> | null;
-                const myScore = scoresObj?.[user.id] ?? 0;
+                const myScore = scoresObj?.[profileUserId] ?? 0;
                 const oppScore = oppId ? (scoresObj?.[oppId] ?? 0) : 0;
 
-                const isWin  = b.winner_id === user.id;
-                const isLoss = b.winner_id !== null && b.winner_id !== user.id;
+                const isWin  = b.winner_id === profileUserId;
+                const isLoss = b.winner_id !== null && b.winner_id !== profileUserId;
 
                 const edge = isWin ? '#22C55E' : isLoss ? '#EF4444' : '#374151';
                 const resultColor = isWin ? '#22C55E' : isLoss ? '#EF4444' : 'rgba(245,240,232,0.3)';
@@ -219,9 +260,7 @@ export default async function ProfilePage() {
                 return (
                   <div
                     key={b.id}
-                    className={`flex items-center px-4 py-3.5 gap-4 ${
-                      i > 0 ? 'border-t border-[#2A2A2A]' : ''
-                    }`}
+                    className={`flex items-center px-4 py-3.5 gap-4 ${i > 0 ? 'border-t border-[#2A2A2A]' : ''}`}
                     style={{ borderLeft: `3px solid ${edge}` }}
                   >
                     <span

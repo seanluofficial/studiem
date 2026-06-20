@@ -19,11 +19,9 @@ interface LeaderboardEntry {
 }
 
 interface PageProps {
-  searchParams: Promise<{ subject?: string }>;
+  searchParams: Promise<{ subject?: string; tab?: string }>;
 }
 
-// Podium tints align to the brand tier palette (--tier-gold / --tier-silver /
-// --tier-bronze) so the top three echo Gold / Silver / Bronze rank identity.
 const RANK_STYLES: Record<number, { text: string; bg: string }> = {
   1: { text: 'text-[#C9A84C]',   bg: 'bg-[#C9A84C]/[0.08] border-[#C9A84C]/40' },
   2: { text: 'text-[#B8BCC4]',   bg: 'bg-[#B8BCC4]/[0.06] border-[#B8BCC4]/25' },
@@ -31,25 +29,70 @@ const RANK_STYLES: Record<number, { text: string; bg: string }> = {
 };
 
 export default async function LeaderboardPage({ searchParams }: PageProps) {
-  const { subject: subjectParam } = await searchParams;
+  const { subject: subjectParam, tab: tabParam } = await searchParams;
+  const isFriendsTab = tabParam === 'friends';
+
   const subject = MVP_SUBJECTS.includes(subjectParam ?? '')
     ? (subjectParam ?? MVP_SUBJECTS[0])
     : MVP_SUBJECTS[0];
 
   const supabase = await createClient();
-  const { data: rows } = await supabase
-    .from('leaderboard')
-    .select('rank, display_name, rating, user_id')
-    .eq('subject', subject)
-    .order('rank', { ascending: true })
-    .limit(50);
+  const { data: { user } } = await supabase.auth.getUser();
 
-  const entries: LeaderboardEntry[] = (rows ?? []).map(r => ({
-    rank:         r.rank as number,
-    display_name: r.display_name as string,
-    rating:       r.rating as number,
-    user_id:      r.user_id as string,
-  }));
+  let entries: LeaderboardEntry[] = [];
+
+  if (isFriendsTab && user) {
+    const { data: friendships } = await supabase
+      .from('friendships')
+      .select('requester_id, addressee_id')
+      .or(`requester_id.eq.${user.id},addressee_id.eq.${user.id}`)
+      .eq('status', 'accepted');
+
+    const friendIds = (friendships ?? []).map(r =>
+      r.requester_id === user.id ? r.addressee_id : r.requester_id
+    );
+    const allIds = [user.id, ...friendIds];
+
+    const { data: eloRows } = await supabase
+      .from('elo_ratings')
+      .select('user_id, rating')
+      .eq('subject', subject)
+      .in('user_id', allIds);
+
+    if (eloRows && eloRows.length > 0) {
+      const { data: profiles } = await supabase
+        .from('profiles')
+        .select('id, display_name')
+        .in('id', eloRows.map(r => r.user_id));
+
+      const profileMap: Record<string, string> = Object.fromEntries(
+        (profiles ?? []).map(p => [p.id, p.display_name])
+      );
+      const sorted = [...eloRows].sort((a, b) => b.rating - a.rating);
+      entries = sorted.map((r, i) => ({
+        rank: i + 1,
+        display_name: profileMap[r.user_id] ?? 'Unknown',
+        rating: r.rating,
+        user_id: r.user_id,
+      }));
+    }
+  } else {
+    const { data: rows } = await supabase
+      .from('leaderboard')
+      .select('rank, display_name, rating, user_id')
+      .eq('subject', subject)
+      .order('rank', { ascending: true })
+      .limit(50);
+
+    entries = (rows ?? []).map(r => ({
+      rank:         r.rank as number,
+      display_name: r.display_name as string,
+      rating:       r.rating as number,
+      user_id:      r.user_id as string,
+    }));
+  }
+
+  const subjectBase = `/leaderboard?subject=${encodeURIComponent(subject)}`;
 
   return (
     <>
@@ -62,7 +105,6 @@ export default async function LeaderboardPage({ searchParams }: PageProps) {
             </Link>
           </div>
 
-          {/* Title */}
           <header className="animate-rise-in">
             <p className="font-display font-bold text-xs uppercase tracking-[0.35em] text-[#C9A84C]/70 mb-2">
               Ranked Ladder
@@ -73,12 +115,12 @@ export default async function LeaderboardPage({ searchParams }: PageProps) {
             <div className="rule-gold mt-5" />
           </header>
 
-          {/* Subject tabs — segmented control */}
+          {/* Subject tabs */}
           <nav className="flex flex-wrap gap-px panel p-1 animate-rise-in" style={{ animationDelay: '0.06s' }}>
             {MVP_SUBJECTS.map(s => (
               <Link
                 key={s}
-                href={`/leaderboard?subject=${encodeURIComponent(s)}`}
+                href={`/leaderboard?subject=${encodeURIComponent(s)}${isFriendsTab ? '&tab=friends' : ''}`}
                 aria-current={s === subject ? 'page' : undefined}
                 className={`px-3.5 py-2 text-xs font-display font-bold uppercase tracking-[0.16em] transition-colors outline-none focus-visible:ring-2 focus-visible:ring-[#C9A84C] focus-visible:ring-offset-2 focus-visible:ring-offset-[#141414] ${
                   s === subject
@@ -91,16 +133,38 @@ export default async function LeaderboardPage({ searchParams }: PageProps) {
             ))}
           </nav>
 
+          {/* Global / Friends toggle */}
+          <div className="flex gap-px panel p-1 self-start animate-rise-in" style={{ animationDelay: '0.09s' }}>
+            {[
+              { label: 'Global', href: subjectBase },
+              { label: 'Friends', href: `${subjectBase}&tab=friends` },
+            ].map(({ label, href }) => {
+              const active = label === 'Friends' ? isFriendsTab : !isFriendsTab;
+              return (
+                <Link
+                  key={label}
+                  href={href}
+                  className={`px-4 py-2 text-xs font-display font-bold uppercase tracking-[0.16em] transition-colors ${
+                    active ? 'bg-[#C9A84C] text-[#0A0A0A]' : 'text-[#F5F0E8]/40 hover:bg-[#1C1C1C] hover:text-[#F5F0E8]/80'
+                  }`}
+                >
+                  {label}
+                </Link>
+              );
+            })}
+          </div>
+
           {/* Table */}
           {entries.length === 0 ? (
             <div className="panel px-4 py-16 text-center animate-rise-in" style={{ animationDelay: '0.12s' }}>
               <p className="text-[#F5F0E8]/30 text-sm uppercase tracking-[0.2em] font-display">
-                No ratings yet for {subject.replace('AP ', '')}.
+                {isFriendsTab
+                  ? `No friends with ${subject.replace('AP ', '')} ratings yet.`
+                  : `No ratings yet for ${subject.replace('AP ', '')}.`}
               </p>
             </div>
           ) : (
             <div className="animate-rise-in" style={{ animationDelay: '0.12s' }}>
-              {/* Header row */}
               <div className="flex items-center gap-3 text-[10px] text-[#F5F0E8]/25 uppercase tracking-[0.2em] font-display font-bold px-4 pb-2">
                 <span className="w-10">Rank</span>
                 <span className="flex-1">Player</span>

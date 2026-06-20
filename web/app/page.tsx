@@ -7,6 +7,7 @@ import { createClient } from '@/lib/supabase/client';
 import BattleRoom from '@/components/BattleRoom';
 import NavBar from '@/components/NavBar';
 import RankBadge from '@/components/RankBadge';
+import FriendsPanel, { type IncomingChallenge } from '@/components/FriendsPanel';
 
 const MVP_SUBJECTS = [
   'AP Biology',
@@ -62,6 +63,14 @@ export default function Home() {
   const [eloDelta, setEloDelta] = useState<number | null>(null);
   const [opponentElo, setOpponentElo] = useState<number | null>(null);
   const questionStartedAt = useRef<number | null>(null);
+  const userIdRef = useRef<string | null>(null);
+
+  // ── Friends state ──────────────────────────────────────────────────────────
+  const [friendsPanelOpen, setFriendsPanelOpen] = useState(false);
+  const [friendsPendingCount, setFriendsPendingCount] = useState(0);
+  const [onlineFriendIds, setOnlineFriendIds] = useState<Set<string>>(new Set());
+  const [friendActivity, setFriendActivity] = useState<Record<string, { subject: string; phase: string } | null>>({});
+  const [incomingChallenge, setIncomingChallenge] = useState<IncomingChallenge | null>(null);
 
   const [battle, setBattle] = useState<BattleState>({
     phase: 'question',
@@ -82,12 +91,16 @@ export default function Home() {
     supabase.auth.getUser().then(async ({ data: { user } }) => {
       if (!user) { router.push('/login'); return; }
       setUserId(user.id);
+      userIdRef.current = user.id;
       const { data } = await supabase
         .from('profiles')
         .select('display_name')
         .eq('id', user.id)
         .single();
       if (data) setDisplayName(data.display_name);
+      // Register presence if socket is already connected
+      const sock = getSocket();
+      if (sock.connected) sock.emit('register_presence', { userId: user.id });
       const { data: eloRow } = await supabase
         .from('elo_ratings')
         .select('rating')
@@ -136,8 +149,34 @@ export default function Home() {
   useEffect(() => {
     const socket = getSocket();
     socket.connect();
-    socket.on('connect', () => console.log('[socket] connected:', socket.id));
+    socket.on('connect', () => {
+      console.log('[socket] connected:', socket.id);
+      if (userIdRef.current) socket.emit('register_presence', { userId: userIdRef.current });
+    });
     socket.on('connect_error', (err) => console.error('[socket] error:', err.message));
+
+    // ── Friends / presence events ──────────────────────────────────────────
+    socket.on('presence_init', ({ onlineUserIds }: { onlineUserIds: string[] }) => {
+      setOnlineFriendIds(new Set(onlineUserIds));
+    });
+    socket.on('friend_online', ({ userId: uid }: { userId: string }) => {
+      setOnlineFriendIds(prev => new Set([...prev, uid]));
+    });
+    socket.on('friend_offline', ({ userId: uid }: { userId: string }) => {
+      setOnlineFriendIds(prev => { const s = new Set(prev); s.delete(uid); return s; });
+    });
+    socket.on('friend_activity_update', ({ userId: uid, activity }: { userId: string; activity: { subject: string; phase: string } | null }) => {
+      setFriendActivity(prev => {
+        const next = { ...prev };
+        if (activity === null) delete next[uid]; else next[uid] = activity;
+        return next;
+      });
+    });
+    socket.on('friend_challenge_received', ({ challengeId, fromUserId, fromDisplayName, subject }: { challengeId: string; fromUserId: string; fromDisplayName: string; subject: string }) => {
+      setIncomingChallenge({ challengeId, fromUserId, fromDisplayName, subject, receivedAt: Date.now() });
+    });
+    socket.on('friend_challenge_declined', () => setIncomingChallenge(null));
+    socket.on('friend_challenge_expired', () => setIncomingChallenge(null));
 
     socket.on('queue_joined', () => setAppPhase('queuing'));
     socket.on('queue_left', () => setAppPhase('idle'));
@@ -259,6 +298,16 @@ export default function Home() {
     setAppPhase('idle');
   }
 
+  function handleAcceptChallenge(challengeId: string) {
+    getSocket().emit('accept_friend_challenge', { challengeId });
+    setIncomingChallenge(null);
+  }
+
+  function handleDeclineChallenge(challengeId: string) {
+    getSocket().emit('decline_friend_challenge', { challengeId });
+    setIncomingChallenge(null);
+  }
+
   // ── Complete ───────────────────────────────────────────────────────────────
   if (appPhase === 'complete') {
     const socket = getSocket();
@@ -374,7 +423,28 @@ export default function Home() {
   return (
     <>
       {(appPhase === 'idle' || appPhase === 'queuing') && (
-        <NavBar displayName={displayName} elo={myElo} subject={appPhase === 'idle' ? subject : undefined} />
+        <NavBar
+          displayName={displayName}
+          elo={myElo}
+          subject={appPhase === 'idle' ? subject : undefined}
+          onFriendsClick={() => setFriendsPanelOpen(o => !o)}
+          friendsBadge={friendsPendingCount}
+        />
+      )}
+
+      {userId && (appPhase === 'idle' || appPhase === 'queuing') && (
+        <FriendsPanel
+          isOpen={friendsPanelOpen}
+          onClose={() => setFriendsPanelOpen(false)}
+          userId={userId}
+          viewerSubject={subject}
+          onlineUserIds={onlineFriendIds}
+          friendActivity={friendActivity}
+          incomingChallenge={incomingChallenge}
+          onChallengeAccept={handleAcceptChallenge}
+          onChallengeDecline={handleDeclineChallenge}
+          onPendingCount={setFriendsPendingCount}
+        />
       )}
 
       <main className="min-h-screen text-[#F5F0E8] flex flex-col items-center justify-center px-4 pt-12">
