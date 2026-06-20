@@ -1,0 +1,147 @@
+{
+  "subject": "AP US History",
+  "slug": "apush",
+  "units": [
+    {
+      "number": 1,
+      "name": "Period 1: 1491–1607",
+      "exam_weight_pct": 5,
+      "decks": [
+        "Native American Societies Before European Contact",
+        "European Exploration in the Americas",
+        "Columbian Exchange, Spanish Exploration, and Conquest",
+        "Labor, Slavery, and Caste in the Spanish Colonial System",
+        "The Americas and Europe Before Contact",
+        "Comparison of Colonization Patterns"
+      ],
+      "objectives": "PERIOD 1: 1491–1607 — AP US History CED Learning Objectives (approx. 4–6% of exam)\n\nKC-1.1: Before European contact, Native Americans developed diverse societies across North America.\n- Varied cultures: settled agricultural societies (Pueblo, Mississippian mound builders) and nomadic hunter-gatherer societies.\n- Complex political, religious, and economic structures. Trade networks spanning the continent.\n\nKC-1.2: European exploration was motivated by desire for wealth, glory, and spread of Christianity.\n- Spanish conquest: Reconquista mindset, encomienda system, forced labor. Columbus 1492, Cortés/Aztec 1519, Pizarro/Inca 1532.\n- Portuguese, Spanish, French, Dutch, and English pursued different colonization strategies.\n\nKC-1.3: The Columbian Exchange transformed both hemispheres.\n- Europe to Americas: horses, cattle, pigs, wheat, smallpox, measles, influenza → catastrophic indigenous population decline (up to 90%).\n- Americas to Europe: corn, potatoes, tomatoes, tobacco, cacao → population growth in Europe.\n- Demographic collapse of Native Americans reshaped social, labor, and political systems in the Americas.\n\nKC-1.3.II: Spanish established labor systems using indigenous and African populations.\n- Encomienda → repartimiento → African slavery as native populations declined.\n- Caste system (limpieza de sangre) organized Spanish colonial society.\n- Missions spread Catholicism; often coercive. Pueblo Revolt 1680 demonstrates resistance."
+    },
+    {
+      "number": 2,
+      "name": "Period 2: 1607–1754",
+      "exam_weight_pct": 7,
+      "decks": [
+        "European Colonization in North America",
+        "The Chesapeake Colonies",
+        "The New England Colonies",
+        "The Middle Colonies",
+        "Transatlantic Trade and the Atlantic World",
+        "Slavery in the British Colonies",
+        "Colonial Society and Culture",
+        "Interactions with Native Americans"
+      ],
+      "objectives": "PERIOD 2: 1607–1754 — AP US History CED Learning Objectives (approx. 6–8% of exam)\n\nKC-2.1: European colonization created distinct regional cultures in British North America.\n- New England: Puritan settlement (Plymouth 1620, Massachusetts Bay 1630), covenant community, town meetings, subsistence farming. Halfway Covenant.\n- Chesapeake: Virginia (Jamestown 1607), tobacco economy, indentured servants → African slavery, Bacon's Rebellion 1676. Maryland — Catholic refuge.\n- Middle Colonies: New York, Pennsylvania (Quakers), diverse religious tolerance, mixed economy.\n- Southern Colonies: rice/indigo economy in Carolinas, plantation slavery, slave codes.\n\nKC-2.2: The Atlantic world created economic and cultural ties between Europe, Africa, and the Americas.\n- Triangular trade: manufactured goods → Africa, enslaved Africans → Americas, raw materials → Europe.\n- Mercantilism: Navigation Acts restricted colonial trade to benefit England.\n- Salutary neglect: Britain's relaxed enforcement allowed colonial self-governance to develop.\n\nKC-2.3: The growth of slavery transformed colonial society.\n- Middle Passage: brutal transatlantic slave trade. 1619 — first Africans in Virginia.\n- Slave codes formalized racial slavery: slaves as property, hereditary status.\n- Stono Rebellion (1739). African cultural retentions (Gullah language/culture).\n\nKC-2.3.III: Colonial societies developed relative autonomy.\n- Colonial assemblies exercised taxing and legislative powers. House of Burgesses (1619).\n- Great Awakening (1730s–1740s): emotional revivalism, challenged hierarchies, increased religious pluralism. Jonathan Edwards, George Whitefield.\n- Enlightenment ideas (Locke, natural rights) began influencing colonial political thought."
+    },
+    {
+      "number": 3,
+      "name": "Period 3: 1754–1800",
+      "exam_weight_pct": 13,
+      "decks": [
+        "The Seven Years' War (French and Indian War)",
+        "Taxation Without Representation",
+        "Philosophical Foundations of the American Revolution",
+        "The American Revolution",
+        "The Articles of Confederation",
+        "The Constitutional Convention",
+        "Ratification of the Constitution",
+        "Washington's Presidency and Domestic Policy",
+        "Federalists vs. Democratic-Republicans",
+        "Diplomacy and Foreign Policy in the Early Republic"
+      ],
+      "objectives": "PERIOD 3: 1754–1800 — AP US History CED Learning Objectives (approx. 10–17% of exam)\n\nKC-3.1: The Seven Years' War (French and Indian War, 1754–1763) transformed colonial relationships.\n- Proclamation of 1763 banned settlement west of Appalachians — colonists angered.\n- British war debt → new taxation policy ending salutary neglect.\n\nKC-3.2: Colonial protest escalated toward revolution.\n- Stamp Act (1765), Townshend Acts (1767), Tea Act (1773), Intolerable Acts (1774).\n- Continental Congress, Sons of Liberty, Boston Massacre (1770), Boston Tea Party (1773).\n- Ideological foundations: Locke's natural rights, Montesquieu's separation of powers, 'no taxation without representation.'\n\nKC-3.2.II: Revolutionary ideals had varied impacts.\n- Declaration of Independence (1776): 'all men are created equal'; slavery contradicted ideals.\n- Women: Republican Motherhood. Abigail Adams 'Remember the Ladies.'\n- Loyalists (Tories) fled to Canada/Britain. Native Americans lost British protection.\n\nKC-3.3: The new nation struggled with governance under the Articles of Confederation.\n- Articles: no taxation power, no executive, weak central government. Northwest Ordinance (1787).\n- Shays' Rebellion (1786–87) revealed weakness of federal government.\n\nKC-3.3.II: The Constitution created a stronger federal government.\n- Constitutional Convention 1787: Great Compromise (bicameral), 3/5 Compromise, Electoral College.\n- Federalists (Hamilton, Madison, Jay — Federalist Papers) vs. Anti-Federalists (Patrick Henry).\n- Bill of Rights (1791) addressed Anti-Federalist concerns.\n\nKC-3.3.III: Early republic established precedents.\n- Washington's Farewell Address: avoid entangling alliances, warn against factions.\n- Hamilton's financial program: national bank, assumption of state debts, tariffs → controversy.\n- Whiskey Rebellion (1794). XYZ Affair. Alien and Sedition Acts (1798). Virginia and Kentucky Resolutions (nullification)."
+    },
+    {
+      "number": 4,
+      "name": "Period 4: 1800–1848",
+      "exam_weight_pct": 13,
+      "decks": [
+        "The New American Democracy",
+        "Westward Expansion and Manifest Destiny",
+        "The Market Revolution",
+        "The Second Great Awakening and Reform Movements",
+        "Slavery and the Antebellum South",
+        "Jackson and Jacksonian Democracy",
+        "The Missouri Compromise",
+        "Native American Removal"
+      ],
+      "objectives": "PERIOD 4: 1800–1848 — AP US History CED Learning Objectives (approx. 10–17% of exam)\n\nKC-4.1: Democratic ideals expanded political participation.\n- Revolution of 1800: Jefferson's election peacefully transferred power between parties.\n- Expansion of white male suffrage (property requirements dropped). Rise of political parties.\n- Jacksonian Democracy: appeal to 'common man.' Spoils system (patronage). Indian Removal Act (1830) → Trail of Tears.\n- Nullification Crisis (1832): South Carolina — states' rights vs. federal authority.\n\nKC-4.2: The Market Revolution transformed the American economy.\n- Transportation revolution: National Road, Erie Canal (1825), railroads. Connected markets.\n- Factory system: Lowell Mill girls, early industrialization in Northeast. Shift from artisan production.\n- Expansion of market economy; growing regional economic specialization.\n\nKC-4.2.II: Regional economies diverged.\n- North: wage labor, industrialization. South: plantation slavery, cotton ('King Cotton'). West: subsistence and commercial farming.\n- Cotton gin (1793) intensified slavery in the South. Domestic slave trade expanded westward.\n\nKC-4.3: Reform movements challenged existing social order.\n- Second Great Awakening: revivalism, perfectionism, social reform impulse. Charles Finney.\n- Abolitionism: Garrison (immediate abolition — The Liberator), Douglass. Underground Railroad.\n- Women's rights: Seneca Falls Convention (1848), Declaration of Sentiments. Sojourner Truth.\n- Temperance, public education (Horace Mann), prison reform (Dorothea Dix), utopian communities.\n\nKC-4.3.III: Territorial expansion intensified sectional conflict.\n- Louisiana Purchase (1803), War of 1812, Florida cession (1819), Oregon Treaty (1846), Mexican-American War (1846–48) → Mexican Cession.\n- Missouri Compromise (1820): Missouri slave, Maine free, 36°30' line.\n- Manifest Destiny ideology justified westward expansion; displaced Native Americans and Mexicans."
+    },
+    {
+      "number": 5,
+      "name": "Period 5: 1844–1877",
+      "exam_weight_pct": 13,
+      "decks": [
+        "Manifest Destiny and the Mexican-American War",
+        "Sectional Crisis and the Compromise of 1850",
+        "Slavery Debates and the Kansas-Nebraska Act",
+        "Causes of the Civil War",
+        "The Civil War",
+        "Emancipation and the 13th Amendment",
+        "Reconstruction: Presidential and Congressional",
+        "The End of Reconstruction"
+      ],
+      "objectives": "PERIOD 5: 1844–1877 — AP US History CED Learning Objectives (approx. 10–17% of exam)\n\nKC-5.2: Intensifying slavery debates led to sectional crisis.\n- Wilmot Proviso (1846): proposed banning slavery in territory from Mexico. Compromise of 1850: California free, popular sovereignty in New Mexico/Utah, Fugitive Slave Act strengthened.\n- Kansas-Nebraska Act (1854): popular sovereignty repealed Missouri Compromise → 'Bleeding Kansas' → formation of Republican Party.\n- Dred Scott v. Sandford (1857): enslaved people not citizens, Congress cannot ban slavery in territories.\n- Lincoln-Douglas debates (1858). John Brown's raid on Harper's Ferry (1859).\n\nKC-5.3: Southern secession and the Civil War.\n- Lincoln's election (1860) → South Carolina secession → Confederacy formed.\n- Fort Sumter (April 1861) begins war. Border states remained in Union.\n- Military strategy: Anaconda Plan (Union), Confederate defense. Key battles: Antietam, Gettysburg, Vicksburg.\n- Emancipation Proclamation (Jan. 1, 1863): freed slaves in Confederate states; redefined war aims. 54th Massachusetts (USCT).\n- 13th Amendment (1865) abolished slavery.\n\nKC-5.3.II: Reconstruction attempted to reintegrate Southern states and protect freedpeople.\n- Presidential Reconstruction (Lincoln/Johnson): lenient, quick readmission.\n- Congressional (Radical) Reconstruction: 14th Amendment (citizenship, equal protection), 15th Amendment (Black male suffrage), Freedmen's Bureau, military occupation.\n- Black political participation: African Americans elected to Congress and state offices.\n\nKC-5.3.III: Reconstruction ended with the Compromise of 1877.\n- Rise of KKK and white supremacist violence. Enforcement Acts (1870–71) then abandoned.\n- Sharecropping replaced slavery economically. Black Codes → Jim Crow laws.\n- Compromise of 1877: Hayes presidency, federal troops withdrawn from South. End of Reconstruction."
+    },
+    {
+      "number": 6,
+      "name": "Period 6: 1865–1898",
+      "exam_weight_pct": 13,
+      "decks": [
+        "Westward Expansion and Native Americans",
+        "The Transcontinental Railroad and Economic Development",
+        "Industrialization and the Gilded Age",
+        "Immigration and Urbanization",
+        "Labor Movements",
+        "Populism and Agrarian Discontent",
+        "Politics in the Gilded Age"
+      ],
+      "objectives": "PERIOD 6: 1865–1898 — AP US History CED Learning Objectives (approx. 10–17% of exam)\n\nKC-6.1: Westward expansion transformed the West and dispossessed Native Americans.\n- Homestead Act (1862): encouraged settlement. Transcontinental Railroad (1869) accelerated settlement.\n- Plains Wars: Little Bighorn (1876), Wounded Knee (1890). Dawes Act (1887): allotment, assimilation, reduced tribal land.\n- Closing of the frontier: Turner's Frontier Thesis (1893).\n\nKC-6.2: Industrialization transformed the American economy.\n- Railroad expansion: integrated national market. Captains of industry / robber barons: Carnegie (steel), Rockefeller (oil), Morgan (finance).\n- Vertical and horizontal integration. Social Darwinism justified inequality. Gospel of Wealth (Carnegie).\n- Sherman Antitrust Act (1890) — largely ineffective initially.\n\nKC-6.3: Immigration and urbanization reshaped American society.\n- Old immigration (Northern/Western Europe) → New immigration (Southern/Eastern Europe, China). Nativist backlash: Chinese Exclusion Act (1882), nativism.\n- Tenements, political machines (Tammany Hall). Hull House (Jane Addams) — settlement house movement.\n\nKC-6.3.II: Labor organized to challenge industrial capitalism.\n- Knights of Labor: industrial unionism; declined after Haymarket Affair (1886).\n- American Federation of Labor (AFL, Samuel Gompers): craft unions, collective bargaining.\n- Homestead Strike (1892), Pullman Strike (1894). Government sided with business (injunctions).\n\nKC-6.3.III: Agrarian protest challenged economic inequality.\n- Grange → Farmers' Alliances → Populist (People's) Party. Omaha Platform (1892): graduated income tax, direct election of senators, railroad regulation, silver coinage.\n- Election of 1896: Bryan vs. McKinley. Populism absorbed by Democratic Party; largely defeated."
+    },
+    {
+      "number": 7,
+      "name": "Period 7: 1890–1945",
+      "exam_weight_pct": 13,
+      "decks": [
+        "American Imperialism",
+        "The Progressive Era",
+        "World War I and American Neutrality",
+        "The 1920s: Culture and Society",
+        "The Great Depression and Causes",
+        "The New Deal",
+        "The Road to World War II",
+        "World War II"
+      ],
+      "objectives": "PERIOD 7: 1890–1945 — AP US History CED Learning Objectives (approx. 10–17% of exam)\n\nKC-7.1: America emerged as a global power through imperialism.\n- Spanish-American War (1898): Cuba independence, acquisition of Philippines, Puerto Rico, Guam. Anti-Imperialist League (Mark Twain) vs. expansionists (Mahan, Roosevelt).\n- Open Door Policy in China. Roosevelt Corollary to Monroe Doctrine. Panama Canal (1914).\n\nKC-7.2: Progressivism addressed industrial-age social problems.\n- Muckrakers: Upton Sinclair (The Jungle), Ida Tarbell (Standard Oil), Jacob Riis (How the Other Half Lives).\n- Reforms: initiative/referendum/recall, direct election of senators (17th Amendment, 1913), income tax (16th Amendment, 1913), women's suffrage (19th Amendment, 1920).\n- Roosevelt's Square Deal: trust-busting, conservation. Wilson's New Freedom: Federal Reserve, Clayton Antitrust Act. NAACP (1909), Booker T. Washington vs. W.E.B. Du Bois.\n\nKC-7.3: WWI and aftermath shaped American society.\n- Neutrality → Zimmermann Telegram, unrestricted submarine warfare → US entry (1917).\n- Espionage and Sedition Acts curtailed civil liberties. Great Migration: African Americans moved north.\n- Wilson's 14 Points; Treaty of Versailles; Senate rejected League of Nations (isolationism).\n- 1920s: Red Scare, Palmer Raids, Sacco and Vanzetti. Harlem Renaissance. Prohibition. Fundamentalism vs. Modernism (Scopes Trial 1925).\n\nKC-7.2.III: Great Depression and New Deal.\n- Stock market crash (1929). Causes: overproduction, credit/speculation, weak banking, tariffs (Smoot-Hawley). Hoover's limited response.\n- FDR's New Deal: 3 Rs (Relief, Recovery, Reform). Key programs: CCC, AAA, FDIC, Social Security Act (1935), Wagner Act. Critics: Huey Long, Father Coughlin, Supreme Court challenges.\n- New Deal coalition: urban workers, African Americans, labor unions, ethnic minorities.\n\nKC-7.3.III: WWII.\n- Appeasement, Munich (1938), rise of fascism. US isolationism: Neutrality Acts. Lend-Lease.\n- Pearl Harbor (Dec. 7, 1941) → US entry. Home front: war production, rationing, women in workforce (Rosie the Riveter), Japanese American internment (Korematsu v. US).\n- D-Day (1944), island-hopping in Pacific, Manhattan Project. Atomic bombs → Japan surrender (1945)."
+    },
+    {
+      "number": 8,
+      "name": "Period 8: 1945–1980",
+      "exam_weight_pct": 13,
+      "decks": [
+        "The Early Cold War",
+        "Truman, Korea, and Containment",
+        "Postwar Prosperity and the Baby Boom",
+        "The Civil Rights Movement",
+        "The Great Society",
+        "Vietnam War and Protest",
+        "Nixon and Détente",
+        "Social Movements of the 1960s–70s"
+      ],
+      "objectives": "PERIOD 8: 1945–1980 — AP US History CED Learning Objectives (approx. 10–17% of exam)\n\nKC-8.1: The Cold War shaped American foreign and domestic policy.\n- Containment (Kennan), Truman Doctrine, Marshall Plan, NATO. Berlin Airlift (1948–49). NSC-68: massive military buildup.\n- Korean War (1950–53): limited war, ended in stalemate. Eisenhower's 'massive retaliation,' military-industrial complex warning.\n- McCarthyism, Second Red Scare, HUAC, Hollywood Ten, Rosenbergs. Loyalty oaths, blacklists.\n\nKC-8.2: Postwar prosperity reshaped American society.\n- GI Bill, suburban growth (Levittown), baby boom, rise of car culture. Television transformed culture.\n- Conformity of 1950s vs. beats/counterculture. Civil religion, 'under God' in pledge.\n\nKC-8.3: Civil Rights Movement challenged segregation.\n- Brown v. Board of Education (1954). Montgomery Bus Boycott (1955–56, MLK). Sit-ins (1960), Freedom Rides (1961). March on Washington, 'I Have a Dream' (1963).\n- Civil Rights Act (1964), Voting Rights Act (1965). Malcolm X, Black Power, Black Panther Party.\n- Fair Housing Act (1968). Assassination of MLK. Kerner Commission: 'two societies.'\n\nKC-8.3.II: Johnson's Great Society expanded federal role.\n- Medicare/Medicaid, Elementary and Secondary Education Act, Voting Rights Act. War on Poverty (OEO).\n\nKC-8.3.III: Vietnam War divided the nation.\n- Gulf of Tonkin Resolution (1964) escalated US involvement. Tet Offensive (1968) eroded public support.\n- Anti-war movement: Kent State (1970). Nixon's Vietnamization. War Powers Act (1973). Fall of Saigon (1975).\n\nKC-8.3.IV: Social movements transformed American society.\n- Feminist movement: NOW (1966), Title IX, Roe v. Wade (1973). Chicano, American Indian, LGBTQ movements.\n- Nixon: détente with China and USSR, SALT I. Watergate scandal and resignation (1974). Ford's pardon."
+    },
+    {
+      "number": 9,
+      "name": "Period 9: 1980–Present",
+      "exam_weight_pct": 5,
+      "decks": [
+        "The Reagan Revolution and Conservatism",
+        "The End of the Cold War",
+        "Economic and Social Change in the 1980s–90s",
+        "Post-Cold War Foreign Policy",
+        "Globalization and the 21st Century",
+        "September 11 and the War on Terror"
+      ],
+      "objectives": "PERIOD 9: 1980–Present — AP US History CED Learning Objectives (approx. 4–6% of exam)\n\nKC-9.1: Conservative politics reshaped domestic and foreign policy.\n- Reagan Revolution: supply-side economics (Reaganomics), tax cuts, deregulation, reduction of federal programs. Religious Right, Moral Majority, social conservatism.\n- Iran-Contra Affair. Reagan Doctrine: support anti-communist movements. SDI ('Star Wars').\n\nKC-9.2: The Cold War ended.\n- Gorbachev's glasnost and perestroika. Fall of Berlin Wall (1989). Soviet dissolution (1991).\n- Bush Sr.: Gulf War (1990–91). 'New World Order.'\n\nKC-9.3: Clinton era: economic boom and political polarization.\n- NAFTA (1993), budget surplus, dot-com boom. Welfare reform (1996). Impeachment (1998).\n- Culture wars: debates over multiculturalism, affirmative action, LGBTQ rights.\n\nKC-9.3.II: Post-9/11 foreign policy.\n- September 11, 2001. USA PATRIOT Act, Department of Homeland Security. War in Afghanistan (2001).\n- Iraq War (2003): WMD justification. Abu Ghraib, debate over civil liberties vs. security.\n\nKC-9.3.III: 21st century challenges.\n- Hurricane Katrina (2005): government failure. Financial crisis (2008). Obama election: historic significance.\n- Globalization: outsourcing, immigration debates. Tea Party movement, political polarization.\n- ACA (Affordable Care Act, 2010). Income inequality. #MeToo, BLM movements."
+    }
+  ]
+}

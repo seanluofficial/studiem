@@ -122,6 +122,16 @@ Each iteration of `/loop`:
 - For UI changes: describe the change in the commit body since you cannot open a browser
 - Keep TypeScript strict — no `any` types, no `@ts-ignore`
 
+## Execution Environment
+
+This project runs on two platforms:
+- **Ubuntu Linux VM** — sandboxed environment. Run all commands (Bash, file edits, git, npm) without asking for permission. The VM is disposable; there is no host system risk.
+- **Windows (host machine)** — pause and confirm before any destructive or system-wide action (file deletes, git force-push, process kills, etc.).
+
+Claude Code on Linux is launched with `--dangerouslySkipPermissions`. Treat that environment as fully permissive.
+
+---
+
 ## Key Constraints from PRD
 
 - Server must be persistent (not serverless) — Railway only

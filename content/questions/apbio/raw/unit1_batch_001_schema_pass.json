@@ -1,0 +1,1145 @@
+﻿[
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 1: Chemistry of Life",
+        "unit_exam_weight_pct":  9,
+        "deck":  "Structure of Water and Hydrogen Bonding",
+        "type":  "mc_static",
+        "difficulty":  "easy",
+        "tags":  [
+                     "water_polarity",
+                     "hydrogen_bonding",
+                     "cohesion"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "Which property of water is most directly responsible for water molecules clinging to one another, allowing water to form droplets on a waxy leaf surface?",
+                        "options":  [
+                                        "Cohesion, due to hydrogen bonds between water molecules",
+                                        "Adhesion, due to hydrogen bonds between water and the leaf surface",
+                                        "High specific heat, due to the energy required to break hydrogen bonds",
+                                        "Low density of ice, due to the crystalline lattice formed when water freezes"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Cohesion is the attraction of water molecules to other water molecules via hydrogen bonding. This force holds water droplets together on hydrophobic surfaces such as waxy leaves.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because they confuse cohesion and adhesion. Adhesion describes water clinging to other substances (e.g., glass), not to itself, so it does not explain droplet formation on a surface that repels water."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because high specific heat involves hydrogen bonds. However, specific heat describes resistance to temperature change, not the tendency of water molecules to stick to each other."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because ice density is a notable water property. Ice density is caused by the fixed lattice in solid water and has no bearing on liquid water forming droplets."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 1: Chemistry of Life",
+        "unit_exam_weight_pct":  9,
+        "deck":  "Structure of Water and Hydrogen Bonding",
+        "type":  "mc_static",
+        "difficulty":  "easy",
+        "tags":  [
+                     "water_polarity",
+                     "solvent",
+                     "hydrophilic"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "Why is water considered the \u0027universal solvent\u0027 in biological systems?",
+                        "options":  [
+                                        "Water\u0027s polar covalent bonds allow it to surround and dissolve ionic and polar solutes",
+                                        "Water molecules are small enough to pass through any biological membrane freely",
+                                        "Water has a high boiling point that keeps it liquid across all biological temperatures",
+                                        "Water releases heat when it evaporates, stabilizing the temperature of solutions"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Water\u0027s partial charges (Î´+ on hydrogen, Î´âˆ’ on oxygen) allow it to form hydrogen bonds with polar solutes and to surround ions, effectively dissolving them. This polarity is the basis of its solvent capability.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because water does move across membranes via osmosis. However, solvent ability depends on polarity, not molecular size, and many solutes cannot freely cross membranes."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because water\u0027s high boiling point is a real property. That property reflects the energy needed to break hydrogen bonds during vaporization but does not explain why solutes dissolve."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because evaporative cooling is a known water property. Heat release during evaporation is a distinct phenomenon from the mechanism by which ionic or polar compounds dissolve in water."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 1: Chemistry of Life",
+        "unit_exam_weight_pct":  9,
+        "deck":  "Structure of Water and Hydrogen Bonding",
+        "type":  "mc_static",
+        "difficulty":  "medium",
+        "tags":  [
+                     "specific_heat",
+                     "hydrogen_bonding",
+                     "thermoregulation"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "A large coastal city experiences smaller temperature fluctuations than an inland desert city at the same latitude. Which property of water best explains this phenomenon?",
+                        "options":  [
+                                        "High specific heat capacity, which requires more energy to raise or lower water\u0027s temperature",
+                                        "High heat of vaporization, which cools surfaces as water evaporates from them",
+                                        "Cohesion between water molecules, which resists changes in liquid volume",
+                                        "Lower density of ice relative to liquid water, which allows ice to insulate liquid water below"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Water\u0027s high specific heat (4.18 J/gÂ·Â°C) means large bodies of water absorb or release substantial heat with minimal temperature change, moderating coastal climates relative to drier inland regions.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because heat of vaporization does moderate temperature. However, heat of vaporization operates when water evaporates, not when large water bodies absorb or release heat without phase change."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because cohesion is a well-known water property. Cohesion governs surface tension and liquid structure, not the capacity to buffer temperature change."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because ice density is a distinctive feature of water. The ice-density anomaly allows aquatic ecosystems to survive winter but plays no role in moderating air temperature fluctuations near oceans."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 1: Chemistry of Life",
+        "unit_exam_weight_pct":  9,
+        "deck":  "Structure of Water and Hydrogen Bonding",
+        "type":  "mc_static",
+        "difficulty":  "medium",
+        "tags":  [
+                     "ice_density",
+                     "hydrogen_bonding",
+                     "aquatic_ecosystems"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "Ice floats on liquid water because, upon freezing, water molecules form a crystalline lattice. Which of the following correctly explains why this is biologically significant?",
+                        "options":  [
+                                        "Floating ice insulates the liquid water below, allowing aquatic organisms to survive cold winters",
+                                        "Ice formation releases heat into the environment, warming the surrounding ecosystem",
+                                        "The crystalline lattice of ice makes it a better solvent for dissolved gases than liquid water",
+                                        "Ice floats because it has more hydrogen bonds per molecule than liquid water does"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Because ice is less dense than liquid water, it forms an insulating layer on the surface of ponds and lakes. This prevents complete freezing and allows aquatic life to persist beneath the ice through winter.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because freezing does release latent heat. While heat is released to the surroundings during freezing, the primary biological significance is the insulating effect of floating ice, not heat release."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because dissolved gases are ecologically important. Ice is actually a poorer solvent than liquid water; the relevant point is its insulating physical position, not its solvent capacity."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because hydrogen bonds are central to ice structure. Ice actually has the same or slightly more hydrogen bonds per molecule than liquid water, but that is the mechanism of lower density, not itself the biological significance."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 1: Chemistry of Life",
+        "unit_exam_weight_pct":  9,
+        "deck":  "Structure of Water and Hydrogen Bonding",
+        "type":  "mc_static",
+        "difficulty":  "hard",
+        "tags":  [
+                     "evaporative_cooling",
+                     "heat_of_vaporization",
+                     "hydrogen_bonding"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "A marathon runner sweats heavily during a race. Which property of water most directly prevents the runner\u0027s core body temperature from rising to lethal levels?",
+                        "options":  [
+                                        "High heat of vaporization, because evaporating sweat carries away large amounts of heat energy",
+                                        "High specific heat capacity, because water in tissues resists rapid temperature increases",
+                                        "Adhesion to skin, because water molecules spread out and maximize the cooling surface area",
+                                        "Cohesion between water molecules, because sweat remains liquid longer than other fluids would"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Water\u0027s high heat of vaporization (â‰ˆ2,260 J/g) means that when sweat evaporates, it removes a large quantity of thermal energy from the skin surface, effectively cooling the body.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because high specific heat is also a thermoregulatory property. Specific heat buffers temperature changes in the liquid phase; it does not explain the rapid heat removal that occurs specifically during evaporation."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because adhesion is a real water property. Adhesion allows sweat to wet the skin surface but does not itself remove heat; that removal requires phase transition from liquid to vapor."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because cohesion is frequently tested. Cohesion holds water molecules together and creates surface tension but is unrelated to the phase-change mechanism responsible for evaporative cooling."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 1: Chemistry of Life",
+        "unit_exam_weight_pct":  9,
+        "deck":  "Elements of Life",
+        "type":  "mc_static",
+        "difficulty":  "easy",
+        "tags":  [
+                     "carbon_tetravalence",
+                     "organic_molecules",
+                     "macromolecules"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "Carbon is the backbone element of all biological macromolecules. Which characteristic of carbon most directly enables it to form the large, diverse molecules required by living organisms?",
+                        "options":  [
+                                        "Carbon can form four covalent bonds, allowing it to create long chains and branched ring structures",
+                                        "Carbon is the most abundant element on Earth, making it readily available to organisms",
+                                        "Carbon readily forms ionic bonds with nitrogen and oxygen, producing stable biological molecules",
+                                        "Carbon atoms are small enough to pass through cell membranes without the need for transport proteins"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Carbon\u0027s four valence electrons allow it to form four covalent bonds with other atoms, enabling single, double, and triple bonds as well as chains, branches, and rings that underlie the diversity of organic molecules.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because abundance may seem relevant to biology. Carbon\u0027s abundance does not explain molecular diversity; silicon is also abundant but cannot produce equivalent biological complexity."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because nitrogen and oxygen are common in biomolecules. However, carbon-to-nitrogen and carbon-to-oxygen bonds are covalent, not ionic; ionic bonding would not produce the stable backbone structures seen in macromolecules."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because membrane transport is a familiar topic. Membrane permeability is unrelated to why carbon forms diverse molecular structures; transport proteins deal with movement of molecules, not bond-forming capacity."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 1: Chemistry of Life",
+        "unit_exam_weight_pct":  9,
+        "deck":  "Elements of Life",
+        "type":  "mc_static",
+        "difficulty":  "easy",
+        "tags":  [
+                     "functional_groups",
+                     "amino_group",
+                     "carboxyl_group"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "An organic molecule contains both an amino group (â€“NHâ‚‚) and a carboxyl group (â€“COOH). These two functional groups are characteristic of which class of biological monomer?",
+                        "options":  [
+                                        "Amino acids, the monomers of proteins",
+                                        "Nucleotides, the monomers of nucleic acids",
+                                        "Monosaccharides, the monomers of polysaccharides",
+                                        "Fatty acids, the monomers of triglycerides"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Every amino acid has both a central amino group (â€“NHâ‚‚) and a carboxyl group (â€“COOH) attached to the same Î±-carbon, along with a variable R-group. This dual-group structure is the defining feature of amino acids.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because nucleotides are monomers and contain nitrogen. Nucleotides contain a phosphate group, a sugar, and a nitrogenous baseâ€”not a free amino and carboxyl group together."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because monosaccharides are common monomers. Monosaccharides contain hydroxyl and carbonyl groups but lack both amino and carboxyl groups."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because fatty acids contain a carboxyl group. Fatty acids have a carboxyl group and a long hydrocarbon tail but do not contain an amino group."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 1: Chemistry of Life",
+        "unit_exam_weight_pct":  9,
+        "deck":  "Elements of Life",
+        "type":  "mc_static",
+        "difficulty":  "medium",
+        "tags":  [
+                     "functional_groups",
+                     "phosphate_group",
+                     "nucleic_acids",
+                     "atp"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "Which functional group is present in both ATP and the backbone of DNA, and is critical for energy transfer and information storage in cells?",
+                        "options":  [
+                                        "Phosphate group (â€“OPOâ‚ƒÂ²â»)",
+                                        "Sulfhydryl group (â€“SH)",
+                                        "Carbonyl group (C=O)",
+                                        "Hydroxyl group (â€“OH)"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Phosphate groups are found in ATP (where high-energy phosphoanhydride bonds store energy) and in the sugar-phosphate backbone of DNA and RNA, making them central to both energy metabolism and nucleic acid structure.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because sulfhydryl groups are taught alongside phosphate. Sulfhydryl groups are found in cysteine residues of proteins and are important in disulfide bridges but are absent from ATP and nucleic acid backbones."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because carbonyl groups appear in many biomolecules. Carbonyl groups are characteristic of aldehydes and ketones, including sugars, but are not the defining feature of ATP or the nucleic acid backbone."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because hydroxyl groups appear in sugars and nucleotides. While the ribose sugar of RNA contains a 2â€²-OH, the defining functional group linking nucleotides and storing energy in ATP is the phosphate group, not the hydroxyl."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 1: Chemistry of Life",
+        "unit_exam_weight_pct":  9,
+        "deck":  "Elements of Life",
+        "type":  "mc_static",
+        "difficulty":  "hard",
+        "tags":  [
+                     "elemental_composition",
+                     "macromolecule_elements",
+                     "CHNOPS"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "A researcher analyzes an unknown biological polymer and finds that it contains carbon, hydrogen, oxygen, and nitrogen but no phosphorus or sulfur. Which conclusion is best supported by this elemental data?",
+                        "options":  [
+                                        "The polymer could be a protein that lacks cysteine and methionine residues",
+                                        "The polymer is definitely a nucleic acid because it contains nitrogen",
+                                        "The polymer must be a polysaccharide because it lacks phosphorus",
+                                        "The polymer is a lipid because lipids are the only macromolecules that contain no phosphorus"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Proteins consist of C, H, O, and N; sulfur appears only in cysteine (â€“SH) and methionine (â€“Sâ€“CHâ‚ƒ). A protein lacking those two amino acids would contain no sulfur, and proteins do not require phosphorus in their backbone.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because nucleic acids contain nitrogen. Nucleic acids require phosphorus in their backbone; the absence of phosphorus rules out DNA or RNA, so the polymer cannot be a nucleic acid."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because polysaccharides do lack phosphorus. Polysaccharides (C, H, O) do not contain nitrogen; the presence of nitrogen in the polymer rules out pure polysaccharides."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because some lipids (e.g., phospholipids) do contain phosphorus. However, simple lipids (triglycerides, waxes) contain only C, H, and Oâ€”no nitrogenâ€”so the presence of nitrogen rules out a simple lipid."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 1: Chemistry of Life",
+        "unit_exam_weight_pct":  9,
+        "deck":  "Introduction to Biological Macromolecules",
+        "type":  "mc_static",
+        "difficulty":  "easy",
+        "tags":  [
+                     "dehydration_synthesis",
+                     "condensation_reaction",
+                     "polymer_formation"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "During the assembly of a polypeptide chain, amino acids are joined together by a reaction that removes a water molecule. This type of reaction is called:",
+                        "options":  [
+                                        "Dehydration synthesis, which forms a covalent bond between monomers while releasing water",
+                                        "Hydrolysis, which uses water to break covalent bonds between monomers",
+                                        "Oxidative phosphorylation, which couples bond formation to electron transfer",
+                                        "Saponification, which converts ester bonds into carboxylate and alcohol groups"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Dehydration synthesis (condensation) joins monomers by removing one water molecule (â€“OH from one monomer, â€“H from the other) to form a covalent bond, building polymers such as polypeptides, polysaccharides, and nucleic acids.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because hydrolysis is often taught alongside dehydration synthesis. Hydrolysis is the reverse reactionâ€”it breaks polymers apart using waterâ€”rather than building them."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because oxidative phosphorylation involves ATP synthesis. Oxidative phosphorylation is a mitochondrial process involving electron carriers and is unrelated to monomer-joining reactions."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because saponification also involves cleavage of bonds with water. Saponification specifically breaks ester bonds in fats to produce soap and glycerol; it is not the reaction used to build biological polymers."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 1: Chemistry of Life",
+        "unit_exam_weight_pct":  9,
+        "deck":  "Introduction to Biological Macromolecules",
+        "type":  "mc_static",
+        "difficulty":  "easy",
+        "tags":  [
+                     "hydrolysis",
+                     "digestion",
+                     "polymer_breakdown"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "When a person digests a starch-containing meal, the starch is broken down into glucose monomers in the small intestine. Which reaction accomplishes this breakdown?",
+                        "options":  [
+                                        "Hydrolysis, in which water molecules are added across glycosidic bonds to release glucose",
+                                        "Dehydration synthesis, in which water is removed to shorten the polysaccharide chain",
+                                        "Phosphorylation, in which a phosphate group is added to each glucose monomer",
+                                        "Oxidation, in which electrons are removed from the glycosidic bonds to break them"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Hydrolysis cleaves covalent bonds in polymers by inserting a water molecule: the â€“OH goes to one fragment and the â€“H to the other, releasing individual glucose monomers from the polysaccharide chain.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because dehydration synthesis involves water and sugars. Dehydration synthesis builds polymers rather than breaking them down; it removes water, the opposite of what occurs in digestion."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because phosphorylation is related to glucose metabolism. Phosphorylation occurs after glucose enters a cell (e.g., glucose-6-phosphate in glycolysis), not during the intestinal breakdown of starch into glucose."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because oxidation is part of carbohydrate catabolism. Oxidation occurs during cellular respiration after absorption; the initial digestive cleavage of glycosidic bonds is hydrolytic, not oxidative."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 1: Chemistry of Life",
+        "unit_exam_weight_pct":  9,
+        "deck":  "Introduction to Biological Macromolecules",
+        "type":  "mc_static",
+        "difficulty":  "medium",
+        "tags":  [
+                     "macromolecule_classes",
+                     "monomers_polymers",
+                     "carbohydrates_proteins"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "Which of the following correctly pairs each macromolecule class with its monomer?",
+                        "options":  [
+                                        "Proteins â†’ amino acids; nucleic acids â†’ nucleotides; polysaccharides â†’ monosaccharides",
+                                        "Proteins â†’ nucleotides; nucleic acids â†’ amino acids; polysaccharides â†’ fatty acids",
+                                        "Proteins â†’ amino acids; nucleic acids â†’ monosaccharides; polysaccharides â†’ nucleotides",
+                                        "Proteins â†’ fatty acids; nucleic acids â†’ nucleotides; polysaccharides â†’ amino acids"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Amino acids are linked by peptide bonds to form proteins; nucleotides are linked by phosphodiester bonds to form nucleic acids; monosaccharides are linked by glycosidic bonds to form polysaccharides.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because they mix up the monomer-polymer pairs for proteins and nucleic acids. Nucleotides are not the monomers of proteins, and amino acids are not the monomers of nucleic acids."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because they correctly place amino acids with proteins but then incorrectly assign monosaccharides to nucleic acids and nucleotides to polysaccharides."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because they may associate fatty acids with all energy-related macromolecules. Fatty acids are components of lipids, not a monomer type for proteins or polysaccharides."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 1: Chemistry of Life",
+        "unit_exam_weight_pct":  9,
+        "deck":  "Properties of Biological Macromolecules",
+        "type":  "mc_static",
+        "difficulty":  "easy",
+        "tags":  [
+                     "polysaccharides",
+                     "cellulose",
+                     "glycosidic_linkage",
+                     "structural_function"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "Cellulose and starch are both polysaccharides made of glucose monomers, yet humans can digest starch but not cellulose. What is the best explanation for this difference?",
+                        "options":  [
+                                        "Cellulose has Î²-1,4 glycosidic linkages that human digestive enzymes cannot break, while starch has Î±-1,4 linkages that they can",
+                                        "Cellulose contains fructose monomers instead of glucose, making it resistant to human amylase",
+                                        "Starch is stored inside cells where enzymes can access it, while cellulose is located on the exterior of cells",
+                                        "Cellulose chains are shorter than starch chains, which reduces enzyme binding efficiency"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "The Î²-1,4 glycosidic linkages in cellulose create straight, rigid chains that form intermolecular hydrogen bonds, producing a structure that human amylases (which cleave Î± linkages) cannot digest.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because fructose is a common monosaccharide. Both cellulose and starch are composed exclusively of glucose; the difference lies in the orientation of the glycosidic bond, not the identity of the monomer."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because compartmentalization is a biological concept. Enzyme access is not the issue; amylase is secreted into the digestive tract and does contact cellulose, but it cannot cleave Î²-1,4 bonds."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because chain length affects some molecular properties. Cellulose chains are actually longer and more organized than most starch chains; the digestibility difference is due to bond geometry, not chain length."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 1: Chemistry of Life",
+        "unit_exam_weight_pct":  9,
+        "deck":  "Properties of Biological Macromolecules",
+        "type":  "mc_static",
+        "difficulty":  "medium",
+        "tags":  [
+                     "saturated_fatty_acids",
+                     "unsaturated_fatty_acids",
+                     "membrane_fluidity"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "A biologist compares two phospholipid bilayers: one composed primarily of saturated fatty acid tails and one composed primarily of unsaturated fatty acid tails. At the same temperature, which prediction is correct?",
+                        "options":  [
+                                        "The unsaturated bilayer is more fluid because double bonds create kinks that prevent tight packing of fatty acid tails",
+                                        "The saturated bilayer is more fluid because straight tails slide past each other without restriction",
+                                        "Both bilayers have equal fluidity because the polar heads, not the tails, determine membrane fluidity",
+                                        "The unsaturated bilayer is less fluid because double bonds create additional van der Waals interactions between tails"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Unsaturated fatty acids contain one or more C=C double bonds that introduce kinks in the hydrocarbon tails, preventing close packing and increasing membrane fluidity compared to membranes rich in straight saturated tails.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because they reason that straight tails would slide more easily. In reality, straight saturated tails pack tightly together via van der Waals forces, reducing fluidity rather than increasing it."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because they overemphasis the role of the polar head group. While head group chemistry affects some membrane properties, the degree of fatty acid saturation is the primary determinant of bilayer fluidity."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because double bonds are sometimes associated with stronger interactions. Double bonds in unsaturated fatty acids reduce, not increase, van der Waals packing efficiency by creating geometric kinks."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 1: Chemistry of Life",
+        "unit_exam_weight_pct":  9,
+        "deck":  "Properties of Biological Macromolecules",
+        "type":  "mc_numeric",
+        "difficulty":  "medium",
+        "tags":  [
+                     "dehydration_synthesis",
+                     "water_molecules",
+                     "polymer_formation"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  {
+                       "type":  "latex",
+                       "value":  "\\text{Water molecules released} = n - 1",
+                       "caption":  "Formula for water released during dehydration synthesis of a polymer with n monomers"
+                   },
+        "content":  {
+                        "stem":  "A polypeptide is synthesized from {{n}} amino acid monomers by dehydration synthesis. How many water molecules are released during this process?",
+                        "params":  {
+                                       "n":  12
+                                   },
+                        "answer_formula":  "n - 1",
+                        "precision":  0,
+                        "unit":  "water molecules",
+                        "options":  [
+                                        "11",
+                                        "12",
+                                        "13",
+                                        "24"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Each dehydration synthesis reaction joins two monomers and releases one water molecule. For n monomers forming a single chain, n âˆ’ 1 reactions occur, releasing n âˆ’ 1 = 11 water molecules.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose 12 because they equate the number of water molecules with the number of monomers. The first monomer does not require a reaction to begin the chain, so the count is n âˆ’ 1, not n."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose 13 because they add one to account for an assumed initiation step. No extra water is produced at initiation; each peptide bond formation releases exactly one water, yielding n âˆ’ 1 total."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose 24 because they double the monomer count, perhaps thinking each monomer contributes two water molecules. Each condensation reaction involves exactly one â€“OH and one â€“H from two adjacent monomers, producing one water per bond."
+                                                        }
+                                                    ],
+                        "distractors":  [
+                                            {
+                                                "formula":  "n",
+                                                "error_type":  "off_by_one"
+                                            },
+                                            {
+                                                "formula":  "n + 1",
+                                                "error_type":  "off_by_one_plus"
+                                            },
+                                            {
+                                                "formula":  "2 * n",
+                                                "error_type":  "factor_error"
+                                            }
+                                        ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 1: Chemistry of Life",
+        "unit_exam_weight_pct":  9,
+        "deck":  "Properties of Biological Macromolecules",
+        "type":  "mc_static",
+        "difficulty":  "hard",
+        "tags":  [
+                     "glycogen",
+                     "starch",
+                     "energy_storage",
+                     "polysaccharide_branching"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "Glycogen and starch both store glucose in animals and plants, respectively, yet glycogen is more highly branched than starch. What functional advantage does greater branching provide for glycogen in animal cells?",
+                        "options":  [
+                                        "More branch ends allow more simultaneous enzyme access, enabling faster glucose release during high-energy demand",
+                                        "Greater branching lowers the osmotic pressure of glycogen solutions, preventing cell lysis",
+                                        "More branches increase the total number of glycosidic bonds, storing more chemical energy per glucose unit",
+                                        "Greater branching makes glycogen soluble in lipid membranes, improving transport to mitochondria"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Each branch end can be simultaneously degraded by glycogen phosphorylase, so more branches allow more enzyme molecules to act at once, mobilizing glucose rapidly to meet sudden energy demands in muscle and liver cells.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because osmotic pressure is a relevant cellular concern. Glycogen\u0027s large insoluble granule form does reduce osmotic impact, but the functional advantage of branching specifically is enzymatic access speed, not osmotic pressure reduction."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because more bonds might seem to mean more stored energy. The energy per glucose unit is the same regardless of chain structure; branching changes the rate of access, not energy density per monomer."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because mitochondria are the site of energy production. Glycogen is a water-soluble polymer stored in the cytosol and is not transported through lipid membranes; glucose (after hydrolysis) enters glycolysis in the cytosol."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 1: Chemistry of Life",
+        "unit_exam_weight_pct":  9,
+        "deck":  "Structure and Function of Biological Macromolecules",
+        "type":  "mc_static",
+        "difficulty":  "easy",
+        "tags":  [
+                     "protein_structure",
+                     "primary_structure",
+                     "amino_acid_sequence"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "Which level of protein structure refers to the unique linear sequence of amino acids in a polypeptide chain?",
+                        "options":  [
+                                        "Primary structure, determined by the sequence of amino acids linked by peptide bonds",
+                                        "Secondary structure, determined by hydrogen bonding between backbone atoms",
+                                        "Tertiary structure, determined by interactions among R-groups of amino acids",
+                                        "Quaternary structure, determined by interactions between separate polypeptide subunits"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Primary structure is the specific linear order of amino acids connected by peptide bonds. This sequence, encoded in DNA, ultimately determines all higher levels of protein structure and function.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because secondary structure is an early step in folding. Secondary structure refers to local folding patterns (Î±-helix, Î²-sheet) stabilized by hydrogen bonds, not the amino acid sequence itself."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because tertiary structure defines the 3D shape. Tertiary structure is the overall three-dimensional fold driven by R-group interactions; it presupposes a primary sequence but is not defined by it."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because quaternary structure involves multiple chains. Quaternary structure describes how multiple polypeptide subunits assemble, which is a higher-order property beyond a single chain\u0027s sequence."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 1: Chemistry of Life",
+        "unit_exam_weight_pct":  9,
+        "deck":  "Structure and Function of Biological Macromolecules",
+        "type":  "mc_static",
+        "difficulty":  "medium",
+        "tags":  [
+                     "protein_denaturation",
+                     "tertiary_structure",
+                     "r_group_interactions"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "When an enzyme is placed in a strongly acidic solution, it loses its catalytic activity. Which molecular-level event best explains this loss of function?",
+                        "options":  [
+                                        "Altered pH disrupts the ionic and hydrogen bonds stabilizing the tertiary structure, causing the active site to change shape",
+                                        "The acidic solution breaks the peptide bonds between amino acids, fragmenting the polypeptide chain",
+                                        "Protons from the acid replace the R-groups of amino acids, changing the primary structure",
+                                        "Low pH causes the enzyme to lose its quaternary structure by breaking covalent disulfide bonds"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Denaturation by pH change disrupts the non-covalent interactions (ionic bonds, hydrogen bonds) and, in extreme cases, hydrophobic interactions that maintain tertiary structure. The active site loses its precise geometry, eliminating catalytic function.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because they think acids break all chemical bonds. Peptide bonds are covalent and are only cleaved hydrolytically by specific proteases; typical acidic conditions do not break them directly."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because protons are involved in acid chemistry. Protonation can alter R-group charge state (e.g., histidine, glutamate), but this changes the folding interactions, not the primary covalent sequence of amino acids."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because disulfide bonds are part of protein structure. Disulfide bonds are covalent and are not broken by pH change alone; reducing agents are required to cleave them. Denaturation by pH primarily disrupts non-covalent bonds."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 1: Chemistry of Life",
+        "unit_exam_weight_pct":  9,
+        "deck":  "Structure and Function of Biological Macromolecules",
+        "type":  "mc_static",
+        "difficulty":  "medium",
+        "tags":  [
+                     "protein_secondary_structure",
+                     "alpha_helix",
+                     "beta_sheet",
+                     "hydrogen_bonding"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "The Î±-helix and Î²-pleated sheet are both examples of protein secondary structure. Which type of bond is primarily responsible for stabilizing these structures?",
+                        "options":  [
+                                        "Hydrogen bonds between carbonyl oxygen and amino hydrogen atoms of the polypeptide backbone",
+                                        "Covalent disulfide bonds between cysteine R-groups in adjacent portions of the chain",
+                                        "Ionic bonds between oppositely charged R-groups of nearby amino acids",
+                                        "Van der Waals forces between nonpolar R-groups buried in the protein interior"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Secondary structures form when backbone C=O groups donate electron density and backbone Nâ€“H groups donate hydrogen, forming regular patterns of hydrogen bonds that produce the Î±-helix (within a chain) or Î²-sheet (between adjacent strands).",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because disulfide bonds are a known stabilizing force in proteins. Disulfide bonds contribute to tertiary and quaternary structure by linking R-groups of cysteine residues; they are not the bonds that form helices or sheets."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because ionic bonds (salt bridges) do stabilize some protein regions. Ionic R-group interactions contribute to tertiary structure, not to the backbone-to-backbone regularity that defines secondary structure."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because hydrophobic interactions are important in folding. Hydrophobic packing of nonpolar R-groups is a major driver of tertiary structure but does not produce the repetitive backbone pattern of Î±-helices or Î²-sheets."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 1: Chemistry of Life",
+        "unit_exam_weight_pct":  9,
+        "deck":  "Structure and Function of Biological Macromolecules",
+        "type":  "mc_static",
+        "difficulty":  "hard",
+        "tags":  [
+                     "r_group_polarity",
+                     "protein_folding",
+                     "hydrophobic_effect"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "A globular protein in aqueous solution has its nonpolar amino acid R-groups oriented toward the interior of the protein. Which principle best explains this arrangement?",
+                        "options":  [
+                                        "The hydrophobic effect drives nonpolar R-groups away from water into the protein core, lowering the free energy of the system",
+                                        "Nonpolar R-groups form hydrogen bonds with water that are stronger than hydrogen bonds formed with other R-groups",
+                                        "Nonpolar R-groups carry net negative charges that repel the negatively charged surface water molecules",
+                                        "Covalent bonds between nonpolar R-groups and the polypeptide backbone force them inward during synthesis"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "The hydrophobic effect arises because burying nonpolar R-groups in the interior minimizes disruption to water\u0027s hydrogen-bond network, increasing the entropy of the surrounding water and lowering overall free energy of the folded state.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because hydrogen bonding is pervasive in biology. Nonpolar groups do not form hydrogen bonds with water; they lack the partial charges needed. Their exclusion from the aqueous environment is driven by entropy, not bond formation."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because charge-charge repulsion is a real molecular force. Nonpolar R-groups are uncharged; they cannot be repelled by electrostatic interaction with water molecules, which are also net neutral."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because protein synthesis involves covalent chemistry. Covalent backbone bonds fix the sequence (primary structure) but do not physically force R-groups into the interior; folding into tertiary structure is driven by thermodynamic forces after synthesis."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 1: Chemistry of Life",
+        "unit_exam_weight_pct":  9,
+        "deck":  "Structure and Function of Biological Macromolecules",
+        "type":  "mc_numeric",
+        "difficulty":  "hard",
+        "tags":  [
+                     "peptide_bonds",
+                     "amino_acids",
+                     "protein_synthesis"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  {
+                       "type":  "latex",
+                       "value":  "\\text{Peptide bonds} = n - 1",
+                       "caption":  "Number of peptide bonds in a polypeptide with n amino acids"
+                   },
+        "content":  {
+                        "stem":  "A protein is composed of two polypeptide subunits. The first subunit contains {{a}} amino acids and the second contains {{b}} amino acids. How many total peptide bonds are present in the entire protein?",
+                        "params":  {
+                                       "a":  80,
+                                       "b":  60
+                                   },
+                        "answer_formula":  "(a - 1) + (b - 1)",
+                        "precision":  0,
+                        "unit":  "peptide bonds",
+                        "options":  [
+                                        "138",
+                                        "140",
+                                        "139",
+                                        "141"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Each polypeptide chain of n amino acids contains n âˆ’ 1 peptide bonds. The first subunit has 79 bonds and the second has 59 bonds, giving 79 + 59 = 138 total peptide bonds.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose 140 because they sum a + b = 140 without subtracting for each chain. They forget that each chain of n amino acids forms only n âˆ’ 1 bonds, losing two bonds total (one per subunit)."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose 139 because they subtract only one from the total rather than one from each chain. A single combined correction of (a + b) âˆ’ 1 treats the two chains as one continuous polymer, which is incorrect."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose 141 because they add one instead of subtracting. This reflects a sign error in applying the n âˆ’ 1 formula, perhaps from confusing bond count with monomer count."
+                                                        }
+                                                    ],
+                        "distractors":  [
+                                            {
+                                                "formula":  "a + b",
+                                                "error_type":  "forgot_subtraction"
+                                            },
+                                            {
+                                                "formula":  "a + b - 1",
+                                                "error_type":  "single_chain_assumption"
+                                            },
+                                            {
+                                                "formula":  "a + b + 1",
+                                                "error_type":  "sign_error"
+                                            }
+                                        ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 1: Chemistry of Life",
+        "unit_exam_weight_pct":  9,
+        "deck":  "Nucleic Acids",
+        "type":  "mc_static",
+        "difficulty":  "easy",
+        "tags":  [
+                     "nucleotide_structure",
+                     "dna_components",
+                     "sugar_phosphate_base"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "A nucleotide is the monomer of nucleic acids. Which three components make up a single DNA nucleotide?",
+                        "options":  [
+                                        "A deoxyribose sugar, a phosphate group, and a nitrogenous base",
+                                        "A ribose sugar, a phosphate group, and a nitrogenous base",
+                                        "A deoxyribose sugar, an amino group, and a nitrogenous base",
+                                        "A glucose molecule, a phosphate group, and a nitrogenous base"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Each DNA nucleotide consists of deoxyribose (a five-carbon sugar lacking the 2â€²-OH of ribose), one or more phosphate groups, and one of four nitrogenous bases (A, T, G, or C).",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because ribose is a sugar found in nucleotides. Ribose is the sugar in RNA nucleotides; DNA nucleotides contain deoxyribose, which lacks a hydroxyl group at the 2â€² position."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because amino groups appear in other macromolecule monomers. Amino groups are characteristic of amino acids; nucleotides contain a phosphate group, not a free amino group, as the charged backbone component."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because glucose is a common biological sugar. The five-carbon pentose sugars ribose and deoxyribose are distinct from the six-carbon glucose; glucose is not a component of nucleotides."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 1: Chemistry of Life",
+        "unit_exam_weight_pct":  9,
+        "deck":  "Nucleic Acids",
+        "type":  "mc_static",
+        "difficulty":  "easy",
+        "tags":  [
+                     "dna_base_pairing",
+                     "hydrogen_bonds",
+                     "complementary_bases"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "In a DNA double helix, adenine always pairs with thymine, and guanine always pairs with cytosine. Which of the following correctly describes the hydrogen bonding in these base pairs?",
+                        "options":  [
+                                        "Aâ€“T pairs are held by 2 hydrogen bonds; Gâ€“C pairs are held by 3 hydrogen bonds",
+                                        "Aâ€“T pairs are held by 3 hydrogen bonds; Gâ€“C pairs are held by 2 hydrogen bonds",
+                                        "Both Aâ€“T and Gâ€“C pairs are held by exactly 2 hydrogen bonds each",
+                                        "Both Aâ€“T and Gâ€“C pairs are held by exactly 3 hydrogen bonds each"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Adenine and thymine share 2 hydrogen bonds, while guanine and cytosine share 3 hydrogen bonds. The extra hydrogen bond in Gâ€“C pairs makes Gâ€“C-rich DNA more thermally stable than Aâ€“T-rich DNA.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because they reverse the bond counts. The more chemically complex Gâ€“C pair, with its additional amino and carbonyl groups, forms 3 hydrogen bonds; the simpler Aâ€“T pair forms 2."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because they recall the Aâ€“T count and generalize it. Gâ€“C pairs have three complementary hydrogen-bonding sites, not two; equating both pairs at 2 underestimates Gâ€“C stability."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because they recall the Gâ€“C count and generalize it. Aâ€“T pairs have only two donor-acceptor sites complementary to each other; assigning 3 bonds to Aâ€“T overstates the number of complementary sites."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 1: Chemistry of Life",
+        "unit_exam_weight_pct":  9,
+        "deck":  "Nucleic Acids",
+        "type":  "mc_static",
+        "difficulty":  "medium",
+        "tags":  [
+                     "rna_vs_dna",
+                     "ribose_deoxyribose",
+                     "uracil_thymine"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "A molecular biologist isolates a nucleic acid strand and determines it contains uracil, ribose, and is single-stranded. Which of the following conclusions is correct?",
+                        "options":  [
+                                        "The strand is RNA, because RNA contains ribose and uracil instead of deoxyribose and thymine",
+                                        "The strand is DNA, because uracil is used in place of thymine in single-stranded regions",
+                                        "The strand is a hybrid DNAâ€“RNA duplex that uses uracil in the RNA portion only",
+                                        "The strand cannot be classified as a nucleic acid because uracil is not a standard nitrogenous base"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "RNA is distinguished from DNA by three features: ribose sugar (with 2â€²-OH), uracil instead of thymine, and typically single-stranded form. All three features are present, confirming this strand is RNA.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because they may confuse which polymer uses uracil. DNA uses thymine, not uracil; uracil is the RNA-specific pyrimidine that base-pairs with adenine during transcription."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because hybrid duplexes exist during transcription. Uracil\u0027s presence in a single-stranded polymer identifies it as RNA; a DNAâ€“RNA hybrid is double-stranded with specific structural features not described here."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because uracil may seem unfamiliar. Uracil (2,4-dioxopyrimidine) is a standard RNA nitrogenous base; the four RNA bases are adenine, guanine, cytosine, and uracil."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 1: Chemistry of Life",
+        "unit_exam_weight_pct":  9,
+        "deck":  "Nucleic Acids",
+        "type":  "mc_static",
+        "difficulty":  "medium",
+        "tags":  [
+                     "antiparallel_strands",
+                     "dna_structure",
+                     "3_prime_5_prime"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "The two strands of a DNA double helix run antiparallel to each other. What does \u0027antiparallel\u0027 mean in this context?",
+                        "options":  [
+                                        "One strand runs 5â€² to 3â€² while the complementary strand runs 3â€² to 5â€² in the opposite direction",
+                                        "The two strands carry opposite electrical charges, causing them to repel along the length of the helix",
+                                        "One strand contains purines and the other strand contains only pyrimidines, making them chemically opposite",
+                                        "The nitrogenous bases on one strand point away from the helix axis while the other strand\u0027s bases point toward it"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Antiparallel orientation means the 5â€²-to-3â€² direction of one strand is opposite to that of the complementary strand. This arrangement is required for proper base pairing (Aâ€“T, Gâ€“C) between complementary bases on the two strands.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because the negatively charged phosphate backbone is real. While both strands carry negative charges (not opposite charges), antiparallel specifically refers to the directionality of the 5â€²â€“3â€² orientation, not charge."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because purine-pyrimidine pairing is a real structural feature. Each strand contains both purines and pyrimidines; base pairing matches a purine on one strand with a pyrimidine on the other, but this does not define antiparallel orientation."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because base stacking inside the helix is a real structural detail. The bases of both strands point inward toward the axis on both strands; antiparallel describes directional polarity, not the orientation of bases relative to the helix axis."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 1: Chemistry of Life",
+        "unit_exam_weight_pct":  9,
+        "deck":  "Nucleic Acids",
+        "type":  "mc_numeric",
+        "difficulty":  "hard",
+        "tags":  [
+                     "base_pairing",
+                     "chargaffs_rules",
+                     "dna_composition"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  {
+                       "type":  "latex",
+                       "value":  "\\%A = \\%T, \\quad \\%G = \\%C, \\quad \\%A + \\%T + \\%G + \\%C = 100",
+                       "caption":  "Chargaff\u0027s rules for double-stranded DNA"
+                   },
+        "content":  {
+                        "stem":  "A double-stranded DNA molecule is analyzed and found to be {{pct_A}}% adenine. What percentage of the total bases is guanine?",
+                        "params":  {
+                                       "pct_A":  22
+                                   },
+                        "answer_formula":  "(100 - 2 * pct_A) / 2",
+                        "precision":  0,
+                        "unit":  "%",
+                        "options":  [
+                                        "28%",
+                                        "22%",
+                                        "56%",
+                                        "44%"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "By Chargaff\u0027s rules, %A = %T = 22%, so %A + %T = 44%. The remaining 56% is split equally between G and C, giving %G = %C = 28%.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose 22% because they assume %G = %A. Chargaff\u0027s rules state that %A = %T and %G = %C, but G does not equal A; the percentage of G is determined by subtracting A and T from 100%."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose 56% because they calculate G + C correctly (100 âˆ’ 44 = 56) but forget to halve it. Since %G = %C, each is half of the G+C total, not the full 56%."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose 44% because they calculate A + T = 44% and use that value for G. This confuses the A+T content with the G content; 44% is the combined fraction of A and T, not of G alone."
+                                                        }
+                                                    ],
+                        "distractors":  [
+                                            {
+                                                "formula":  "pct_A",
+                                                "error_type":  "assumes_G_equals_A"
+                                            },
+                                            {
+                                                "formula":  "100 - 2 * pct_A",
+                                                "error_type":  "forgot_to_halve"
+                                            },
+                                            {
+                                                "formula":  "2 * pct_A",
+                                                "error_type":  "used_AT_sum_for_G"
+                                            }
+                                        ]
+                    }
+    }
+]

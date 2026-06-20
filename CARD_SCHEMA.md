@@ -13,8 +13,10 @@ This document defines the format for source cards authored into the deck library
 |---|---|
 | `mc_static` | Multiple choice, no numbers — options are fixed strings |
 | `mc_numeric` | Multiple choice, numeric answer — stem and options use formula placeholders |
-| `fr_static` | Free response, text answer — exact match + semantic fallback |
-| `fr_numeric` | Free response, numeric answer — stem uses placeholders, answer computed from formula |
+| `fr_static` | *(Deprecated — no longer generated; kept for backward compat with existing cards)* |
+| `fr_numeric` | *(Deprecated — no longer generated; kept for backward compat with existing cards)* |
+
+**New content generation produces `mc_static` and `mc_numeric` only (60/40 split).**
 
 ---
 
@@ -67,13 +69,21 @@ Every card shares a common envelope. Type-specific fields are nested under `cont
       "Ribosome",
       "Golgi apparatus"
     ],
-    "correct_index": 0
+    "correct_index": 0,
+    "correct_explanation": "Mitochondria are the site of oxidative phosphorylation, where the electron transport chain drives ATP synthesis via ATP synthase.",
+    "distractor_explanations": [
+      { "index": 1, "reason": "Students may choose the Nucleus because it controls cell functions, but it does not participate in ATP synthesis." },
+      { "index": 2, "reason": "Ribosomes synthesize proteins, not ATP — students confuse 'energy for protein synthesis' with 'ATP synthesis'." },
+      { "index": 3, "reason": "The Golgi apparatus modifies and ships proteins; students may confuse its packaging role with energy production." }
+    ]
   }
 }
 ```
 
-- `options` — array of exactly 4 strings
+- `options` — array of exactly 4 strings; all options must be within ±15 words of each other in length
 - `correct_index` — 0-based index of the correct option
+- `correct_explanation` — 1–2 sentences explaining why the correct answer is right per the CED
+- `distractor_explanations` — one entry per wrong answer; `index` matches position in `options`; `reason` describes the misconception that leads students to that answer and why it is wrong
 - Haiku generates variants by rephrasing the stem and shuffling distractor order; the correct answer label never changes
 
 ---
@@ -96,6 +106,12 @@ Every card shares a common envelope. Type-specific fields are nested under `cont
       { "formula": "a * b",  "error_type": "multiplied_instead_of_divided" },
       { "formula": "a + b",  "error_type": "added_instead_of_divided" },
       { "formula": "b / a",  "error_type": "inverted_ratio" }
+    ],
+    "correct_explanation": "Dilution divides concentration by the dilution factor: M_final = M_initial / dilution_factor = a / b.",
+    "distractor_explanations": [
+      { "index": "a*b result", "reason": "Students multiply instead of divide — confusing dilution with concentration increase." },
+      { "index": "a+b result", "reason": "Students add the two values — treating dilution as an additive operation." },
+      { "index": "b/a result", "reason": "Students invert the ratio, dividing the factor by the concentration instead of the reverse." }
     ]
   }
 }
@@ -106,6 +122,8 @@ Every card shares a common envelope. Type-specific fields are nested under `cont
 - `precision` — decimal places to round the computed answer to before display
 - `unit` — appended to the answer label in the UI (e.g. "0.75 M"); optional
 - `distractors` — exactly 3 entries; each has a `formula` (same safe eval rules as `answer_formula`) and an `error_type` label for internal analytics
+- `correct_explanation` — 1–2 sentences explaining the correct calculation approach
+- `distractor_explanations` — one entry per distractor formula describing the calculation error students make
 - At generation time: params are sampled, all four values (answer + 3 distractors) are computed, then shuffled — `correct_index` is determined after shuffle and stored in the variant record
 
 #### Param sampling constraints
@@ -193,6 +211,22 @@ Any card type can include a `visual` field. It is displayed above the question s
 - `alt` — required for accessibility; also used as fallback text if image fails to load
 - Static images must be uploaded to Supabase Storage separately before the card can go live
 - Use for: graphs, lab apparatus diagrams, spectroscopy charts, energy diagrams that can't be represented as SMILES
+
+#### `latex` — Mathematical expression or formula block
+
+```json
+"visual": {
+  "type": "latex",
+  "value": "\\Delta G = \\Delta H - T\\Delta S",
+  "caption": "Gibbs free energy equation"
+}
+```
+
+- `value` — a valid LaTeX string; rendered client-side by KaTeX in display mode above the stem
+- `caption` — optional label shown below the rendered expression
+- Use for: thermodynamic equations, equilibrium expressions, integral/derivative notation, stoichiometric formulas, energy diagrams expressed mathematically
+- Inline math in the stem itself (`$...$`) is also acceptable for brief expressions that don't need a standalone display block
+- Validation checks: balanced braces `{}`, non-empty `value`, `\\` escape for LaTeX commands
 
 #### `data_chart` — Programmatic chart (future, not MVP)
 
@@ -296,13 +330,17 @@ AP Calculus AB
 | Rule | Applies to |
 |---|---|
 | Exactly 4 options | `mc_static`, `mc_numeric` |
+| All 4 options within ±15 words of each other in length | `mc_static`, `mc_numeric` |
 | Exactly 3 distractors | `mc_numeric` |
+| `correct_explanation` required | `mc_static`, `mc_numeric` |
+| `distractor_explanations` required — one entry per wrong answer | `mc_static`, `mc_numeric` |
 | `{{var}}` names in stem must match keys in `params` | `mc_numeric`, `fr_numeric` |
 | `answer_formula` and distractor `formula` fields reference only param names and numeric literals | `mc_numeric`, `fr_numeric` |
 | `precision` must be defined when `unit` is defined | `mc_numeric`, `fr_numeric` |
 | `semantic_fallback` must be `false` for all numeric types | `fr_numeric` |
 | At least 1 accepted answer string | `fr_static` |
 | All accepted answer strings must be lowercase | `fr_static` |
+| `visual.value` must be non-empty; braces must be balanced | `latex` visual type |
 
 ---
 

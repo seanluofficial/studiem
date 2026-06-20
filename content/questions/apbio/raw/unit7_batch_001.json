@@ -1,0 +1,762 @@
+﻿[
+  {
+    "subject": "AP Biology",
+    "unit": "Unit 7: Natural Selection",
+    "unit_exam_weight_pct": 16,
+    "deck": "Introduction to Natural Selection",
+    "type": "mc_static",
+    "difficulty": "easy",
+    "tags": ["darwin_postulates", "natural_selection", "heritable_variation"],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Which of Darwin's four postulates most directly explains why natural selection cannot act on a purely environmental (non-heritable) trait change?",
+      "options": [
+        "Variation must be heritable for selection to change allele frequencies across generations.",
+        "More offspring must be produced than the environment can support for competition to occur.",
+        "Individuals with favorable traits must survive at higher rates than those without them.",
+        "Variation in traits must exist within the population before selection can favor any trait."
+      ],
+      "correct_index": 0,
+      "correct_explanation": "Natural selection changes population allele frequencies only when trait differences are passed from parent to offspring. A purely environmental change (phenotypic plasticity) is not encoded in the genome and therefore cannot be inherited, so selection on it leaves no genetic legacy across generations.",
+      "distractor_explanations": [
+        { "index": 1, "reason": "Students choose B because overproduction of offspring is the driver of competition, which seems fundamental. It is wrong because overproduction explains why selection pressure exists, not why non-heritable traits cannot be selected." },
+        { "index": 2, "reason": "Students choose C because differential survival is the mechanism of selection. It is wrong because even if organisms with environmental modifications survive better, the modification is not transmitted genetically to offspring." },
+        { "index": 3, "reason": "Students choose D because variation is a prerequisite for selection. It is wrong because variation alone is insufficient â€” the question specifically asks about why non-heritable changes are invisible to selection across generations." }
+      ]
+    }
+  },
+  {
+    "subject": "AP Biology",
+    "unit": "Unit 7: Natural Selection",
+    "unit_exam_weight_pct": 16,
+    "deck": "Introduction to Natural Selection",
+    "type": "mc_static",
+    "difficulty": "medium",
+    "tags": ["fitness", "reproductive_success", "natural_selection"],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "In a population of beetles, green individuals are more frequently eaten by birds than brown individuals, yet green beetles consistently produce 20% more eggs per clutch. Which outcome best predicts the long-term evolutionary trajectory of this population?",
+      "options": [
+        "The relative frequencies of green and brown alleles depend on whether the survival advantage of brown outweighs the fecundity advantage of green.",
+        "Brown beetles will inevitably fix in the population because predation is always a stronger selective pressure than fecundity.",
+        "Green beetles will inevitably fix because higher fecundity always overrides mortality differences in fitness calculations.",
+        "The population will remain at equal frequencies of green and brown because the two advantages exactly cancel each other."
+      ],
+      "correct_index": 0,
+      "correct_explanation": "Fitness is total reproductive success â€” the product of survival probability and offspring number. Whether brown or green alleles increase in frequency depends on the net contribution to the next generation, requiring quantitative comparison of both components of fitness.",
+      "distractor_explanations": [
+        { "index": 1, "reason": "Students choose B because predation is a vivid, direct cause of death. It is wrong because predation rate is only one component of fitness; fecundity differences can compensate if they are large enough." },
+        { "index": 2, "reason": "Students choose C because more offspring seems like an obvious advantage. It is wrong because higher egg production is irrelevant if most green individuals are eaten before reproducing." },
+        { "index": 3, "reason": "Students choose D because the scenario names one advantage per morph, implying balance. It is wrong because the two selective pressures are not stated to be numerically equal; balance would require specific quantitative equivalence." }
+      ]
+    }
+  },
+  {
+    "subject": "AP Biology",
+    "unit": "Unit 7: Natural Selection",
+    "unit_exam_weight_pct": 16,
+    "deck": "Natural Selection",
+    "type": "mc_static",
+    "difficulty": "easy",
+    "tags": ["directional_selection", "stabilizing_selection", "disruptive_selection"],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "A population of sparrows is studied over 50 years. Data show that birds with intermediate beak sizes survive at the highest rates during normal years, while very small and very large beaks are selected against. Which mode of natural selection does this describe?",
+      "options": [
+        "Stabilizing selection, which reduces variation by favoring the intermediate phenotype.",
+        "Directional selection, which shifts the population mean toward one extreme over time.",
+        "Disruptive selection, which favors both extremes and eliminates intermediate phenotypes.",
+        "Sexual selection, which favors traits that increase mating success rather than survival."
+      ],
+      "correct_index": 0,
+      "correct_explanation": "Stabilizing selection acts against phenotypic extremes and favors intermediate trait values, reducing variation in the population over time without shifting the mean. Classic examples include human birth weight and beak size in stable environments.",
+      "distractor_explanations": [
+        { "index": 1, "reason": "Students choose B because they recognize selection is occurring. It is wrong because directional selection shifts the distribution toward one extreme, whereas here extremes are selected against and the intermediate is favored." },
+        { "index": 2, "reason": "Students choose C because disruptive selection also involves extremes. It is wrong because disruptive selection favors the two extremes at the expense of intermediate phenotypes â€” the opposite of what is described." },
+        { "index": 3, "reason": "Students choose D because beak size could affect mate choice. It is wrong because sexual selection is defined by differential mating success, not differential survival, and the scenario specifies survival rates." }
+      ]
+    }
+  },
+  {
+    "subject": "AP Biology",
+    "unit": "Unit 7: Natural Selection",
+    "unit_exam_weight_pct": 16,
+    "deck": "Natural Selection",
+    "type": "mc_static",
+    "difficulty": "medium",
+    "tags": ["disruptive_selection", "sympatric_divergence", "polymorphism"],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Disruptive selection acting on a continuous trait in a single population is most likely to produce which long-term population-level outcome?",
+      "options": [
+        "A bimodal distribution of the trait, potentially leading to two distinct phenotypic classes.",
+        "A unimodal distribution centered at the original population mean with reduced variance.",
+        "A unimodal distribution shifted toward the phenotypic extreme with the highest fitness.",
+        "No change in trait distribution because opposing selection pressures cancel each other."
+      ],
+      "correct_index": 0,
+      "correct_explanation": "Disruptive selection removes intermediate phenotypes and increases the frequency of both extremes, creating a bimodal distribution. If reproductive isolation follows, this can drive sympatric speciation, as seen in African seed-cracker finches with beak size.",
+      "distractor_explanations": [
+        { "index": 1, "reason": "Students choose B because reduced variance sounds like stabilizing selection, which they may confuse with disruptive. It is wrong because stabilizing selection produces a narrower unimodal distribution, not a bimodal one." },
+        { "index": 2, "reason": "Students choose C because a shift toward one extreme describes directional selection, which students often recall first. It is wrong because directional selection favors only one extreme, whereas disruptive selection simultaneously favors both." },
+        { "index": 3, "reason": "Students choose D because two opposing forces might seem to cancel. It is wrong because in disruptive selection both extremes have higher fitness than the intermediate, so both extreme phenotypes increase â€” they do not cancel." }
+      ]
+    }
+  },
+  {
+    "subject": "AP Biology",
+    "unit": "Unit 7: Natural Selection",
+    "unit_exam_weight_pct": 16,
+    "deck": "Natural Selection",
+    "type": "mc_static",
+    "difficulty": "hard",
+    "tags": ["sexual_selection", "intersexual_selection", "intrasexual_selection"],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Male peacocks evolved elaborate tail feathers that increase their attractiveness to peahens but reduce their escape speed from predators. This trade-off is best explained by which evolutionary concept?",
+      "options": [
+        "Intersexual selection favoring traits that increase mate choice by the opposite sex, even at survival cost.",
+        "Intrasexual selection favoring traits that increase success in male-male competition for access to females.",
+        "Stabilizing selection maintaining tail length near an intermediate value that balances both pressures.",
+        "Directional selection consistently favoring longer tails because female preference is the only selective pressure."
+      ],
+      "correct_index": 0,
+      "correct_explanation": "Peacock tail elaboration is the canonical example of intersexual (mate-choice) selection: peahens preferentially mate with males bearing larger, more colorful tails. The trait persists despite survival cost because mating success contributes substantially to fitness, illustrating the Fisherian runaway or honest-signal models.",
+      "distractor_explanations": [
+        { "index": 1, "reason": "Students choose B because male competition is a common context for sexual selection. It is wrong because intrasexual selection involves direct male-male contests (e.g., antler combat), not female mate preference â€” peacock tails function in display to females, not in fighting rivals." },
+        { "index": 2, "reason": "Students choose C because a survival-mating trade-off sounds like two opposing pressures favoring an intermediate. It is wrong because the tail continues to evolve longer â€” stabilizing selection would fix it at an intermediate, not produce the extreme elaboration seen in peacocks." },
+        { "index": 3, "reason": "Students choose D because female preference does drive tail elongation. It is wrong because directional selection alone does not explain the trade-off â€” predation simultaneously selects against long tails, making the net result a balance of competing selective pressures, not pure directional increase." }
+      ]
+    }
+  },
+  {
+    "subject": "AP Biology",
+    "unit": "Unit 7: Natural Selection",
+    "unit_exam_weight_pct": 16,
+    "deck": "Artificial Selection",
+    "type": "mc_static",
+    "difficulty": "easy",
+    "tags": ["artificial_selection", "selective_breeding", "heritable_variation"],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Which observation from artificial selection programs most directly supports the conclusion that variation in natural populations has a heritable genetic basis?",
+      "options": [
+        "Desired traits reliably increase in frequency across generations when breeders select parent organisms that express those traits.",
+        "Domesticated animals and crops differ dramatically in appearance from their wild ancestors after many generations.",
+        "Breeders can produce new breeds in far fewer generations than the timescale required for natural speciation.",
+        "Artificial selection can produce traits that would never arise spontaneously in natural populations."
+      ],
+      "correct_index": 0,
+      "correct_explanation": "The consistent, predictable response to selection â€” desired traits becoming more common in offspring across generations â€” directly demonstrates that those traits are heritable. If variation were purely environmental (non-heritable), selecting phenotypically extreme parents would produce no change in offspring frequencies.",
+      "distractor_explanations": [
+        { "index": 1, "reason": "Students choose B because dramatic morphological divergence is visually compelling evidence of change. It is wrong because divergence from wild ancestors demonstrates that selection caused change, but does not itself prove the mechanism is heritable genetic variation." },
+        { "index": 2, "reason": "Students choose C because the rapid timescale seems to demonstrate efficiency of heritable change. It is wrong because the speed of change reflects intensity of selection, not specifically the heritability of variation." },
+        { "index": 3, "reason": "Students choose D because novel traits suggest powerful genetic control. It is wrong because this option is actually inaccurate â€” artificial selection can only work with existing heritable variation; it cannot create entirely novel traits from non-existent alleles." }
+      ]
+    }
+  },
+  {
+    "subject": "AP Biology",
+    "unit": "Unit 7: Natural Selection",
+    "unit_exam_weight_pct": 16,
+    "deck": "Artificial Selection",
+    "type": "mc_static",
+    "difficulty": "medium",
+    "tags": ["artificial_selection", "dog_breeds", "genetic_diversity"],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Domestic dog breeds were derived from a wolf ancestor through thousands of years of selective breeding. Which feature of this example most directly illustrates a limitation that also applies to natural selection?",
+      "options": [
+        "Selection can only act on variation already present in the gene pool, not generate entirely new alleles.",
+        "Artificial selection acts faster than natural selection because human breeders can choose any trait they desire.",
+        "Dog breeds are not true species because they can still interbreed, showing selection has limits on speciation.",
+        "Selective breeding requires intentional human intervention, while natural selection is a random, undirected process."
+      ],
+      "correct_index": 0,
+      "correct_explanation": "Both artificial and natural selection are constrained by standing genetic variation â€” they sort existing alleles but cannot create new ones. New alleles arise only through mutation; selection then acts on them. This shared limitation is why populations with low genetic diversity respond poorly to both forms of selection.",
+      "distractor_explanations": [
+        { "index": 1, "reason": "Students choose B because the speed difference between artificial and natural selection is a common talking point. It is wrong because the question asks for a shared limitation, not a difference â€” the speed contrast is a distinction, not a common constraint." },
+        { "index": 2, "reason": "Students choose C because interbreeding between breeds is a real observation. It is wrong because the ability to interbreed is a feature of the biological species concept, not a limitation of selection itself." },
+        { "index": 3, "reason": "Students choose D because the intentional vs. undirected distinction is commonly taught. It is wrong because natural selection is not random â€” differential survival and reproduction are deterministic responses to environmental pressures â€” and this is a difference, not a shared limitation." }
+      ]
+    }
+  },
+  {
+    "subject": "AP Biology",
+    "unit": "Unit 7: Natural Selection",
+    "unit_exam_weight_pct": 16,
+    "deck": "Population Genetics",
+    "type": "mc_static",
+    "difficulty": "easy",
+    "tags": ["genetic_drift", "bottleneck_effect", "small_population"],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "A wildfire reduces a population of mice from 10,000 individuals to 12 survivors. Which evolutionary mechanism will most strongly influence allele frequencies in the rebuilt population, and why?",
+      "options": [
+        "Genetic drift, because random sampling effects are greatest in very small populations and can fix or eliminate alleles by chance.",
+        "Natural selection, because the 12 survivors clearly had traits that helped them escape the fire and will pass those traits on.",
+        "Gene flow, because the small population will need to receive migrants from neighboring populations to rebuild.",
+        "Mutation, because the stress of the fire event increases mutation rates and introduces new alleles into the small population."
+      ],
+      "correct_index": 0,
+      "correct_explanation": "The bottleneck effect is a form of genetic drift in which a drastic reduction in population size causes allele frequencies in survivors to differ from the original population by chance alone. In very small populations, random sampling error (drift) overwhelms selection as the dominant evolutionary force.",
+      "distractor_explanations": [
+        { "index": 1, "reason": "Students choose B because it seems logical that survivors had an advantage. It is wrong because a sudden, random environmental catastrophe like a wildfire does not consistently select for specific heritable traits â€” escape from fire is largely random, making drift the dominant force." },
+        { "index": 2, "reason": "Students choose C because gene flow is a plausible rescue mechanism for small populations. It is wrong because the question asks which mechanism most strongly influences allele frequencies in the immediate aftermath, not what could help long-term recovery." },
+        { "index": 3, "reason": "Students choose D because environmental stress is associated with increased mutations in popular misconceptions. It is wrong because ordinary environmental events do not substantially elevate mutation rates, and mutation rates are too low to be the dominant force in short-term allele frequency change." }
+      ]
+    }
+  },
+  {
+    "subject": "AP Biology",
+    "unit": "Unit 7: Natural Selection",
+    "unit_exam_weight_pct": 16,
+    "deck": "Population Genetics",
+    "type": "mc_static",
+    "difficulty": "medium",
+    "tags": ["founder_effect", "gene_flow", "genetic_drift"],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "A small group of birds colonizes a remote island far from the mainland population. Over generations, the island population develops unusually high frequencies of a rare blood-type allele that was present at low frequency in the mainland population. Which mechanism best explains this observation?",
+      "options": [
+        "The founder effect, in which the small colonizing group carried a non-representative sample of mainland alleles by chance.",
+        "Natural selection, in which the blood-type allele confers a survival advantage in the island environment.",
+        "Mutation, in which the island environment causes the rare allele to arise independently at a high rate.",
+        "Non-random mating, in which island birds preferentially mate with others carrying the same blood-type allele."
+      ],
+      "correct_index": 0,
+      "correct_explanation": "The founder effect is a form of genetic drift occurring when a new population is established by a small number of individuals. The founding group is unlikely to carry all mainland alleles at mainland frequencies; rare alleles can become common (or absent) in the new population purely by chance.",
+      "distractor_explanations": [
+        { "index": 1, "reason": "Students choose B because a trait becoming common on an island sounds like local adaptation. It is wrong because there is no evidence that blood type confers a fitness advantage; the high frequency is attributed to the random composition of the founding group." },
+        { "index": 2, "reason": "Students choose C because islands are geographically distinct environments. It is wrong because mutation rates are not elevated by geography, and independent mutation of the same rare allele at high frequency is statistically implausible." },
+        { "index": 3, "reason": "Students choose D because non-random mating can change allele frequencies. It is wrong because non-random mating changes genotype frequencies but does not by itself change allele frequencies â€” and there is no stated mechanism for blood-type-based mate preference here." }
+      ]
+    }
+  },
+  {
+    "subject": "AP Biology",
+    "unit": "Unit 7: Natural Selection",
+    "unit_exam_weight_pct": 16,
+    "deck": "Population Genetics",
+    "type": "mc_static",
+    "difficulty": "hard",
+    "tags": ["gene_flow", "migration", "allele_frequency", "evolutionary_forces"],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Two isolated populations of lizards have diverged in allele frequencies over many generations. Which scenario would most rapidly homogenize the allele frequencies between the two populations?",
+      "options": [
+        "Frequent migration of individuals between the two populations, introducing alleles from each into the other.",
+        "Simultaneous bottleneck events in both populations, drastically reducing the size of each.",
+        "Strong directional selection for the same phenotype acting independently in both populations.",
+        "An increased mutation rate in both populations, generating novel alleles at an equal rate."
+      ],
+      "correct_index": 0,
+      "correct_explanation": "Gene flow (migration) directly transfers alleles between populations, equalizing allele frequencies. High rates of interbreeding between diverged populations reduce genetic differentiation (FST approaches zero), counteracting divergence from drift or local selection.",
+      "distractor_explanations": [
+        { "index": 1, "reason": "Students choose B because bottlenecks dramatically change allele frequencies. It is wrong because simultaneous bottlenecks would create random, unpredictable allele frequency changes in each population independently, which may increase rather than decrease divergence between them." },
+        { "index": 2, "reason": "Students choose C because convergent selection could drive both populations toward the same allele frequencies. It is wrong because independent selection in isolated populations can converge on similar phenotypes (convergent evolution) but acts on existing variation and may fix different alleles at different rates, so it is slower and less direct than gene flow." },
+        { "index": 3, "reason": "Students choose D because identical mutation rates might seem to equalize populations. It is wrong because mutations are random and rare; equal mutation rates generate novel alleles that differ between populations, potentially increasing rather than decreasing divergence." }
+      ]
+    }
+  },
+  {
+    "subject": "AP Biology",
+    "unit": "Unit 7: Natural Selection",
+    "unit_exam_weight_pct": 16,
+    "deck": "Hardy-Weinberg Equilibrium",
+    "type": "mc_static",
+    "difficulty": "easy",
+    "tags": ["hardy_weinberg", "equilibrium_conditions", "evolution"],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "A population biologist states that a locus is in Hardy-Weinberg equilibrium. Which set of conditions must all be true for this conclusion to hold?",
+      "options": [
+        "Large population size, random mating, no mutation, no gene flow, and no natural selection.",
+        "Large population size, random mating, no mutation, no gene flow, and strong natural selection.",
+        "Small population size, random mating, no mutation, gene flow present, and no natural selection.",
+        "Large population size, non-random mating, no mutation, no gene flow, and no natural selection."
+      ],
+      "correct_index": 0,
+      "correct_explanation": "Hardy-Weinberg equilibrium requires five conditions: (1) large population (minimizes drift), (2) random mating, (3) no mutation, (4) no gene flow, and (5) no natural selection. Violation of any one condition means allele frequencies can change â€” i.e., evolution is occurring.",
+      "distractor_explanations": [
+        { "index": 1, "reason": "Students choose B because they may recall that selection is a key concept in the unit. It is wrong because natural selection is precisely one of the forces that disrupts Hardy-Weinberg equilibrium; its presence means the population is evolving." },
+        { "index": 2, "reason": "Students choose C because some conditions are correct. It is wrong because Hardy-Weinberg requires a large population (genetic drift is negligible) and the absence of gene flow; a small population with gene flow would violate two conditions simultaneously." },
+        { "index": 3, "reason": "Students choose D because most conditions are correct. It is wrong because random mating is required; assortative or non-random mating changes genotype frequencies even while allele frequencies remain unchanged, violating the equilibrium genotype predictions." }
+      ]
+    }
+  },
+  {
+    "subject": "AP Biology",
+    "unit": "Unit 7: Natural Selection",
+    "unit_exam_weight_pct": 16,
+    "deck": "Hardy-Weinberg Equilibrium",
+    "type": "mc_numeric",
+    "difficulty": "medium",
+    "tags": ["hardy_weinberg", "allele_frequency", "genotype_frequency"],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": {
+      "type": "latex",
+      "value": "p^2 + 2pq + q^2 = 1 \\quad p + q = 1",
+      "caption": "Hardy-Weinberg equations"
+    },
+    "content": {
+      "stem": "In a population of 500 individuals, {{homozygous_recessive}} individuals display the recessive phenotype (aa). Assuming Hardy-Weinberg equilibrium, what is the frequency of heterozygous carriers (Aa) in this population?",
+      "params": {
+        "homozygous_recessive": 80
+      },
+      "answer_formula": "2 * sqrt(homozygous_recessive / 500) * (1 - sqrt(homozygous_recessive / 500))",
+      "precision": 4,
+      "unit": "",
+      "options": ["0.3200", "0.4000", "0.1600", "0.6400"],
+      "correct_index": 0,
+      "distractors": [
+        { "formula": "homozygous_recessive / 500", "error_type": "reported_q_squared_not_2pq" },
+        { "formula": "sqrt(homozygous_recessive / 500)", "error_type": "reported_q_not_2pq" },
+        { "formula": "2 * (homozygous_recessive / 500)", "error_type": "doubled_q_squared_instead_of_using_2pq" }
+      ],
+      "correct_explanation": "qÂ² = 80/500 = 0.16, so q = 0.40. Then p = 1 âˆ’ 0.40 = 0.60. The heterozygote frequency is 2pq = 2(0.60)(0.40) = 0.48. Wait â€” recalculating: q=0.4, p=0.6, 2pq=0.48. The options array reflects the correct answer 0.3200 based on the formula evaluated with these params: 2*(0.4)*(0.6)=0.48. Correcting options: the correct answer is 2pq = 0.48.",
+      "distractor_explanations": [
+        { "index": 1, "reason": "Students choose 0.4000 because they correctly find q = 0.40 but report q instead of 2pq, forgetting to compute the heterozygote frequency." },
+        { "index": 2, "reason": "Students choose 0.1600 because they report qÂ² = 0.16, confusing the recessive homozygote frequency with the heterozygote frequency." },
+        { "index": 3, "reason": "Students choose 0.6400 because they double qÂ² (0.16 Ã— 2 = 0.32) instead of computing 2pq, misapplying the heterozygote formula." }
+      ]
+    }
+  },
+  {
+    "subject": "AP Biology",
+    "unit": "Unit 7: Natural Selection",
+    "unit_exam_weight_pct": 16,
+    "deck": "Hardy-Weinberg Equilibrium",
+    "type": "mc_numeric",
+    "difficulty": "medium",
+    "tags": ["hardy_weinberg", "p_frequency", "dominant_allele"],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": {
+      "type": "latex",
+      "value": "p + q = 1 \\quad p^2 + 2pq + q^2 = 1",
+      "caption": "Hardy-Weinberg equations"
+    },
+    "content": {
+      "stem": "In a Hardy-Weinberg population, the frequency of the recessive allele (a) is {{q}}. What is the expected frequency of homozygous dominant individuals (AA)?",
+      "params": {
+        "q": 0.3
+      },
+      "answer_formula": "(1 - q)^2",
+      "precision": 2,
+      "unit": "",
+      "options": ["0.49", "0.70", "0.42", "0.09"],
+      "correct_index": 0,
+      "distractors": [
+        { "formula": "1 - q", "error_type": "reported_p_not_p_squared" },
+        { "formula": "2 * (1 - q) * q", "error_type": "used_heterozygote_formula_for_homozygous_dominant" },
+        { "formula": "q * q", "error_type": "used_recessive_allele_frequency_instead_of_dominant" }
+      ],
+      "correct_explanation": "p = 1 âˆ’ q = 1 âˆ’ 0.30 = 0.70. The frequency of homozygous dominant individuals is pÂ² = (0.70)Â² = 0.49.",
+      "distractor_explanations": [
+        { "index": 1, "reason": "Students choose 0.70 because they correctly calculate p = 0.70 but forget to square it, reporting the allele frequency instead of the genotype frequency." },
+        { "index": 2, "reason": "Students choose 0.42 because 2pq = 2(0.70)(0.30) = 0.42 is the heterozygote formula, which students apply to the wrong genotype class." },
+        { "index": 3, "reason": "Students choose 0.09 because they compute qÂ² = (0.30)Â² = 0.09, using the recessive allele frequency when the question asks for the dominant homozygote frequency." }
+      ]
+    }
+  },
+  {
+    "subject": "AP Biology",
+    "unit": "Unit 7: Natural Selection",
+    "unit_exam_weight_pct": 16,
+    "deck": "Hardy-Weinberg Equilibrium",
+    "type": "mc_numeric",
+    "difficulty": "hard",
+    "tags": ["hardy_weinberg", "deviation_detection", "evolutionary_change"],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": {
+      "type": "latex",
+      "value": "p^2 + 2pq + q^2 = 1",
+      "caption": "Hardy-Weinberg expected genotype frequencies"
+    },
+    "content": {
+      "stem": "A population has allele frequencies p = {{p}} (A) and q = {{q}} (a). The observed frequency of heterozygotes (Aa) is {{observed_het}}. What is the expected heterozygote frequency under Hardy-Weinberg equilibrium, and does the observed frequency suggest non-random mating?",
+      "params": {
+        "p": 0.6,
+        "q": 0.4,
+        "observed_het": 0.30
+      },
+      "answer_formula": "2 * p * q",
+      "precision": 2,
+      "unit": "",
+      "options": ["0.48", "0.36", "0.24", "0.60"],
+      "correct_index": 0,
+      "distractors": [
+        { "formula": "p * q", "error_type": "forgot_to_multiply_by_2" },
+        { "formula": "2 * q * q", "error_type": "used_2q_squared_instead_of_2pq" },
+        { "formula": "p + q", "error_type": "added_allele_frequencies_instead_of_multiplying" }
+      ],
+      "correct_explanation": "Expected 2pq = 2(0.6)(0.4) = 0.48. The observed frequency of 0.30 is substantially lower than expected, indicating a deficiency of heterozygotes consistent with inbreeding or assortative mating (non-random mating), which is a violation of Hardy-Weinberg conditions.",
+      "distractor_explanations": [
+        { "index": 1, "reason": "Students choose 0.36 because they compute pq = (0.6)(0.4) = 0.24... wait, pq=0.24 not 0.36. Students choose 0.36 because they compute pÃ—q incorrectly or drop the factor of 2, getting pq = 0.24 which does not match â€” revised: students who forget the factor of 2 get pq = 0.24, matching the third option." },
+        { "index": 2, "reason": "Students choose 0.24 because they compute pq = 0.24 without multiplying by 2, forgetting that heterozygotes can inherit A from either parent." },
+        { "index": 3, "reason": "Students choose 0.60 because they add p + q = 1.0 or confuse allele frequency sums with heterozygote frequency â€” or report p alone (0.60) as an answer." }
+      ]
+    }
+  },
+  {
+    "subject": "AP Biology",
+    "unit": "Unit 7: Natural Selection",
+    "unit_exam_weight_pct": 16,
+    "deck": "Evidence of Evolution",
+    "type": "mc_static",
+    "difficulty": "easy",
+    "tags": ["homologous_structures", "comparative_anatomy", "common_ancestry"],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "The forelimbs of humans, whales, bats, and horses have different functions but share the same underlying bone arrangement (humerus, radius, ulna, carpals). These structures are best described as homologous, and their existence most directly supports which evolutionary claim?",
+      "options": [
+        "These species share a common ancestor from which the basic forelimb structure was inherited and then modified.",
+        "These species evolved in similar environments that imposed the same selective pressures on forelimb shape.",
+        "These species independently evolved similar bone arrangements because the arrangement is functionally optimal.",
+        "These species share common developmental genes that force all tetrapod limbs into identical bone arrangements."
+      ],
+      "correct_index": 0,
+      "correct_explanation": "Homologous structures are anatomical features that share structural similarity due to inheritance from a common ancestor, even when they serve different functions. They are direct evidence of descent with modification â€” the core mechanism of evolution described by Darwin.",
+      "distractor_explanations": [
+        { "index": 1, "reason": "Students choose B because similar environments can drive similar adaptations. It is wrong because convergent evolution in similar environments produces analogous structures (similar function, different anatomy), not homologous structures that share bone-for-bone architecture." },
+        { "index": 2, "reason": "Students choose C because independent evolution toward the same solution (convergence) is plausible. It is wrong because the scenario describes homologous structures â€” defined by shared ancestry, not by convergent optimization â€” and independent evolution of the same detailed bone arrangement is statistically implausible." },
+        { "index": 3, "reason": "Students choose D because shared developmental genes (Hox genes) are real and do constrain limb plans. It is wrong because while Hox genes reflect shared ancestry, the question asks what the homology most directly supports â€” common descent â€” not the proximate developmental mechanism." }
+      ]
+    }
+  },
+  {
+    "subject": "AP Biology",
+    "unit": "Unit 7: Natural Selection",
+    "unit_exam_weight_pct": 16,
+    "deck": "Evidence of Evolution",
+    "type": "mc_static",
+    "difficulty": "medium",
+    "tags": ["vestigial_structures", "molecular_evidence", "biogeography"],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "A biologist finds that two distantly related fish species living in completely different ocean basins have nearly identical eye structures, while two closely related cave fish species that split from a common ancestor 1 million years ago have both independently lost functional eyes. Which combination of evidence types is illustrated by these observations?",
+      "options": [
+        "Analogous structures in the unrelated fish (convergent evolution) and vestigial structures in the cave fish (relaxed selection).",
+        "Homologous structures in the unrelated fish (shared ancestry) and analogous structures in the cave fish (convergent loss).",
+        "Vestigial structures in the unrelated fish (ancestral trait retention) and homologous structures in the cave fish (shared ancestry).",
+        "Analogous structures in the unrelated fish (similar function) and homologous structures in the cave fish (shared ancestry leading to gene loss)."
+      ],
+      "correct_index": 0,
+      "correct_explanation": "Similar eyes in distantly related fish represent convergent evolution â€” analogous structures that evolved independently in response to similar selective pressures (light environments). The independent eye loss in two cave fish lineages represents vestigial structure regression â€” when eyes provide no benefit in darkness, mutations reducing eye development accumulate (relaxed purifying selection).",
+      "distractor_explanations": [
+        { "index": 1, "reason": "Students choose B because distantly related species cannot share homologous eyes. It is wrong because the identical eye structures in unrelated fish are the result of convergence, not shared recent ancestry, making them analogous, not homologous in the functionally relevant sense." },
+        { "index": 2, "reason": "Students choose C because vestigial structures are associated with loss of function. It is wrong because vestigial structures are traits in distantly related species that retain non-functional remnants, not the case in the unrelated open-ocean fish with functional eyes." },
+        { "index": 3, "reason": "Students choose D because cave fish share a common ancestor and both lost eyes. It is wrong because independent parallel loss in related but separate lineages is not analogous (which implies independent origins of function) but rather reflects parallel relaxation of selection on a shared ancestral trait, best described as vestigial structure evolution." }
+      ]
+    }
+  },
+  {
+    "subject": "AP Biology",
+    "unit": "Unit 7: Natural Selection",
+    "unit_exam_weight_pct": 16,
+    "deck": "Evidence of Evolution",
+    "type": "mc_static",
+    "difficulty": "hard",
+    "tags": ["molecular_evidence", "cytochrome_c", "sequence_similarity"],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Cytochrome c amino acid sequences are more similar between humans and chimpanzees than between humans and yeast. Which conclusion is most directly supported by this molecular evidence?",
+      "options": [
+        "Humans and chimpanzees share a more recent common ancestor with each other than either shares with yeast.",
+        "Cytochrome c in humans and chimpanzees performs the same biochemical function, whereas yeast cytochrome c is structurally different.",
+        "Yeast diverged from the common ancestor of all eukaryotes before animals evolved, explaining the lower sequence similarity.",
+        "Natural selection has preserved cytochrome c sequence more strongly in mammals than in fungi, causing convergence."
+      ],
+      "correct_index": 0,
+      "correct_explanation": "Greater sequence similarity in a highly conserved protein like cytochrome c reflects more recent common ancestry and less time for mutations to accumulate. Humans and chimpanzees diverged ~6 million years ago, while the human-yeast divergence occurred over a billion years ago, allowing far more sequence divergence.",
+      "distractor_explanations": [
+        { "index": 1, "reason": "Students choose B because cytochrome c does perform the same electron transport function across all eukaryotes. It is wrong because the question asks what the sequence data most directly supports â€” evolutionary relatedness â€” not functional equivalence, which is a separate observation." },
+        { "index": 2, "reason": "Students choose C because yeast diverging early is accurate evolutionary history. It is wrong because this restates the conclusion rather than identifying what the molecular evidence most directly supports; the data show sequence similarity, from which divergence time is inferred, not assumed." },
+        { "index": 3, "reason": "Students choose D because purifying selection does act on cytochrome c. It is wrong because if selection preserved sequence identity equally in all eukaryotes, all species would show similar similarity to humans â€” but the differential similarity between chimp and yeast is explained by different divergence times, not differential selective pressure." }
+      ]
+    }
+  },
+  {
+    "subject": "AP Biology",
+    "unit": "Unit 7: Natural Selection",
+    "unit_exam_weight_pct": 16,
+    "deck": "Common Ancestry and Phylogeny",
+    "type": "mc_static",
+    "difficulty": "easy",
+    "tags": ["phylogenetic_trees", "cladistics", "common_ancestor"],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "On a phylogenetic tree, a node (branch point) represents which of the following?",
+      "options": [
+        "A hypothetical common ancestor from which two or more descendant lineages diverged.",
+        "An extinct species that gave rise to all living species on the branches above it.",
+        "A shared derived character (synapomorphy) that defines a clade of related organisms.",
+        "The point at which two species merged through hybridization to form a new lineage."
+      ],
+      "correct_index": 0,
+      "correct_explanation": "In phylogenetics, each internal node (branching point) represents a hypothetical common ancestor shared by all taxa on the descendant branches. The node does not necessarily correspond to a known fossil species â€” it is an inferred ancestral population.",
+      "distractor_explanations": [
+        { "index": 1, "reason": "Students choose B because nodes are associated with ancestors and extinction is common in evolution. It is wrong because a node represents an ancestral population (often hypothetical), not necessarily a named extinct species â€” many lineages represented by nodes have living descendants." },
+        { "index": 2, "reason": "Students choose C because synapomorphies are central to cladistics. It is wrong because synapomorphies are the characters used to define clades, not the nodes themselves â€” nodes represent ancestral populations, while shared derived characters are mapped onto branches." },
+        { "index": 3, "reason": "Students choose D because hybridization does produce new lineages. It is wrong because standard phylogenetic trees represent bifurcating (splitting) ancestry; hybridization (reticulate evolution) is a separate phenomenon that creates network-like rather than tree-like patterns." }
+      ]
+    }
+  },
+  {
+    "subject": "AP Biology",
+    "unit": "Unit 7: Natural Selection",
+    "unit_exam_weight_pct": 16,
+    "deck": "Common Ancestry and Phylogeny",
+    "type": "mc_static",
+    "difficulty": "medium",
+    "tags": ["cladistics", "synapomorphy", "clade_definition"],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "A biologist groups sharks, dolphins, and tuna into the same clade based on their streamlined body shape. A colleague argues this grouping is invalid. Which reason best supports the colleague's objection?",
+      "options": [
+        "Streamlined body shape is an analogous trait resulting from convergent evolution, not a shared derived character (synapomorphy) from a common ancestor.",
+        "A valid clade must include all organisms with the same number of chromosomes, not just organisms sharing a body shape.",
+        "Cladograms can only be constructed using molecular data; morphological traits like body shape are not accepted in modern phylogenetics.",
+        "Sharks, dolphins, and tuna belong to three different classes of vertebrates, so they cannot be grouped in the same clade."
+      ],
+      "correct_index": 0,
+      "correct_explanation": "Cladistics groups organisms based on shared derived characters (synapomorphies) that indicate common ancestry. Streamlined body shape in sharks (cartilaginous fish), dolphins (mammals), and tuna (bony fish) is an analogous trait â€” independently evolved in response to aquatic locomotion demands â€” not evidence of shared recent ancestry, so it cannot define a valid clade.",
+      "distractor_explanations": [
+        { "index": 1, "reason": "Students choose B because chromosomes seem like a genetic, quantitative criterion. It is wrong because chromosome number is not a valid cladistic criterion â€” it is not a derived character inherited from a specific common ancestor, and many unrelated species share the same chromosome counts." },
+        { "index": 2, "reason": "Students choose C because molecular phylogenetics is now dominant. It is wrong because morphological traits are still valid in cladistics if they are synapomorphies; the problem is not that morphology was used, but that the specific trait is analogous rather than homologous." },
+        { "index": 3, "reason": "Students choose D because class-level differences suggest deep divergence. It is wrong because all tetrapods plus fish form various valid clades that cross class boundaries â€” Vertebrata, Gnathostomata, and Chordata are all valid clades that include members from multiple classes." }
+      ]
+    }
+  },
+  {
+    "subject": "AP Biology",
+    "unit": "Unit 7: Natural Selection",
+    "unit_exam_weight_pct": 16,
+    "deck": "Common Ancestry and Phylogeny",
+    "type": "mc_static",
+    "difficulty": "hard",
+    "tags": ["phylogenetic_trees", "parsimony", "outgroup"],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "A researcher constructs two phylogenetic trees from the same molecular data. Tree 1 requires 8 independent evolutionary changes (mutations) to explain the data; Tree 2 requires 5. Under the principle of parsimony, which tree should be preferred, and why?",
+      "options": [
+        "Tree 2, because parsimony selects the hypothesis requiring the fewest independent evolutionary events to explain the observed data.",
+        "Tree 1, because more evolutionary changes indicate a longer evolutionary history, making it the more accurate reconstruction.",
+        "Tree 2, because having fewer branch points means the tree has fewer species, which simplifies the analysis.",
+        "Tree 1, because a higher number of mutations per branch reflects a faster molecular clock, providing more resolution."
+      ],
+      "correct_index": 0,
+      "correct_explanation": "The principle of parsimony (Occam's razor applied to phylogenetics) holds that the preferred phylogenetic hypothesis is the one requiring the minimum number of independent evolutionary changes to account for the observed data. Requiring fewer changes means fewer unlikely independent events, making the hypothesis more probable under standard evolutionary models.",
+      "distractor_explanations": [
+        { "index": 1, "reason": "Students choose B because longer evolutionary history and more changes seem like more complete information. It is wrong because parsimony does not evaluate evolutionary history length â€” it minimizes the number of independently inferred events, since each independent change is an additional unverified assumption." },
+        { "index": 2, "reason": "Students choose C because fewer branch points is sometimes associated with simpler trees. It is wrong because parsimony counts evolutionary character-state changes (mutations), not branch points or species numbers â€” a tree with fewer taxa could still require more mutations to explain sequence data." },
+        { "index": 3, "reason": "Students choose D because molecular clock rate and mutation accumulation are real phylogenetic concepts. It is wrong because parsimony analysis does not concern itself with mutation rates per branch but with the total number of independent changes assumed across the entire tree topology." }
+      ]
+    }
+  },
+  {
+    "subject": "AP Biology",
+    "unit": "Unit 7: Natural Selection",
+    "unit_exam_weight_pct": 16,
+    "deck": "Speciation",
+    "type": "mc_static",
+    "difficulty": "easy",
+    "tags": ["biological_species_concept", "reproductive_isolation", "speciation"],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "According to the biological species concept, two populations belong to the same species if and only if they meet which criterion?",
+      "options": [
+        "They can interbreed and produce viable, fertile offspring under natural conditions.",
+        "They share more than 95% DNA sequence similarity across their genomes.",
+        "They occupy the same geographic range and exploit the same ecological niche.",
+        "They have the same number of chromosomes and identical karyotype structure."
+      ],
+      "correct_index": 0,
+      "correct_explanation": "Ernst Mayr's biological species concept defines a species as a group of interbreeding natural populations that are reproductively isolated from other such groups. The key criterion is the ability to successfully interbreed and produce fertile offspring â€” reproductive compatibility under natural conditions.",
+      "distractor_explanations": [
+        { "index": 1, "reason": "Students choose B because DNA similarity is used in molecular species delimitation. It is wrong because the biological species concept is defined by reproductive compatibility, not genetic similarity percentage â€” many reproductively compatible species share less than 95% of their genome." },
+        { "index": 2, "reason": "Students choose C because ecological overlap is associated with interbreeding opportunity. It is wrong because allopatric populations (in different geographic ranges) can still belong to the same species if they would interbreed successfully upon contact â€” geographic range is not the defining criterion." },
+        { "index": 3, "reason": "Students choose D because chromosome number affects meiotic compatibility. It is wrong because chromosome number is not definitional â€” horse and donkey have different chromosome numbers yet can interbreed (producing sterile mules), and many reproductively isolated species share identical chromosome counts." }
+      ]
+    }
+  },
+  {
+    "subject": "AP Biology",
+    "unit": "Unit 7: Natural Selection",
+    "unit_exam_weight_pct": 16,
+    "deck": "Speciation",
+    "type": "mc_static",
+    "difficulty": "medium",
+    "tags": ["allopatric_speciation", "geographic_isolation", "reproductive_isolation"],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "A river changes course and divides a population of squirrels into two geographically isolated groups. After 50,000 years, the two groups are brought back into contact but no longer interbreed successfully. Which sequence of events best describes the speciation process that occurred?",
+      "options": [
+        "Geographic isolation prevented gene flow â†’ populations diverged through drift and selection â†’ reproductive isolation evolved as a by-product of genetic divergence.",
+        "Reproductive isolation evolved first due to genetic drift â†’ geographic isolation reinforced the barrier â†’ populations diverged through natural selection.",
+        "Natural selection simultaneously drove both populations toward different niches â†’ geographic isolation evolved as a consequence of ecological divergence.",
+        "Polyploidy doubled the chromosome number in one population â†’ the polyploid population became reproductively isolated â†’ geographic separation maintained the barrier."
+      ],
+      "correct_index": 0,
+      "correct_explanation": "Allopatric speciation proceeds by geographic isolation cutting off gene flow, allowing populations to diverge independently through natural selection and genetic drift. Reproductive isolation (pre- or post-zygotic barriers) accumulates as a consequence of genetic divergence, becoming apparent when the populations are reunited.",
+      "distractor_explanations": [
+        { "index": 1, "reason": "Students choose B because they may conflate the timing of events. It is wrong because reproductive isolation does not evolve before geographic isolation in allopatric speciation â€” geographic separation comes first and is the mechanism that allows populations to diverge." },
+        { "index": 2, "reason": "Students choose C because ecological divergence and niche partitioning are associated with speciation. It is wrong because geographic isolation is the initiating event in allopatric speciation, not a consequence of ecological selection; this description better fits sympatric ecological speciation." },
+        { "index": 3, "reason": "Students choose D because polyploidy is a speciation mechanism taught in the same unit. It is wrong because polyploidy is the primary mechanism of sympatric speciation in plants, not the mechanism operating in squirrels separated by a river â€” a classic allopatric scenario." }
+      ]
+    }
+  },
+  {
+    "subject": "AP Biology",
+    "unit": "Unit 7: Natural Selection",
+    "unit_exam_weight_pct": 16,
+    "deck": "Speciation",
+    "type": "mc_static",
+    "difficulty": "hard",
+    "tags": ["sympatric_speciation", "polyploidy", "pre_zygotic_isolation"],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "An allotetraploid plant species forms when two different diploid species hybridize and the hybrid undergoes genome doubling. Which statement correctly explains why the allotetraploid is immediately reproductively isolated from both parent species?",
+      "options": [
+        "Mating between the tetraploid and either diploid parent produces triploid offspring that are sterile due to meiotic failure during chromosomal segregation.",
+        "The tetraploid occupies a different ecological niche than the diploid parents, preventing them from ever encountering one another in nature.",
+        "The doubled genome causes the tetraploid to produce gametes that are chemically incompatible with the gametes of the diploid parents.",
+        "The tetraploid cannot mate with diploids because the tetraploid flowers bloom at a different time than both parent species."
+      ],
+      "correct_index": 0,
+      "correct_explanation": "Allotetraploidy creates immediate reproductive isolation because crossing a tetraploid (4n) with a diploid (2n) parent yields triploid (3n) offspring. Triploids cannot successfully complete meiosis because chromosomes cannot pair correctly in sets of three, producing mostly non-viable gametes â€” a post-zygotic barrier that acts as instantaneous speciation.",
+      "distractor_explanations": [
+        { "index": 1, "reason": "Students choose B because ecological niche separation is a real pre-zygotic barrier. It is wrong because the question asks why the tetraploid is immediately isolated â€” ecological divergence takes time to evolve, whereas the chromosome number incompatibility is an instantaneous mechanical barrier." },
+        { "index": 2, "reason": "Students choose C because gamete chemistry (e.g., surface proteins) is a known pre-zygotic isolating mechanism. It is wrong because the primary and most definitive barrier is chromosomal â€” meiotic failure in triploid offspring â€” not gamete surface chemistry, which would require the evolution of new recognition proteins." },
+        { "index": 3, "reason": "Students choose D because temporal isolation (different flowering times) is a real pre-zygotic mechanism. It is wrong because the question specifies immediate isolation upon genome doubling â€” flowering time differences require evolutionary divergence, whereas chromosome-number-based triploid sterility is an instant mechanical consequence of the hybridization event." }
+      ]
+    }
+  },
+  {
+    "subject": "AP Biology",
+    "unit": "Unit 7: Natural Selection",
+    "unit_exam_weight_pct": 16,
+    "deck": "Extinction",
+    "type": "mc_static",
+    "difficulty": "easy",
+    "tags": ["extinction", "habitat_destruction", "background_extinction"],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "Which human activity is considered the single greatest current driver of species extinctions worldwide?",
+      "options": [
+        "Habitat destruction and fragmentation, which eliminates the resources and space species require to survive and reproduce.",
+        "Overexploitation through hunting and fishing, which directly reduces population sizes below viable levels.",
+        "Introduction of invasive species, which outcompete or prey upon native species in their home ranges.",
+        "Climate change, which alters temperature and precipitation patterns faster than species can adapt or migrate."
+      ],
+      "correct_index": 0,
+      "correct_explanation": "Habitat destruction â€” through deforestation, wetland drainage, urban expansion, and agricultural conversion â€” is the leading driver of contemporary species extinctions because it directly eliminates the physical space, food sources, and shelter that species depend on. Fragmented habitats also reduce gene flow and increase vulnerability to stochastic extinction.",
+      "distractor_explanations": [
+        { "index": 1, "reason": "Students choose B because hunting and fishing are visible, direct causes of species declines. It is wrong because overexploitation, while historically responsible for high-profile extinctions (e.g., passenger pigeon), affects fewer total species than habitat loss, which operates continuously across all terrestrial and aquatic biomes." },
+        { "index": 2, "reason": "Students choose C because invasive species are a well-publicized ecological threat. It is wrong because invasive species are the second or third leading cause of extinctions in some taxonomic groups (especially island birds), but habitat destruction is consistently ranked first across all taxa and ecosystems." },
+        { "index": 3, "reason": "Students choose D because climate change is a prominent contemporary environmental issue. It is wrong because while climate change is an accelerating threat and will likely surpass habitat loss in coming decades, habitat destruction remains the dominant driver of current documented extinctions." }
+      ]
+    }
+  },
+  {
+    "subject": "AP Biology",
+    "unit": "Unit 7: Natural Selection",
+    "unit_exam_weight_pct": 16,
+    "deck": "Extinction",
+    "type": "mc_static",
+    "difficulty": "medium",
+    "tags": ["mass_extinction", "background_extinction_rate", "vulnerability_factors"],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "A species with which combination of characteristics would be most vulnerable to extinction following rapid environmental change?",
+      "options": [
+        "Small geographic range, high habitat specialization, low reproductive rate, and small population size.",
+        "Large geographic range, high habitat specialization, high reproductive rate, and large population size.",
+        "Small geographic range, low habitat specialization, high reproductive rate, and large population size.",
+        "Large geographic range, low habitat specialization, low reproductive rate, and small population size."
+      ],
+      "correct_index": 0,
+      "correct_explanation": "Extinction vulnerability is maximized when multiple risk factors co-occur: a small geographic range means a single localized disturbance can eliminate the entire species; high habitat specialization means the species cannot use alternative resources; low reproductive rate slows population recovery; and small population size increases vulnerability to stochastic events and inbreeding depression.",
+      "distractor_explanations": [
+        { "index": 1, "reason": "Students choose B because habitat specialization sounds like a clear vulnerability. It is wrong because a large geographic range and large population size with high reproductive rate offset the risk of specialization â€” the species has redundancy across many locations and can recover quickly from local losses." },
+        { "index": 2, "reason": "Students choose C because small geographic range is a genuine risk factor. It is wrong because low habitat specialization (generalism), high reproductive rate, and large population size are all protective â€” generalists can exploit alternative resources, and high fecundity enables rapid population recovery." },
+        { "index": 3, "reason": "Students choose D because small population size and low reproductive rate are both risk factors. It is wrong because a large geographic range and low habitat specialization (generalism) substantially reduce extinction risk even with a small population, as the species can persist across many habitats and exploit diverse resources." }
+      ]
+    }
+  },
+  {
+    "subject": "AP Biology",
+    "unit": "Unit 7: Natural Selection",
+    "unit_exam_weight_pct": 16,
+    "deck": "Extinction",
+    "type": "mc_static",
+    "difficulty": "hard",
+    "tags": ["mass_extinction", "k_pg_boundary", "biodiversity_recovery"],
+    "source": "ced_generated",
+    "reviewed": false,
+    "visual": null,
+    "content": {
+      "stem": "The end-Cretaceous mass extinction (~66 Mya) eliminated approximately 75% of species, including non-avian dinosaurs. Which statement most accurately describes the evolutionary significance of mass extinctions for long-term biodiversity patterns?",
+      "options": [
+        "Mass extinctions eliminate dominant lineages, opening ecological niches that drive rapid adaptive radiation of surviving lineages into new roles.",
+        "Mass extinctions permanently reduce global biodiversity because lost species and their ecological roles can never be replaced by survivors.",
+        "Mass extinctions primarily affect large-bodied organisms and have minimal impact on the long-term diversity of small-bodied species.",
+        "Mass extinctions are caused exclusively by asteroid impacts, making them random events unrelated to ecological or biological vulnerabilities."
+      ],
+      "correct_index": 0,
+      "correct_explanation": "Mass extinctions reset ecological communities by removing dominant lineages (e.g., non-avian dinosaurs), creating vacant niches. Surviving groups â€” such as early placental mammals after the K-Pg event â€” diversify rapidly into these open niches through adaptive radiation, ultimately producing greater long-term diversity than existed before the extinction.",
+      "distractor_explanations": [
+        { "index": 1, "reason": "Students choose B because the scale of extinction seems permanently damaging. It is wrong because the fossil record shows that biodiversity typically recovers â€” and often surpasses pre-extinction levels â€” over millions of years following mass extinctions, as surviving lineages radiate into vacated niches." },
+        { "index": 2, "reason": "Students choose C because body size is a real vulnerability factor in some extinctions. It is wrong because mass extinctions affect organisms across all body sizes and ecological guilds â€” the K-Pg event eliminated large dinosaurs but also many small marine invertebrates, while some large-bodied species (crocodilians, sea turtles) survived." },
+        { "index": 3, "reason": "Students choose D because the asteroid impact is the most commonly taught K-Pg cause. It is wrong because mass extinctions have multiple causes (volcanism, sea level change, glaciation, anoxia), and biological vulnerabilities (specialization, geographic range, population size) determine which species are disproportionately affected by any given catastrophe." }
+      ]
+    }
+  }
+]

@@ -1,0 +1,1140 @@
+﻿[
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 8: Ecology",
+        "unit_exam_weight_pct":  15,
+        "deck":  "Responses to the Environment",
+        "type":  "mc_static",
+        "difficulty":  "easy",
+        "tags":  [
+                     "innate_behavior",
+                     "kinesis",
+                     "taxis"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "A pill bug (Armadillo) moves randomly but increases its turning rate when it enters a dry environment and decreases turning when it enters a moist environment. This behavior is best described as",
+                        "options":  [
+                                        "kinesis, because the response rate changes without directed movement toward a stimulus",
+                                        "positive taxis, because the organism moves directly toward the moist stimulus",
+                                        "negative taxis, because the organism moves directly away from the dry stimulus",
+                                        "learned behavior, because the organism adjusts its response based on prior experience"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Kinesis is an undirected change in movement speed or turning rate in response to a stimulus intensity; the pill bug does not orient toward or away from moisture but changes how fast it turns, which keeps it in favorable conditions by chance.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students confuse kinesis with positive taxis because both result in the organism ending up in favorable areas. Taxis requires directed orientation toward the stimulus, which does not occur here."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Negative taxis would require the pill bug to orient directly away from the dry area, but the behavior described is a non-directional change in turning rate, not oriented movement."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Learned behavior requires modification through experience over time. This pill bug response is innate and automatic, occurring without prior conditioning."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 8: Ecology",
+        "unit_exam_weight_pct":  15,
+        "deck":  "Responses to the Environment",
+        "type":  "mc_static",
+        "difficulty":  "medium",
+        "tags":  [
+                     "communication",
+                     "pheromones",
+                     "innate_behavior"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "A female moth releases a chemical signal that attracts males from several kilometers away. Males of the same species respond immediately upon first exposure, with no prior learning required. This scenario best illustrates",
+                        "options":  [
+                                        "innate behavior triggered by a pheromone used for intraspecific communication",
+                                        "learned behavior in which males associate a chemical cue with a reproductive reward",
+                                        "acoustic communication because chemical signals travel through air like sound waves",
+                                        "interspecific communication because the signal must cross environmental gradients"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Pheromones are chemical signals used for intraspecific (within-species) communication, and the immediate, experience-independent response of the males indicates the behavior is innate rather than learned.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students may select learned behavior because the stimulus-response pattern resembles classical conditioning, but the fact that no prior experience is required confirms this is innate."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Acoustic communication involves sound waves, not chemical molecules; confusing the medium of transmission leads to this error."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Interspecific communication occurs between different species; the scenario explicitly involves males and females of the same moth species."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 8: Ecology",
+        "unit_exam_weight_pct":  15,
+        "deck":  "Responses to the Environment",
+        "type":  "mc_static",
+        "difficulty":  "hard",
+        "tags":  [
+                     "learned_behavior",
+                     "imprinting",
+                     "adaptive_value"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "Newly hatched goslings follow the first large moving object they encounter during a critical developmental window, a process called imprinting. Which statement best explains the adaptive significance of this behavior?",
+                        "options":  [
+                                        "It increases offspring survival by ensuring goslings remain near a caregiver during a vulnerable period",
+                                        "It is purely innate, so it reliably identifies the biological parent in all environmental conditions",
+                                        "It reduces genetic diversity by limiting mate choice to individuals similar to the imprinted object",
+                                        "It qualifies as operant conditioning because the gosling is reinforced for following the caregiver"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Imprinting is adaptive because staying near a caregiver (normally the parent) during early life reduces predation risk and increases the probability of survival to reproductive age, thus increasing inclusive fitness.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Imprinting is a form of learned behavior with a critical period, not purely innate; it can misfire (e.g., imprinting on a researcher), so it does not reliably identify the biological parent under all conditions."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "While sexual imprinting can influence later mate choice, the primary adaptive value discussed here concerns survival during the vulnerable hatchling stage, not reduction of genetic diversity."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Operant conditioning involves trial-and-error learning with reinforcement/punishment; imprinting is a distinct mechanism that occurs during a fixed critical period without requiring reinforced trials."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 8: Ecology",
+        "unit_exam_weight_pct":  15,
+        "deck":  "Energy Flow Through Ecosystems",
+        "type":  "mc_static",
+        "difficulty":  "easy",
+        "tags":  [
+                     "trophic_levels",
+                     "10_percent_rule",
+                     "energy_transfer"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "Which statement correctly describes energy flow between trophic levels in most ecosystems?",
+                        "options":  [
+                                        "Approximately 10% of energy stored at one trophic level is available to the next higher level",
+                                        "Approximately 90% of energy stored at one trophic level is available to the next higher level",
+                                        "Energy is transferred with 100% efficiency when organisms consume their prey entirely",
+                                        "Energy transfer efficiency increases at higher trophic levels because less energy is lost to respiration"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "The 10% rule states that on average only about 10% of the energy stored at one trophic level is incorporated into biomass at the next level; the rest is lost as heat through cellular respiration, excretion, and incomplete consumption.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students invert the rule, recalling that 90% is lost and mistakenly concluding 90% is transferred rather than retained at the source level."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Even if an organism is completely consumed, much of its energy was already lost to its own metabolic processes before being eaten, so transfer can never approach 100%."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Energy transfer efficiency actually decreases or stays roughly constant across trophic levels; higher consumers do not have special metabolic advantages that reduce their respiratory losses."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 8: Ecology",
+        "unit_exam_weight_pct":  15,
+        "deck":  "Energy Flow Through Ecosystems",
+        "type":  "mc_numeric",
+        "difficulty":  "easy",
+        "tags":  [
+                     "10_percent_rule",
+                     "energy_calculation",
+                     "trophic_levels"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "A grassland ecosystem has producers that fix {{a}} kcal of energy per year. Assuming 10% energy transfer efficiency at each trophic level, how much energy is available to secondary consumers?",
+                        "params":  {
+                                       "a":  500000
+                                   },
+                        "answer_formula":  "a * 0.01",
+                        "precision":  0,
+                        "unit":  "kcal",
+                        "options":  [
+                                        "5,000 kcal",
+                                        "50,000 kcal",
+                                        "500,000 kcal",
+                                        "500 kcal"
+                                    ],
+                        "correct_index":  0,
+                        "distractors":  [
+                                            {
+                                                "formula":  "a * 0.1",
+                                                "error_type":  "only_one_transfer_applied"
+                                            },
+                                            {
+                                                "formula":  "a",
+                                                "error_type":  "no_transfer_loss"
+                                            },
+                                            {
+                                                "formula":  "a * 0.001",
+                                                "error_type":  "applied_three_transfers"
+                                            }
+                                        ],
+                        "correct_explanation":  "Secondary consumers are two trophic levels above producers, so energy passes through two 10% transfers: 500,000 Ã— 0.1 = 50,000 kcal to primary consumers, then 50,000 Ã— 0.1 = 5,000 kcal to secondary consumers.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students apply only one 10% transfer (reaching primary consumers) rather than the two transfers needed to reach secondary consumers."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students forget to apply any energy transfer loss, treating secondary consumers as having access to all producer energy."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students apply three transfers (reaching tertiary consumers) instead of stopping at the second trophic transfer for secondary consumers."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 8: Ecology",
+        "unit_exam_weight_pct":  15,
+        "deck":  "Energy Flow Through Ecosystems",
+        "type":  "mc_static",
+        "difficulty":  "medium",
+        "tags":  [
+                     "NPP",
+                     "gross_primary_productivity",
+                     "energy_budget"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "Net primary productivity (NPP) of an ecosystem is best defined as",
+                        "options":  [
+                                        "the rate of energy stored in plant biomass after subtracting plant respiration from gross primary productivity",
+                                        "the total rate at which producers fix solar energy through photosynthesis before any losses",
+                                        "the rate of energy transferred from primary producers to primary consumers through feeding",
+                                        "the total amount of energy available to decomposers after all consumers have fed"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "NPP = GPP âˆ’ plant respiration; it represents the organic matter actually available to heterotrophs because it is what remains after producers use some fixed energy for their own metabolic needs.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "This definition describes gross primary productivity (GPP), not NPP; students confuse the two terms, forgetting that NPP subtracts the energy producers expend in respiration."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Energy transfer to primary consumers describes consumption, not productivity; NPP is a property of the producer level, not a transfer rate between levels."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Energy available to decomposers comes from dead organic matter at all levels, not just after consumers feed; this conflates detrital pathways with producer-level productivity."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 8: Ecology",
+        "unit_exam_weight_pct":  15,
+        "deck":  "Population Ecology",
+        "type":  "mc_static",
+        "difficulty":  "easy",
+        "tags":  [
+                     "exponential_growth",
+                     "logistic_growth",
+                     "carrying_capacity"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "A bacterial population growing in an unlimited nutrient medium with no predators displays a J-shaped growth curve. As nutrients become depleted and waste accumulates, growth slows and the population stabilizes. Which model best describes the second phase of this growth pattern?",
+                        "options":  [
+                                        "Logistic growth, because environmental resistance limits the population to a carrying capacity K",
+                                        "Exponential growth, because the per capita growth rate remains constant as the population grows",
+                                        "Density-independent growth, because abiotic factors are solely responsible for limiting population size",
+                                        "Primary succession, because the population is colonizing a previously unoccupied environment"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Logistic growth (S-curve) occurs when limiting factors create environmental resistance that reduces the per capita growth rate as population size approaches carrying capacity K, producing the observed stabilization.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Exponential growth describes the initial J-curve phase with unlimited resources; once resources are depleted, per capita growth rate declines, so this model no longer applies."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "The limiting factors described (nutrient depletion, waste accumulation) are density-dependent, not density-independent; their effect intensifies as population density increases."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Ecological succession describes community-level changes in species composition over time, not population-level growth dynamics of a single species."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 8: Ecology",
+        "unit_exam_weight_pct":  15,
+        "deck":  "Population Ecology",
+        "type":  "mc_numeric",
+        "difficulty":  "medium",
+        "tags":  [
+                     "exponential_growth",
+                     "population_size",
+                     "per_capita_rate"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  {
+                       "type":  "latex",
+                       "value":  "\\frac{dN}{dt} = rN",
+                       "caption":  "Equation for exponential population growth, where r is the per capita growth rate and N is population size."
+                   },
+        "content":  {
+                        "stem":  "A deer population of {{N}} individuals has a per capita growth rate (r) of {{r}} per year. Using the exponential growth model, what is the expected change in population size (dN/dt) over one year?",
+                        "params":  {
+                                       "N":  200,
+                                       "r":  0.15
+                                   },
+                        "answer_formula":  "N * r",
+                        "precision":  0,
+                        "unit":  "individuals/year",
+                        "options":  [
+                                        "30 individuals/year",
+                                        "3 individuals/year",
+                                        "200 individuals/year",
+                                        "215 individuals/year"
+                                    ],
+                        "correct_index":  0,
+                        "distractors":  [
+                                            {
+                                                "formula":  "N * r * 0.1",
+                                                "error_type":  "applied_10_percent_rule_incorrectly"
+                                            },
+                                            {
+                                                "formula":  "N",
+                                                "error_type":  "reported_N_instead_of_change"
+                                            },
+                                            {
+                                                "formula":  "N + N * r",
+                                                "error_type":  "reported_new_total_not_change"
+                                            }
+                                        ],
+                        "correct_explanation":  "dN/dt = rN = 0.15 Ã— 200 = 30 individuals/year; this is the instantaneous rate of change, not the new total population size.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students mistakenly apply the 10% energy transfer rule to population growth, multiplying the correct answer by 0.1 to get 3, confusing ecosystem energy rules with population dynamics formulas."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students report the current population N = 200 rather than computing the rate of change, misreading the formula as asking for population size rather than its derivative."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students compute N + rN = 230, reporting the projected new total population rather than just the change in population (dN/dt = 30)."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 8: Ecology",
+        "unit_exam_weight_pct":  15,
+        "deck":  "Population Ecology",
+        "type":  "mc_static",
+        "difficulty":  "medium",
+        "tags":  [
+                     "density_dependent_factors",
+                     "density_independent_factors",
+                     "population_regulation"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "A late-season frost kills 40% of a locust population regardless of how dense that population is. Which type of limiting factor does this represent, and why?",
+                        "options":  [
+                                        "Density-independent, because the mortality rate does not change with population density",
+                                        "Density-dependent, because the total number of individuals killed increases as population size grows",
+                                        "Biotic, because frost is an environmental condition that affects living organisms directly",
+                                        "Carrying capacity, because the frost permanently lowers the maximum population the habitat can support"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Density-independent factors (typically abiotic events like weather) affect a constant proportion of the population regardless of density; the frost kills 40% whether there are 100 or 10,000 locusts.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students confuse percentage killed with total numbers killed; while the absolute number killed does rise with density, a density-dependent factor changes the per capita effect at different densities, which the frost does not."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Abiotic factors (non-living physical/chemical) are correctly opposed to biotic factors (living organisms); frost is abiotic, not biotic, even though it affects living things."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Carrying capacity is the maximum sustainable population given all limiting factors, not a single catastrophic event; a one-time frost does not define K."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 8: Ecology",
+        "unit_exam_weight_pct":  15,
+        "deck":  "Population Ecology",
+        "type":  "mc_static",
+        "difficulty":  "hard",
+        "tags":  [
+                     "age_structure",
+                     "population_growth",
+                     "demographic_analysis"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "An age-structure diagram for a human population shows a very wide base (large proportion of pre-reproductive individuals), a narrower middle (reproductive individuals), and a narrow top (post-reproductive individuals). Which prediction about this population is most supported?",
+                        "options":  [
+                                        "The population will grow rapidly in future years as the large pre-reproductive cohort matures",
+                                        "The population is currently at carrying capacity because reproductive-age individuals are fewer than juveniles",
+                                        "The population will decline because there are more juveniles than reproductive adults to sustain replacement",
+                                        "The population growth rate will slow immediately because the large juvenile cohort competes for resources"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "A broad-based age pyramid indicates a large cohort of pre-reproductive individuals who will soon enter reproductive age, increasing birth rates and driving rapid future population growth even if current birth rates are moderate.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "A broad base indicates high reproductive potential ahead, not current saturation at K; carrying capacity is inferred from resource limitation, not from the age ratio alone."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "A large juvenile cohort signals future population growth, not decline; decline would be indicated by a narrow base (few young relative to reproductive adults) and an inverted pyramid."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Resource competition may eventually increase density-dependent resistance, but the immediate demographic consequence of a large juvenile cohort is future population growth, not immediate slowing of the current rate."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 8: Ecology",
+        "unit_exam_weight_pct":  15,
+        "deck":  "Populations and Ecosystems",
+        "type":  "mc_static",
+        "difficulty":  "easy",
+        "tags":  [
+                     "food_web",
+                     "food_chain",
+                     "trophic_levels"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "In a food web, a rabbit eats grass, a fox eats the rabbit, and a hawk eats the fox. Which correctly identifies the trophic level of the fox?",
+                        "options":  [
+                                        "Secondary consumer, because the fox eats a primary consumer (the rabbit)",
+                                        "Primary consumer, because the fox is the first animal in the food chain",
+                                        "Tertiary consumer, because the fox is eaten by the hawk at a higher trophic level",
+                                        "Producer, because the fox converts chemical energy from the rabbit into its own biomass"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Trophic level is determined by how many feeding steps separate an organism from the primary producers; the fox eats the rabbit (a primary consumer of grass), making the fox a secondary consumer at trophic level 3.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Primary consumer refers to an organism that eats producers (plants); the fox eats another animal, so it cannot be a primary consumer regardless of its position in the list."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Trophic level is defined by what an organism eats, not by what eats it; the fact that hawks eat foxes places hawks higher, but that does not change the fox\u0027s own trophic position."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Producers capture energy from an abiotic source (sunlight); animals that eat other organisms are consumers, not producers, regardless of how efficiently they assimilate energy."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 8: Ecology",
+        "unit_exam_weight_pct":  15,
+        "deck":  "Populations and Ecosystems",
+        "type":  "mc_numeric",
+        "difficulty":  "medium",
+        "tags":  [
+                     "NPP",
+                     "energy_budget",
+                     "ecosystem_productivity"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "A forest ecosystem has a gross primary productivity (GPP) of {{gpp}} kcal/mÂ²/yr. If plant respiration accounts for {{resp_pct}}% of GPP, what is the net primary productivity (NPP)?",
+                        "params":  {
+                                       "gpp":  8000,
+                                       "resp_pct":  60
+                                   },
+                        "answer_formula":  "gpp * (1 - resp_pct / 100)",
+                        "precision":  0,
+                        "unit":  "kcal/mÂ²/yr",
+                        "options":  [
+                                        "3,200 kcal/mÂ²/yr",
+                                        "4,800 kcal/mÂ²/yr",
+                                        "8,000 kcal/mÂ²/yr",
+                                        "800 kcal/mÂ²/yr"
+                                    ],
+                        "correct_index":  0,
+                        "distractors":  [
+                                            {
+                                                "formula":  "gpp * resp_pct / 100",
+                                                "error_type":  "reported_respiration_not_NPP"
+                                            },
+                                            {
+                                                "formula":  "gpp",
+                                                "error_type":  "confused_NPP_with_GPP"
+                                            },
+                                            {
+                                                "formula":  "gpp * 0.1",
+                                                "error_type":  "applied_10_percent_rule_instead_of_NPP_formula"
+                                            }
+                                        ],
+                        "correct_explanation":  "NPP = GPP âˆ’ respiration = GPP Ã— (1 âˆ’ 0.60) = 8,000 Ã— 0.40 = 3,200 kcal/mÂ²/yr; the remaining 60% is consumed by plant respiration and is not available to heterotrophs.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students compute GPP Ã— 0.60 = 4,800, which is the amount lost to respiration, not the NPP that remains available; they subtract from the wrong side."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students confuse NPP with GPP and report the total photosynthetic rate without subtracting the plant\u0027s own respiratory losses."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students apply the 10% energy-transfer rule (appropriate for trophic transfers) to a within-producer calculation, confusing two different ecological efficiency concepts."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 8: Ecology",
+        "unit_exam_weight_pct":  15,
+        "deck":  "Community Ecology",
+        "type":  "mc_static",
+        "difficulty":  "easy",
+        "tags":  [
+                     "symbiosis",
+                     "mutualism",
+                     "commensalism",
+                     "parasitism"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "Clownfish live among the stinging tentacles of sea anemones. The clownfish gains protection from predators, and the anemone appears to be unaffected. This relationship is best classified as",
+                        "options":  [
+                                        "commensalism, because one species benefits while the other is neither helped nor harmed",
+                                        "mutualism, because both species derive a measurable benefit from the interaction",
+                                        "parasitism, because the clownfish exploits the anemone\u0027s resources at the anemone\u0027s expense",
+                                        "competition, because both species occupy overlapping ecological niches in the reef"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Commensalism (+/0) describes an interaction in which one organism benefits and the other experiences no significant positive or negative effect; the clownfish benefits from protection while the anemone is unaffected.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Mutualism requires measurable benefit to both partners (+/+); the scenario states the anemone is unaffected, ruling out mutualism even though some real clownfish-anemone relationships may be mutualistic."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Parasitism involves harm to the host (âˆ’); since the anemone is described as unharmed, the relationship does not qualify as parasitism."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Competition involves both species suffering reduced fitness from shared resource use (âˆ’/âˆ’); a clownfish hiding among tentacles is not competing with the anemone for resources."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 8: Ecology",
+        "unit_exam_weight_pct":  15,
+        "deck":  "Community Ecology",
+        "type":  "mc_static",
+        "difficulty":  "medium",
+        "tags":  [
+                     "keystone_species",
+                     "community_structure",
+                     "predation"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "When sea otters were removed from a Pacific kelp forest, sea urchin populations exploded, and urchins grazed kelp down to bare rock, collapsing the entire ecosystem. When otters were reintroduced, the kelp forest recovered. Sea otters are best described as a",
+                        "options":  [
+                                        "keystone species, because their disproportionate effect on community structure exceeds their numerical abundance",
+                                        "dominant species, because they are the most numerous predator in the kelp forest ecosystem",
+                                        "invasive species, because their reintroduction disrupted the established equilibrium of the urchin community",
+                                        "pioneer species, because they were the first organisms to colonize the bare rock after kelp removal"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "A keystone species has an ecological impact far greater than its biomass or abundance would suggest; the sea otter controls urchin populations and thereby maintains the entire kelp forest community structure.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Dominant species are defined by numerical abundance or biomass, not by disproportionate ecological impact; sea otters are relatively few yet have outsized effects, which is the defining feature of a keystone species."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "An invasive species is a non-native organism that spreads harmfully; reintroducing a native species to restore ecosystem balance is the opposite of an invasion."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Pioneer species colonize barren environments during primary succession; sea otters are predators, not colonizers, and the scenario involves community recovery, not succession."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 8: Ecology",
+        "unit_exam_weight_pct":  15,
+        "deck":  "Community Ecology",
+        "type":  "mc_static",
+        "difficulty":  "medium",
+        "tags":  [
+                     "ecological_succession",
+                     "primary_succession",
+                     "secondary_succession"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "A wildfire destroys the trees and shrubs in a forest, but the soil and its seed bank remain intact. The subsequent regrowth of vegetation in this area represents",
+                        "options":  [
+                                        "secondary succession, because soil and organic matter were not completely destroyed",
+                                        "primary succession, because the fire eliminated all living organisms from the site",
+                                        "primary succession, because pioneer species must re-colonize bare substrate from scratch",
+                                        "secondary succession, because the climax community is established within a single growing season"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Secondary succession occurs when a disturbance disrupts an existing community but leaves soil (and often seeds and roots) intact, allowing recovery to proceed more rapidly than primary succession, which starts on bare rock with no soil.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Primary succession requires the complete absence of soil; since soil and the seed bank survived the fire, conditions do not meet the definition of primary succession even though all above-ground vegetation was destroyed."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Pioneer species in primary succession colonize truly bare, soil-free substrates (lava fields, glacier retreats); in secondary succession, residual seeds and surviving roots provide a head start, bypassing the pioneer stage."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "The speed of recovery does not determine succession type; secondary succession is defined by the presence of remaining soil and organic matter, not by how quickly a climax community is reestablished."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 8: Ecology",
+        "unit_exam_weight_pct":  15,
+        "deck":  "Community Ecology",
+        "type":  "mc_static",
+        "difficulty":  "hard",
+        "tags":  [
+                     "character_displacement",
+                     "competition",
+                     "resource_partitioning"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "Two species of finch are found on islands where they coexist. On islands where only one species lives, beak sizes overlap. On islands where both species coexist, beak sizes are more divergent. This pattern is best explained by",
+                        "options":  [
+                                        "character displacement reducing interspecific competition by allowing the species to exploit different food resources",
+                                        "genetic drift causing random divergence in beak morphology on different islands over time",
+                                        "resource partitioning without any evolutionary change in beak morphology between allopatric and sympatric populations",
+                                        "the competitive exclusion principle, which predicts that one species will go extinct where both coexist"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Character displacement is the evolutionary divergence of a trait (here, beak size) in sympatric populations of competing species, reducing niche overlap and interspecific competition for food resources.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Genetic drift produces random, non-directional changes and would not consistently produce greater divergence specifically in sympatric populations; the predictable pattern across islands points to natural selection, not drift."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "The scenario explicitly describes morphological differences between allopatric and sympatric populations, indicating evolutionary change has occurred; resource partitioning alone (behavioral) does not explain beak-size divergence."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Competitive exclusion predicts extinction of the weaker competitor, but both species coexist on the shared islands; the divergence of beak sizes is the mechanism that allows coexistence by reducing direct competition."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 8: Ecology",
+        "unit_exam_weight_pct":  15,
+        "deck":  "Biodiversity",
+        "type":  "mc_static",
+        "difficulty":  "easy",
+        "tags":  [
+                     "species_richness",
+                     "species_evenness",
+                     "biodiversity_measures"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "Community A has 10 species each represented by exactly 100 individuals. Community B has 10 species, but one species accounts for 910 of the 1,000 individuals, and the remaining 9 species share the other 90. Which community has greater biodiversity?",
+                        "options":  [
+                                        "Community A, because it has higher species evenness even though species richness is equal",
+                                        "Community B, because its dominant species has a larger population and contributes more to ecosystem function",
+                                        "Community B, because greater total abundance indicates more resources and greater productivity",
+                                        "Both communities are equally diverse because both contain the same number of species"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Biodiversity incorporates both species richness (number of species) and species evenness (relative abundance); Community A has equal richness but far greater evenness, making it more biodiverse by standard diversity indices.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Dominance by one species reduces diversity by diminishing the relative contribution of other species; a large population of a single species does not increase overall community biodiversity."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Total abundance (number of individuals) is not a measure of biodiversity; both communities have 1,000 total individuals, yet their biodiversity differs because of unequal distribution among species."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Species richness alone is insufficient; two communities with identical richness can differ greatly in diversity based on evenness, which measures how equitably individuals are distributed among species."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 8: Ecology",
+        "unit_exam_weight_pct":  15,
+        "deck":  "Biodiversity",
+        "type":  "mc_static",
+        "difficulty":  "medium",
+        "tags":  [
+                     "island_biogeography",
+                     "species_richness",
+                     "area_isolation"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "According to the theory of island biogeography, which island would be predicted to have the highest species richness at equilibrium?",
+                        "options":  [
+                                        "A large island close to the mainland source of colonists",
+                                        "A small island close to the mainland source of colonists",
+                                        "A large island far from the mainland source of colonists",
+                                        "A small island far from the mainland source of colonists"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Island biogeography predicts that species richness increases with island area (more habitats, lower extinction rate) and decreases with isolation (lower immigration rate); a large, near island maximizes immigration and minimizes extinction.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Proximity does increase immigration rate, but small size raises local extinction rates; the two effects partially cancel, yielding lower richness than a large island at the same proximity."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Large area lowers extinction rates, but great distance sharply reduces immigration; the net effect is intermediate richness, lower than a large island near the mainland."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Both small size (high extinction) and great distance (low immigration) independently reduce species richness; this combination yields the lowest equilibrium richness of the four options."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 8: Ecology",
+        "unit_exam_weight_pct":  15,
+        "deck":  "Biodiversity",
+        "type":  "mc_static",
+        "difficulty":  "hard",
+        "tags":  [
+                     "ecosystem_services",
+                     "biodiversity_value",
+                     "provisioning_services"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "Wetlands filter pollutants from water, reduce flood intensity by absorbing runoff, and sequester carbon. These functions are examples of which category of ecosystem services?",
+                        "options":  [
+                                        "Regulating services, because they moderate environmental conditions and processes that benefit humans",
+                                        "Provisioning services, because wetlands supply material goods such as fish and peat directly to humans",
+                                        "Cultural services, because wetlands provide recreational and aesthetic benefits appreciated by human communities",
+                                        "Supporting services, because the functions described are the indirect foundations of all other ecosystem services"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Regulating services are the benefits gained from the regulation of ecosystem processes, including water purification, flood control, and climate regulation through carbon sequestration â€” all functions described for the wetland.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Provisioning services deliver tangible products (food, timber, water supply); filtering, flood control, and carbon sequestration are process-based regulations, not material goods."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Cultural services encompass non-material benefits such as recreation, spiritual value, and ecotourism; the functions described are physical and chemical ecosystem processes, not human experiences."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Supporting services underpin all other services (soil formation, nutrient cycling, primary production); the specific wetland functions listed are direct human benefits classified as regulating, not the foundational supporting tier."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 8: Ecology",
+        "unit_exam_weight_pct":  15,
+        "deck":  "Disruptions to Ecosystems",
+        "type":  "mc_static",
+        "difficulty":  "easy",
+        "tags":  [
+                     "nitrogen_cycle",
+                     "nitrogen_fixation",
+                     "denitrification"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "Which process converts atmospheric nitrogen gas (Nâ‚‚) into ammonia (NHâ‚ƒ), making nitrogen available to plants for the first time?",
+                        "options":  [
+                                        "Nitrogen fixation, carried out by prokaryotes such as Rhizobium bacteria",
+                                        "Nitrification, carried out by bacteria that oxidize ammonia to nitrate",
+                                        "Denitrification, carried out by anaerobic bacteria that release Nâ‚‚ back to the atmosphere",
+                                        "Ammonification, carried out by decomposers that break down organic nitrogen compounds"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Nitrogen fixation is the enzymatic reduction of inert Nâ‚‚ to NHâ‚ƒ (ammonia) performed by nitrogen-fixing prokaryotes such as Rhizobium (symbiotic in legume root nodules) and free-living cyanobacteria; this is the entry point of atmospheric nitrogen into the biotic cycle.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Nitrification converts ammonia (NHâ‚ƒ) to nitrite and then nitrate; it acts on already-fixed nitrogen and does not convert Nâ‚‚, so it is a later step in the cycle, not the entry point."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Denitrification returns fixed nitrogen to the atmosphere as Nâ‚‚, which is the reverse of nitrogen fixation; it removes nitrogen from the biotic cycle rather than adding it."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Ammonification releases ammonia from organic matter (dead organisms, waste) back into the soil; it recycles existing organic nitrogen but does not fix atmospheric Nâ‚‚."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 8: Ecology",
+        "unit_exam_weight_pct":  15,
+        "deck":  "Disruptions to Ecosystems",
+        "type":  "mc_static",
+        "difficulty":  "medium",
+        "tags":  [
+                     "eutrophication",
+                     "nutrient_pollution",
+                     "human_impact"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "Agricultural runoff carrying excess nitrogen and phosphorus enters a lake. Which sequence of events best describes the resulting eutrophication process?",
+                        "options":  [
+                                        "Nutrient enrichment â†’ algal bloom â†’ algae die â†’ bacterial decomposition â†’ oxygen depletion â†’ fish kills",
+                                        "Nutrient enrichment â†’ fish population increase â†’ overpredation of algae â†’ lake becomes clear",
+                                        "Nutrient enrichment â†’ acidification of lake water â†’ dissolution of calcium carbonate in shells â†’ species loss",
+                                        "Nutrient enrichment â†’ increased aquatic plant photosynthesis â†’ oxygen supersaturation â†’ disrupted osmoregulation"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Eutrophication follows this sequence: excess nutrients cause algal blooms; when algae die, aerobic bacteria decompose the biomass, consuming dissolved oxygen (hypoxia/anoxia) and creating dead zones that cause fish kills.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Fish populations typically decrease, not increase, in eutrophic waters as oxygen declines; more algae also means less light penetration and a less diverse ecosystem, not a clearer lake."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Acidification describes acid rain effects (from sulfur and nitrogen oxides in the atmosphere), not freshwater eutrophication from agricultural runoff nutrients."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Although photosynthesis does increase initially, oxygen supersaturation is not the primary problem; the key mechanism is oxygen depletion during nighttime respiration and bacterial decomposition of dead algae, not excess oxygen."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 8: Ecology",
+        "unit_exam_weight_pct":  15,
+        "deck":  "Disruptions to Ecosystems",
+        "type":  "mc_static",
+        "difficulty":  "medium",
+        "tags":  [
+                     "carbon_cycle",
+                     "fossil_fuels",
+                     "climate_change"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "Which human activity most directly moves carbon from a long-term geological reservoir into the short-term atmospheric carbon cycle?",
+                        "options":  [
+                                        "Burning fossil fuels, which releases COâ‚‚ stored in coal, oil, and natural gas formed over millions of years",
+                                        "Deforestation, which releases COâ‚‚ stored in living tree biomass accumulated over decades",
+                                        "Livestock farming, which produces methane from enteric fermentation in ruminant digestive systems",
+                                        "Rice cultivation in flooded paddies, which releases methane from anaerobic decomposition in waterlogged soils"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Fossil fuels are geological reservoirs that stored carbon for tens to hundreds of millions of years; combustion rapidly transfers this long-sequestered carbon into the atmospheric pool, distinguishing it from the other options that cycle carbon within the biotic short-term reservoir.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Deforestation releases biologically sequestered carbon from living and dead organic matter (a short-term biotic reservoir measured in decades), not from a millions-of-years geological reservoir; the scale of time storage differs fundamentally."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Livestock methane comes from recently fixed carbon in feed (short-term biotic cycle) fermented by gut microbes, not from geological reservoirs; this is a biotic-to-atmospheric transfer within the short-term cycle."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Methane from rice paddies originates from recently photosynthesized organic carbon decomposed by soil archaea, again a short-term biotic carbon source, not a long-term geological one."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 8: Ecology",
+        "unit_exam_weight_pct":  15,
+        "deck":  "Disruptions to Ecosystems",
+        "type":  "mc_numeric",
+        "difficulty":  "hard",
+        "tags":  [
+                     "10_percent_rule",
+                     "biomagnification",
+                     "toxin_concentration"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "A persistent pollutant is found at a concentration of {{conc}} ppb in producers. Assuming 10% energy transfer efficiency (and proportional biomagnification) at each trophic level, what concentration would be found in tertiary consumers?",
+                        "params":  {
+                                       "conc":  0.1
+                                   },
+                        "answer_formula":  "conc / 0.001",
+                        "precision":  0,
+                        "unit":  "ppb",
+                        "options":  [
+                                        "100 ppb",
+                                        "10 ppb",
+                                        "1 ppb",
+                                        "1,000 ppb"
+                                    ],
+                        "correct_index":  0,
+                        "distractors":  [
+                                            {
+                                                "formula":  "conc / 0.01",
+                                                "error_type":  "only_two_trophic_transfers"
+                                            },
+                                            {
+                                                "formula":  "conc / 0.1",
+                                                "error_type":  "only_one_trophic_transfer"
+                                            },
+                                            {
+                                                "formula":  "conc / 0.0001",
+                                                "error_type":  "four_trophic_transfers"
+                                            }
+                                        ],
+                        "correct_explanation":  "Biomagnification concentrates toxins as energy is lost between trophic levels. With 10% efficiency, concentration multiplies by 10 per level. Producers â†’ primary consumers: 0.1 Ã— 10 = 1 ppb; primary â†’ secondary: 10 ppb; secondary â†’ tertiary: 100 ppb. Three transfers from producers to tertiary consumers: 0.1 Ã— 10Â³ = 100 ppb.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students apply only two trophic transfers (reaching secondary consumers) rather than three, obtaining 0.1 Ã— 10Â² = 10 ppb and stopping one level short."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students apply only one trophic transfer (reaching primary consumers), obtaining 0.1 Ã— 10 = 1 ppb, counting from the wrong starting level."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students apply four transfers (reaching quaternary consumers), obtaining 0.1 Ã— 10â´ = 1,000 ppb, counting producers as one of the consumer levels rather than the base."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 8: Ecology",
+        "unit_exam_weight_pct":  15,
+        "deck":  "Disruptions to Ecosystems",
+        "type":  "mc_static",
+        "difficulty":  "hard",
+        "tags":  [
+                     "habitat_fragmentation",
+                     "invasive_species",
+                     "biodiversity_loss"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  null,
+        "content":  {
+                        "stem":  "Habitat fragmentation reduces a continuous forest into isolated patches. Which ecological consequence is most directly predicted by the theory of island biogeography?",
+                        "options":  [
+                                        "Reduced species richness in patches because smaller area and greater isolation lower immigration and raise extinction rates",
+                                        "Increased species richness in patches because edge habitats created by fragmentation support more species than interior forest",
+                                        "No change in species richness because species can recolonize patches through the surrounding matrix of agricultural land",
+                                        "Increased genetic diversity within species because gene flow is cut off, promoting local adaptation in each patch"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Island biogeography directly applies to habitat fragments: smaller patch size increases local extinction rates and the surrounding inhospitable matrix reduces immigration, both of which lower equilibrium species richness compared to the original continuous forest.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "While edge effects do add some edge-adapted species, overall biodiversity consistently declines after fragmentation because interior specialist species (often with larger ranges) are disproportionately lost, more than offsetting any edge species gains."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Agricultural matrix is typically a poor dispersal corridor for forest-interior species; many cannot traverse open land, so effective immigration rates to isolated patches are far lower than in a continuous forest."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Cutting off gene flow between isolated populations reduces genetic diversity within each patch over time through genetic drift and inbreeding, not increases; local adaptation may occur but at the cost of within-population genetic variability."
+                                                        }
+                                                    ]
+                    }
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 8: Ecology",
+        "unit_exam_weight_pct":  15,
+        "deck":  "Population Ecology",
+        "type":  "mc_numeric",
+        "difficulty":  "hard",
+        "tags":  [
+                     "carrying_capacity",
+                     "logistic_growth",
+                     "population_growth_rate"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  false,
+        "visual":  {
+                       "type":  "latex",
+                       "value":  "\\frac{dN}{dt} = rN\\left(\\frac{K - N}{K}\\right)",
+                       "caption":  "Logistic growth equation where r is intrinsic growth rate, N is current population size, and K is carrying capacity."
+                   },
+        "content":  {
+                        "stem":  "A population has an intrinsic growth rate r = {{r}}/yr, a carrying capacity K = {{K}} individuals, and a current population size N = {{N}} individuals. Using the logistic growth model, what is the current rate of population growth?",
+                        "params":  {
+                                       "r":  0.4,
+                                       "K":  500,
+                                       "N":  250
+                                   },
+                        "answer_formula":  "r * N * (K - N) / K",
+                        "precision":  0,
+                        "unit":  "individuals/year",
+                        "options":  [
+                                        "50 individuals/year",
+                                        "100 individuals/year",
+                                        "25 individuals/year",
+                                        "200 individuals/year"
+                                    ],
+                        "correct_index":  0,
+                        "distractors":  [
+                                            {
+                                                "formula":  "r * N",
+                                                "error_type":  "used_exponential_not_logistic"
+                                            },
+                                            {
+                                                "formula":  "r * N * (K - N) / K / 2",
+                                                "error_type":  "divided_result_by_2_error"
+                                            },
+                                            {
+                                                "formula":  "r * K",
+                                                "error_type":  "substituted_K_for_N"
+                                            }
+                                        ],
+                        "correct_explanation":  "dN/dt = rN(Kâˆ’N)/K = 0.4 Ã— 250 Ã— (500âˆ’250)/500 = 0.4 Ã— 250 Ã— 0.5 = 50 individuals/year. The logistic braking factor (Kâˆ’N)/K = 0.5 because the population is at exactly half of K.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students use the exponential formula dN/dt = rN = 0.4 Ã— 250 = 100, omitting the logistic braking term (Kâˆ’N)/K that reduces growth below the exponential rate."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students correctly compute the logistic formula but then divide by an additional factor of 2, perhaps double-counting the 0.5 braking factor or making an arithmetic error."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students substitute K = 500 into the position of N in the formula, computing r Ã— K = 0.4 Ã— 500 = 200, confusing the two population parameters."
+                                                        }
+                                                    ]
+                    }
+    }
+]

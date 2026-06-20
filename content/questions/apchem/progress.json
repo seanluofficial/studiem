@@ -1,0 +1,30 @@
+{
+  "subject": "AP Chemistry",
+  "slug": "apchem",
+  "target_total": 1000,
+  "unit_targets": {
+    "1": 90,
+    "2": 90,
+    "3": 200,
+    "4": 80,
+    "5": 80,
+    "6": 80,
+    "7": 80,
+    "8": 130,
+    "9": 80
+  },
+  "unit_counts": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 0,
+    "8": 0,
+    "9": 0
+  },
+  "total_clean": 0,
+  "last_updated": "2026-06-18T00:00:00.000Z",
+  "_note": "unit_counts are updated by the orchestrating agent after each validation pass. unit_targets derived from CED exam weights × 10 (for 1000 total), rounded to nearest 10."
+}

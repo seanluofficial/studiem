@@ -1,0 +1,141 @@
+{
+  "subject": "AP Chemistry",
+  "slug": "apchem",
+  "units": [
+    {
+      "number": 1,
+      "name": "Unit 1: Atomic Structure and Properties",
+      "exam_weight_pct": 9,
+      "decks": [
+        "Moles and Molar Mass",
+        "Mass Spectrometry of Elements",
+        "Elemental Composition of Pure Substances",
+        "Composition of Mixtures",
+        "Atomic Structure and Electron Configuration",
+        "Photoelectron Spectroscopy",
+        "Periodic Trends",
+        "Valence Electrons and Ionic Compounds"
+      ],
+      "objectives": "UNIT 1: Atomic Structure and Properties — AP Chemistry CED Learning Objectives\n\n1.1 Moles and Molar Mass\n- SPQ-1.A: Calculate moles, particles, or mass using molar mass and Avogadro's number.\n- SPQ-1.B: Explain the quantitative relationship between mass and number of particles.\n\n1.2 Mass Spectrometry of Elements\n- SPQ-1.C: Explain how m/z values and relative abundances reveal isotopic composition and average atomic mass.\n\n1.3 Elemental Composition of Pure Substances\n- SPQ-2.A: Derive the empirical formula from percent composition or experimental data.\n\n1.4 Composition of Mixtures\n- SPQ-2.B: Explain the quantitative relationship between composition and properties in a mixture.\n\n1.5 Atomic Structure and Electron Configuration\n- SAP-1.A: Write ground-state electron configurations using subshell notation and noble-gas shorthand.\n- SAP-1.B: Relate configuration to periodic table position. Exceptions: Cr, Cu, and analogs.\n\n1.6 Photoelectron Spectroscopy (PES)\n- SAP-1.C: Interpret PES: peaks = subshells, position = binding energy, height = electron count.\n\n1.7 Periodic Trends\n- SAP-2.A/B: Predict and explain trends in atomic radius, IE, and electronegativity. Know anomalies (Al<Mg, S<P).\n\n1.8 Valence Electrons and Ionic Compounds\n- SAP-2.C: Identify valence electrons, typical ionic charges, and explain ionic bond formation.\n\nSOLVABILITY RULES FOR UNIT 1:\n- Molar mass calculations must provide or use standard atomic masses (or reference a known element).\n- Isotope abundance problems must give at least masses and one abundance, or enough data to solve.\n- PES questions must give enough peaks/intensities to identify the element or answer the question.\n- Electron configuration questions must specify the element (by name, symbol, or atomic number).\n- Periodic trend questions must compare real, named elements or clearly defined positions."
+    },
+    {
+      "number": 2,
+      "name": "Unit 2: Molecular and Ionic Compound Structure and Properties",
+      "exam_weight_pct": 9,
+      "decks": [
+        "Types of Chemical Bonds",
+        "Intramolecular Force and Potential Energy",
+        "Structure of Ionic Solids",
+        "Structure of Metals and Alloys",
+        "Lewis Diagrams",
+        "Resonance and Formal Charge",
+        "VSEPR and Bond Hybridization"
+      ],
+      "objectives": "UNIT 2: Molecular and Ionic Compound Structure and Properties — AP Chemistry CED Learning Objectives\n\n2.1 Types of Chemical Bonds\n- SAP-3.A: Classify bonds as ionic, covalent, or metallic; predict polarity from electronegativity.\n\n2.2 Intramolecular Force and Potential Energy\n- SAP-3.B: Relate bond length, bond energy, and bond order.\n\n2.3 Structure of Ionic Solids\n- SAP-3.C: Use Coulomb's law to compare lattice energies (higher charge, smaller radii = higher energy).\n\n2.4 Structure of Metals and Alloys\n- SAP-3.D: Explain metallic properties using the sea-of-electrons model.\n\n2.5 Lewis Diagrams\n- SAP-4.A: Draw Lewis structures satisfying the octet rule (exceptions: expanded octets, electron-deficient).\n\n2.6 Resonance and Formal Charge\n- SAP-4.B/C: Identify resonance; calculate FC = valence e⁻ − nonbonding e⁻ − ½(bonding e⁻).\n\n2.7 VSEPR and Bond Hybridization\n- SAP-4.D/E: Predict geometry, bond angles, polarity from VSEPR; assign hybridization (sp, sp², sp³, sp³d, sp³d²).\n\nSOLVABILITY RULES FOR UNIT 2:\n- Lewis structure questions must name the molecule or ion unambiguously.\n- VSEPR questions must specify the molecule or provide enough data to determine it.\n- Lattice energy comparisons must name the compounds or give ionic charges and radii.\n- Formal charge questions must specify which atom and which Lewis structure to use.\n- Bond type questions must name or clearly describe both elements."
+    },
+    {
+      "number": 3,
+      "name": "Unit 3: Intermolecular Forces and Properties",
+      "exam_weight_pct": 20,
+      "decks": [
+        "Intermolecular Forces",
+        "Properties of Solids",
+        "Solubility",
+        "Spectroscopy and the Electromagnetic Spectrum",
+        "Photoelectric Effect",
+        "Beer-Lambert Law"
+      ],
+      "objectives": "UNIT 3: Intermolecular Forces and Properties — AP Chemistry CED Learning Objectives\n\n3.1 Intermolecular Forces\n- SAP-5.A: Explain the relationship between intermolecular forces (London dispersion, dipole-dipole, hydrogen bonding) and the relative boiling points, melting points, and vapor pressures of substances.\n- SAP-5.B: Explain the relationship between the structure of a molecule and the intermolecular forces it exhibits.\n\n3.2 Properties of Solids\n- SAP-6.A: Explain the relationship between macroscopic properties of a solid (hardness, conductivity, melting point) and the type of solid (ionic, metallic, molecular, network covalent).\n\n3.3 Solubility\n- SAP-7.A: Explain the relationship between the solubility of ionic and molecular compounds using 'like dissolves like' and IMF strength.\n- SAP-7.B: Explain the relationship between molecular structure, polarity, and solubility.\n\n3.4 Spectroscopy and the Electromagnetic Spectrum\n- SAP-8.A: Explain how absorption/emission spectra provide evidence for quantized energy levels.\n- SAP-8.B: Relate the energy of a photon to its frequency and wavelength using E = hf = hc/λ.\n\n3.5 Photoelectric Effect\n- SAP-8.C: Explain the photoelectric effect as evidence for the particle nature of light; identify threshold frequency and kinetic energy of emitted electrons.\n\n3.6 Beer-Lambert Law\n- SPQ-3.A: Explain the relationships among absorbance, concentration, path length, and molar absorptivity (A = εlc).\n- SPQ-3.B: Use Beer-Lambert law to determine concentration from absorbance data."
+    },
+    {
+      "number": 4,
+      "name": "Unit 4: Chemical Reactions",
+      "exam_weight_pct": 8,
+      "decks": [
+        "Introduction to Reactions",
+        "Net Ionic Equations",
+        "Representations of Reactions",
+        "Physical and Chemical Changes",
+        "Stoichiometry",
+        "Introduction to Titration",
+        "Types of Chemical Reactions"
+      ],
+      "objectives": "UNIT 4: Chemical Reactions — AP Chemistry CED Learning Objectives\n\n4.1 Introduction to Reactions\n- TRA-1.A: Identify evidence for chemical reactions (color change, gas, precipitate, temperature change, light).\n\n4.2 Net Ionic Equations\n- TRA-1.B: Represent a precipitation reaction with a net ionic equation; identify spectator ions.\n\n4.3 Representations of Reactions\n- TRA-1.C: Represent a reaction using particulate diagrams, symbolic equations, and graphical forms (all must be consistent).\n\n4.4 Physical and Chemical Changes\n- TRA-1.D: Distinguish between physical and chemical changes based on conservation of matter.\n\n4.5 Stoichiometry\n- SPQ-4.A: Calculate the amount (moles, mass, volume) of product or reactant using stoichiometric relationships; identify limiting reagent; calculate percent yield.\n\n4.6 Introduction to Titration\n- SPQ-4.B: Determine concentration of a solution using titration data; identify the equivalence point.\n\n4.7 Types of Chemical Reactions\n- TRA-2.A: Identify and classify reactions as acid-base, precipitation, or oxidation-reduction; assign oxidation states; identify oxidizing and reducing agents."
+    },
+    {
+      "number": 5,
+      "name": "Unit 5: Kinetics",
+      "exam_weight_pct": 8,
+      "decks": [
+        "Reaction Rate",
+        "Introduction to Rate Law",
+        "Concentration Changes Over Time",
+        "Elementary Reactions",
+        "Collision Model",
+        "Reaction Energy Profile",
+        "Catalysis"
+      ],
+      "objectives": "UNIT 5: Kinetics — AP Chemistry CED Learning Objectives\n\n5.1 Reaction Rate\n- TRA-3.A: Express reaction rate as a change in concentration over time; relate rates of consumption and production for different species using stoichiometry.\n\n5.2 Introduction to Rate Law\n- TRA-3.B: Write a rate law expression; determine the order with respect to each reactant from experimental data; calculate the rate constant k with appropriate units.\n\n5.3 Concentration Changes Over Time\n- TRA-3.C: Use integrated rate laws (zero, first, second order) to relate concentration to time; determine half-life.\n\n5.4 Elementary Reactions\n- TRA-4.A: Identify molecularity of elementary steps; write a rate law for an elementary step directly from its stoichiometry.\n\n5.5 Collision Model\n- TRA-4.B: Explain how temperature, concentration, surface area, and orientation affect reaction rate using collision theory; apply the Arrhenius equation.\n\n5.6 Reaction Energy Profile\n- TRA-4.C: Interpret an energy profile (activation energy, ΔH, transition state, intermediates); identify the rate-determining step in a mechanism.\n\n5.7 Catalysis\n- TRA-4.D: Explain how a catalyst increases reaction rate by providing an alternative pathway with lower Ea; distinguish homogeneous from heterogeneous catalysis."
+    },
+    {
+      "number": 6,
+      "name": "Unit 6: Thermodynamics",
+      "exam_weight_pct": 8,
+      "decks": [
+        "Endothermic and Exothermic Processes",
+        "Heat Transfer and Thermal Equilibrium",
+        "Heat Capacity and Calorimetry",
+        "Energy of Phase Changes",
+        "Introduction to Enthalpy of Reaction",
+        "Enthalpy of Formation",
+        "Hess's Law"
+      ],
+      "objectives": "UNIT 6: Thermodynamics — AP Chemistry CED Learning Objectives\n\n6.1 Endothermic and Exothermic Processes\n- ENE-1.A: Classify a process as endothermic or exothermic; explain energy flow using sign conventions for q and ΔH.\n\n6.2 Heat Transfer and Thermal Equilibrium\n- ENE-1.B: Explain heat transfer between objects at different temperatures in terms of molecular collisions until thermal equilibrium.\n\n6.3 Heat Capacity and Calorimetry\n- ENE-1.C: Calculate heat using q = mcΔT; use coffee-cup or bomb calorimetry data to determine ΔH.\n\n6.4 Energy of Phase Changes\n- ENE-2.A: Explain the energy changes associated with phase transitions (melting, vaporization) in terms of IMF.\n\n6.5 Introduction to Enthalpy of Reaction\n- ENE-2.B: Calculate ΔH using bond enthalpies or from calorimetry data; explain the sign of ΔH.\n\n6.6 Enthalpy of Formation\n- ENE-2.C: Calculate ΔH°rxn from standard enthalpies of formation using ΔH°rxn = Σ ΔH°f(products) − Σ ΔH°f(reactants).\n\n6.7 Hess's Law\n- ENE-2.D: Calculate ΔH for a target reaction by combining and manipulating thermochemical equations using Hess's law."
+    },
+    {
+      "number": 7,
+      "name": "Unit 7: Equilibrium",
+      "exam_weight_pct": 8,
+      "decks": [
+        "Introduction to Equilibrium",
+        "Calculating the Equilibrium Constant",
+        "Calculating Equilibrium Concentrations",
+        "Introduction to Le Chatelier's Principle",
+        "Introduction to Solubility Equilibria",
+        "Common-Ion Effect",
+        "pH and Solubility"
+      ],
+      "objectives": "UNIT 7: Equilibrium — AP Chemistry CED Learning Objectives\n\n7.1 Introduction to Equilibrium\n- TRA-7.A: Explain that at equilibrium, forward and reverse reaction rates are equal; the concentrations of reactants and products are constant but not necessarily equal.\n\n7.2 Calculating the Equilibrium Constant\n- TRA-7.B: Write the equilibrium constant expression K (Kc or Kp) for a given reaction; calculate K from equilibrium concentrations or pressures.\n\n7.3 Calculating Equilibrium Concentrations\n- TRA-8.A: Use an ICE table to determine equilibrium concentrations or pressures from initial conditions and K.\n\n7.4 Introduction to Le Chatelier's Principle\n- TRA-9.A: Predict the direction of equilibrium shift in response to a stress (concentration change, pressure change, temperature change, addition of inert gas) using Le Chatelier's principle.\n\n7.5 Introduction to Solubility Equilibria\n- TRA-10.A: Write Ksp expressions; calculate Ksp from solubility or solubility from Ksp; predict precipitation using Q vs. Ksp.\n\n7.6 Common-Ion Effect\n- TRA-10.B: Explain how the presence of a common ion decreases the solubility of a slightly soluble salt.\n\n7.7 pH and Solubility\n- TRA-10.C: Explain how pH affects solubility of salts containing basic anions."
+    },
+    {
+      "number": 8,
+      "name": "Unit 8: Acids and Bases",
+      "exam_weight_pct": 13,
+      "decks": [
+        "Introduction to Acids and Bases",
+        "pH and pOH of Strong Acids and Bases",
+        "Weak Acid and Base Equilibria",
+        "Acid-Base Reactions and Buffers",
+        "Acid-Base Titrations",
+        "Molecular Structure of Acids and Bases",
+        "pH and pKa"
+      ],
+      "objectives": "UNIT 8: Acids and Bases — AP Chemistry CED Learning Objectives\n\n8.1 Introduction to Acids and Bases\n- TRA-12.A: Identify Brønsted-Lowry acids, bases, and conjugate acid-base pairs; identify Lewis acids and bases.\n\n8.2 pH and pOH of Strong Acids and Bases\n- TRA-12.B: Calculate pH and pOH for strong acid and strong base solutions; use Kw = [H⁺][OH⁻] = 1×10⁻¹⁴ at 25°C.\n\n8.3 Weak Acid and Base Equilibria\n- TRA-13.A: Write Ka and Kb expressions; use ICE tables to calculate pH of weak acid/base solutions; relate Ka and Kb using KaKb = Kw.\n\n8.4 Acid-Base Reactions and Buffers\n- TRA-14.A: Explain how a buffer resists pH change; use the Henderson-Hasselbalch equation (pH = pKa + log([A⁻]/[HA])) to calculate buffer pH.\n\n8.5 Acid-Base Titrations\n- TRA-15.A: Sketch and interpret a titration curve; identify the equivalence point; determine Ka or Kb from half-equivalence point pH; identify the species present at each stage.\n\n8.6 Molecular Structure of Acids and Bases\n- TRA-12.C: Predict relative acid strength from molecular structure: electronegativity, bond polarity, bond length, and number of oxygen atoms on oxoacids.\n\n8.7 pH and pKa\n- TRA-13.B: Use pH vs. pKa comparisons to predict relative proportions of acid and conjugate base; determine whether a salt solution is acidic, basic, or neutral by hydrolysis."
+    },
+    {
+      "number": 9,
+      "name": "Unit 9: Applications of Thermodynamics",
+      "exam_weight_pct": 8,
+      "decks": [
+        "Introduction to Entropy",
+        "Absolute Entropy and Entropy Change",
+        "Gibbs Free Energy and Thermodynamic Favorability",
+        "Thermodynamic and Kinetic Control",
+        "Free Energy and Equilibrium",
+        "Galvanic (Voltaic) Cells",
+        "Electrochemistry and the Nernst Equation"
+      ],
+      "objectives": "UNIT 9: Applications of Thermodynamics — AP Chemistry CED Learning Objectives\n\n9.1 Introduction to Entropy\n- ENE-3.A: Explain entropy as a measure of the dispersal of energy and matter; predict the sign of ΔS for a process based on changes in the number of moles of gas, mixing, or phase changes.\n\n9.2 Absolute Entropy and Entropy Change\n- ENE-3.B: Calculate ΔS°rxn = Σ S°(products) − Σ S°(reactants); explain trends in absolute molar entropy (complexity, phase, molar mass).\n\n9.3 Gibbs Free Energy and Thermodynamic Favorability\n- ENE-4.A: Calculate ΔG using ΔG = ΔH − TΔS; predict thermodynamic favorability (ΔG < 0) and how it depends on temperature.\n\n9.4 Thermodynamic and Kinetic Control\n- ENE-4.B: Distinguish between thermodynamic favorability (ΔG) and kinetic favorability (activation energy); explain that a thermodynamically favorable reaction may be kinetically slow.\n\n9.5 Free Energy and Equilibrium\n- ENE-4.C: Relate ΔG° to the equilibrium constant K using ΔG° = −RT ln K; explain the relationship between the sign of ΔG° and whether K > 1, K < 1, or K = 1.\n\n9.6 Galvanic (Voltaic) Cells\n- ENE-6.A: Describe the components and operation of a galvanic cell (anode, cathode, salt bridge, electron flow direction); calculate E°cell = E°cathode − E°anode.\n\n9.7 Electrochemistry and the Nernst Equation\n- ENE-6.B: Relate ΔG° = −nFE°cell; use the Nernst equation (E = E° − (RT/nF)ln Q) to calculate cell potential under non-standard conditions; relate cell potential to spontaneity."
+    }
+  ]
+}

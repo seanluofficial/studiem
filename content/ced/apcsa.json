@@ -1,0 +1,145 @@
+{
+  "subject": "AP Computer Science A",
+  "slug": "apcsa",
+  "units": [
+    {
+      "number": 1,
+      "name": "Unit 1: Primitive Types",
+      "exam_weight_pct": 4,
+      "decks": [
+        "Why Programming? Why Java?",
+        "Variables and Data Types",
+        "Expressions and Assignment Statements",
+        "Compound Assignment Operators",
+        "Casting and Ranges of Variables"
+      ],
+      "objectives": "UNIT 1: Primitive Types — AP CSA CED Learning Objectives\n\nVAR-1.A: Identify the most appropriate data type category for a particular specification.\n- Primitive types in Java: int (integer, −2³¹ to 2³¹−1), double (floating-point), boolean (true/false).\n- String is a reference type, not primitive.\n\nVAR-1.B: Declare variables of the correct types to represent simple data.\n- Syntax: type name = value; Example: int score = 95;\n\nCON-1.B: Evaluate arithmetic expressions in a program code.\n- Operators: +, −, *, /, % (modulo). Integer division truncates: 7/2 = 3. Double division: 7.0/2 = 3.5.\n- Operator precedence: * / % before + −. Left-to-right for same precedence.\n\nCON-1.C: Evaluate what is stored in a variable as a result of an expression with an assignment statement.\n- Compound assignment: +=, −=, *=, /=, %=. Increment/decrement: ++, −− (pre and post).\n\nCON-1.D: Evaluate arithmetic expressions that use casting.\n- Casting: (int)3.9 = 3 (truncates). (double)7/2 = 3.5. Widening (int→double) automatic; narrowing (double→int) requires explicit cast.\n- Overflow: int has fixed range; exceeding it causes unexpected results.\n\nVAR-1.D: Identify the value of a variable using its scope when the variable is accessed.\n- Scope: variable accessible only within the block it was declared."
+    },
+    {
+      "number": 2,
+      "name": "Unit 2: Using Objects",
+      "exam_weight_pct": 6,
+      "decks": [
+        "Objects — Instances of Classes",
+        "Creating and Storing Objects (Instantiation)",
+        "Calling a Void Method",
+        "Calling a Void Method with Parameters",
+        "Calling a Non-Void Method",
+        "String Objects — Concatenation, Literals, and More",
+        "String Methods",
+        "Wrapper Classes — Integer and Double",
+        "Using the Math Class"
+      ],
+      "objectives": "UNIT 2: Using Objects — AP CSA CED Learning Objectives\n\nVAR-1.E: Describe the relationship between a class and an object.\n- Class = blueprint/template. Object = instance of a class. Objects have state (instance variables) and behavior (methods).\n\nVAR-1.F: Create an object by calling a constructor with parameters.\n- Syntax: ClassName varName = new ClassName(params);\n- Constructor initializes the object's state.\n\nCON-1.E: Call methods on objects.\n- Void methods: perform action, return nothing. Syntax: object.method(args);\n- Non-void methods: return a value. Must use the return value.\n\nVAR-1.G: Explain the relationship between an object reference and the object it refers to.\n- Reference variable stores a memory address. null means no object referenced. Multiple references can point to same object.\n\nCON-2.A: Represent string values.\n- String literals: \"hello\". Concatenation (+): \"Hello\" + \" \" + \"World\" = \"Hello World\".\n- String immutability: methods return new strings, do not modify original.\n\nCON-2.B: Call String methods.\n- length(), substring(start), substring(start, end), indexOf(str), equals(str), compareTo(str).\n- substring(0, 3) returns chars at index 0, 1, 2. Index is 0-based.\n\nCON-2.D: Use the Math class.\n- Math.abs(x), Math.pow(base, exp), Math.sqrt(x), Math.random() [0.0, 1.0), Math.max(a,b), Math.min(a,b).\n- All Math methods are static — called on the class, not an instance.\n\nVAR-1.C: Use wrapper classes.\n- Integer.MIN_VALUE, Integer.MAX_VALUE. Autoboxing/unboxing: auto conversion between int and Integer."
+    },
+    {
+      "number": 3,
+      "name": "Unit 3: Boolean Expressions and if Statements",
+      "exam_weight_pct": 16,
+      "decks": [
+        "Boolean Expressions",
+        "if Statements and Control Flow",
+        "if-else Statements",
+        "else if Statements",
+        "Compound Boolean Expressions",
+        "Equivalent Boolean Expressions",
+        "Comparing Objects"
+      ],
+      "objectives": "UNIT 3: Boolean Expressions and if Statements — AP CSA CED Learning Objectives\n\nCON-3.A: Evaluate Boolean expressions that use relational operators.\n- Relational: ==, !=, <, >, <=, >=. Return boolean.\n- For primitives, == compares values. For objects, == compares references.\n\nCON-3.B: Represent branching logical processes by using conditional statements.\n- if(condition){ ... }\n- if(condition){ ... } else { ... }\n- if(cond1){ ... } else if(cond2){ ... } else { ... }\n- Only one branch executes. Nested if-else.\n\nCON-3.C: Evaluate compound Boolean expressions.\n- Logical AND: &&. Logical OR: ||. Logical NOT: !.\n- Short-circuit evaluation: && stops if left is false; || stops if left is true.\n- De Morgan's Laws: !(A && B) == (!A || !B); !(A || B) == (!A && !B).\n\nCON-3.D: Represent equivalent Boolean expressions.\n- Equivalent forms using De Morgan's and distributive laws. Truth tables.\n\nCON-3.E: Compare object references using Boolean expressions.\n- Use .equals() to compare String content, not ==.\n- null check: obj != null before calling methods to avoid NullPointerException."
+    },
+    {
+      "number": 4,
+      "name": "Unit 4: Iteration",
+      "exam_weight_pct": 20,
+      "decks": [
+        "while Loops",
+        "for Loops",
+        "Developing Algorithms Using Strings",
+        "Nested Iteration",
+        "Informal Code Analysis"
+      ],
+      "objectives": "UNIT 4: Iteration — AP CSA CED Learning Objectives\n\nCON-4.A: Represent iterative processes using a while loop.\n- while(condition){ body } — evaluates condition before each iteration. Off-by-one errors.\n- do-while: body executes at least once (not on exam but understand concept).\n- Infinite loop if condition never becomes false. Loop variable must update.\n\nCON-4.B: Represent iterative processes using a for loop.\n- for(init; condition; update){ body }. Equivalent to while loop.\n- Loop variable scope: only accessible inside loop body (unless declared outside).\n- Common pattern: for(int i = 0; i < n; i++) iterates n times.\n\nCON-4.C: Trace the execution of iterative statements.\n- Trace table: track variable values after each iteration.\n- Common algorithms: sum of array, find min/max, count occurrences, build string.\n\nCON-4.D: Represent nested iterative processes.\n- Nested loops: inner loop runs completely for each outer loop iteration.\n- Total iterations = outer × inner (when independent). Used for 2D arrays, patterns.\n\nCON-4.E: Compute informal run-time analysis.\n- Loops that run n times: O(n). Nested loops: O(n²). Understand how iteration count scales with input size."
+    },
+    {
+      "number": 5,
+      "name": "Unit 5: Writing Classes",
+      "exam_weight_pct": 6,
+      "decks": [
+        "Anatomy of a Class",
+        "Constructors",
+        "Documentation with Comments",
+        "Accessor Methods",
+        "Mutator Methods",
+        "Writing Methods",
+        "Static Variables and Methods",
+        "Scope and Access",
+        "this Keyword",
+        "Ethical and Social Implications of Computing"
+      ],
+      "objectives": "UNIT 5: Writing Classes — AP CSA CED Learning Objectives\n\nMOD-2.A: Describe the attributes (data) and behaviors (methods) of an object.\n- Instance variables declared at class level. Methods define behavior.\n- Encapsulation: private instance variables, public accessor/mutator methods.\n\nMOD-2.B: Describe the purpose and use of constructors.\n- Constructor has same name as class, no return type. Initializes instance variables.\n- Default constructor (no params). Overloading: multiple constructors with different params.\n- If no constructor is written, Java provides a no-arg default.\n\nMOD-2.C: Describe the purpose of accessor (get) and mutator (set) methods.\n- Accessor (getter): returns value of instance variable. Non-void. Does not modify state.\n- Mutator (setter): modifies instance variable. Void. Takes parameter.\n\nMOD-2.E: Explain static class and instance variables and methods.\n- static variables: shared by all instances. static methods: belong to class, not instance, cannot access instance variables. Math.random() is static.\n- Instance variables: each object has its own copy.\n\nVAR-1.H: Explain the relationship between a subclass and a superclass using the keyword this.\n- this.varName distinguishes instance variable from local variable with same name in constructor/method.\n\nIOC-1.A: Explain the ethical and social implications of computer programs.\n- Privacy, security, intellectual property, access, effects on society."
+    },
+    {
+      "number": 6,
+      "name": "Unit 6: Array",
+      "exam_weight_pct": 13,
+      "decks": [
+        "Array Creation and Access",
+        "Traversing Arrays",
+        "Enhanced for Loop for Arrays",
+        "Developing Algorithms Using Arrays",
+        "Searching Arrays",
+        "Sorting Arrays"
+      ],
+      "objectives": "UNIT 6: Array — AP CSA CED Learning Objectives\n\nVAR-2.A: Represent collections of related primitive or object reference data using one-dimensional array objects.\n- Declaration: int[] arr = new int[n]; — creates array of n elements, default values (0 for int, null for objects, false for boolean).\n- Initialization: int[] arr = {1, 2, 3, 4};\n- Index: 0-based. arr[0] to arr[arr.length − 1]. ArrayIndexOutOfBoundsException if out of range.\n\nVAR-2.B: Traverse a one-dimensional array.\n- Standard for loop: for(int i = 0; i < arr.length; i++). Access arr[i].\n- Enhanced for loop: for(int val : arr) — read only, cannot modify array elements or know index.\n\nCON-2.J: Implement standard algorithms involving arrays.\n- Traversal algorithms: find min/max, sum, average, count.\n- Sequential (linear) search: O(n), compare each element. Returns index or −1.\n- Selection sort: repeatedly find minimum and swap into place. O(n²).\n- Insertion sort: build sorted portion one element at a time. O(n²).\n- Note: Arrays.sort() not expected to be implemented, but result of sorting must be understood."
+    },
+    {
+      "number": 7,
+      "name": "Unit 7: ArrayList",
+      "exam_weight_pct": 6,
+      "decks": [
+        "Introduction to ArrayList",
+        "ArrayList Methods",
+        "Traversing ArrayLists",
+        "Developing Algorithms Using ArrayLists",
+        "Searching and Sorting ArrayLists",
+        "Ethical Issues Around Data Collection"
+      ],
+      "objectives": "UNIT 7: ArrayList — AP CSA CED Learning Objectives\n\nVAR-2.C: Represent collections of related object reference data using ArrayList objects.\n- Import: import java.util.ArrayList;\n- Declaration: ArrayList<Type> list = new ArrayList<Type>();\n- ArrayList stores objects only — use Integer, Double, String (not int, double).\n- Dynamic size: grows/shrinks as elements are added/removed.\n\nVAR-2.D: Traverse an ArrayList.\n- Methods: add(obj), add(index, obj), get(index), set(index, obj), remove(index), size().\n- Standard for loop with get(i). Enhanced for loop. Avoid modifying ArrayList while traversing with enhanced for (ConcurrentModificationException risk).\n\nCON-2.K: Implement standard ArrayList algorithms.\n- Search: linear search using get(i) in a loop. Remove during traversal: traverse backwards, or use standard for loop decrementing index after remove.\n- Sort: Collections.sort() or hand-written selection/insertion sort using ArrayList methods.\n\nIOC-1.B: Explain the risks of collecting and storing personal data.\n- Data collection, privacy, identity theft. Ethical responsibilities of programmers."
+    },
+    {
+      "number": 8,
+      "name": "Unit 8: 2D Array",
+      "exam_weight_pct": 9,
+      "decks": [
+        "2D Arrays",
+        "Traversing 2D Arrays"
+      ],
+      "objectives": "UNIT 8: 2D Array — AP CSA CED Learning Objectives\n\nVAR-2.E: Represent collections of related primitive or object reference data using two-dimensional array objects.\n- Declaration: int[][] matrix = new int[rows][cols];\n- Initialization: int[][] grid = {{1,2,3},{4,5,6}};\n- Access: matrix[row][col]. Row-major order. matrix.length = number of rows. matrix[0].length = number of cols.\n- Default values same as 1D arrays.\n\nVAR-2.F: Traverse a two-dimensional array.\n- Nested for loops: outer iterates rows (i from 0 to matrix.length−1), inner iterates columns (j from 0 to matrix[i].length−1).\n- Row-major vs. column-major traversal. Enhanced for: for(int[] row : matrix) then for(int val : row).\n- Algorithms on 2D arrays: find min/max, sum of row/column, count occurrences, check diagonal.\n- Ragged arrays: rows can have different lengths (matrix[i].length may differ by row)."
+    },
+    {
+      "number": 9,
+      "name": "Unit 9: Inheritance",
+      "exam_weight_pct": 8,
+      "decks": [
+        "Creating Superclasses and Subclasses",
+        "Writing Constructors for Subclasses",
+        "Overriding Methods",
+        "super Keyword",
+        "Creating References Using Inheritance Hierarchies",
+        "Polymorphism",
+        "Object Superclass"
+      ],
+      "objectives": "UNIT 9: Inheritance — AP CSA CED Learning Objectives\n\nMOD-3.A: Describe the relationship between a superclass and a subclass.\n- extends keyword: public class Dog extends Animal. Subclass inherits all public/protected members.\n- IS-A relationship. Subclass can add new methods/variables and override inherited methods.\n\nMOD-3.B: Create constructors in a subclass.\n- super(params) must be first statement in subclass constructor to call superclass constructor.\n- If super() not called explicitly, Java calls no-arg superclass constructor (compile error if none exists).\n\nMOD-3.C: Override methods.\n- @Override annotation. Method signature (name + params) must match exactly.\n- Overriding vs. overloading: overloading = same name, different params (not inheritance-specific).\n\nMOD-3.D: Use the super keyword to call a superclass method.\n- super.methodName() explicitly calls superclass version from overriding method.\n\nMOD-3.E: Explain polymorphism.\n- Polymorphism: a reference variable of type Superclass can hold an object of Subclass type.\n- Animal a = new Dog(); — at runtime, a.sound() calls Dog's overriding version. Dynamic dispatch.\n- Cannot call subclass-only methods via superclass reference without casting.\n\nMOD-3.F: Describe the Object class and its methods.\n- All classes extend Object. Object methods: toString(), equals(Object o).\n- Override toString() to provide meaningful String representation. Override equals() to compare by content."
+    },
+    {
+      "number": 10,
+      "name": "Unit 10: Recursion",
+      "exam_weight_pct": 6,
+      "decks": [
+        "Recursion",
+        "Recursive Searching and Sorting"
+      ],
+      "objectives": "UNIT 10: Recursion — AP CSA CED Learning Objectives\n\nCON-2.L: Evaluate recursive programs.\n- A recursive method calls itself. Must have: base case (terminates recursion) and recursive case (reduces toward base case).\n- Call stack: each recursive call adds a stack frame. Stack overflow if base case never reached.\n- Trace recursive execution by substituting values.\n\nCON-2.O: Determine the result of executing recursive programs.\n- Factorial: n! = n × (n−1)! with base case 0! = 1.\n- Fibonacci: fib(n) = fib(n−1) + fib(n−2) with base cases fib(0)=0, fib(1)=1.\n- String recursion: reverse, palindrome check, substring search.\n\nCON-2.P: Evaluate Binary Search and Merge Sort algorithms.\n- Binary search (recursive): O(log n). Array must be sorted. Compare target to middle element; recurse on left or right half.\n- Merge sort (recursive): O(n log n). Divide array in half; recursively sort each half; merge.\n- Understand the idea of divide-and-conquer; can compare efficiency to iterative O(n) search and O(n²) sorts."
+    }
+  ]
+}

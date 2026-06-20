@@ -1,0 +1,134 @@
+{
+  "subject": "AP Biology",
+  "slug": "apbio",
+  "units": [
+    {
+      "number": 1,
+      "name": "Unit 1: Chemistry of Life",
+      "exam_weight_pct": 9,
+      "decks": [
+        "Structure of Water and Hydrogen Bonding",
+        "Elements of Life",
+        "Introduction to Biological Macromolecules",
+        "Properties of Biological Macromolecules",
+        "Structure and Function of Biological Macromolecules",
+        "Nucleic Acids"
+      ],
+      "objectives": "UNIT 1: Chemistry of Life — AP Biology CED Learning Objectives\n\n1.1 Structure of Water and Hydrogen Bonding\n- SYI-1.A: Explain the connection between the properties of water and the properties of living systems.\n  - Water's polarity enables hydrogen bonding between water molecules and with other polar molecules.\n  - Properties arising from hydrogen bonding: cohesion, adhesion, high specific heat, high heat of vaporization, solvent properties, ice density anomaly.\n\n1.2 Elements of Life\n- SYI-1.B: Describe the composition of macromolecules required by living organisms.\n  - Life is composed primarily of C, H, O, N, P, S. Carbon's tetravalence allows formation of diverse molecules.\n  - Functional groups (hydroxyl, carboxyl, amino, phosphate, sulfhydryl, carbonyl) contribute to molecular function.\n\n1.3 Introduction to Biological Macromolecules\n- SYI-1.C: Explain how the subcomponents of biological polymers and their sequence determine the properties of that polymer.\n  - Monomers are assembled into polymers by dehydration synthesis; hydrolysis breaks them apart.\n  - Four classes: carbohydrates, lipids, proteins, nucleic acids.\n\n1.4 Properties of Biological Macromolecules\n- SYI-1.D: Explain how the structure and properties of biological macromolecules contribute to the functions of those macromolecules.\n  - Monosaccharides: glucose, fructose. Polysaccharides: starch, glycogen, cellulose, chitin — structural vs. energy storage roles differ by glycosidic linkage.\n  - Fatty acids: saturated (solid at room temp) vs. unsaturated (liquid). Phospholipids form bilayers. Triglycerides store energy.\n\n1.5 Structure and Function of Biological Macromolecules\n- SYI-1.E: Explain how the structure of proteins is related to their function.\n  - Amino acids connected by peptide bonds. Four structural levels: primary (sequence), secondary (α-helix, β-sheet), tertiary (3D fold), quaternary (multi-subunit).\n  - R-group chemistry (polar, nonpolar, charged) determines folding and function.\n  - Denaturation disrupts structure and function.\n\n1.6 Nucleic Acids\n- IST-1.A: Describe the structure of nucleic acids and explain how the structure of nucleic acids is related to their function.\n  - Nucleotide: sugar + phosphate + nitrogenous base. DNA: deoxyribose, A-T (2 H-bonds), G-C (3 H-bonds), double helix, antiparallel strands.\n  - RNA: ribose, single-stranded, U instead of T. Three types: mRNA, tRNA, rRNA."
+    },
+    {
+      "number": 2,
+      "name": "Unit 2: Cell Structure and Function",
+      "exam_weight_pct": 11,
+      "decks": [
+        "Cell Structure: Subcellular Components",
+        "Cell Structure and Function",
+        "Cell Size",
+        "Plasma Membranes",
+        "Membrane Permeability",
+        "Membrane Transport",
+        "Facilitated Diffusion",
+        "Tonicity and Osmoregulation",
+        "Mechanisms of Transport"
+      ],
+      "objectives": "UNIT 2: Cell Structure and Function — AP Biology CED Learning Objectives\n\n2.1 Cell Structure: Subcellular Components\n- SYI-1.F: Describe the structure of the cell and the roles of organelles and structural components.\n  - Prokaryotes vs. eukaryotes: membrane-bound organelles, nucleus, cell wall composition differences.\n  - Key organelles: nucleus (DNA storage/transcription), ribosomes (translation), mitochondria (ATP via cellular respiration), chloroplasts (photosynthesis in plants/algae), ER (rough: protein synthesis/modification; smooth: lipid synthesis), Golgi (modification and sorting), lysosomes (hydrolytic enzymes), vacuoles (storage/turgor in plants).\n\n2.2 Cell Structure and Function\n- SYI-1.G: Explain how the shape and size of cells affects their ability to interact with the environment.\n\n2.3 Cell Size\n- SYI-1.H: Explain the relationship between the surface area and volume of cells and the ability to move materials.\n  - Surface area-to-volume ratio decreases as cell size increases; limits cell size.\n\n2.4 Plasma Membranes\n- SYI-1.I: Describe the composition of the plasma membrane and the role membrane proteins play in cell function.\n  - Fluid mosaic model: phospholipid bilayer (hydrophilic heads outward, hydrophobic tails inward), embedded/peripheral proteins, cholesterol (membrane fluidity), glycoproteins/glycolipids (cell recognition).\n\n2.5–2.6 Membrane Permeability and Transport\n- SYI-1.J: Explain how the structure of the plasma membrane regulates the passage of molecules into and out of the cell.\n  - Small nonpolar molecules (O₂, CO₂) and water diffuse freely. Large/charged/polar molecules require transport proteins.\n\n2.7 Facilitated Diffusion\n- SYI-1.K: Explain how the structure of the plasma membrane facilitates selective movement of molecules across the membrane.\n  - Channel proteins (aquaporins) and carrier proteins facilitate diffusion down concentration gradients — no energy required.\n\n2.8 Tonicity and Osmoregulation\n- SYI-1.L: Explain how cells regulate their internal environment by controlling the movement of water.\n  - Osmosis: water moves from hypotonic to hypertonic. Isotonic = no net movement. Turgor pressure in plant cells; animal cells lyse/crenate.\n\n2.9 Mechanisms of Transport\n- ENE-2.A: Describe the mechanisms by which substances are transported across membranes.\n  - Active transport: uses ATP, moves against gradient (Na⁺/K⁺ pump). Endocytosis/exocytosis: bulk transport via vesicles."
+    },
+    {
+      "number": 3,
+      "name": "Unit 3: Cellular Energetics",
+      "exam_weight_pct": 14,
+      "decks": [
+        "Enzyme Structure",
+        "Enzyme Catalysis",
+        "Environmental Impacts on Enzyme Function",
+        "Cellular Energy",
+        "Photosynthesis",
+        "The Light-Dependent Reactions",
+        "The Calvin Cycle",
+        "Cellular Respiration",
+        "Glycolysis",
+        "Pyruvate Oxidation",
+        "Krebs/Citric Acid Cycle",
+        "Oxidative Phosphorylation",
+        "Fermentation and Anaerobic Pathways"
+      ],
+      "objectives": "UNIT 3: Cellular Energetics — AP Biology CED Learning Objectives\n\n3.1 Enzyme Structure\n- ENE-1.A: Explain how enzymes affect the rate of biological reactions.\n  - Enzymes are biological catalysts (usually proteins). Active site binds substrate (induced fit model). Activation energy is lowered but ΔG is unchanged.\n\n3.2 Enzyme Catalysis\n- ENE-1.B: Explain how the structure and function of enzymes are related.\n  - Substrate specificity. Cofactors and coenzymes. Competitive vs. noncompetitive inhibition.\n\n3.3 Environmental Impacts on Enzyme Function\n- ENE-1.C: Explain how changes in temperature, pH, and other environmental factors affect enzyme activity.\n  - Optimal temperature and pH. Denaturation disrupts active site shape. Allosteric regulation: activators and inhibitors change enzyme shape.\n\n3.4 Cellular Energy\n- ENE-1.D: Explain how cells capture and store free energy for use in biological processes.\n  - ATP: energy currency. ATP ↔ ADP + Pᵢ. Endergonic reactions coupled to exergonic reactions via ATP hydrolysis.\n\n3.5 Photosynthesis Overview\n- ENE-1.E: Describe the overall process of photosynthesis.\n  - 6CO₂ + 6H₂O + light → C₆H₁₂O₆ + 6O₂. Chloroplast structure: thylakoid membranes (light reactions) and stroma (Calvin cycle).\n\n3.6 The Light-Dependent Reactions\n- ENE-1.F: Explain how the light-dependent reactions convert light energy into chemical energy.\n  - Photosystems I and II. Photolysis of water releases O₂. Electron transport chain produces ATP (photophosphorylation) and NADPH. Chemiosmosis drives ATP synthase.\n\n3.7 The Calvin Cycle\n- ENE-1.G: Explain how the light-independent reactions (Calvin cycle) synthesize organic molecules.\n  - Carbon fixation by RuBisCO (CO₂ → 3-carbon compounds). Reduction uses NADPH and ATP. Regeneration of RuBP. Net output: G3P → glucose.\n\n3.8 Cellular Respiration Overview\n- ENE-1.H: Describe the overall process of cellular respiration.\n  - C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + ~36-38 ATP. Three stages: glycolysis, Krebs cycle, oxidative phosphorylation.\n\n3.9 Glycolysis\n- ENE-1.I: Explain how the process of glycolysis converts glucose to pyruvate.\n  - In cytoplasm. Glucose (6C) → 2 pyruvate (3C). Net gain: 2 ATP, 2 NADH.\n\n3.10 Pyruvate Oxidation\n- ENE-1.J: Describe how pyruvate is converted to acetyl-CoA.\n  - In mitochondrial matrix. Pyruvate → acetyl-CoA + CO₂ + NADH (per pyruvate).\n\n3.11 Krebs/Citric Acid Cycle\n- ENE-1.K: Explain how the Krebs cycle functions.\n  - Acetyl-CoA (2C) + oxaloacetate (4C) → citrate (6C) → regenerates oxaloacetate. Per turn: 2 CO₂, 3 NADH, 1 FADH₂, 1 ATP (or GTP).\n\n3.12 Oxidative Phosphorylation\n- ENE-1.L: Explain how oxidative phosphorylation produces ATP.\n  - Inner mitochondrial membrane. NADH/FADH₂ donate electrons to ETC. Proton gradient drives ATP synthase (chemiosmosis). O₂ is terminal electron acceptor → H₂O. ~32-34 ATP from ETC.\n\n3.13 Fermentation\n- ENE-1.M: Explain how fermentation allows glycolysis to continue in the absence of oxygen.\n  - Lactic acid fermentation (animals/bacteria) and alcoholic fermentation (yeast). Regenerates NAD⁺. Net ATP = 2 per glucose (glycolysis only)."
+    },
+    {
+      "number": 4,
+      "name": "Unit 4: Cell Communication and Cell Cycle",
+      "exam_weight_pct": 11,
+      "decks": [
+        "Cell Communication",
+        "Signal Transduction",
+        "Cellular Responses to Signal Molecules",
+        "Feedback",
+        "Cell Cycle",
+        "Regulation of Cell Cycle"
+      ],
+      "objectives": "UNIT 4: Cell Communication and Cell Cycle — AP Biology CED Learning Objectives\n\n4.1 Cell Communication\n- IST-3.A: Describe the role of signal molecules in mediating gene expression and cellular responses.\n  - Types of signaling: endocrine (long distance, hormones), paracrine (local), autocrine, synaptic (neurotransmitters). Signal molecules: hydrophilic (bind surface receptors) vs. hydrophobic (cross membrane, bind intracellular receptors).\n\n4.2 Signal Transduction\n- IST-3.B: Explain how signal transduction pathways allow cells to respond to signals.\n  - Three stages: reception (ligand binds receptor), transduction (cascade of molecular changes), response (altered cellular activity). G-protein coupled receptors, receptor tyrosine kinases, second messengers (cAMP, Ca²⁺).\n\n4.3 Cellular Responses\n- IST-3.C: Explain how cells respond to signals through changes in gene expression or cell activity.\n  - Signal amplification via cascade. Transcription factor activation → gene expression changes. Phosphorylation cascades.\n\n4.4 Feedback\n- IST-3.D: Describe positive and negative feedback mechanisms.\n  - Negative feedback: dampens response (e.g., blood glucose regulation). Positive feedback: amplifies response (e.g., uterine contractions during childbirth). Apoptosis (programmed cell death) as a cellular response.\n\n4.5 Cell Cycle\n- IST-1.F: Describe the events that occur in the cell cycle.\n  - Interphase: G₁ (growth), S (DNA replication), G₂ (prep for division). Mitotic phase: mitosis (PMAT) + cytokinesis. Mitosis: prophase, metaphase, anaphase, telophase. Sister chromatids separate.\n\n4.6 Regulation of Cell Cycle\n- IST-1.G: Explain how the cell cycle is regulated.\n  - Cyclin-CDK complexes trigger transitions. Checkpoints: G₁ (restriction point), G₂, spindle assembly checkpoint. Proto-oncogenes → oncogenes (accelerate growth). Tumor suppressor genes (p53, Rb) inhibit growth. Loss of regulation → uncontrolled cell division → cancer."
+    },
+    {
+      "number": 5,
+      "name": "Unit 5: Heredity",
+      "exam_weight_pct": 10,
+      "decks": [
+        "Meiosis",
+        "Meiosis and Genetic Diversity",
+        "Mendelian Genetics",
+        "Non-Mendelian Genetics",
+        "Environmental Effects on Phenotype",
+        "Chromosomal Inheritance"
+      ],
+      "objectives": "UNIT 5: Heredity — AP Biology CED Learning Objectives\n\n5.1 Meiosis\n- IST-1.H: Describe the events that occur during meiosis.\n  - Meiosis I (homologous pairs separate; crossing over in prophase I) → Meiosis II (sister chromatids separate). Results: 4 haploid cells genetically unique from parent. Compare to mitosis.\n\n5.2 Meiosis and Genetic Diversity\n- IST-1.I: Explain how meiosis and fertilization contribute to genetic variation.\n  - Independent assortment (Law of Independent Assortment): 2ⁿ combinations for n chromosome pairs. Crossing over during prophase I: creates new allele combinations. Random fertilization.\n\n5.3 Mendelian Genetics\n- IST-1.J: Explain how the inheritance of traits follows the laws of segregation and independent assortment.\n  - Law of Segregation: allele pairs separate during gamete formation. Dominant/recessive. Monohybrid cross (3:1), dihybrid cross (9:3:3:1). Test cross. Codominance, incomplete dominance.\n\n5.4 Non-Mendelian Genetics\n- IST-1.K: Explain deviations from Mendelian genetics.\n  - Codominance (both alleles expressed, e.g., ABO blood type). Incomplete dominance (blend phenotype). Epistasis (one gene affects expression of another). Polygenic inheritance (multiple genes → continuous variation). Sex-linked traits (X-linked; more common in males).\n\n5.5 Environmental Effects on Phenotype\n- IST-1.L: Explain how environmental factors can influence the expression of the genotype of an organism.\n  - Temperature, nutrition, and other environmental factors alter phenotypic expression. Phenotype = genotype + environment.\n\n5.6 Chromosomal Inheritance\n- IST-1.M: Describe the role of chromosomes in inheritance.\n  - Genes are on chromosomes (Morgan's experiments). Linked genes violate independent assortment; crossing over produces recombinants. Nondisjunction: aneuploidy (trisomy 21, Turner, Klinefelter). Chromosomal rearrangements: deletion, duplication, inversion, translocation."
+    },
+    {
+      "number": 6,
+      "name": "Unit 6: Gene Expression and Regulation",
+      "exam_weight_pct": 14,
+      "decks": [
+        "DNA and RNA Structure",
+        "Replication",
+        "Transcription and RNA Processing",
+        "Translation",
+        "Regulation of Gene Expression",
+        "Gene Expression and Cell Specialization",
+        "Mutations",
+        "Biotechnology"
+      ],
+      "objectives": "UNIT 6: Gene Expression and Regulation — AP Biology CED Learning Objectives\n\n6.1 DNA and RNA Structure\n- IST-1.B: Describe the structure of DNA.\n  - Double helix, antiparallel strands, base pairing (A-T, G-C), semiconservative replication.\n\n6.2 Replication\n- IST-1.C: Explain how DNA is replicated in a cell.\n  - Helicase unwinds, primase adds RNA primer, DNA polymerase adds nucleotides 5'→3'. Leading strand continuous; lagging strand discontinuous (Okazaki fragments). Ligase seals. Proofreading maintains fidelity.\n\n6.3 Transcription and RNA Processing\n- IST-1.D: Explain how the information in DNA is transcribed into mRNA.\n  - Template strand read 3'→5'; mRNA synthesized 5'→3' (same sequence as coding strand, U replaces T). RNA polymerase. In eukaryotes: 5' cap, poly-A tail, splicing (introns removed, exons joined).\n\n6.4 Translation\n- IST-1.E: Explain how the sequence of mRNA codons is translated into a sequence of amino acids.\n  - Ribosome (small + large subunit), tRNA (anticodon + amino acid), codons (triplets), genetic code (universal, degenerate). Start codon (AUG = Met), stop codons (UAA, UAG, UGA). Polypeptide elongation.\n\n6.5 Regulation of Gene Expression\n- IST-2.A: Explain how gene expression is regulated in prokaryotes and eukaryotes.\n  - Prokaryotes: operons (lac operon: inducible; trp operon: repressible). Eukaryotes: transcription factors bind enhancers/promoters; chromatin remodeling (histones, methylation, acetylation). Post-transcriptional: miRNA, alternative splicing. Post-translational: phosphorylation.\n\n6.6 Gene Expression and Cell Specialization\n- IST-2.B: Explain how the differential expression of genes leads to cell specialization.\n  - All cells have the same genome; differentiation depends on which genes are expressed. Totipotent → pluripotent → multipotent → differentiated. Transcription factors drive lineage commitment.\n\n6.7 Mutations\n- IST-2.C: Explain how mutations in DNA can affect gene expression and the phenotype of an organism.\n  - Types: point mutations (substitution: silent/missense/nonsense), insertions/deletions (frameshift). Chromosomal mutations: larger-scale. Mutations can be somatic (not inherited) or germline (inherited). Most mutations are neutral; some are deleterious; rare ones are beneficial.\n\n6.8 Biotechnology\n- IST-2.D: Explain how tools of biotechnology are used to investigate and manipulate DNA.\n  - PCR (amplify specific DNA sequences). Gel electrophoresis (separate by size). CRISPR-Cas9 (gene editing). Transformation (introduction of foreign DNA). DNA sequencing. Applications: transgenic organisms, gene therapy, forensics."
+    },
+    {
+      "number": 7,
+      "name": "Unit 7: Natural Selection",
+      "exam_weight_pct": 16,
+      "decks": [
+        "Introduction to Natural Selection",
+        "Natural Selection",
+        "Artificial Selection",
+        "Population Genetics",
+        "Hardy-Weinberg Equilibrium",
+        "Evidence of Evolution",
+        "Common Ancestry and Phylogeny",
+        "Speciation",
+        "Extinction"
+      ],
+      "objectives": "UNIT 7: Natural Selection — AP Biology CED Learning Objectives\n\n7.1 Introduction to Natural Selection\n- EVO-1.A: Explain the role of natural selection in evolution.\n  - Darwin's four postulates: variation exists; variation is heritable; more offspring produced than survive; survival/reproduction correlates with heritable variation. Fitness = reproductive success.\n\n7.2 Natural Selection\n- EVO-1.B: Describe the types of natural selection.\n  - Directional (shift toward one extreme), stabilizing (favors intermediate phenotype), disruptive (favors extremes, eliminates intermediate). Sexual selection: intersexual and intrasexual.\n\n7.3 Artificial Selection\n- EVO-1.C: Explain how artificial selection serves as evidence for evolution.\n  - Selective breeding demonstrates heritable variation and response to selection. Examples: dog breeds, crop plants.\n\n7.4 Population Genetics\n- EVO-1.D: Explain how the frequency of alleles in populations changes over time.\n  - Mechanisms of evolution: natural selection, genetic drift (bottleneck, founder effect), gene flow, mutation, non-random mating. Genetic drift has greater effect in small populations.\n\n7.5 Hardy-Weinberg Equilibrium\n- EVO-1.E: Explain how Hardy-Weinberg can be used to study evolution.\n  - Five conditions for no evolution: large population, random mating, no mutation, no gene flow, no natural selection. p² + 2pq + q² = 1; p + q = 1. Deviations from H-W indicate evolutionary forces.\n\n7.6 Evidence of Evolution\n- EVO-3.A: Describe evidence for evolution.\n  - Fossil record (chronological pattern), biogeography, comparative anatomy (homologous, analogous, vestigial structures), comparative embryology, molecular evidence (DNA/protein sequence similarity).\n\n7.7 Common Ancestry and Phylogeny\n- EVO-3.B: Explain how phylogenetic trees and cladograms can be used to infer evolutionary relationships.\n  - Cladistics: clades defined by shared derived characters (synapomorphies). Reading phylogenetic trees: branch points = common ancestors, branch length may represent evolutionary change.\n\n7.8 Speciation\n- EVO-2.A: Explain the mechanisms by which new species form.\n  - Biological species concept: reproductive isolation defines species. Allopatric speciation: geographic barrier → reproductive isolation. Sympatric speciation: polyploidy (common in plants). Pre-zygotic vs. post-zygotic isolating mechanisms.\n\n7.9 Extinction\n- EVO-2.B: Describe the causes of extinction.\n  - Background extinction rate vs. mass extinctions. Causes: habitat destruction, invasive species, overexploitation, climate change. Vulnerability factors."
+    },
+    {
+      "number": 8,
+      "name": "Unit 8: Ecology",
+      "exam_weight_pct": 15,
+      "decks": [
+        "Responses to the Environment",
+        "Energy Flow Through Ecosystems",
+        "Populations and Ecosystems",
+        "Population Ecology",
+        "Community Ecology",
+        "Biodiversity",
+        "Disruptions to Ecosystems"
+      ],
+      "objectives": "UNIT 8: Ecology — AP Biology CED Learning Objectives\n\n8.1 Responses to the Environment\n- ENE-3.A: Describe how organisms respond to their environments.\n  - Behavior as adaptive response. Taxes and kinesis. Communication: pheromones, visual, acoustic signals. Learned vs. innate behavior.\n\n8.2 Energy Flow Through Ecosystems\n- ENE-1.O: Explain how energy flows through ecosystems.\n  - Trophic levels: producers, primary consumers, secondary consumers, tertiary consumers, decomposers. ~10% energy transfer between trophic levels (10% rule). NPP (net primary productivity). Food webs vs. food chains.\n\n8.3–8.4 Population Ecology\n- ENE-4.A: Explain how populations change in size over time.\n  - Biotic potential vs. environmental resistance. Exponential growth (J-curve): no limits. Logistic growth (S-curve): carrying capacity K. Density-dependent factors (competition, predation, disease) vs. density-independent (abiotic). Age structure diagrams.\n\n8.5 Community Ecology\n- ENE-4.B: Describe the interactions between populations in communities.\n  - Competition (interspecific, intraspecific), predation, herbivory, mutualism (+/+), commensalism (+/0), parasitism (+/−). Character displacement. Keystone species. Ecological succession: primary vs. secondary.\n\n8.6 Biodiversity\n- ENE-4.C: Describe the relationships between biodiversity, stability, and ecosystem services.\n  - Species richness and evenness. Island biogeography: area and isolation. Biodiversity provides ecosystem services: provisioning, regulating, cultural, supporting.\n\n8.7 Disruptions to Ecosystems\n- ENE-4.D: Describe the effects of disruptions to ecosystems.\n  - Nutrient cycling: carbon cycle, nitrogen cycle (nitrogen fixation, nitrification, denitrification), phosphorus cycle. Human impacts: eutrophication, acid rain, ozone depletion, climate change, habitat fragmentation, invasive species."
+    }
+  ]
+}

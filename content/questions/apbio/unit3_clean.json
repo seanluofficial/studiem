@@ -1,0 +1,1281 @@
+﻿[
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 3: Cellular Energetics",
+        "unit_exam_weight_pct":  14,
+        "deck":  "Enzyme Structure",
+        "type":  "mc_static",
+        "difficulty":  "easy",
+        "tags":  [
+                     "enzyme_active_site",
+                     "induced_fit",
+                     "activation_energy"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  true,
+        "visual":  null,
+        "content":  {
+                        "stem":  "Which of the following best describes how an enzyme lowers the activation energy of a reaction?",
+                        "options":  [
+                                        "It stabilizes the transition state by binding the substrate at the active site, reducing the energy required to reach the transition state.",
+                                        "It permanently alters the chemical bonds of the substrate, converting it directly into product without an intermediate state.",
+                                        "It increases the free energy of the reactants so they more easily reach the activation energy threshold.",
+                                        "It changes the overall free energy difference (Î”G) between reactants and products, making the reaction more favorable."
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Option A is correct because enzymes stabilize the transition state through interactions at the active site (induced fit model), lowering the activation energy required for the reaction to proceed. The Î”G of the reaction remains unchanged.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because they conflate enzyme action with a chemical change to the substrate. Enzymes are not consumed or permanently altered, and substrates are released after the reaction."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because they confuse raising reactant energy with lowering the activation energy barrier. Enzymes lower the barrier, not raise the reactants."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because they confuse activation energy with Î”G. Enzymes do not change Î”G; they only change the rate at which equilibrium is reached."
+                                                        }
+                                                    ]
+                    },
+        "global_index":  0
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 3: Cellular Energetics",
+        "unit_exam_weight_pct":  14,
+        "deck":  "Enzyme Catalysis",
+        "type":  "mc_static",
+        "difficulty":  "easy",
+        "tags":  [
+                     "competitive_inhibition",
+                     "active_site",
+                     "enzyme_inhibition"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  true,
+        "visual":  null,
+        "content":  {
+                        "stem":  "A molecule with a structure very similar to an enzyme\u0027s substrate binds to the active site and reduces enzyme activity. Increasing substrate concentration restores activity. What type of inhibition is this?",
+                        "options":  [
+                                        "Noncompetitive inhibition, because the inhibitor changes enzyme shape",
+                                        "Allosteric inhibition, because the inhibitor binds away from the active site",
+                                        "Competitive inhibition, because the inhibitor competes with the substrate for the active site",
+                                        "Irreversible inhibition, because the inhibitor permanently blocks the active site"
+                                    ],
+                        "correct_index":  2,
+                        "correct_explanation":  "Option C is correct because competitive inhibitors structurally resemble the substrate and bind the active site directly, competing with the substrate. Increasing substrate concentration can outcompete the inhibitor and restore activity.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  0,
+                                                            "reason":  "Students choose A because they know noncompetitive inhibitors change enzyme shape, but this inhibitor binds the active site, not an allosteric site, and substrate can displace it."
+                                                        },
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because they associate allosteric inhibition with shape changes, but allosteric inhibitors bind sites other than the active site, and here the inhibitor binds the active site directly."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because increasing substrate restores activity, which rules out irreversible inhibition â€” irreversible inhibitors permanently modify the enzyme regardless of substrate concentration."
+                                                        }
+                                                    ]
+                    },
+        "global_index":  1
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 3: Cellular Energetics",
+        "unit_exam_weight_pct":  14,
+        "deck":  "Environmental Impacts on Enzyme Function",
+        "type":  "mc_static",
+        "difficulty":  "easy",
+        "tags":  [
+                     "enzyme_denaturation",
+                     "optimal_ph",
+                     "enzyme_activity"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  true,
+        "visual":  null,
+        "content":  {
+                        "stem":  "An enzyme that functions optimally at pH 7 is placed in a solution at pH 2. Which of the following best explains the resulting decrease in enzyme activity?",
+                        "options":  [
+                                        "The low pH destroys the substrate molecules, leaving nothing for the enzyme to bind.",
+                                        "The low pH denatures the enzyme by disrupting ionic bonds and hydrogen bonds, altering the active site shape.",
+                                        "The low pH increases activation energy by adding energy to the reaction system.",
+                                        "The low pH increases substrate concentration, causing product inhibition of the enzyme."
+                                    ],
+                        "correct_index":  1,
+                        "correct_explanation":  "Option B is correct because extreme pH values disrupt the ionic and hydrogen bonds that maintain the enzyme\u0027s three-dimensional shape, denaturing the enzyme and distorting the active site so the substrate can no longer bind properly.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  0,
+                                                            "reason":  "Students choose A because they reason that without substrate there is no activity, but the substrate is not what is destroyed; it is the enzyme\u0027s active site conformation that is disrupted by pH change."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because they confuse pH effects with energy effects; pH does not directly alter the activation energy threshold but rather disrupts the enzyme\u0027s structure."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because they invent a substrate concentration mechanism; pH change has no direct effect on substrate concentration, and product inhibition is a separate regulatory concept."
+                                                        }
+                                                    ]
+                    },
+        "global_index":  2
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 3: Cellular Energetics",
+        "unit_exam_weight_pct":  14,
+        "deck":  "Cellular Energy",
+        "type":  "mc_static",
+        "difficulty":  "easy",
+        "tags":  [
+                     "atp_hydrolysis",
+                     "endergonic_exergonic_coupling",
+                     "free_energy"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  true,
+        "visual":  {
+                       "type":  "latex",
+                       "value":  "\\text{ATP} \\rightarrow \\text{ADP} + P_i + \\text{energy}",
+                       "caption":  "ATP hydrolysis reaction"
+                   },
+        "content":  {
+                        "stem":  "A cell uses ATP hydrolysis to drive an endergonic reaction. Which of the following correctly explains how this coupling is possible?",
+                        "options":  [
+                                        "ATP hydrolysis is exergonic and releases free energy that can be used to drive endergonic reactions forward.",
+                                        "ATP hydrolysis is endergonic and absorbs energy that temporarily stores it for later release by the endergonic reaction.",
+                                        "Both reactions are exergonic, so their combined energy release powers cellular processes efficiently.",
+                                        "ATP hydrolysis raises the activation energy of the endergonic reaction, making it more likely to proceed."
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Option A is correct because ATP hydrolysis (ATP â†’ ADP + Pi) is exergonic, releasing free energy (Î”G \u003c 0). This released energy is coupled to endergonic reactions (Î”G \u003e 0), making the net reaction thermodynamically favorable.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because they confuse \u0027endergonic\u0027 with energy storage; ATP hydrolysis is exergonic (releases energy), not endergonic."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because they reason that both reactions must release energy, but by definition an endergonic reaction requires an input of energy, not a release."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because they confuse activation energy with free energy; ATP hydrolysis provides free energy to drive the reaction, but it does not raise activation energy â€” enzymes lower activation energy separately."
+                                                        }
+                                                    ]
+                    },
+        "global_index":  3
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 3: Cellular Energetics",
+        "unit_exam_weight_pct":  14,
+        "deck":  "Photosynthesis",
+        "type":  "mc_static",
+        "difficulty":  "easy",
+        "tags":  [
+                     "photosynthesis_overview",
+                     "chloroplast_structure",
+                     "light_and_dark_reactions"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  true,
+        "visual":  null,
+        "content":  {
+                        "stem":  "In a chloroplast, which structural compartments are the primary sites of the light-dependent reactions and the Calvin cycle, respectively?",
+                        "options":  [
+                                        "Stroma for light-dependent reactions; thylakoid membranes for the Calvin cycle",
+                                        "Thylakoid membranes for light-dependent reactions; stroma for the Calvin cycle",
+                                        "Outer membrane for light-dependent reactions; inner membrane for the Calvin cycle",
+                                        "Matrix for light-dependent reactions; cristae for the Calvin cycle"
+                                    ],
+                        "correct_index":  1,
+                        "correct_explanation":  "Option B is correct because the thylakoid membranes house the photosystems and electron transport chain for the light-dependent reactions, while the stroma is where the Calvin cycle enzymes (including RuBisCO) carry out carbon fixation.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  0,
+                                                            "reason":  "Students choose A because they reverse the locations; the stroma is the site of the Calvin cycle, not the light reactions."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because they confuse chloroplast membranes with mitochondrial membranes; the outer and inner envelope membranes regulate transport, not the reactions themselves."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because they confuse chloroplast structures with mitochondrial structures; matrix and cristae are mitochondrial compartments, not chloroplast compartments."
+                                                        }
+                                                    ]
+                    },
+        "global_index":  4
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 3: Cellular Energetics",
+        "unit_exam_weight_pct":  14,
+        "deck":  "The Light-Dependent Reactions",
+        "type":  "mc_static",
+        "difficulty":  "medium",
+        "tags":  [
+                     "photolysis",
+                     "photosystem_II",
+                     "oxygen_evolution",
+                     "electron_transport"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  true,
+        "visual":  null,
+        "content":  {
+                        "stem":  "During the light-dependent reactions, which of the following events is the direct source of the electrons that enter Photosystem II\u0027s reaction center?",
+                        "options":  [
+                                        "NADPH donates electrons as it is oxidized back to NADPâº at Photosystem II.",
+                                        "Water molecules are split by photolysis, releasing electrons, protons, and oxygen gas.",
+                                        "Glucose is oxidized in the stroma, releasing electrons that are transferred to thylakoids.",
+                                        "Ferredoxin transfers electrons from Photosystem I back to Photosystem II via a cyclic pathway."
+                                    ],
+                        "correct_index":  1,
+                        "correct_explanation":  "Option B is correct because Photosystem II oxidizes water (photolysis: 2Hâ‚‚O â†’ 4Hâº + 4eâ» + Oâ‚‚) to replace the electrons that are energized and passed down the electron transport chain, producing Oâ‚‚ as a byproduct.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  0,
+                                                            "reason":  "Students choose A because they know NADPH is involved in photosynthesis, but NADPH is produced at the end of the light reactions at Photosystem I, not consumed at Photosystem II."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because they confuse photosynthesis with cellular respiration; glucose is not oxidized in the chloroplast to supply electrons for the light reactions."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because they confuse cyclic photophosphorylation (where electrons cycle within Photosystem I) with the linear flow; ferredoxin does not return electrons to Photosystem II in the standard Z-scheme."
+                                                        }
+                                                    ]
+                    },
+        "global_index":  5
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 3: Cellular Energetics",
+        "unit_exam_weight_pct":  14,
+        "deck":  "The Calvin Cycle",
+        "type":  "mc_static",
+        "difficulty":  "medium",
+        "tags":  [
+                     "carbon_fixation",
+                     "rubisco",
+                     "g3p",
+                     "ribulose_bisphosphate"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  true,
+        "visual":  null,
+        "content":  {
+                        "stem":  "If the concentration of COâ‚‚ available to RuBisCO suddenly drops to zero during the Calvin cycle, which of the following would be the immediate consequence?",
+                        "options":  [
+                                        "G3P levels would immediately increase as the cycle accelerates without the carbon-fixation bottleneck.",
+                                        "RuBP would accumulate because it could no longer be carboxylated, halting the cycle at carbon fixation.",
+                                        "ATP and NADPH in the stroma would be depleted immediately because the light reactions would stop.",
+                                        "Oxaloacetate would accumulate in the stroma as the cycle backed up at the first committed step."
+                                    ],
+                        "correct_index":  1,
+                        "correct_explanation":  "Option B is correct because RuBisCO catalyzes the carboxylation of RuBP (5C + COâ‚‚ â†’ two 3-PGA). Without COâ‚‚, RuBP cannot be consumed, so it accumulates and the entire Calvin cycle halts at carbon fixation.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  0,
+                                                            "reason":  "Students choose A because they reason that removing a step would speed up G3P production, but G3P is produced downstream of carbon fixation and cannot be made without COâ‚‚ input."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because they conflate the light reactions with the Calvin cycle; stopping the Calvin cycle does not immediately stop the light reactions, which are driven by light, not COâ‚‚."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because they confuse the Calvin cycle intermediate with the Krebs cycle intermediate oxaloacetate; oxaloacetate is not a Calvin cycle intermediate."
+                                                        }
+                                                    ]
+                    },
+        "global_index":  6
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 3: Cellular Energetics",
+        "unit_exam_weight_pct":  14,
+        "deck":  "Cellular Respiration",
+        "type":  "mc_static",
+        "difficulty":  "easy",
+        "tags":  [
+                     "cellular_respiration_overview",
+                     "aerobic_respiration",
+                     "atp_yield"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  true,
+        "visual":  {
+                       "type":  "latex",
+                       "value":  "C_6H_{12}O_6 + 6O_2 \\rightarrow 6CO_2 + 6H_2O + \\text{ATP}",
+                       "caption":  "Overall equation for aerobic cellular respiration"
+                   },
+        "content":  {
+                        "stem":  "Which of the following correctly identifies the three main stages of aerobic cellular respiration and their locations in a eukaryotic cell?",
+                        "options":  [
+                                        "Glycolysis (cytoplasm), Krebs cycle (mitochondrial matrix), oxidative phosphorylation (inner mitochondrial membrane)",
+                                        "Glycolysis (mitochondrial matrix), Krebs cycle (cytoplasm), oxidative phosphorylation (outer mitochondrial membrane)",
+                                        "Glycolysis (nucleus), Krebs cycle (mitochondrial matrix), oxidative phosphorylation (inner mitochondrial membrane)",
+                                        "Glycolysis (cytoplasm), Krebs cycle (inner mitochondrial membrane), oxidative phosphorylation (mitochondrial matrix)"
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Option A is correct because glycolysis occurs in the cytoplasm, the Krebs cycle occurs in the mitochondrial matrix, and oxidative phosphorylation (electron transport chain + ATP synthase) occurs at the inner mitochondrial membrane.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because they know mitochondria are central to respiration and place glycolysis there, but glycolysis predates mitochondria evolutionarily and occurs in the cytoplasm."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because they misplace glycolysis in the nucleus, confusing cellular location with the idea that glycolysis involves DNA-encoded enzymes."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because they swap the locations of the Krebs cycle and oxidative phosphorylation; the Krebs cycle occurs in the matrix, not at the membrane."
+                                                        }
+                                                    ]
+                    },
+        "global_index":  7
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 3: Cellular Energetics",
+        "unit_exam_weight_pct":  14,
+        "deck":  "Glycolysis",
+        "type":  "mc_numeric",
+        "difficulty":  "easy",
+        "tags":  [
+                     "glycolysis_atp_yield",
+                     "net_atp",
+                     "nadh_production"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  true,
+        "visual":  null,
+        "content":  {
+                        "stem":  "A cell metabolizes {{glucose_molecules}} glucose molecules through glycolysis only. How many net ATP molecules are produced in total?",
+                        "params":  {
+                                       "glucose_molecules":  5
+                                   },
+                        "answer_formula":  "glucose_molecules * 2",
+                        "precision":  0,
+                        "unit":  "ATP molecules",
+                        "options":  [
+                                        "10 ATP molecules",
+                                        "20 ATP molecules",
+                                        "30 ATP molecules",
+                                        "5 ATP molecules"
+                                    ],
+                        "correct_index":  0,
+                        "distractors":  [
+                                            {
+                                                "formula":  "glucose_molecules * 4",
+                                                "error_type":  "counts gross ATP instead of net ATP (ignores 2 ATP investment)"
+                                            },
+                                            {
+                                                "formula":  "glucose_molecules * 6",
+                                                "error_type":  "confuses glycolysis ATP yield with total respiration per glucose"
+                                            },
+                                            {
+                                                "formula":  "glucose_molecules * 1",
+                                                "error_type":  "off-by-half error, divides net yield by 2"
+                                            }
+                                        ],
+                        "correct_explanation":  "The correct answer is 10 ATP molecules because glycolysis yields a net gain of 2 ATP per glucose molecule (4 produced minus 2 invested), so 5 glucose Ã— 2 net ATP = 10 ATP total.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students make this error because they count the 4 gross ATP produced without subtracting the 2 ATP invested in the energy-investment phase, yielding 4 Ã— 5 = 20 instead of 10."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students make this error because they recall that glucose yields approximately 30â€“36 ATP in full respiration and apply 6 per glucose to glycolysis alone, ignoring that most ATP comes from later stages."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students make this error because they halve the net ATP yield, possibly confusing per-pyruvate output (1 ATP equivalent) with per-glucose output."
+                                                        }
+                                                    ]
+                    },
+        "global_index":  8
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 3: Cellular Energetics",
+        "unit_exam_weight_pct":  14,
+        "deck":  "Pyruvate Oxidation",
+        "type":  "mc_static",
+        "difficulty":  "medium",
+        "tags":  [
+                     "pyruvate_oxidation",
+                     "acetyl_coa",
+                     "nadh_co2_production"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  true,
+        "visual":  null,
+        "content":  {
+                        "stem":  "During pyruvate oxidation in the mitochondrial matrix, each pyruvate molecule is converted to acetyl-CoA. Which set of products correctly represents this conversion for one pyruvate molecule?",
+                        "options":  [
+                                        "1 acetyl-CoA, 1 COâ‚‚, and 1 NADH are produced per pyruvate.",
+                                        "1 acetyl-CoA, 2 COâ‚‚, and 2 NADH are produced per pyruvate.",
+                                        "2 acetyl-CoA, 1 COâ‚‚, and 1 FADHâ‚‚ are produced per pyruvate.",
+                                        "1 acetyl-CoA, 1 COâ‚‚, and 1 ATP are produced per pyruvate."
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Option A is correct because pyruvate oxidation (pyruvate decarboxylation) converts one pyruvate (3C) to one acetyl-CoA (2C), releasing one COâ‚‚ and reducing one NADâº to NADH per pyruvate.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because they double the COâ‚‚ and NADH count, possibly confusing this with the full output of two pyruvates from one glucose, or with the Krebs cycle yield."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because they confuse pyruvate oxidation with the Krebs cycle, which produces FADHâ‚‚; pyruvate oxidation produces only NADH, not FADHâ‚‚."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because they substitute ATP for NADH, confusing pyruvate oxidation output with the ATP produced by substrate-level phosphorylation in the Krebs cycle."
+                                                        }
+                                                    ]
+                    },
+        "global_index":  9
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 3: Cellular Energetics",
+        "unit_exam_weight_pct":  14,
+        "deck":  "Krebs/Citric Acid Cycle",
+        "type":  "mc_numeric",
+        "difficulty":  "medium",
+        "tags":  [
+                     "krebs_cycle_yield",
+                     "nadh_fadh2_per_glucose",
+                     "co2_production"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  true,
+        "visual":  null,
+        "content":  {
+                        "stem":  "One glucose molecule is fully oxidized through pyruvate oxidation and the Krebs cycle (two turns). How many total NADH molecules are produced during these two stages combined (not counting glycolysis)?",
+                        "params":  {
+                                       "pyruvate_nadh":  2,
+                                       "krebs_nadh_per_turn":  3,
+                                       "turns":  2
+                                   },
+                        "answer_formula":  "pyruvate_nadh + krebs_nadh_per_turn * turns",
+                        "precision":  0,
+                        "unit":  "NADH molecules",
+                        "options":  [
+                                        "8 NADH molecules",
+                                        "6 NADH molecules",
+                                        "10 NADH molecules",
+                                        "4 NADH molecules"
+                                    ],
+                        "correct_index":  0,
+                        "distractors":  [
+                                            {
+                                                "formula":  "krebs_nadh_per_turn * turns",
+                                                "error_type":  "forgets to include NADH from pyruvate oxidation"
+                                            },
+                                            {
+                                                "formula":  "pyruvate_nadh + krebs_nadh_per_turn * turns + 2",
+                                                "error_type":  "adds glycolysis NADH incorrectly"
+                                            },
+                                            {
+                                                "formula":  "pyruvate_nadh + krebs_nadh_per_turn",
+                                                "error_type":  "counts only one turn of the Krebs cycle instead of two"
+                                            }
+                                        ],
+                        "correct_explanation":  "The correct answer is 8 NADH because pyruvate oxidation produces 1 NADH per pyruvate Ã— 2 pyruvates = 2 NADH, and each Krebs cycle turn produces 3 NADH Ã— 2 turns = 6 NADH, for a combined total of 2 + 6 = 8 NADH.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students make this error because they only count the 6 NADH from the two Krebs cycle turns and forget the 2 NADH produced during pyruvate oxidation."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students make this error because they add the 2 NADH from glycolysis even though the question specifically excludes glycolysis, yielding 10 instead of 8."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students make this error because they count only one Krebs cycle turn (3 NADH) plus pyruvate oxidation (2 NADH) = 5, or they count only one turn of each step, getting 4 instead of 8."
+                                                        }
+                                                    ]
+                    },
+        "global_index":  10
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 3: Cellular Energetics",
+        "unit_exam_weight_pct":  14,
+        "deck":  "Oxidative Phosphorylation",
+        "type":  "mc_static",
+        "difficulty":  "medium",
+        "tags":  [
+                     "chemiosmosis",
+                     "atp_synthase",
+                     "proton_gradient",
+                     "electron_transport_chain"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  true,
+        "visual":  null,
+        "content":  {
+                        "stem":  "A researcher adds a chemical that makes the inner mitochondrial membrane freely permeable to protons (Hâº). Which of the following would be the most direct effect on ATP synthesis?",
+                        "options":  [
+                                        "ATP synthesis by ATP synthase would stop because the proton gradient driving chemiosmosis would be eliminated.",
+                                        "ATP synthesis would increase because protons would flow more freely through ATP synthase channels.",
+                                        "Electron transport would cease because protons are required as electron carriers in the ETC.",
+                                        "The Krebs cycle would stop because the proton gradient is needed to import acetyl-CoA into the matrix."
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Option A is correct because ATP synthase uses the proton gradient (proton motive force) across the inner mitochondrial membrane to drive ATP synthesis via chemiosmosis. If protons can leak freely across the membrane, the gradient collapses and ATP synthase can no longer function.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because they reason that more proton flow means more ATP, but the protons must flow specifically through ATP synthase to do work; uncoupled flow dissipates the gradient as heat."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because they confuse the roles of protons in the ETC; protons are pumped by ETC complexes but are not themselves electron carriers â€” electrons are carried by NADH and FADHâ‚‚."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because they link the proton gradient to the Krebs cycle, but the Krebs cycle occurs in the matrix and does not depend on the proton gradient for substrate import."
+                                                        }
+                                                    ]
+                    },
+        "global_index":  11
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 3: Cellular Energetics",
+        "unit_exam_weight_pct":  14,
+        "deck":  "Fermentation and Anaerobic Pathways",
+        "type":  "mc_static",
+        "difficulty":  "easy",
+        "tags":  [
+                     "fermentation",
+                     "nad_regeneration",
+                     "anaerobic_respiration",
+                     "glycolysis_continuation"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  true,
+        "visual":  null,
+        "content":  {
+                        "stem":  "Why is fermentation essential for a cell that is carrying out glycolysis in the absence of oxygen?",
+                        "options":  [
+                                        "Fermentation produces additional ATP beyond what glycolysis generates, supplementing the cell\u0027s energy supply.",
+                                        "Fermentation regenerates NADâº from NADH, allowing glycolysis to continue producing ATP.",
+                                        "Fermentation breaks down pyruvate into acetyl-CoA so it can enter the Krebs cycle anaerobically.",
+                                        "Fermentation uses the proton gradient to synthesize ATP when the electron transport chain is unavailable."
+                                    ],
+                        "correct_index":  1,
+                        "correct_explanation":  "Option B is correct because glycolysis requires NADâº as an electron acceptor. In the absence of oxygen, the ETC cannot recycle NADH to NADâº, so fermentation reduces pyruvate using NADH, regenerating NADâº and allowing glycolysis to continue.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  0,
+                                                            "reason":  "Students choose A because they associate fermentation with energy production, but fermentation itself does not produce additional ATP â€” the net ATP comes entirely from glycolysis (2 ATP per glucose)."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because they confuse fermentation with pyruvate oxidation; fermentation does not produce acetyl-CoA and the Krebs cycle does not operate anaerobically."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because they confuse fermentation with oxidative phosphorylation; fermentation does not use a proton gradient or ATP synthase â€” it is a substrate-level process."
+                                                        }
+                                                    ]
+                    },
+        "global_index":  12
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 3: Cellular Energetics",
+        "unit_exam_weight_pct":  14,
+        "deck":  "Enzyme Structure",
+        "type":  "mc_static",
+        "difficulty":  "medium",
+        "tags":  [
+                     "induced_fit_model",
+                     "substrate_specificity",
+                     "active_site_conformation"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  true,
+        "visual":  null,
+        "content":  {
+                        "stem":  "The induced fit model of enzyme-substrate interaction differs from the lock-and-key model primarily in that the induced fit model proposes that the enzyme\u0027s active site does which of the following?",
+                        "options":  [
+                                        "Remains rigid and unchanged upon substrate binding, acting as a precise geometric complement to the substrate.",
+                                        "Undergoes a conformational change upon substrate binding that optimally positions catalytic groups around the substrate.",
+                                        "Is destroyed after each catalytic cycle and must be rebuilt before the next substrate can bind.",
+                                        "Changes its amino acid sequence in response to substrate concentration to improve binding efficiency."
+                                    ],
+                        "correct_index":  1,
+                        "correct_explanation":  "Option B is correct because the induced fit model proposes that substrate binding causes the active site to change shape (conformational change), positioning the catalytic residues to optimally interact with the substrate â€” unlike the static lock-and-key model.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  0,
+                                                            "reason":  "Students choose A because this describes the lock-and-key model, not the induced fit model; they confuse the two historical models of enzyme-substrate interaction."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because they confuse enzymatic turnover with the enzyme being consumed; enzymes are biological catalysts that are not permanently altered after each reaction."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because they confuse conformational change (protein shape change) with changes in amino acid sequence; the primary structure (sequence) of an enzyme does not change during catalysis."
+                                                        }
+                                                    ]
+                    },
+        "global_index":  13
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 3: Cellular Energetics",
+        "unit_exam_weight_pct":  14,
+        "deck":  "Enzyme Catalysis",
+        "type":  "mc_static",
+        "difficulty":  "medium",
+        "tags":  [
+                     "allosteric_regulation",
+                     "noncompetitive_inhibition",
+                     "enzyme_shape_change"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  true,
+        "visual":  null,
+        "content":  {
+                        "stem":  "An inhibitor binds to a site on an enzyme that is distant from the active site and reduces the enzyme\u0027s activity. Increasing substrate concentration does not restore activity. Which statement best explains this observation?",
+                        "options":  [
+                                        "The inhibitor is a competitive inhibitor that has a higher affinity for the active site than the substrate does.",
+                                        "The inhibitor is a noncompetitive inhibitor that changes the enzyme\u0027s conformation, reducing its catalytic efficiency regardless of substrate level.",
+                                        "The inhibitor permanently bonds to the active site, preventing any substrate from binding even at high concentrations.",
+                                        "The inhibitor degrades the substrate before it can reach the active site, reducing apparent enzyme activity."
+                                    ],
+                        "correct_index":  1,
+                        "correct_explanation":  "Option B is correct because noncompetitive (allosteric) inhibitors bind a site other than the active site, changing the enzyme\u0027s three-dimensional shape so the active site no longer functions efficiently. Since the inhibitor does not compete with the substrate, increasing substrate concentration cannot overcome the inhibition.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  0,
+                                                            "reason":  "Students choose A because competitive inhibition also reduces enzyme activity, but competitive inhibition can be overcome by increasing substrate concentration, which this scenario specifically rules out."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because they describe irreversible inhibition at the active site, but the question states the inhibitor binds distant from the active site, ruling out direct active site blockage."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because they invent a substrate-degradation mechanism; inhibitors act on enzymes, not on substrates, and substrate degradation is not the mechanism of allosteric inhibition."
+                                                        }
+                                                    ]
+                    },
+        "global_index":  14
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 3: Cellular Energetics",
+        "unit_exam_weight_pct":  14,
+        "deck":  "The Light-Dependent Reactions",
+        "type":  "mc_numeric",
+        "difficulty":  "medium",
+        "tags":  [
+                     "atp_nadph_production",
+                     "light_reactions_stoichiometry",
+                     "photophosphorylation"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  true,
+        "visual":  null,
+        "content":  {
+                        "stem":  "The light-dependent reactions produce 2 ATP and 2 NADPH for every 2 water molecules split. If a chloroplast splits {{water_molecules}} water molecules, how many total ATP molecules are produced by the light-dependent reactions?",
+                        "params":  {
+                                       "water_molecules":  12
+                                   },
+                        "answer_formula":  "water_molecules * 1",
+                        "precision":  0,
+                        "unit":  "ATP molecules",
+                        "options":  [
+                                        "12 ATP molecules",
+                                        "6 ATP molecules",
+                                        "24 ATP molecules",
+                                        "18 ATP molecules"
+                                    ],
+                        "correct_index":  0,
+                        "distractors":  [
+                                            {
+                                                "formula":  "water_molecules * 0.5",
+                                                "error_type":  "divides by 2 instead of using 1:1 ratio of water molecules to ATP"
+                                            },
+                                            {
+                                                "formula":  "water_molecules * 2",
+                                                "error_type":  "doubles ATP production, confusing per-pair with per-molecule ratio"
+                                            },
+                                            {
+                                                "formula":  "water_molecules * 1.5",
+                                                "error_type":  "uses 3:2 ratio, confusing ATP and NADPH outputs"
+                                            }
+                                        ],
+                        "correct_explanation":  "The correct answer is 12 ATP molecules because the ratio is 2 ATP produced per 2 water molecules split (1:1 ratio). With 12 water molecules split, 12 Ã— 1 = 12 ATP are produced.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students make this error because they use a 2:1 ratio (2 water per 1 ATP), halving the result to get 6 instead of maintaining the 1:1 ratio."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students make this error because they double the ATP count, perhaps adding the NADPH count to the ATP count or using a 2:1 ATP per water ratio."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students make this error because they combine ATP and NADPH into a single count and divide, or apply the wrong stoichiometric ratio between water and ATP production."
+                                                        }
+                                                    ]
+                    },
+        "global_index":  15
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 3: Cellular Energetics",
+        "unit_exam_weight_pct":  14,
+        "deck":  "The Calvin Cycle",
+        "type":  "mc_numeric",
+        "difficulty":  "hard",
+        "tags":  [
+                     "calvin_cycle_stoichiometry",
+                     "atp_nadph_consumption",
+                     "co2_fixation"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  true,
+        "visual":  {
+                       "type":  "latex",
+                       "value":  "3\\,CO_2 + 9\\,ATP + 6\\,NADPH \\rightarrow G3P + 9\\,ADP + 8\\,P_i + 6\\,NADP^+",
+                       "caption":  "Calvin cycle stoichiometry per G3P produced"
+                   },
+        "content":  {
+                        "stem":  "The Calvin cycle requires 9 ATP and 6 NADPH to fix 3 COâ‚‚ into one G3P molecule. To synthesize one complete glucose molecule (Câ‚†Hâ‚â‚‚Oâ‚†), how many total ATP molecules must the Calvin cycle consume?",
+                        "params":  {
+                                       "atp_per_g3p":  9,
+                                       "g3p_per_glucose":  2
+                                   },
+                        "answer_formula":  "atp_per_g3p * g3p_per_glucose",
+                        "precision":  0,
+                        "unit":  "ATP molecules",
+                        "options":  [
+                                        "18 ATP molecules",
+                                        "9 ATP molecules",
+                                        "12 ATP molecules",
+                                        "36 ATP molecules"
+                                    ],
+                        "correct_index":  0,
+                        "distractors":  [
+                                            {
+                                                "formula":  "atp_per_g3p * 1",
+                                                "error_type":  "calculates ATP for only one G3P, forgetting glucose requires 2 net G3P"
+                                            },
+                                            {
+                                                "formula":  "atp_per_g3p - 3",
+                                                "error_type":  "subtracts the number of CO2 molecules from ATP count per cycle"
+                                            },
+                                            {
+                                                "formula":  "atp_per_g3p * g3p_per_glucose * 2",
+                                                "error_type":  "doubles the correct answer, perhaps confusing net G3P with total G3P including regenerated molecules"
+                                            }
+                                        ],
+                        "correct_explanation":  "The correct answer is 18 ATP because one glucose requires 2 net G3P molecules, and each G3P requires 9 ATP from the Calvin cycle. Therefore 2 Ã— 9 = 18 ATP total are consumed.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students make this error because they calculate the ATP needed for one G3P (9 ATP) and stop there, forgetting that glucose synthesis requires 2 G3P molecules."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students make this error because they subtract 3 (the number of COâ‚‚ fixed) from 9 ATP, perhaps confusing stoichiometric coefficients with ATP counts."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students make this error because they count all G3P produced in the cycle (including those recycled to regenerate RuBP) rather than only the 2 net G3P exported for glucose synthesis."
+                                                        }
+                                                    ]
+                    },
+        "global_index":  16
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 3: Cellular Energetics",
+        "unit_exam_weight_pct":  14,
+        "deck":  "Glycolysis",
+        "type":  "mc_static",
+        "difficulty":  "hard",
+        "tags":  [
+                     "glycolysis_regulation",
+                     "phosphofructokinase",
+                     "feedback_inhibition",
+                     "atp_inhibition"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  true,
+        "visual":  null,
+        "content":  {
+                        "stem":  "Phosphofructokinase (PFK-1), the key regulatory enzyme of glycolysis, is allosterically inhibited by high concentrations of ATP. Which of the following best explains the biological advantage of this regulation?",
+                        "options":  [
+                                        "When ATP is scarce, inhibiting PFK-1 conserves glucose for use in biosynthesis rather than energy production.",
+                                        "When ATP is abundant, inhibiting PFK-1 prevents unnecessary glucose catabolism and conserves carbon for biosynthetic pathways.",
+                                        "When ATP is abundant, activating PFK-1 via ATP binding accelerates glycolysis to produce even more ATP rapidly.",
+                                        "When ATP is scarce, activating PFK-1 via ATP removal increases glucose uptake from the environment."
+                                    ],
+                        "correct_index":  1,
+                        "correct_explanation":  "Option B is correct because when cellular ATP levels are high, continued glycolysis would be wasteful. ATP allosterically inhibits PFK-1, slowing glycolysis and preventing excess catabolism of glucose, thereby conserving carbon skeletons for anabolic processes.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  0,
+                                                            "reason":  "Students choose A because they reverse the ATP level; the question states PFK-1 is inhibited by high ATP, not low ATP, so scarcity of ATP would relieve inhibition, not cause it."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because they confuse inhibition with activation; ATP at high concentrations inhibits PFK-1, it does not activate it â€” this would be counterproductive when the cell already has ample ATP."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because they reason that low ATP should trigger more glucose uptake, but PFK-1 regulation is about intracellular flux control, not membrane glucose transport."
+                                                        }
+                                                    ]
+                    },
+        "global_index":  17
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 3: Cellular Energetics",
+        "unit_exam_weight_pct":  14,
+        "deck":  "Oxidative Phosphorylation",
+        "type":  "mc_numeric",
+        "difficulty":  "hard",
+        "tags":  [
+                     "etc_atp_yield",
+                     "nadh_fadh2_atp_equivalents",
+                     "oxidative_phosphorylation_calculation"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  true,
+        "visual":  null,
+        "content":  {
+                        "stem":  "A cell oxidizes {{nadh_count}} NADH and {{fadh2_count}} FADHâ‚‚ molecules through the electron transport chain. Using the estimates of 2.5 ATP per NADH and 1.5 ATP per FADHâ‚‚, how many total ATP molecules are produced by oxidative phosphorylation?",
+                        "params":  {
+                                       "nadh_count":  10,
+                                       "fadh2_count":  2
+                                   },
+                        "answer_formula":  "nadh_count * 2.5 + fadh2_count * 1.5",
+                        "precision":  0,
+                        "unit":  "ATP molecules",
+                        "options":  [
+                                        "28 ATP molecules",
+                                        "30 ATP molecules",
+                                        "25 ATP molecules",
+                                        "32 ATP molecules"
+                                    ],
+                        "correct_index":  0,
+                        "distractors":  [
+                                            {
+                                                "formula":  "nadh_count * 3 + fadh2_count * 2",
+                                                "error_type":  "uses outdated estimates of 3 ATP/NADH and 2 ATP/FADH2"
+                                            },
+                                            {
+                                                "formula":  "nadh_count * 2.5 + fadh2_count * 2.5",
+                                                "error_type":  "applies NADH ATP yield to FADH2 as well, ignoring lower FADH2 entry point in ETC"
+                                            },
+                                            {
+                                                "formula":  "(nadh_count + fadh2_count) * 2.5",
+                                                "error_type":  "treats NADH and FADH2 identically and sums before multiplying"
+                                            }
+                                        ],
+                        "correct_explanation":  "The correct answer is 28 ATP because 10 NADH Ã— 2.5 ATP/NADH = 25 ATP, and 2 FADHâ‚‚ Ã— 1.5 ATP/FADHâ‚‚ = 3 ATP, for a total of 25 + 3 = 28 ATP from oxidative phosphorylation.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students make this error because they use the older textbook values of 3 ATP per NADH and 2 ATP per FADHâ‚‚, yielding 10 Ã— 3 + 2 Ã— 2 = 34, or recall 30 as a rounded figure."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students make this error because they apply the same 2.5 ATP/molecule yield to both NADH and FADHâ‚‚, forgetting that FADHâ‚‚ enters the ETC at a lower point and generates fewer protons."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students make this error because they add all electron carriers (10 + 2 = 12) and multiply uniformly by 2.5, failing to use separate conversion factors for NADH and FADHâ‚‚."
+                                                        }
+                                                    ]
+                    },
+        "global_index":  18
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 3: Cellular Energetics",
+        "unit_exam_weight_pct":  14,
+        "deck":  "Fermentation and Anaerobic Pathways",
+        "type":  "mc_static",
+        "difficulty":  "medium",
+        "tags":  [
+                     "lactic_acid_fermentation",
+                     "alcoholic_fermentation",
+                     "nad_regeneration",
+                     "end_products"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  true,
+        "visual":  null,
+        "content":  {
+                        "stem":  "Which of the following correctly distinguishes lactic acid fermentation from alcoholic fermentation?",
+                        "options":  [
+                                        "Lactic acid fermentation produces COâ‚‚ and ethanol; alcoholic fermentation produces lactate without releasing COâ‚‚.",
+                                        "Lactic acid fermentation converts pyruvate directly to lactate; alcoholic fermentation converts pyruvate to ethanol and COâ‚‚.",
+                                        "Lactic acid fermentation regenerates FADHâ‚‚; alcoholic fermentation regenerates NADH.",
+                                        "Lactic acid fermentation occurs only in plants; alcoholic fermentation occurs only in animals and bacteria."
+                                    ],
+                        "correct_index":  1,
+                        "correct_explanation":  "Option B is correct because in lactic acid fermentation, pyruvate is reduced directly to lactate using NADH (regenerating NADâº), while in alcoholic fermentation, pyruvate is first decarboxylated to acetaldehyde (releasing COâ‚‚) and then reduced to ethanol using NADH.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  0,
+                                                            "reason":  "Students choose A because they reverse the products; it is alcoholic fermentation (not lactic acid) that produces ethanol and COâ‚‚, while lactic acid fermentation produces only lactate."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because they confuse NADâº regeneration with FADHâ‚‚ production; both types of fermentation regenerate NADâº from NADH â€” neither involves FADHâ‚‚."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because they reverse the organisms; lactic acid fermentation occurs in animals (muscle cells) and bacteria, while alcoholic fermentation is characteristic of yeast and some plant cells."
+                                                        }
+                                                    ]
+                    },
+        "global_index":  19
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 3: Cellular Energetics",
+        "unit_exam_weight_pct":  14,
+        "deck":  "Krebs/Citric Acid Cycle",
+        "type":  "mc_static",
+        "difficulty":  "hard",
+        "tags":  [
+                     "krebs_cycle_regulation",
+                     "oxaloacetate_regeneration",
+                     "citrate_synthase",
+                     "cycle_intermediates"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  true,
+        "visual":  null,
+        "content":  {
+                        "stem":  "If oxaloacetate were completely removed from a mitochondrion, which of the following would be the most immediate consequence for cellular respiration?",
+                        "options":  [
+                                        "Acetyl-CoA would accumulate because it could not condense with oxaloacetate to form citrate, halting the Krebs cycle.",
+                                        "NADH production would immediately increase as electrons backed up in the electron transport chain.",
+                                        "Pyruvate oxidation would accelerate to compensate, producing more acetyl-CoA than the cell needs.",
+                                        "The cell would switch to fermentation to regenerate oxaloacetate from pyruvate via carboxylation."
+                                    ],
+                        "correct_index":  0,
+                        "correct_explanation":  "Option A is correct because the first step of the Krebs cycle is the condensation of acetyl-CoA (2C) with oxaloacetate (4C) by citrate synthase to form citrate (6C). Without oxaloacetate, this reaction cannot occur, acetyl-CoA accumulates, and the Krebs cycle halts entirely.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students choose B because they reason that a blocked Krebs cycle would back up electrons in the ETC, but NADH production would decrease (not increase) since NADH is made in the Krebs cycle."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because they assume upstream processes compensate for downstream blocks; but pyruvate oxidation does not speed up in response to Krebs cycle arrest â€” acetyl-CoA would simply accumulate."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because they know fermentation is an anaerobic alternative, but fermentation does not produce oxaloacetate and would not restore Krebs cycle function; fermentation is triggered by Oâ‚‚ absence, not oxaloacetate depletion."
+                                                        }
+                                                    ]
+                    },
+        "global_index":  20
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 3: Cellular Energetics",
+        "unit_exam_weight_pct":  14,
+        "deck":  "Cellular Energy",
+        "type":  "mc_numeric",
+        "difficulty":  "medium",
+        "tags":  [
+                     "atp_adp_cycling",
+                     "energy_coupling",
+                     "free_energy_of_hydrolysis"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  true,
+        "visual":  null,
+        "content":  {
+                        "stem":  "ATP hydrolysis releases approximately 7.3 kcal/mol of free energy. A biosynthetic reaction requires {{delta_g}} kcal/mol of energy input. How many ATP molecules must be hydrolyzed to provide enough energy to drive this reaction?",
+                        "params":  {
+                                       "delta_g":  22
+                                   },
+                        "answer_formula":  "Math.ceil(delta_g / 7.3)",
+                        "precision":  0,
+                        "unit":  "ATP molecules",
+                        "options":  [
+                                        "3 ATP molecules",
+                                        "2 ATP molecules",
+                                        "4 ATP molecules",
+                                        "7 ATP molecules"
+                                    ],
+                        "correct_index":  0,
+                        "distractors":  [
+                                            {
+                                                "formula":  "Math.floor(delta_g / 7.3)",
+                                                "error_type":  "rounds down instead of up, providing insufficient energy"
+                                            },
+                                            {
+                                                "formula":  "Math.ceil(delta_g / 7.3) + 1",
+                                                "error_type":  "overestimates by one ATP, adding an unnecessary extra molecule"
+                                            },
+                                            {
+                                                "formula":  "delta_g / 7.3 * 2.3",
+                                                "error_type":  "applies incorrect unit conversion factor to energy calculation"
+                                            }
+                                        ],
+                        "correct_explanation":  "The correct answer is 3 ATP molecules because 22 kcal/mol Ã· 7.3 kcal/mol per ATP â‰ˆ 3.01, which rounds up to 3 whole ATP molecules needed to provide at least 22 kcal/mol (3 Ã— 7.3 = 21.9 kcal/mol is the minimum sufficient energy).",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students make this error because they round down (22 / 7.3 â‰ˆ 3.01 â†’ 2), providing only 2 Ã— 7.3 = 14.6 kcal/mol, which is insufficient to drive the 22 kcal/mol reaction."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students make this error because they add one extra ATP as a safety margin beyond what is necessary, getting 4 instead of the minimum 3 needed."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students make this error because they use the Î”G value directly as the number of ATP needed without dividing by the energy per ATP, confusing the energy requirement with the molecule count."
+                                                        }
+                                                    ]
+                    },
+        "global_index":  21
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 3: Cellular Energetics",
+        "unit_exam_weight_pct":  14,
+        "deck":  "Photosynthesis",
+        "type":  "mc_static",
+        "difficulty":  "hard",
+        "tags":  [
+                     "c3_plants",
+                     "photorespiration",
+                     "rubisco_oxygenase",
+                     "co2_concentration"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  true,
+        "visual":  null,
+        "content":  {
+                        "stem":  "On a hot, dry day, a C3 plant closes its stomata to prevent water loss. Which of the following best predicts the effect on photosynthesis and why?",
+                        "options":  [
+                                        "Photosynthesis increases because the closed stomata trap COâ‚‚ that has already entered the leaf, raising intracellular COâ‚‚ levels.",
+                                        "Photosynthesis decreases because COâ‚‚ cannot enter the leaf, RuBisCO increasingly acts as an oxygenase, and the Calvin cycle slows.",
+                                        "Photosynthesis is unaffected because the light reactions do not require COâ‚‚ and can continue supplying ATP and NADPH.",
+                                        "Photosynthesis halts completely because water is required as a direct substrate in the Calvin cycle, and stomatal closure limits water supply."
+                                    ],
+                        "correct_index":  1,
+                        "correct_explanation":  "Option B is correct because closing stomata prevents COâ‚‚ from entering, depleting intracellular COâ‚‚. With low COâ‚‚ and relatively high Oâ‚‚, RuBisCO increasingly catalyzes oxygenation (photorespiration) rather than carboxylation, decreasing net Calvin cycle output and overall photosynthetic efficiency.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  0,
+                                                            "reason":  "Students choose A because they reason that stomata trap gases already inside, but the ongoing consumption of COâ‚‚ by RuBisCO quickly depletes the trapped COâ‚‚, and new COâ‚‚ cannot enter when stomata are closed."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because they correctly identify that the light reactions do not directly require COâ‚‚, but they ignore that ATP and NADPH produced cannot be used productively if the Calvin cycle is COâ‚‚-limited, creating a buildup."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because they know water is split in the light reactions, but water for the light reactions enters the leaf via the vasculature, not through stomata; stomatal closure limits COâ‚‚, not water supply to chloroplasts."
+                                                        }
+                                                    ]
+                    },
+        "global_index":  22
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 3: Cellular Energetics",
+        "unit_exam_weight_pct":  14,
+        "deck":  "Environmental Impacts on Enzyme Function",
+        "type":  "mc_numeric",
+        "difficulty":  "medium",
+        "tags":  [
+                     "enzyme_activity_vs_temperature",
+                     "optimal_temperature",
+                     "denaturation_threshold"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  true,
+        "visual":  null,
+        "content":  {
+                        "stem":  "An enzyme has an optimal temperature of {{optimal_temp}}Â°C and is completely denatured above {{denaturation_temp}}Â°C. If the temperature is raised from {{optimal_temp}}Â°C to {{test_temp}}Â°C, what percentage of its maximum activity remains, given that activity drops linearly from 100% at optimal to 0% at the denaturation threshold?",
+                        "params":  {
+                                       "optimal_temp":  37,
+                                       "denaturation_temp":  47,
+                                       "test_temp":  42
+                                   },
+                        "answer_formula":  "100 - ((test_temp - optimal_temp) / (denaturation_temp - optimal_temp)) * 100",
+                        "precision":  0,
+                        "unit":  "% activity",
+                        "options":  [
+                                        "50% activity",
+                                        "100% activity",
+                                        "0% activity",
+                                        "75% activity"
+                                    ],
+                        "correct_index":  0,
+                        "distractors":  [
+                                            {
+                                                "formula":  "100",
+                                                "error_type":  "assumes activity stays at 100% as long as temperature is below denaturation threshold"
+                                            },
+                                            {
+                                                "formula":  "0",
+                                                "error_type":  "assumes any temperature above optimal causes complete inactivation"
+                                            },
+                                            {
+                                                "formula":  "100 - ((test_temp - optimal_temp) / (denaturation_temp - optimal_temp)) * 50",
+                                                "error_type":  "halves the linear drop rate, underestimating the activity loss"
+                                            }
+                                        ],
+                        "correct_explanation":  "The correct answer is 50% because the temperature increased from 37Â°C (optimal, 100% activity) to 42Â°C, which is halfway to the denaturation threshold of 47Â°C. Using a linear model: activity = 100 âˆ’ ((42âˆ’37)/(47âˆ’37)) Ã— 100 = 100 âˆ’ 50 = 50%.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students make this error because they assume enzyme activity remains at maximum until denaturation occurs, not accounting for the progressive loss of activity between optimal and denaturation temperatures."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students make this error because they assume any temperature above optimal causes complete loss of activity, treating optimal temperature as a hard cutoff rather than a peak in a continuous curve."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students make this error because they apply only half the expected activity drop, perhaps using an incorrect formula or intuiting that 42Â°C is \u0027not that far\u0027 above optimal without calculating the fractional decrease."
+                                                        }
+                                                    ]
+                    },
+        "global_index":  23
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 3: Cellular Energetics",
+        "unit_exam_weight_pct":  14,
+        "deck":  "Pyruvate Oxidation",
+        "type":  "mc_static",
+        "difficulty":  "hard",
+        "tags":  [
+                     "pyruvate_oxidation_location",
+                     "mitochondrial_matrix",
+                     "coenzyme_a",
+                     "carbon_accounting"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  true,
+        "visual":  null,
+        "content":  {
+                        "stem":  "A researcher uses radiolabeled carbon (Â¹â´C) to label the carbonyl carbon of pyruvate. After pyruvate oxidation, where will the Â¹â´C be found?",
+                        "options":  [
+                                        "In the acetyl group of acetyl-CoA, because pyruvate oxidation retains all three carbons in the acetyl-CoA product.",
+                                        "In COâ‚‚, because pyruvate decarboxylation removes the carbonyl carbon as carbon dioxide.",
+                                        "In NADH, because the carbonyl carbon is transferred to NADâº during the oxidation step.",
+                                        "In the mitochondrial membrane, because the labeled carbon is used to build membrane lipids during oxidation."
+                                    ],
+                        "correct_index":  1,
+                        "correct_explanation":  "Option B is correct because during pyruvate oxidation, the carboxyl (carbonyl) group of pyruvate is removed as COâ‚‚ by the pyruvate dehydrogenase complex. The remaining 2-carbon unit is transferred to coenzyme A, forming acetyl-CoA. The labeled carbonyl carbon is released as Â¹â´COâ‚‚.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  0,
+                                                            "reason":  "Students choose A because they know pyruvate forms acetyl-CoA and reason all carbons transfer, but specifically the carbonyl carbon is lost as COâ‚‚, leaving only 2 carbons in acetyl-CoA."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students choose C because they confuse carbon transfer with electron transfer; during oxidation, electrons (not the carbon atom itself) are transferred to NADâº to form NADH."
+                                                        },
+                                                        {
+                                                            "index":  3,
+                                                            "reason":  "Students choose D because they invent a lipid synthesis pathway; pyruvate oxidation does not produce lipid precursors directly, and the labeled carbon does not migrate to membranes during this step."
+                                                        }
+                                                    ]
+                    },
+        "global_index":  24
+    },
+    {
+        "subject":  "AP Biology",
+        "unit":  "Unit 3: Cellular Energetics",
+        "unit_exam_weight_pct":  14,
+        "deck":  "Cellular Respiration",
+        "type":  "mc_numeric",
+        "difficulty":  "hard",
+        "tags":  [
+                     "total_atp_per_glucose",
+                     "complete_oxidation",
+                     "aerobic_respiration_yield"
+                 ],
+        "source":  "ced_generated",
+        "reviewed":  true,
+        "visual":  null,
+        "content":  {
+                        "stem":  "Using the current estimates (2.5 ATP/NADH, 1.5 ATP/FADHâ‚‚), calculate the total ATP yield from the complete aerobic oxidation of {{glucose_count}} glucose molecule(s). Account for: glycolysis (2 ATP, 2 NADH), pyruvate oxidation (2 NADH per glucose), Krebs cycle (2 ATP, 6 NADH, 2 FADHâ‚‚ per glucose), and oxidative phosphorylation.",
+                        "params":  {
+                                       "glucose_count":  1
+                                   },
+                        "answer_formula":  "glucose_count * (2 + 2 + (2 + 6 + 2*2.5 + 2*1.5) + (2*2.5 + 2*2.5 + 6*2.5 + 2*1.5))",
+                        "precision":  0,
+                        "unit":  "ATP molecules",
+                        "options":  [
+                                        "30 ATP molecules",
+                                        "36 ATP molecules",
+                                        "38 ATP molecules",
+                                        "32 ATP molecules"
+                                    ],
+                        "correct_index":  3,
+                        "distractors":  [
+                                            {
+                                                "formula":  "glucose_count * 36",
+                                                "error_type":  "uses older textbook estimate without updated ATP/NADH values"
+                                            },
+                                            {
+                                                "formula":  "glucose_count * 38",
+                                                "error_type":  "uses even older estimate of 3 ATP/NADH and 2 ATP/FADH2 with gross count"
+                                            },
+                                            {
+                                                "formula":  "glucose_count * 30",
+                                                "error_type":  "underestimates by omitting substrate-level phosphorylation steps"
+                                            }
+                                        ],
+                        "correct_explanation":  "The correct answer is 32 ATP. Glycolysis: 2 ATP + 2 NADH (5 ATP) = 7 ATP. Pyruvate oxidation: 2 NADH Ã— 2.5 = 5 ATP. Krebs cycle: 2 ATP + 6 NADH (15 ATP) + 2 FADHâ‚‚ (3 ATP) = 20 ATP. Total = 7 + 5 + 20 = 32 ATP per glucose using the 2.5/1.5 estimates.",
+                        "distractor_explanations":  [
+                                                        {
+                                                            "index":  0,
+                                                            "reason":  "Students make this error because they use the older estimate of approximately 3 ATP per NADH (commonly cited in older textbooks), yielding 36â€“38 ATP rather than the current ~30â€“32 ATP estimate."
+                                                        },
+                                                        {
+                                                            "index":  1,
+                                                            "reason":  "Students make this error because they use the oldest estimate of 3 ATP/NADH and 2 ATP/FADHâ‚‚ combined with gross counting of all ATP, arriving at the classic 38 ATP figure no longer accepted."
+                                                        },
+                                                        {
+                                                            "index":  2,
+                                                            "reason":  "Students make this error because they omit the substrate-level phosphorylation from glycolysis or the Krebs cycle, or use an incorrect ATP/NADH ratio that underestimates the ETC yield."
+                                                        }
+                                                    ]
+                    },
+        "global_index":  25
+    }
+]

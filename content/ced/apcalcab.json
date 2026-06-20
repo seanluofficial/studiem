@@ -1,0 +1,152 @@
+{
+  "subject": "AP Calculus AB",
+  "slug": "apcalcab",
+  "units": [
+    {
+      "number": 1,
+      "name": "Unit 1: Limits and Continuity",
+      "exam_weight_pct": 11,
+      "decks": [
+        "Introducing Calculus: Can Change Occur at an Instant?",
+        "Defining Limits and Using Limit Notation",
+        "Estimating Limit Values from Graphs",
+        "Estimating Limit Values from Tables",
+        "Determining Limits Using Algebraic Properties",
+        "Determining Limits Using Algebraic Manipulation",
+        "Selecting Procedures for Determining Limits",
+        "Determining Limits Using the Squeeze Theorem",
+        "Connecting Multiple Representations of Limits",
+        "Exploring Types of Discontinuities",
+        "Defining Continuity at a Point",
+        "Confirming Continuity over an Interval",
+        "Removing Discontinuities",
+        "Connecting Infinite Limits and Vertical Asymptotes",
+        "Connecting Limits at Infinity and Horizontal Asymptotes",
+        "The Intermediate Value Theorem"
+      ],
+      "objectives": "UNIT 1: Limits and Continuity — AP Calculus AB CED Learning Objectives\n\nLIM-1: Limits can be estimated from representations.\n- LIM-1.A: Represent limits analytically using correct notation.\n- LIM-1.B: Interpret limits expressed in analytic notation.\n- LIM-1.C: Estimate limits of functions from graphs or tables.\n\nLIM-1.D / LIM-1.E: Determine limits of functions.\n- Apply limit laws: sum, difference, product, quotient, power, composite.\n- Direct substitution when function is continuous at the point.\n- Algebraic techniques: factor and cancel, rationalize, divide by highest power.\n\nLIM-1.F: Determine limits of functions that result in indeterminate forms.\n- Squeeze Theorem: if g(x) ≤ f(x) ≤ h(x) and lim g = lim h = L, then lim f = L.\n\nLIM-2: Continuity is a property of functions.\n- LIM-2.A: Justify conclusions about continuity at a point.\n  - Three conditions: f(a) defined, lim_{x→a} f(x) exists, lim_{x→a} f(x) = f(a).\n- LIM-2.B: Determine intervals over which a function is continuous.\n- LIM-2.C: Identify and classify discontinuities: removable, jump, infinite.\n- LIM-2.D: Remove discontinuities by redefining a function value.\n\nLIM-2.E: Interpret the behavior of functions using limits involving infinity.\n- Vertical asymptotes from one-sided infinite limits.\n- Horizontal asymptotes from limits at infinity (end behavior).\n- Compare growth rates: polynomials < exponentials; ln x < polynomials.\n\nFUN-1.A: Justify conclusions about functions using the Intermediate Value Theorem.\n- If f continuous on [a,b] and f(a) ≠ f(b), then f takes all values between f(a) and f(b)."
+    },
+    {
+      "number": 2,
+      "name": "Unit 2: Differentiation: Definition and Fundamental Properties",
+      "exam_weight_pct": 11,
+      "decks": [
+        "Defining Average and Instantaneous Rates of Change at a Point",
+        "Defining the Derivative of a Function and Using Derivative Notation",
+        "Estimating Derivatives of a Function at a Point",
+        "Connecting Differentiability and Continuity",
+        "Applying the Power Rule",
+        "Derivative Rules: Constant, Sum, Difference, and Constant Multiple",
+        "Derivatives of cos x, sin x, eˣ, and ln x",
+        "Product Rule",
+        "Quotient Rule",
+        "Finding the Derivatives of Tangent, Cotangent, Secant, and Cosecant Functions"
+      ],
+      "objectives": "UNIT 2: Differentiation: Definition and Fundamental Properties — AP Calculus AB CED Learning Objectives\n\nCHA-2.A: Determine average rates of change using difference quotients.\n- Average rate of change = [f(b) − f(a)] / (b − a). Slope of secant line.\n\nCHA-2.B: Represent the derivative of a function as the limit of a difference quotient.\n- f'(x) = lim_{h→0} [f(x+h) − f(x)] / h. Instantaneous rate of change = slope of tangent line.\n\nCHA-2.C: Determine the equation of a line tangent or normal to a curve at a point.\n\nFUN-2.A: Explain the relationship between differentiability and continuity.\n- Differentiability implies continuity; continuity does NOT imply differentiability.\n- Non-differentiable: corner, cusp, vertical tangent, jump/infinite discontinuity.\n\nFUN-3.A: Calculate derivatives of familiar functions.\n- Constant rule: d/dx[c] = 0. Power rule: d/dx[xⁿ] = nxⁿ⁻¹.\n- Sum/difference/constant multiple rules.\n- d/dx[sin x] = cos x; d/dx[cos x] = −sin x; d/dx[eˣ] = eˣ; d/dx[ln x] = 1/x.\n- d/dx[tan x] = sec²x; d/dx[sec x] = sec x tan x; d/dx[csc x] = −csc x cot x; d/dx[cot x] = −csc²x.\n\nFUN-3.B: Apply the product rule: d/dx[f·g] = f'g + fg'.\nFUN-3.C: Apply the quotient rule: d/dx[f/g] = (f'g − fg') / g²."
+    },
+    {
+      "number": 3,
+      "name": "Unit 3: Differentiation: Composite, Implicit, and Inverse Functions",
+      "exam_weight_pct": 11,
+      "decks": [
+        "The Chain Rule",
+        "Implicit Differentiation",
+        "Differentiating Inverse Functions",
+        "Differentiating Inverse Trigonometric Functions",
+        "Selecting Procedures for Calculating Derivatives",
+        "Calculating Higher-Order Derivatives"
+      ],
+      "objectives": "UNIT 3: Differentiation: Composite, Implicit, and Inverse Functions — AP Calculus AB CED Learning Objectives\n\nFUN-3.C (Chain Rule): Differentiate composite functions.\n- Chain rule: d/dx[f(g(x))] = f'(g(x)) · g'(x). Apply to all function families.\n- Extended power rule, trig of functions, exponentials/logs of functions.\n\nFUN-3.D: Calculate derivatives of implicitly defined functions.\n- Differentiate both sides with respect to x; apply chain rule to y terms (multiply by dy/dx).\n- Solve for dy/dx. Applications: find slope of tangent to implicit curves.\n\nFUN-3.E: Calculate derivatives of inverse functions.\n- If g is inverse of f, then g'(x) = 1 / f'(g(x)).\n\nFUN-3.F: Calculate derivatives of inverse trigonometric functions.\n- d/dx[arcsin x] = 1/√(1−x²); d/dx[arctan x] = 1/(1+x²); d/dx[arccos x] = −1/√(1−x²).\n\nFUN-3.G: Determine higher-order derivatives.\n- f''(x), f'''(x). Notation: d²y/dx², y''.\n- Relationship to concavity and acceleration."
+    },
+    {
+      "number": 4,
+      "name": "Unit 4: Contextual Applications of Differentiation",
+      "exam_weight_pct": 11,
+      "decks": [
+        "Interpreting the Meaning of the Derivative in Context",
+        "Straight-Line Motion: Connecting Position, Velocity, and Acceleration",
+        "Rates of Change in Applied Contexts Other Than Motion",
+        "Introduction to Related Rates",
+        "Solving Related Rates Problems",
+        "Approximating Values of a Function Using Local Linearity and Linearization",
+        "Using L'Hôpital's Rule for Determining Limits of Indeterminate Forms"
+      ],
+      "objectives": "UNIT 4: Contextual Applications of Differentiation — AP Calculus AB CED Learning Objectives\n\nCHA-3.A: Interpret the meaning of a derivative in context.\n- Units of derivative = units of output / units of input.\n- Derivative as instantaneous rate of change of a quantity.\n\nCHA-3.B: Describe the relationship between position, velocity, and acceleration functions.\n- v(t) = s'(t); a(t) = v'(t) = s''(t). Speed = |v(t)|.\n- Object moving right: v(t) > 0; slowing down: v and a have opposite signs.\n\nCHA-3.C: Calculate rates of change in applied contexts.\n- Connected rates in context (not related rates).\n\nCHA-4.A: Interpret the meaning of related rates in context.\nCHA-4.D: Calculate related rates in applied contexts.\n- Differentiate an equation relating two or more variables with respect to time.\n- Common setups: Pythagorean theorem, area/volume formulas, similar triangles.\n\nFUN-6.A: Approximate a function value using local linearization.\n- L(x) = f(a) + f'(a)(x − a). Tangent line approximation.\n\nLIM-4.A: Determine limits of functions using L'Hôpital's Rule.\n- If lim f/g → 0/0 or ∞/∞, then lim f/g = lim f'/g' (provided the latter limit exists)."
+    },
+    {
+      "number": 5,
+      "name": "Unit 5: Analytical Applications of Differentiation",
+      "exam_weight_pct": 16,
+      "decks": [
+        "Using the Mean Value Theorem",
+        "Extreme Value Theorem, Global vs. Local Extrema, and Critical Points",
+        "Determining Intervals on Which a Function Is Increasing or Decreasing",
+        "Using the First Derivative Test to Determine Relative Extrema",
+        "Using the Candidates Test to Determine Absolute Extrema",
+        "Determining Concavity of Functions over Their Domains",
+        "Using the Second Derivative Test to Determine Extrema",
+        "Sketching Graphs of Functions and Their Derivatives",
+        "Connecting a Function, Its First Derivative, and Its Second Derivative",
+        "Introduction to Optimization Problems",
+        "Solving Optimization Problems",
+        "Exploring Behaviors of Implicit Relations"
+      ],
+      "objectives": "UNIT 5: Analytical Applications of Differentiation — AP Calculus AB CED Learning Objectives\n\nFUN-1.B: Justify conclusions about functions using the Mean Value Theorem.\n- If f continuous on [a,b] and differentiable on (a,b), then ∃c such that f'(c) = [f(b)−f(a)]/(b−a).\n\nFUN-4.A: Justify conclusions about the behavior of a function based on its first derivative.\n- f' > 0 → f increasing; f' < 0 → f decreasing; f' = 0 or undefined → critical point.\n- First Derivative Test: sign change of f' at critical point → local max/min.\n\nFUN-4.A: Identify absolute extrema on closed intervals.\n- Extreme Value Theorem: continuous on [a,b] guarantees absolute max/min.\n- Candidates Test: evaluate f at critical points and endpoints.\n\nFUN-4.A: Justify conclusions about concavity and inflection points.\n- f'' > 0 → concave up; f'' < 0 → concave down. Inflection point: concavity changes.\n- Second Derivative Test: f'(c)=0 and f''(c)>0 → local min; f''(c)<0 → local max; f''(c)=0 → inconclusive.\n\nFUN-4.E: Interpret the relationship between the graphs of f, f', and f''.\n- Connect increasing/decreasing behavior to sign of f'; concavity to sign of f''.\n\nFUN-4.B: Solve optimization problems.\n- Identify quantity to optimize and constraint. Write function of one variable. Find critical points. Justify with First or Second Derivative Test."
+    },
+    {
+      "number": 6,
+      "name": "Unit 6: Integration and Accumulation of Change",
+      "exam_weight_pct": 18,
+      "decks": [
+        "Exploring Accumulations of Change",
+        "Approximating Areas with Riemann Sums",
+        "Riemann Sums, Summation Notation, and Definite Integral Notation",
+        "Properties of Definite Integrals",
+        "The Fundamental Theorem of Calculus and Accumulation Functions",
+        "Interpreting the Behavior of Accumulation Functions Involving Area",
+        "Applying Properties of Definite Integrals",
+        "The Fundamental Theorem of Calculus and Definite Integrals",
+        "Finding Antiderivatives and Indefinite Integrals",
+        "Integrating Using Substitution",
+        "Integrating Functions Using Long Division and Completing the Square",
+        "Selecting Techniques for Antidifferentiation"
+      ],
+      "objectives": "UNIT 6: Integration and Accumulation of Change — AP Calculus AB CED Learning Objectives\n\nCHA-4.C: Estimate the area under a curve with Riemann sums.\n- Left, right, midpoint sums. Trapezoidal rule. Over/underestimates depend on monotonicity and concavity.\n\nCHA-4.D: Interpret the meaning of areas in contexts.\n- ∫_a^b f(x)dx represents net signed area. Displacement vs. distance: ∫|v(t)|dt.\n\nFUN-5.A: Construct antiderivatives using the Fundamental Theorem of Calculus.\n- FTC Part 1: d/dx[∫_a^x f(t)dt] = f(x). FTC Part 2: ∫_a^b f(x)dx = F(b) − F(a).\n\nFUN-5.B: Evaluate definite and indefinite integrals.\n- ∫xⁿdx = xⁿ⁺¹/(n+1) + C (n ≠ −1). ∫eˣdx = eˣ + C. ∫(1/x)dx = ln|x| + C.\n- ∫sin x dx = −cos x + C; ∫cos x dx = sin x + C; ∫sec²x dx = tan x + C.\n\nFUN-6.D: Calculate antiderivatives by u-substitution.\n- If ∫f(g(x))g'(x)dx, let u = g(x), du = g'(x)dx. Adjust limits for definite integrals.\n\nProperties of definite integrals:\n- ∫_a^a f = 0; ∫_a^b f = −∫_b^a f; ∫_a^b f ± g = ∫f ± ∫g; ∫_a^b f = ∫_a^c f + ∫_c^b f."
+    },
+    {
+      "number": 7,
+      "name": "Unit 7: Differential Equations",
+      "exam_weight_pct": 9,
+      "decks": [
+        "Modeling Situations with Differential Equations",
+        "Verifying Solutions for Differential Equations",
+        "Sketching Slope Fields of Differential Equations",
+        "Reasoning Using Slope Fields",
+        "Finding General Solutions Using Separation of Variables",
+        "Finding Particular Solutions Using Initial Conditions and Separation of Variables",
+        "Exponential Models with Differential Equations"
+      ],
+      "objectives": "UNIT 7: Differential Equations — AP Calculus AB CED Learning Objectives\n\nFUN-7.A: Interpret verbal statements of differential equations.\n- dy/dx = f(x,y) expresses rate of change of y as a function of x and/or y.\n\nFUN-7.B: Verify solutions to differential equations.\n- Substitute proposed solution and its derivative into the DE to verify.\n\nFUN-7.C: Construct slope fields for differential equations.\n- At each point (x,y), draw a short segment with slope = f(x,y). Interpret solution curves.\n\nFUN-7.D: Determine general and particular solutions using separation of variables.\n- Separate: g(y)dy = f(x)dx; integrate both sides; solve for y. Apply initial condition for particular solution. Constant of integration.\n\nFUN-7.E: Interpret the meaning of a differential equation and its solution in context.\n- Exponential growth/decay: dy/dt = ky → y = Ce^{kt}. Doubling time, half-life.\n- Logistic growth: dy/dt = ky(1 − y/L); carrying capacity L."
+    },
+    {
+      "number": 8,
+      "name": "Unit 8: Applications of Integration",
+      "exam_weight_pct": 13,
+      "decks": [
+        "Finding the Average Value of a Function on an Interval",
+        "Connecting Position, Velocity, and Acceleration of Functions Using Integrals",
+        "Using Accumulation Functions and Definite Integrals in Applied Contexts",
+        "Finding the Area Between Curves Expressed as Functions of x",
+        "Finding the Area Between Curves Expressed as Functions of y",
+        "Finding the Area Between Curves That Intersect at More Than Two Points",
+        "Volumes with Cross Sections: Squares and Rectangles",
+        "Volumes with Cross Sections: Triangles and Semicircles",
+        "Volume with Disc Method: Revolving Around the x- or y-Axis",
+        "Volume with Disc Method: Revolving Around Other Axes",
+        "Volume with Washer Method: Revolving Around the x- or y-Axis",
+        "Volume with Washer Method: Revolving Around Other Axes"
+      ],
+      "objectives": "UNIT 8: Applications of Integration — AP Calculus AB CED Learning Objectives\n\nCHA-4.D: Calculate the average value of a function over a closed interval.\n- f_avg = (1/(b−a)) ∫_a^b f(x)dx. Mean Value Theorem for Integrals.\n\nCHA-4.E: Interpret the meaning of accumulation in motion contexts.\n- Net displacement = ∫_a^b v(t)dt. Total distance = ∫_a^b |v(t)|dt. Position from velocity via FTC.\n\nCHA-4.F: Interpret the meaning of a definite integral in accumulation contexts.\n- Net change theorem: ∫_a^b F'(x)dx = F(b) − F(a).\n\nCHA-5.A: Determine the area of a region between two curves.\n- Area = ∫_a^b [f(x) − g(x)]dx where f(x) ≥ g(x) on [a,b]. Find intersections to determine limits.\n- Integrating with respect to y: Area = ∫_c^d [right(y) − left(y)]dy.\n\nCHA-5.B: Determine the volume of a solid with known cross sections.\n- V = ∫_a^b A(x)dx where A(x) is the cross-sectional area. Common shapes: squares, equilateral triangles, semicircles.\n\nCHA-5.C: Determine volumes of solids of revolution using the disc/washer method.\n- Disc (around x-axis): V = π∫_a^b [f(x)]²dx.\n- Washer (around x-axis): V = π∫_a^b ([f(x)]² − [g(x)]²)dx.\n- Adjust for revolution around y-axis or horizontal/vertical lines."
+    }
+  ]
+}
