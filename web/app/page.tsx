@@ -68,6 +68,7 @@ export default function Home() {
   // ── Friends state ──────────────────────────────────────────────────────────
   const [friendsPanelOpen, setFriendsPanelOpen] = useState(false);
   const [friendsPendingCount, setFriendsPendingCount] = useState(0);
+  const [friendsUnreadCount, setFriendsUnreadCount] = useState(0);
   const [onlineFriendIds, setOnlineFriendIds] = useState<Set<string>>(new Set());
   const [friendActivity, setFriendActivity] = useState<Record<string, { subject: string; phase: string } | null>>({});
   const [incomingChallenge, setIncomingChallenge] = useState<IncomingChallenge | null>(null);
@@ -177,6 +178,14 @@ export default function Home() {
     });
     socket.on('friend_challenge_declined', () => setIncomingChallenge(null));
     socket.on('friend_challenge_expired', () => setIncomingChallenge(null));
+    socket.on('new_message', () => {
+      // Only increment the NavBar badge when the panel is not open
+      // (FriendsPanel manages per-friend counts internally when open)
+      setFriendsPanelOpen(open => {
+        if (!open) setFriendsUnreadCount(prev => prev + 1);
+        return open;
+      });
+    });
 
     socket.on('queue_joined', () => setAppPhase('queuing'));
     socket.on('queue_left', () => setAppPhase('idle'));
@@ -263,7 +272,8 @@ export default function Home() {
     });
 
     return () => { socket.disconnect(); };
-  }, [subject]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   function joinQueue() {
     const socket = getSocket();
@@ -427,8 +437,8 @@ export default function Home() {
           displayName={displayName}
           elo={myElo}
           subject={appPhase === 'idle' ? subject : undefined}
-          onFriendsClick={() => setFriendsPanelOpen(o => !o)}
-          friendsBadge={friendsPendingCount}
+          onFriendsClick={() => { setFriendsPanelOpen(o => !o); setFriendsUnreadCount(0); }}
+          friendsBadge={friendsPendingCount + friendsUnreadCount + (incomingChallenge ? 1 : 0)}
         />
       )}
 

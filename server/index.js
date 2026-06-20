@@ -457,6 +457,19 @@ io.on('connection', (socket) => {
     userSockets.get(userId).add(socket.id);
     socket.join(`user:${userId}`);
 
+    // Cache display name so friend_challenge has a real name to send
+    if (process.env.SUPABASE_URL && !userProfiles.has(userId)) {
+      try {
+        const supabase = getSupabase();
+        const { data: p } = await supabase
+          .from('profiles')
+          .select('display_name')
+          .eq('id', userId)
+          .maybeSingle();
+        if (p) userProfiles.set(userId, { displayName: p.display_name, elo: 1000 });
+      } catch { /* non-fatal */ }
+    }
+
     try {
       const friendIds = await getAcceptedFriendIds(userId);
       const onlineIds = friendIds.filter(fid => userSockets.has(fid));
@@ -607,7 +620,20 @@ io.on('connection', (socket) => {
     if (!friendship) return;
 
     const challengeId = `dc_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
-    const fromProfile = userProfiles.get(fromUserId) ?? { displayName: 'A friend', elo: 1000 };
+
+    // Resolve challenger's real name + subject-specific ELO (cache may be stale on elo)
+    let fromProfile = userProfiles.get(fromUserId) ?? { displayName: 'A friend', elo: 1000 };
+    try {
+      const [{ data: p }, { data: eloRow }] = await Promise.all([
+        supabase.from('profiles').select('display_name').eq('id', fromUserId).maybeSingle(),
+        supabase.from('elo_ratings').select('rating').eq('user_id', fromUserId).eq('subject', subject).maybeSingle(),
+      ]);
+      fromProfile = {
+        displayName: p?.display_name ?? fromProfile.displayName,
+        elo: eloRow?.rating ?? fromProfile.elo,
+      };
+      userProfiles.set(fromUserId, fromProfile);
+    } catch { /* use cached value */ }
 
     const timerId = setTimeout(() => {
       directChallenges.delete(challengeId);
