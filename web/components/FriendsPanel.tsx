@@ -353,7 +353,13 @@ export default function FriendsPanel({
                       <span className={`absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 border-2 border-[#141414] ${
                         unreadCount > 0
                           ? 'bg-[#EF4444] animate-pulse'
-                          : act ? 'bg-[#C9A84C]' : online ? 'bg-[#22C55E]' : 'bg-[#374151]'
+                          : act?.phase === 'battle'
+                          ? 'bg-[#EAB308] animate-pulse'
+                          : act
+                          ? 'bg-[#C9A84C]'
+                          : online
+                          ? 'bg-[#22C55E]'
+                          : 'bg-[#374151]'
                       }`} />
                     </div>
 

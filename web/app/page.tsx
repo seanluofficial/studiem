@@ -7,7 +7,60 @@ import { createClient } from '@/lib/supabase/client';
 import BattleRoom from '@/components/BattleRoom';
 import NavBar from '@/components/NavBar';
 import RankBadge from '@/components/RankBadge';
+import AddFriendButton from '@/components/AddFriendButton';
 import FriendsPanel, { type IncomingChallenge } from '@/components/FriendsPanel';
+
+function AnimatedEloSection({ before, after }: { before: number | null; after: number | null }) {
+  const [counter, setCounter] = useState<number | null>(null);
+  const [showDelta, setShowDelta] = useState(false);
+  const [showFinalBadge, setShowFinalBadge] = useState(false);
+
+  useEffect(() => {
+    if (before === null || after === null) return;
+    const fromElo: number = before;
+    const toElo: number = after;
+    setCounter(fromElo);
+    setShowDelta(false);
+    setShowFinalBadge(false);
+    const DELAY = 700;
+    const DURATION = 1600;
+    let rafId: number;
+    const t1 = setTimeout(() => {
+      setShowDelta(true);
+      const start = performance.now();
+      function tick() {
+        const elapsed = performance.now() - start;
+        const t = Math.min(elapsed / DURATION, 1);
+        const eased = 1 - Math.pow(1 - t, 3);
+        setCounter(Math.round(fromElo + (toElo - fromElo) * eased));
+        if (t >= 1) setShowFinalBadge(true);
+        else rafId = requestAnimationFrame(tick);
+      }
+      rafId = requestAnimationFrame(tick);
+    }, DELAY);
+    return () => { clearTimeout(t1); cancelAnimationFrame(rafId); };
+  }, [before, after]);
+
+  if (before === null || counter === null) return null;
+  const delta = after !== null ? after - before : null;
+
+  return (
+    <div className="flex flex-col items-center gap-1.5">
+      <RankBadge elo={before} size="sm" />
+      {delta !== null && delta !== 0 && (
+        <p className={`text-xs font-display font-bold tabular-nums transition-all duration-300 ${
+          showDelta ? 'opacity-100' : 'opacity-0'
+        } ${delta > 0 ? 'text-[#22C55E]' : 'text-[#EF4444]'}`}>
+          {delta > 0 ? '+' : ''}{delta}
+        </p>
+      )}
+      <p className="font-display font-black text-xl tabular-nums text-[#F5F0E8]">{counter}</p>
+      {showFinalBadge && after !== null && (
+        <RankBadge elo={after} size="sm" className="animate-rise-in" />
+      )}
+    </div>
+  );
+}
 
 const MVP_SUBJECTS = [
   'AP Biology',
@@ -53,15 +106,19 @@ export default function Home() {
   const [displayName, setDisplayName] = useState('');
   const [subject, setSubject] = useState('AP Chemistry');
   const [roomId, setRoomId] = useState<string | null>(null);
-  const [opponent, setOpponent] = useState<{ displayName: string } | null>(null);
+  const [opponent, setOpponent] = useState<{ displayName: string; userId: string } | null>(null);
   const [countdown, setCountdown] = useState(3);
   const [winner, setWinner] = useState<string | null>(null);
   const [forfeit, setForfeit] = useState<{ forfeitedBy: string | null } | null>(null);
   const [finalScores, setFinalScores] = useState<Record<string, number>>({});
   const [finalTimes, setFinalTimes] = useState<Record<string, number | null>>({});
   const [myElo, setMyElo] = useState<number | null>(null);
+  const [myEloBefore, setMyEloBefore] = useState<number | null>(null);
   const [eloDelta, setEloDelta] = useState<number | null>(null);
   const [opponentElo, setOpponentElo] = useState<number | null>(null);
+  const [opponentEloAfter, setOpponentEloAfter] = useState<number | null>(null);
+  const [opponentEloDelta, setOpponentEloDelta] = useState<number | null>(null);
+  const [isOpponentFriend, setIsOpponentFriend] = useState(false);
   const questionStartedAt = useRef<number | null>(null);
   const userIdRef = useRef<string | null>(null);
 
@@ -145,6 +202,10 @@ export default function Home() {
     setForfeit(null);
     setFinalScores({});
     setEloDelta(null);
+    setMyEloBefore(null);
+    setOpponentEloAfter(null);
+    setOpponentEloDelta(null);
+    setIsOpponentFriend(false);
   }, []);
 
   useEffect(() => {
@@ -193,10 +254,22 @@ export default function Home() {
 
     socket.on('match_found', ({ roomId: rid, opponent: opp, myElo: serverMyElo }) => {
       setRoomId(rid);
-      setOpponent(opp);
+      setOpponent({ displayName: opp.displayName, userId: opp.userId ?? '' });
       setOpponentElo(opp?.elo ?? 1000);
       if (typeof serverMyElo === 'number') setMyElo(serverMyElo);
       setAppPhase('countdown');
+      // Check friendship with opponent
+      if (userIdRef.current && opp?.userId) {
+        const myUid = userIdRef.current;
+        const oppUid = opp.userId;
+        createClient()
+          .from('friendships')
+          .select('status')
+          .or(`and(requester_id.eq.${myUid},addressee_id.eq.${oppUid}),and(requester_id.eq.${oppUid},addressee_id.eq.${myUid})`)
+          .eq('status', 'accepted')
+          .maybeSingle()
+          .then(({ data }) => setIsOpponentFriend(!!data));
+      }
       let n = 3;
       setCountdown(n);
       const t = setInterval(() => {
@@ -254,15 +327,22 @@ export default function Home() {
       setAppPhase('finished');
     });
 
-    socket.on('battle_complete', ({ scores, winner: w, timeTakenMs, eloDeltas, forfeit: didForfeit, forfeitedBy }: { scores: Record<string, number>; winner: string | null; timeTakenMs: Record<string, number | null>; eloDeltas: Record<string, { after: number; delta: number }>; forfeit: boolean; forfeitedBy: string | null }) => {
+    socket.on('battle_complete', ({ scores, winner: w, timeTakenMs, eloDeltas, forfeit: didForfeit, forfeitedBy }: { scores: Record<string, number>; winner: string | null; timeTakenMs: Record<string, number | null>; eloDeltas: Record<string, { before: number; after: number; delta: number }>; forfeit: boolean; forfeitedBy: string | null }) => {
       setFinalScores(scores);
       setFinalTimes(timeTakenMs ?? {});
       setWinner(w);
       setForfeit(didForfeit ? { forfeitedBy: forfeitedBy ?? null } : null);
       const myId = getSocket().id;
       if (myId && eloDeltas?.[myId]) {
+        setMyEloBefore(eloDeltas[myId].before);
         setMyElo(eloDeltas[myId].after);
         setEloDelta(eloDeltas[myId].delta);
+      }
+      const oppSocketId = Object.keys(eloDeltas ?? {}).find(id => id !== myId);
+      if (oppSocketId && eloDeltas?.[oppSocketId]) {
+        setOpponentElo(eloDeltas[oppSocketId].before);
+        setOpponentEloAfter(eloDeltas[oppSocketId].after);
+        setOpponentEloDelta(eloDeltas[oppSocketId].delta);
       }
       setAppPhase('complete');
     });
@@ -358,7 +438,7 @@ export default function Home() {
 
             <div className="rule-gold w-full" />
 
-            {/* Scores */}
+            {/* Scores + animated ELO */}
             <div className="flex items-center justify-center gap-8 w-full">
               <div className="flex flex-col items-center gap-2 flex-1">
                 <p className="text-[11px] text-[#F5F0E8]/40 uppercase tracking-[0.18em] truncate max-w-[8rem]">{displayName || 'You'}</p>
@@ -366,7 +446,10 @@ export default function Home() {
                 {fmtTime(myTimeMs) && (
                   <p className="text-[11px] text-[#C9A84C]/70 uppercase tracking-[0.2em] tabular-nums">{fmtTime(myTimeMs)}</p>
                 )}
-                <RankBadge elo={myElo} size="sm" />
+                {myEloBefore !== null
+                  ? <AnimatedEloSection before={myEloBefore} after={myElo ?? myEloBefore} />
+                  : <RankBadge elo={myElo} size="sm" />
+                }
               </div>
               <span className="font-display font-black text-2xl uppercase tracking-[0.1em] text-[#2A2A2A] select-none">vs</span>
               <div className="flex flex-col items-center gap-2 flex-1">
@@ -375,20 +458,22 @@ export default function Home() {
                 {fmtTime(oppTimeMs) && (
                   <p className="text-[11px] text-[#C9A84C]/70 uppercase tracking-[0.2em] tabular-nums">{fmtTime(oppTimeMs)}</p>
                 )}
-                <RankBadge elo={opponentElo} size="sm" />
+                {opponentEloAfter !== null
+                  ? <AnimatedEloSection before={opponentElo ?? 1000} after={opponentEloAfter} />
+                  : <RankBadge elo={opponentElo} size="sm" />
+                }
               </div>
             </div>
 
-            {/* ELO delta */}
-            {eloDelta !== null && (
-              <div className="flex flex-col items-center gap-2 w-full animate-elo-pop">
-                <div className="rule-gold w-2/3" />
-                <p className={`font-display font-black text-4xl tabular-nums ${eloDelta >= 0 ? 'text-[#22C55E]' : 'text-[#EF4444]'}`}>
-                  {eloDelta >= 0 ? '+' : ''}{eloDelta}
-                </p>
-                <p className="text-[#F5F0E8]/30 text-[11px] uppercase tracking-[0.2em] flex items-center gap-2">
-                  New Rank <RankBadge elo={myElo} size="sm" />
-                </p>
+            {/* Add friend */}
+            {opponent?.userId && userId && opponent.userId !== userId && !isOpponentFriend && (
+              <div className="flex justify-center w-full">
+                <AddFriendButton
+                  viewerId={userId}
+                  targetId={opponent.userId}
+                  initialStatus="none"
+                  friendshipId={null}
+                />
               </div>
             )}
 
@@ -597,6 +682,13 @@ export default function Home() {
             </div>
 
             <div className="rule-gold relative z-10 w-2/3" />
+
+            {isOpponentFriend && (
+              <div className="relative z-10 flex items-center gap-1.5 px-3 py-1 border border-[#22C55E]/30 bg-[#22C55E]/5">
+                <span className="w-1.5 h-1.5 bg-[#22C55E]" />
+                <span className="text-[9px] text-[#22C55E]/70 uppercase tracking-[0.2em] font-display font-bold">Friends</span>
+              </div>
+            )}
 
             <p
               key={countdown}
