@@ -9,7 +9,7 @@ import NavBar from '@/components/NavBar';
 import RankBadge from '@/components/RankBadge';
 import AddFriendButton from '@/components/AddFriendButton';
 import FriendsPanel, { type IncomingChallenge } from '@/components/FriendsPanel';
-import PracticeMode, { type PracticeQuestion } from '@/components/PracticeMode';
+import PracticeMode, { type PracticeQuestion, getPracticeStats } from '@/components/PracticeMode';
 
 function AnimatedEloSection({ before, after }: { before: number | null; after: number | null }) {
   const [counter, setCounter] = useState<number | null>(null);
@@ -55,6 +55,14 @@ function AnimatedEloSection({ before, after }: { before: number | null; after: n
       <RankBadge elo={counter} size="sm" />
     </div>
   );
+}
+
+function getUnitAccuracyColor(accuracy: number | null, elo: number): string {
+  if (accuracy === null) return 'transparent';
+  const threshold = elo < 900 ? 0.65 : elo < 1100 ? 0.70 : elo < 1300 ? 0.75 : elo < 1500 ? 0.82 : 0.88;
+  if (accuracy >= threshold) return '#22C55E';
+  if (accuracy >= threshold - 0.15) return '#EAB308';
+  return '#EF4444';
 }
 
 const MVP_SUBJECTS = [
@@ -404,6 +412,12 @@ export default function Home() {
 
   function exitPractice() {
     setPracticeUnit(null);
+    setPracticeQuestions([]);
+    setAppPhase('practice-select');
+  }
+
+  function exitPracticeToLobby() {
+    setPracticeUnit(null);
     setPracticeUnits([]);
     setPracticeQuestions([]);
     setAppPhase('idle');
@@ -459,8 +473,7 @@ export default function Home() {
         questions={practiceQuestions}
         subject={subject}
         unit={practiceUnit ?? ''}
-        onEnd={exitPractice}
-        onRetry={() => { if (practiceUnit) startPractice(practiceUnit); }}
+        onExit={exitPractice}
       />
     );
   }
@@ -709,7 +722,7 @@ export default function Home() {
         {appPhase === 'practice-select' && (
           <div className="w-full max-w-xl mx-auto animate-fade-up">
             <button
-              onClick={exitPractice}
+              onClick={exitPracticeToLobby}
               className="text-[#F5F0E8]/25 hover:text-[#F5F0E8]/60 text-xs uppercase tracking-widest mb-8 block transition-colors"
             >
               ← Back
@@ -732,20 +745,36 @@ export default function Home() {
                 <p className="text-[#F5F0E8]/25 text-sm uppercase tracking-widest">No practice questions available yet.</p>
               ) : (
                 <div className="flex flex-col gap-2">
-                  {practiceUnits.map(unit => (
-                    <button
-                      key={unit}
-                      onClick={() => startPractice(unit)}
-                      className="text-left panel hover:bg-[#1C1C1C] hover:border-[#C9A84C]/40 px-5 py-4 transition-all group"
-                    >
-                      <p className="text-[9px] text-[#F5F0E8]/25 uppercase tracking-[0.2em] mb-1">
-                        {unit.match(/^Unit \d+/)?.[0] ?? 'Unit'}
-                      </p>
-                      <p className="font-display font-bold text-sm uppercase tracking-wide text-[#F5F0E8]/70 group-hover:text-[#F5F0E8] transition-colors">
-                        {unit.replace(/^Unit \d+: /, '')}
-                      </p>
-                    </button>
-                  ))}
+                  {practiceUnits.map(unit => {
+                    const allStats = getPracticeStats(subject);
+                    const unitStats = allStats[unit];
+                    const accuracy = unitStats && unitStats.total > 0 ? unitStats.correct / unitStats.total : null;
+                    const color = getUnitAccuracyColor(accuracy, myElo ?? 1000);
+                    return (
+                      <button
+                        key={unit}
+                        onClick={() => startPractice(unit)}
+                        className="text-left panel hover:bg-[#1C1C1C] hover:border-[#C9A84C]/40 px-5 py-4 transition-all group flex items-center gap-3"
+                      >
+                        <div className="flex flex-col min-w-0 flex-1">
+                          <p className="text-[9px] text-[#F5F0E8]/25 uppercase tracking-[0.2em] mb-1">
+                            {unit.match(/^Unit \d+/)?.[0] ?? 'Unit'}
+                          </p>
+                          <p className="font-display font-bold text-sm uppercase tracking-wide text-[#F5F0E8]/70 group-hover:text-[#F5F0E8] transition-colors">
+                            {unit.replace(/^Unit \d+: /, '')}
+                          </p>
+                        </div>
+                        {accuracy !== null && (
+                          <span
+                            className="flex-shrink-0 font-display font-black text-sm tabular-nums"
+                            style={{ color }}
+                          >
+                            {Math.round(accuracy * 100)}%
+                          </span>
+                        )}
+                      </button>
+                    );
+                  })}
                 </div>
               )}
             </div>

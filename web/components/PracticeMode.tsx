@@ -10,129 +10,55 @@ export interface PracticeQuestion {
   correctExplanation: string | null;
 }
 
+export function getPracticeStats(subject: string): Record<string, { correct: number; total: number }> {
+  if (typeof window === 'undefined') return {};
+  try {
+    return JSON.parse(localStorage.getItem(`studiem_practice_${subject}`) ?? '{}');
+  } catch { return {}; }
+}
+
+export function updatePracticeStats(subject: string, unit: string, wasCorrect: boolean): void {
+  if (typeof window === 'undefined') return;
+  const stats = getPracticeStats(subject);
+  const entry = stats[unit] ?? { correct: 0, total: 0 };
+  stats[unit] = { correct: entry.correct + (wasCorrect ? 1 : 0), total: entry.total + 1 };
+  localStorage.setItem(`studiem_practice_${subject}`, JSON.stringify(stats));
+}
+
 interface Props {
   questions: PracticeQuestion[];
   subject: string;
   unit: string;
-  onEnd: () => void;
-  onRetry: () => void;
+  onExit: () => void;
 }
 
 const LABELS = ['A', 'B', 'C', 'D'];
 
-export default function PracticeMode({ questions, subject, unit, onEnd, onRetry }: Props) {
+export default function PracticeMode({ questions, subject, unit, onExit }: Props) {
+  const [pool] = useState(() => [...questions].sort(() => Math.random() - 0.5));
   const [currentIdx, setCurrentIdx] = useState(0);
   const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
-  const [correctCount, setCorrectCount] = useState(0);
-  const [wrongQuestions, setWrongQuestions] = useState<PracticeQuestion[]>([]);
-  const [done, setDone] = useState(false);
+  const [sessionCorrect, setSessionCorrect] = useState(0);
+  const [sessionTotal, setSessionTotal] = useState(0);
 
-  const total = questions.length;
-  const current = questions[currentIdx];
+  const current = pool[currentIdx % pool.length];
 
   function handleAnswer(i: number) {
     if (selectedIdx !== null || !current) return;
     setSelectedIdx(i);
-    if (i === current.correctIndex) {
-      setCorrectCount(c => c + 1);
-      setTimeout(() => advance(), 1200);
-    } else {
-      setWrongQuestions(prev => [...prev, current]);
-    }
+    const wasCorrect = i === current.correctIndex;
+    updatePracticeStats(subject, unit, wasCorrect);
+    setSessionTotal(t => t + 1);
+    if (wasCorrect) setSessionCorrect(c => c + 1);
   }
 
-  function advance() {
-    setCurrentIdx(idx => {
-      const next = idx + 1;
-      if (next >= total) { setDone(true); return idx; }
-      setSelectedIdx(null);
-      return next;
-    });
+  function handleNext() {
+    setCurrentIdx(idx => (idx + 1) % pool.length);
+    setSelectedIdx(null);
   }
 
-  // ── Session complete ─────────────────────────────────────────────────────────
-  if (done || !current) {
-    const pct = total > 0 ? Math.round((correctCount / total) * 100) : 0;
-    const grade =
-      pct >= 90 ? 'Excellent' :
-      pct >= 70 ? 'Good' :
-      pct >= 50 ? 'Fair' :
-      'Keep Practicing';
-    const gradeColor =
-      pct >= 90 ? '#22C55E' :
-      pct >= 70 ? '#C9A84C' :
-      pct >= 50 ? '#F59E0B' :
-      '#EF4444';
+  if (!current) return null;
 
-    return (
-      <main className="min-h-screen text-[#F5F0E8] flex flex-col items-center justify-center px-4 py-16">
-        <div className="relative w-full max-w-md flex flex-col items-center">
-          <div className="glow-focus animate-glow-pulse" />
-          <div className="panel-raised panel-accent-top relative z-10 w-full px-8 py-10 flex flex-col items-center gap-6 animate-rise-in">
-
-            <div className="flex flex-col items-center gap-1">
-              <p className="text-[10px] text-[#F5F0E8]/30 uppercase tracking-[0.4em]">Practice Complete</p>
-              <p className="font-display font-black text-4xl uppercase tracking-[0.12em]" style={{ color: gradeColor }}>
-                {grade}
-              </p>
-            </div>
-
-            <div className="rule-gold w-full" />
-
-            <div className="flex items-center justify-center gap-10 w-full">
-              <div className="flex flex-col items-center gap-1">
-                <p className="font-display font-black text-5xl tabular-nums" style={{ color: gradeColor }}>{pct}%</p>
-                <p className="text-[10px] text-[#F5F0E8]/35 uppercase tracking-[0.2em]">Accuracy</p>
-              </div>
-              <div className="flex flex-col items-center gap-1">
-                <p className="font-display font-black text-5xl tabular-nums text-[#F5F0E8]">
-                  {correctCount}
-                  <span className="text-[#F5F0E8]/25 text-2xl">/{total}</span>
-                </p>
-                <p className="text-[10px] text-[#F5F0E8]/35 uppercase tracking-[0.2em]">Correct</p>
-              </div>
-            </div>
-
-            {wrongQuestions.length > 0 && (
-              <>
-                <div className="rule-gold w-2/3" />
-                <div className="w-full flex flex-col gap-2">
-                  <p className="text-[9px] text-[#F5F0E8]/30 uppercase tracking-[0.25em]">Missed</p>
-                  <div className="max-h-44 overflow-y-auto flex flex-col gap-1.5">
-                    {wrongQuestions.map((q, i) => (
-                      <div key={i} className="flex gap-3 panel px-3 py-2">
-                        <span className="text-[#22C55E]/70 text-[10px] font-display font-bold uppercase tracking-[0.12em] flex-shrink-0 mt-0.5">
-                          {LABELS[q.correctIndex]}
-                        </span>
-                        <p className="text-[11px] text-[#F5F0E8]/50 leading-snug line-clamp-2">{q.stem}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </>
-            )}
-
-            <div className="flex gap-3 w-full mt-1">
-              <button
-                onClick={onRetry}
-                className="flex-1 btn-gold font-display font-black text-sm uppercase tracking-[0.18em] px-4 py-3"
-              >
-                Retry Unit
-              </button>
-              <button
-                onClick={onEnd}
-                className="flex-1 btn-ghost font-display font-bold text-sm uppercase tracking-[0.18em] px-4 py-3"
-              >
-                Lobby
-              </button>
-            </div>
-          </div>
-        </div>
-      </main>
-    );
-  }
-
-  // ── Question drill ───────────────────────────────────────────────────────────
   const isAnswered = selectedIdx !== null;
   const isCorrect = isAnswered && selectedIdx === current.correctIndex;
 
@@ -141,35 +67,35 @@ export default function PracticeMode({ questions, subject, unit, onEnd, onRetry 
       {/* Header */}
       <div className="panel border-x-0 border-t-0 px-5 pt-4 pb-3">
         <div className="flex items-center justify-between max-w-xl mx-auto">
-          <div className="flex flex-col min-w-0">
-            <p className="text-[9px] text-[#F5F0E8]/30 uppercase tracking-[0.25em]">Practice · {subject.replace('AP ', '')}</p>
-            <p className="text-[11px] text-[#C9A84C] font-display font-bold uppercase tracking-[0.1em] truncate max-w-[180px]">
-              {unit.replace(/^Unit d+: /, '')}
-            </p>
+          <div className="flex items-center gap-4 min-w-0">
+            <button
+              onClick={onExit}
+              className="text-[#F5F0E8]/25 hover:text-[#F5F0E8]/60 text-xs uppercase tracking-widest transition-colors flex-shrink-0"
+            >
+              ← Units
+            </button>
+            <div className="flex flex-col min-w-0">
+              <p className="text-[9px] text-[#F5F0E8]/30 uppercase tracking-[0.25em]">{subject.replace('AP ', '')}</p>
+              <p className="text-[11px] text-[#C9A84C] font-display font-bold uppercase tracking-[0.1em] truncate max-w-[180px]">
+                {unit.replace(/^Unit \d+: /, '')}
+              </p>
+            </div>
           </div>
-          <div className="flex items-center gap-4 flex-shrink-0">
-            <p className="text-[10px] text-[#F5F0E8]/35 uppercase tracking-[0.2em] tabular-nums">
-              <span className="text-[#22C55E]">{correctCount}</span> / {currentIdx} correct
+          {sessionTotal > 0 && (
+            <p className="text-[10px] text-[#F5F0E8]/35 uppercase tracking-[0.2em] tabular-nums flex-shrink-0">
+              <span className="text-[#22C55E]">{sessionCorrect}</span>
+              <span className="text-[#F5F0E8]/25"> / {sessionTotal}</span>
             </p>
-            <p className="text-[10px] text-[#C9A84C] font-display font-bold tabular-nums">
-              {currentIdx + 1} / {total}
-            </p>
-          </div>
-        </div>
-        <div className="max-w-xl mx-auto mt-3 h-0.5 bg-[#1C1C1C]">
-          <div
-            className="h-full bg-[#C9A84C] transition-all duration-500"
-            style={{ width: `${(currentIdx / total) * 100}%` }}
-          />
+          )}
         </div>
       </div>
 
       {/* Question + Options */}
       <div className="flex-1 flex flex-col justify-center px-5 py-6 max-w-xl mx-auto w-full">
-        <div key={current.id} className="panel-raised panel-accent-top px-6 py-6 mb-6 animate-slide-in">
-          <p className="text-[#C9A84C]/70 text-xs font-display font-bold uppercase tracking-[0.25em] mb-3">
-            Question {currentIdx + 1}
-          </p>
+        <div
+          key={`${current.id}-${currentIdx}`}
+          className="panel-raised panel-accent-top px-6 py-6 mb-6 animate-slide-in"
+        >
           <p className="text-base font-medium leading-relaxed text-[#F5F0E8]">{current.stem}</p>
         </div>
 
@@ -184,11 +110,11 @@ export default function PracticeMode({ questions, subject, unit, onEnd, onRetry 
             let textCls      = 'text-[#F5F0E8]/80';
 
             if (isThisCorrect) {
-              containerCls = 'border border-[#22C55E] bg-[#22C55E]/10 animate-correct';
+              containerCls = 'border border-[#22C55E] bg-[#22C55E]/10';
               badgeCls     = 'border border-[#22C55E] text-[#22C55E] bg-[#22C55E]/20';
               textCls      = 'text-[#22C55E]';
             } else if (isThisWrong) {
-              containerCls = 'border border-[#EF4444] bg-[#EF4444]/10 animate-shake';
+              containerCls = 'border border-[#EF4444] bg-[#EF4444]/10';
               badgeCls     = 'border border-[#EF4444] text-[#EF4444] bg-[#EF4444]/20';
               textCls      = 'text-[#EF4444]';
             } else if (isDimmed) {
@@ -224,20 +150,14 @@ export default function PracticeMode({ questions, subject, unit, onEnd, onRetry 
           </div>
         )}
 
-        {/* Next button — only shown on wrong answer; correct auto-advances */}
-        {isAnswered && !isCorrect && (
+        {/* Next button — always shown after answering */}
+        {isAnswered && (
           <button
-            onClick={advance}
+            onClick={handleNext}
             className="mt-4 btn-gold w-full font-display font-black text-sm uppercase tracking-[0.18em] py-3"
           >
-            {currentIdx + 1 >= total ? 'See Results' : 'Next Question →'}
+            Next →
           </button>
-        )}
-
-        {isAnswered && isCorrect && (
-          <p className="mt-5 text-center text-[10px] text-[#22C55E]/40 uppercase tracking-[0.25em] animate-fade-up">
-            Correct — next question loading…
-          </p>
         )}
       </div>
     </main>
