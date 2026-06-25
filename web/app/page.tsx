@@ -9,7 +9,6 @@ import NavBar from '@/components/NavBar';
 import RankBadge from '@/components/RankBadge';
 import AddFriendButton from '@/components/AddFriendButton';
 import FriendsPanel, { type IncomingChallenge } from '@/components/FriendsPanel';
-import PracticeMode, { type PracticeQuestion, getPracticeStats } from '@/components/PracticeMode';
 
 function AnimatedEloSection({ before, after }: { before: number | null; after: number | null }) {
   const [counter, setCounter] = useState<number | null>(null);
@@ -57,13 +56,6 @@ function AnimatedEloSection({ before, after }: { before: number | null; after: n
   );
 }
 
-function getUnitAccuracyColor(accuracy: number | null, elo: number): string {
-  if (accuracy === null) return 'transparent';
-  const threshold = elo < 900 ? 0.65 : elo < 1100 ? 0.70 : elo < 1300 ? 0.75 : elo < 1500 ? 0.82 : 0.88;
-  if (accuracy >= threshold) return '#22C55E';
-  if (accuracy >= threshold - 0.15) return '#EAB308';
-  return '#EF4444';
-}
 
 const MVP_SUBJECTS = [
   'AP Biology',
@@ -79,9 +71,7 @@ type AppPhase =
   | 'countdown'
   | 'battle'
   | 'finished'
-  | 'complete'
-  | 'practice-select'
-  | 'practice';
+  | 'complete';
 
 interface Question {
   id: string;
@@ -124,10 +114,11 @@ export default function Home() {
   const [opponentEloAfter, setOpponentEloAfter] = useState<number | null>(null);
   const [opponentEloDelta, setOpponentEloDelta] = useState<number | null>(null);
   const [isOpponentFriend, setIsOpponentFriend] = useState(false);
-  const [practiceUnit, setPracticeUnit] = useState<string | null>(null);
-  const [practiceUnits, setPracticeUnits] = useState<string[]>([]);
-  const [practiceUnitsLoading, setPracticeUnitsLoading] = useState(false);
-  const [practiceQuestions, setPracticeQuestions] = useState<PracticeQuestion[]>([]);
+  const [showPracticeLeaveModal, setShowPracticeLeaveModal] = useState(false);
+  const [iqpQuestions, setIqpQuestions] = useState<{ id: string; stem: string; options: string[]; correctIndex: number }[]>([]);
+  const [iqpIdx, setIqpIdx] = useState(0);
+  const [iqpSelected, setIqpSelected] = useState<number | null>(null);
+  const [iqpLoading, setIqpLoading] = useState(false);
   const questionStartedAt = useRef<number | null>(null);
   const userIdRef = useRef<string | null>(null);
 
@@ -216,6 +207,17 @@ export default function Home() {
     setOpponentEloDelta(null);
     setIsOpponentFriend(false);
   }, []);
+
+  useEffect(() => {
+    if (appPhase === 'queuing') {
+      loadInQueueQuestions();
+    } else {
+      setIqpQuestions([]);
+      setIqpIdx(0);
+      setIqpSelected(null);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [appPhase]);
 
   useEffect(() => {
     const socket = getSocket();
@@ -364,65 +366,6 @@ export default function Home() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  async function startPracticeSelect() {
-    setPracticeUnitsLoading(true);
-    setAppPhase('practice-select');
-    const supabase = createClient();
-    const { data } = await supabase
-      .from('source_cards')
-      .select('unit')
-      .eq('subject', subject)
-      .eq('reviewed', true);
-    const units = [...new Set((data ?? []).map((r: { unit: string }) => r.unit))].sort();
-    setPracticeUnits(units);
-    setPracticeUnitsLoading(false);
-  }
-
-  async function startPractice(unit: string) {
-    setPracticeUnit(unit);
-    setAppPhase('practice');
-    const supabase = createClient();
-    const { data: cards } = await supabase
-      .from('source_cards')
-      .select('id, content')
-      .eq('subject', subject)
-      .eq('unit', unit)
-      .eq('reviewed', true);
-    if (!cards || cards.length === 0) { setAppPhase('practice-select'); return; }
-    const cardIds = cards.map(c => c.id);
-    interface CardContent { correct_explanation?: string }
-    const contentMap: Record<string, CardContent | null> = Object.fromEntries(
-      cards.map(c => [c.id, c.content as CardContent | null])
-    );
-    const { data: variants } = await supabase
-      .from('question_variants')
-      .select('id, rendered_stem, rendered_options, correct_index, source_card_id')
-      .in('source_card_id', cardIds)
-      .limit(150);
-    const shuffled = [...(variants ?? [])].sort(() => Math.random() - 0.5).slice(0, 20);
-    const questions: PracticeQuestion[] = shuffled.map(v => ({
-      id: v.id as string,
-      stem: v.rendered_stem as string,
-      options: (v.rendered_options as string[]) ?? [],
-      correctIndex: (v.correct_index as number) ?? 0,
-      correctExplanation: contentMap[v.source_card_id as string]?.correct_explanation ?? null,
-    }));
-    setPracticeQuestions(questions);
-  }
-
-  function exitPractice() {
-    setPracticeUnit(null);
-    setPracticeQuestions([]);
-    setAppPhase('practice-select');
-  }
-
-  function exitPracticeToLobby() {
-    setPracticeUnit(null);
-    setPracticeUnits([]);
-    setPracticeQuestions([]);
-    setAppPhase('idle');
-  }
-
   function joinQueue() {
     const socket = getSocket();
     socket.emit('join_queue', { userId: userId ?? socket.id, displayName, elo: myElo ?? 1000, subject });
@@ -430,6 +373,50 @@ export default function Home() {
 
   function leaveQueue() {
     getSocket().emit('leave_queue');
+  }
+
+  function handlePracticeNavClick(e: React.MouseEvent<HTMLAnchorElement>) {
+    if (appPhase === 'queuing') {
+      e.preventDefault();
+      setShowPracticeLeaveModal(true);
+    }
+  }
+
+  function confirmLeaveForPractice() {
+    leaveQueue();
+    setShowPracticeLeaveModal(false);
+    router.push('/practice');
+  }
+
+  async function loadInQueueQuestions() {
+    setIqpLoading(true);
+    try {
+      const supabase = createClient();
+      const { data: cards } = await supabase
+        .from('source_cards')
+        .select('id')
+        .eq('subject', subject)
+        .eq('reviewed', true);
+      if (!cards?.length) return;
+      const shuffled = [...cards].sort(() => Math.random() - 0.5).slice(0, 20);
+      const cardIds = shuffled.map((c: { id: string }) => c.id);
+      const { data: variants } = await supabase
+        .from('question_variants')
+        .select('id, rendered_stem, rendered_options, correct_index')
+        .in('source_card_id', cardIds)
+        .not('rendered_options', 'is', null)
+        .limit(5);
+      setIqpQuestions((variants ?? []).map((v: { id: unknown; rendered_stem: unknown; rendered_options: unknown; correct_index: unknown }) => ({
+        id: v.id as string,
+        stem: v.rendered_stem as string,
+        options: (v.rendered_options as string[]) ?? [],
+        correctIndex: (v.correct_index as number) ?? 0,
+      })));
+      setIqpIdx(0);
+      setIqpSelected(null);
+    } catch { /* non-fatal */ } finally {
+      setIqpLoading(false);
+    }
   }
 
   async function handleSignOut() {
@@ -464,18 +451,6 @@ export default function Home() {
   function handleDeclineChallenge(challengeId: string) {
     getSocket().emit('decline_friend_challenge', { challengeId });
     setIncomingChallenge(null);
-  }
-
-  // ── Practice ──────────────────────────────────────────────────────────────
-  if (appPhase === 'practice') {
-    return (
-      <PracticeMode
-        questions={practiceQuestions}
-        subject={subject}
-        unit={practiceUnit ?? ''}
-        onExit={exitPractice}
-      />
-    );
   }
 
   // ── Complete ───────────────────────────────────────────────────────────────
@@ -604,6 +579,7 @@ export default function Home() {
           subject={appPhase === 'idle' ? subject : undefined}
           onFriendsClick={() => { setFriendsPanelOpen(o => !o); setFriendsUnreadCount(0); }}
           friendsBadge={friendsPendingCount + friendsUnreadCount + (incomingChallenge ? 1 : 0)}
+          onPracticeClick={handlePracticeNavClick}
         />
       )}
 
@@ -706,77 +682,7 @@ export default function Home() {
                 >
                   Find Match
                 </button>
-                <button
-                  onClick={startPracticeSelect}
-                  disabled={!displayName}
-                  className="w-full text-[#F5F0E8]/35 hover:text-[#F5F0E8]/65 disabled:opacity-20 disabled:cursor-not-allowed text-sm font-display font-bold uppercase tracking-[0.2em] py-2 transition-colors"
-                >
-                  Practice Solo
-                </button>
               </div>
-            </div>
-          </div>
-        )}
-
-        {/* ── Practice Select ── */}
-        {appPhase === 'practice-select' && (
-          <div className="w-full max-w-xl mx-auto animate-fade-up">
-            <button
-              onClick={exitPracticeToLobby}
-              className="text-[#F5F0E8]/25 hover:text-[#F5F0E8]/60 text-xs uppercase tracking-widest mb-8 block transition-colors"
-            >
-              ← Back
-            </button>
-            <div className="flex flex-col gap-5">
-              <div>
-                <p className="text-[10px] text-[#F5F0E8]/25 uppercase tracking-[0.3em] mb-1">Practice Mode</p>
-                <h2 className="font-display font-black text-3xl uppercase tracking-[0.1em] text-[#F5F0E8]">
-                  {subject.replace('AP ', '')}
-                </h2>
-              </div>
-              <p className="text-[10px] text-[#F5F0E8]/30 uppercase tracking-[0.25em]">Select a unit</p>
-              {practiceUnitsLoading ? (
-                <div className="flex gap-2">
-                  <span className="w-2 h-2 bg-[#C9A84C] dot-1" />
-                  <span className="w-2 h-2 bg-[#C9A84C] dot-2" />
-                  <span className="w-2 h-2 bg-[#C9A84C] dot-3" />
-                </div>
-              ) : practiceUnits.length === 0 ? (
-                <p className="text-[#F5F0E8]/25 text-sm uppercase tracking-widest">No practice questions available yet.</p>
-              ) : (
-                <div className="flex flex-col gap-2">
-                  {practiceUnits.map(unit => {
-                    const allStats = getPracticeStats(subject);
-                    const unitStats = allStats[unit];
-                    const accuracy = unitStats && unitStats.total > 0 ? unitStats.correct / unitStats.total : null;
-                    const color = getUnitAccuracyColor(accuracy, myElo ?? 1000);
-                    return (
-                      <button
-                        key={unit}
-                        onClick={() => startPractice(unit)}
-                        className="text-left panel hover:bg-[#1C1C1C] hover:border-[#C9A84C]/40 px-5 py-4 transition-all group flex items-center gap-3"
-                      >
-                        <div className="flex flex-col min-w-0 flex-1">
-                          <p className="text-[9px] text-[#F5F0E8]/25 uppercase tracking-[0.2em] mb-1">
-                            {unit.match(/^Unit \d+/)?.[0] ?? 'Unit'}
-                          </p>
-                          <p className="font-display font-bold text-sm uppercase tracking-wide text-[#F5F0E8]/70 group-hover:text-[#F5F0E8] transition-colors">
-                            {unit.replace(/^Unit \d+: /, '')}
-                          </p>
-                        </div>
-                        {accuracy !== null && (
-                          <span
-                            className="flex-shrink-0 font-display font-black text-sm tabular-nums"
-                            style={{ color }}
-                          >
-                            {Math.round(accuracy * 100)}%
-                          </span>
-                        )}
-                      </button>
-                    );
-                  })}
-                </div>
-              )}
             </div>
           </div>
         )}
@@ -804,6 +710,58 @@ export default function Home() {
                 Cancel
               </button>
             </div>
+            {iqpQuestions.length > 0 && !iqpLoading && (() => {
+              const iqpCurrent = iqpQuestions[iqpIdx];
+              if (!iqpCurrent) return null;
+              const LABELS = ['A', 'B', 'C', 'D'];
+              return (
+                <div className="mt-6 w-full max-w-sm animate-fade-up">
+                  <p className="text-[9px] text-[#F5F0E8]/25 uppercase tracking-[0.3em] text-center mb-4">Practice while you wait</p>
+                  <div className="panel-raised px-5 py-5 mb-4">
+                    <p className="text-sm font-medium leading-relaxed text-[#F5F0E8]">{iqpCurrent.stem}</p>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    {iqpCurrent.options.map((opt, i) => {
+                      const isAnswered = iqpSelected !== null;
+                      const isCorrect = isAnswered && i === iqpCurrent.correctIndex;
+                      const isWrong = isAnswered && i === iqpSelected && i !== iqpCurrent.correctIndex;
+                      const isDimmed = isAnswered && i !== iqpCurrent.correctIndex && i !== iqpSelected;
+                      let cls = 'panel hover:bg-[#1C1C1C] hover:border-[#C9A84C]/50';
+                      let badgeCls = 'border border-[#C9A84C]/30 text-[#C9A84C]/60';
+                      let textCls = 'text-[#F5F0E8]/80';
+                      if (isCorrect) { cls = 'border border-[#22C55E] bg-[#22C55E]/10 animate-correct'; badgeCls = 'border border-[#22C55E] text-[#22C55E] bg-[#22C55E]/20'; textCls = 'text-[#22C55E]'; }
+                      else if (isWrong) { cls = 'border border-[#EF4444] bg-[#EF4444]/10 animate-shake'; badgeCls = 'border border-[#EF4444] text-[#EF4444] bg-[#EF4444]/20'; textCls = 'text-[#EF4444]'; }
+                      else if (isDimmed) { cls = 'panel opacity-35'; badgeCls = 'border border-[#2A2A2A] text-[#374151]'; textCls = 'text-[#374151]'; }
+                      return (
+                        <button
+                          key={i}
+                          disabled={isAnswered}
+                          onClick={() => setIqpSelected(i)}
+                          className={`w-full flex items-center gap-3 px-4 py-3 transition-all duration-150 disabled:cursor-default ${cls}`}
+                        >
+                          <span className={`w-7 h-7 flex-shrink-0 flex items-center justify-center text-xs font-display font-bold ${badgeCls}`}>{LABELS[i]}</span>
+                          <span className={`text-left text-xs font-medium leading-snug ${textCls}`}>{opt}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                  {iqpSelected !== null && (
+                    <button
+                      onClick={() => {
+                        if (iqpIdx < iqpQuestions.length - 1) {
+                          setIqpIdx(idx => idx + 1);
+                          setIqpSelected(null);
+                        }
+                      }}
+                      disabled={iqpIdx >= iqpQuestions.length - 1}
+                      className="mt-3 w-full btn-gold text-xs font-display font-black uppercase tracking-[0.15em] py-2.5 disabled:opacity-30"
+                    >
+                      {iqpIdx < iqpQuestions.length - 1 ? 'Next →' : 'All done'}
+                    </button>
+                  )}
+                </div>
+              );
+            })()}
           </div>
         )}
 
@@ -886,6 +844,29 @@ export default function Home() {
           </div>
         )}
       </main>
+
+      {showPracticeLeaveModal && (
+        <div className="fixed inset-0 bg-black/60 z-[60] flex items-center justify-center px-4">
+          <div className="panel-raised px-8 py-7 max-w-sm w-full flex flex-col gap-5 animate-rise-in">
+            <p className="font-display font-black text-lg uppercase tracking-[0.15em] text-[#F5F0E8]">Leave Queue?</p>
+            <p className="text-sm text-[#F5F0E8]/50 leading-relaxed">You&apos;ll lose your place in the matchmaking queue.</p>
+            <div className="flex gap-3">
+              <button
+                onClick={() => setShowPracticeLeaveModal(false)}
+                className="flex-1 py-3 border border-[#2A2A2A] text-[#F5F0E8]/40 hover:text-[#F5F0E8]/70 text-xs font-display font-bold uppercase tracking-[0.15em] transition-colors"
+              >
+                Stay
+              </button>
+              <button
+                onClick={confirmLeaveForPractice}
+                className="flex-1 py-3 btn-gold text-xs font-display font-black uppercase tracking-[0.15em]"
+              >
+                Practice
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

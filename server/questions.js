@@ -1,24 +1,9 @@
 require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
-const { createClient } = require('@supabase/supabase-js');
-const ws = require('ws');
+const { getSupabase } = require('./supabase');
 
 const CONTENT_DIR = path.join(__dirname, '..', 'content', 'apchem');
-
-// ─── Supabase (lazy) ──────────────────────────────────────────────────────────
-
-let _supabase = null;
-function getSupabase() {
-  if (!_supabase) {
-    _supabase = createClient(
-      process.env.SUPABASE_URL,
-      process.env.SUPABASE_SERVICE_ROLE_KEY,
-      { realtime: { transport: ws } }
-    );
-  }
-  return _supabase;
-}
 
 // ─── DB query ─────────────────────────────────────────────────────────────────
 
@@ -27,12 +12,14 @@ async function pickQuestionsFromDB(subject, n) {
 
   const { data: cards, error: cardsErr } = await supabase
     .from('source_cards')
-    .select('id')
+    .select('id, unit')
     .eq('subject', subject)
     .eq('reviewed', true);
 
   if (cardsErr) throw cardsErr;
   if (!cards || cards.length === 0) throw new Error(`No reviewed cards for subject: ${subject}`);
+
+  const unitMap = Object.fromEntries(cards.map(c => [c.id, c.unit]));
 
   // Shuffle card IDs in JS so every battle draws from a different random subset
   const cardIds = cards.map(c => c.id);
@@ -44,7 +31,7 @@ async function pickQuestionsFromDB(subject, n) {
 
   const { data: variants, error: varErr } = await supabase
     .from('question_variants')
-    .select('id, rendered_stem, rendered_options, correct_index')
+    .select('id, rendered_stem, rendered_options, correct_index, source_card_id')
     .in('source_card_id', sampleIds)
     .not('rendered_options', 'is', null);
 
@@ -62,6 +49,8 @@ async function pickQuestionsFromDB(subject, n) {
     stem: row.rendered_stem,
     options: row.rendered_options,
     correct_index: row.correct_index,
+    source_card_id: row.source_card_id,
+    unit: unitMap[row.source_card_id] ?? null,
   }));
 }
 

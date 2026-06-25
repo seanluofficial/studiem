@@ -7,11 +7,11 @@ const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
-const { createClient } = require('@supabase/supabase-js');
-const ws = require('ws');
 const { pickQuestions } = require('./questions');
 const { updateElo } = require('./elo');
 const { updateStreak } = require('./streak');
+const { getSupabase } = require('./supabase');
+const { updateCardStat } = require('./stats');
 
 const app = express();
 app.use(cors());
@@ -23,20 +23,6 @@ const io = new Server(server, {
   pingTimeout: 5000,
   pingInterval: 10000,
 });
-
-// ─── Supabase ─────────────────────────────────────────────────────────────────
-
-let _supabase = null;
-function getSupabase() {
-  if (!_supabase) {
-    _supabase = createClient(
-      process.env.SUPABASE_URL,
-      process.env.SUPABASE_SERVICE_ROLE_KEY,
-      { realtime: { transport: ws } }
-    );
-  }
-  return _supabase;
-}
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -237,6 +223,13 @@ function handleAnswer(roomId, socketId, answerIndex, clientTimeTakenMs) {
 
   const correct = answerIndex === q.correct_index;
   if (correct) prog.score++;
+
+  const statUserId = state.players[socketId]?.userId;
+  if (statUserId && q.source_card_id && q.unit) {
+    updateCardStat(statUserId, q.source_card_id, state.subject, q.unit, correct)
+      .catch(err => console.error('[stats]', err));
+  }
+
   prog.answeredCurrent = true;
   prog.readyToAdvance = false;
 

@@ -9,9 +9,10 @@ interface NavBarProps {
   subject?: string | null;
   onFriendsClick?: () => void;
   friendsBadge?: number;
+  onPracticeClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 
-export default function NavBar({ displayName, elo, subject, onFriendsClick, friendsBadge }: NavBarProps) {
+export default function NavBar({ displayName, elo, subject, onFriendsClick, friendsBadge, onPracticeClick }: NavBarProps) {
   return (
     <nav className="fixed top-0 left-0 right-0 h-12 bg-[#0A0A0A]/95 border-b border-[#2A2A2A] flex items-stretch justify-between pl-5 pr-3 z-50 backdrop-blur-[2px]">
       {/* Left: wordmark */}
@@ -68,6 +69,13 @@ export default function NavBar({ displayName, elo, subject, onFriendsClick, frie
             className="flex items-center px-4 text-[#F5F0E8]/45 hover:text-[#C9A84C] text-[11px] font-display font-bold uppercase tracking-[0.18em] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#C9A84C]/60"
           >
             Board
+          </Link>
+          <Link
+            href="/practice"
+            onClick={onPracticeClick}
+            className="flex items-center px-4 text-[#F5F0E8]/45 hover:text-[#C9A84C] text-[11px] font-display font-bold uppercase tracking-[0.18em] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#C9A84C]/60"
+          >
+            Practice
           </Link>
         </div>
       </div>
