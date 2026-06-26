@@ -11,6 +11,7 @@ import {
   weightedSample,
   weightedUnitSample,
   getAccuracyColor,
+  getAccuracyThreshold,
   getUnitRecommendation,
   type UnitStat,
   type CardStat,
@@ -108,6 +109,12 @@ export default function PracticePage() {
   // Summary phase
   const [sessionResult, setSessionResult] = useState<SessionResult | null>(null);
 
+  // Session length selector (shared across select → drill; retry overrides to wrongQuestions.length)
+  const [sessionLength, setSessionLength] = useState<number>(15);
+
+  // Battle streak (fetched on mount for summary motivation banner)
+  const [currentStreak, setCurrentStreak] = useState<number | null>(null);
+
   // ── Auth on mount ───────────────────────────────────────────────────────────
 
   useEffect(() => {
@@ -119,6 +126,15 @@ export default function PracticePage() {
       setUserId(data.user.id);
       const meta = data.user.user_metadata as { full_name?: string; display_name?: string } | undefined;
       setDisplayName(meta?.display_name ?? meta?.full_name ?? data.user.email ?? null);
+      // Fetch streak for summary motivation banner
+      supabase
+        .from('profiles')
+        .select('current_streak')
+        .eq('id', data.user.id)
+        .maybeSingle()
+        .then(({ data: p }) =>
+          setCurrentStreak((p as { current_streak: number } | null)?.current_streak ?? null)
+        );
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -202,7 +218,7 @@ export default function PracticePage() {
           cardStats = await fetchCardStats(supabase, userId, cardPool.map(c => c.sourceCardId));
           currentUnitStats = unitStats;
 
-          const sampled = weightedSample(cardPool, cardStats, 50);
+          const sampled = weightedSample(cardPool, cardStats, sessionLength);
           selectedIds = sampled.map(c => c.sourceCardId);
         } else {
           // Practice All
@@ -222,7 +238,7 @@ export default function PracticePage() {
           cardStats = await fetchCardStats(supabase, userId, cardPool.map(c => c.sourceCardId));
           currentUnitStats = await fetchUnitStats(supabase, userId, selectedSubject);
 
-          const sampled = weightedUnitSample(cardPool, currentUnitStats, cardStats, 50);
+          const sampled = weightedUnitSample(cardPool, currentUnitStats, cardStats, sessionLength);
           selectedIds = sampled.map(c => c.sourceCardId);
         }
 
@@ -293,6 +309,31 @@ export default function PracticePage() {
     []
   );
 
+  // ── Retry missed questions ─────────────────────────────────────────────────
+
+  const handleRetryMissed = useCallback(
+    async (questions: PracticeQuestion[]) => {
+      if (!userId) return;
+      setLoadingDrill(true);
+      try {
+        // Re-snapshot stats so this session's delta starts from the current state
+        const freshStats = await fetchUnitStats(supabase, userId, selectedSubject);
+        const snapshot: BeforeStats = {};
+        for (const u of Object.keys(freshStats)) {
+          snapshot[u] = { ...freshStats[u] };
+        }
+        setBeforeStats(snapshot);
+        setDrillQuestions(questions);
+        setDrillUnit(null);
+        setSessionLength(questions.length); // one pass through wrong questions
+        setPhase('drill');
+      } finally {
+        setLoadingDrill(false);
+      }
+    },
+    [userId, supabase, selectedSubject]
+  );
+
   // ── Render ─────────────────────────────────────────────────────────────────
 
   if (phase === 'drill' && userId) {
@@ -302,6 +343,7 @@ export default function PracticePage() {
         subject={selectedSubject}
         unit={drillUnit}
         userId={userId}
+        sessionLength={sessionLength}
         onStop={handleStop}
       />
     );
@@ -315,11 +357,14 @@ export default function PracticePage() {
         subject={selectedSubject}
         displayName={displayName}
         myElo={myElo}
+        currentStreak={currentStreak}
         onPracticeMore={() => {
           if (userId) void loadSubjectData(selectedSubject, userId);
+          setSessionLength(15);
           setPhase('select');
         }}
         onBattle={() => router.push('/')}
+        onRetryMissed={handleRetryMissed}
       />
     );
   }
@@ -362,6 +407,29 @@ export default function PracticePage() {
             })}
           </div>
         </div>
+
+        {/* Session length selector */}
+        {LIVE_SUBJECTS.has(selectedSubject) && (
+          <div className="mb-7">
+            <p className="text-[9px] text-[#F5F0E8]/30 uppercase tracking-[0.3em] mb-2">Session size</p>
+            <div className="flex gap-2">
+              {([5, 15, 30] as [number, number, number]).map(n => (
+                <button
+                  key={n}
+                  onClick={() => setSessionLength(n)}
+                  className={[
+                    'px-5 py-1.5 text-[10px] font-display font-bold uppercase tracking-[0.15em] border transition-all',
+                    sessionLength === n
+                      ? 'border-[#C9A84C] bg-[#C9A84C]/10 text-[#C9A84C]'
+                      : 'border-[#2A2A2A] bg-[#141414] text-[#F5F0E8]/35 hover:text-[#F5F0E8]/70 hover:border-[#C9A84C]/30',
+                  ].join(' ')}
+                >
+                  {n} Q
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Unit list */}
         <div>
@@ -428,14 +496,15 @@ export default function PracticePage() {
                             style={{ color }}
                           >
                             {fmtPct(acc)}
+                            {rec === 'recommended' && (
+                              <span className="ml-1 font-normal text-[#F5F0E8]/30">
+                                / {Math.round(getAccuracyThreshold(elo) * 100)}% goal
+                              </span>
+                            )}
                           </span>
                         )}
                         {rec === 'recommended' && (
-                          <span className="flex items-center gap-1 text-[9px] text-[#C9A84C] uppercase tracking-[0.2em]">
-                            <span
-                              className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                              style={{ background: '#C9A84C' }}
-                            />
+                          <span className="text-[9px] text-[#C9A84C]/70 uppercase tracking-[0.2em]">
                             Suggested
                           </span>
                         )}
@@ -475,8 +544,10 @@ interface SummaryViewProps {
   subject: string;
   displayName: string | null;
   myElo: number | null;
+  currentStreak: number | null;
   onPracticeMore: () => void;
   onBattle: () => void;
+  onRetryMissed: (questions: PracticeQuestion[]) => void;
 }
 
 function SummaryView({
@@ -485,8 +556,10 @@ function SummaryView({
   subject,
   displayName,
   myElo,
+  currentStreak,
   onPracticeMore,
   onBattle,
+  onRetryMissed,
 }: SummaryViewProps) {
   const [showWrong, setShowWrong] = useState(false);
 
@@ -659,7 +732,40 @@ function SummaryView({
           </div>
         )}
 
-        {/* Action buttons */}
+        {/* Retry missed — only shown if there are wrong questions */}
+        {result.wrongQuestions.length > 0 && (
+          <button
+            onClick={() => onRetryMissed(result.wrongQuestions)}
+            className="w-full panel hover:bg-[#1C1C1C] hover:border-[#C9A84C]/40 px-5 py-4 flex items-center justify-between mb-4 transition-all"
+          >
+            <div className="text-left">
+              <p className="text-sm font-display font-bold uppercase tracking-[0.12em] text-[#F5F0E8]/80">
+                Retry Missed ({result.wrongQuestions.length})
+              </p>
+              <p className="text-[10px] text-[#F5F0E8]/30 mt-0.5">
+                Practice the questions you got wrong
+              </p>
+            </div>
+            <span className="text-[#F5F0E8]/20 text-lg flex-shrink-0">→</span>
+          </button>
+        )}
+
+        {/* Streak banner — shown if user has an active battle streak */}
+        {currentStreak != null && currentStreak > 0 && (
+          <div className="panel px-5 py-3 mb-4 flex items-center justify-between">
+            <div>
+              <p className="text-[9px] text-[#F5F0E8]/30 uppercase tracking-[0.3em]">Battle Streak</p>
+              <p className="text-sm font-display font-bold text-[#C9A84C] tabular-nums mt-0.5">
+                {currentStreak} {currentStreak === 1 ? 'day' : 'days'}
+              </p>
+            </div>
+            <p className="text-[10px] text-[#F5F0E8]/30 text-right max-w-[140px] leading-relaxed">
+              Queue a battle to keep it going
+            </p>
+          </div>
+        )}
+
+        {/* Primary actions */}
         <div className="flex gap-3">
           <button
             onClick={onPracticeMore}

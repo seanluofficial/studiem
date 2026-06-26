@@ -31,6 +31,7 @@ interface Props {
   subject: string;
   unit: string | null; // null = Practice All
   userId: string;
+  sessionLength?: number; // finite → auto-stop + show Q X of Y
   onStop: (results: SessionResult) => void;
 }
 
@@ -66,7 +67,7 @@ function compileResults(
   };
 }
 
-export default function PracticeMode({ questions, subject, unit, userId, onStop }: Props) {
+export default function PracticeMode({ questions, subject, unit, userId, sessionLength, onStop }: Props) {
   const [state, setState] = useState<DrillState>({
     currentIdx: 0,
     selectedIdx: null,
@@ -79,6 +80,7 @@ export default function PracticeMode({ questions, subject, unit, userId, onStop 
 
   const sessionAnswered = state.sessionResults.length;
   const sessionCorrect = state.sessionResults.filter(r => r.wasCorrect).length;
+  const isLastQuestion = sessionLength !== undefined && sessionAnswered >= sessionLength;
 
   const handleStop = useCallback(() => {
     onStop(compileResults(state.sessionResults));
@@ -176,11 +178,18 @@ export default function PracticeMode({ questions, subject, unit, userId, onStop 
             </div>
           </div>
 
-          {/* Right: session score */}
-          <p className="text-[10px] text-[#F5F0E8]/35 uppercase tracking-[0.2em] tabular-nums flex-shrink-0">
-            <span className="text-[#22C55E]">{sessionCorrect}</span>
-            <span className="text-[#F5F0E8]/25"> / {sessionAnswered}</span>
-          </p>
+          {/* Right: progress + score */}
+          <div className="flex flex-col items-end gap-0.5 flex-shrink-0">
+            {sessionLength !== undefined && (
+              <p className="text-[9px] text-[#F5F0E8]/30 uppercase tracking-[0.2em] tabular-nums">
+                {sessionAnswered} / {sessionLength}
+              </p>
+            )}
+            <p className="text-[10px] text-[#F5F0E8]/35 uppercase tracking-[0.2em] tabular-nums">
+              <span className="text-[#22C55E]">{sessionCorrect}</span>
+              <span className="text-[#F5F0E8]/25"> correct</span>
+            </p>
+          </div>
         </div>
       </div>
 
@@ -220,13 +229,13 @@ export default function PracticeMode({ questions, subject, unit, userId, onStop 
           </div>
         )}
 
-        {/* Next button */}
+        {/* Next / Finish button */}
         {isAnswered && (
           <button
-            onClick={handleNext}
+            onClick={isLastQuestion ? handleStop : handleNext}
             className="mt-4 btn-gold w-full font-display font-black text-sm uppercase tracking-[0.18em] py-3"
           >
-            Next →
+            {isLastQuestion ? 'Finish Session →' : 'Next →'}
           </button>
         )}
       </div>
