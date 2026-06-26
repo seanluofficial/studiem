@@ -109,8 +109,10 @@ export default function PracticePage() {
   // Summary phase
   const [sessionResult, setSessionResult] = useState<SessionResult | null>(null);
 
-  // Session length selector (shared across select → drill; retry overrides to wrongQuestions.length)
-  const [sessionLength, setSessionLength] = useState<number>(15);
+  // Session length: undefined = endless, number = auto-stop after N answers
+  const [sessionLength, setSessionLength] = useState<number | undefined>(15);
+  // Override used only during retry-missed so user's chosen length isn't clobbered
+  const [drillLengthOverride, setDrillLengthOverride] = useState<number | undefined>(undefined);
 
   // Battle streak (fetched on mount for summary motivation banner)
   const [currentStreak, setCurrentStreak] = useState<number | null>(null);
@@ -218,7 +220,7 @@ export default function PracticePage() {
           cardStats = await fetchCardStats(supabase, userId, cardPool.map(c => c.sourceCardId));
           currentUnitStats = unitStats;
 
-          const sampled = weightedSample(cardPool, cardStats, sessionLength);
+          const sampled = weightedSample(cardPool, cardStats, sessionLength ?? 50);
           selectedIds = sampled.map(c => c.sourceCardId);
         } else {
           // Practice All
@@ -238,7 +240,7 @@ export default function PracticePage() {
           cardStats = await fetchCardStats(supabase, userId, cardPool.map(c => c.sourceCardId));
           currentUnitStats = await fetchUnitStats(supabase, userId, selectedSubject);
 
-          const sampled = weightedUnitSample(cardPool, currentUnitStats, cardStats, sessionLength);
+          const sampled = weightedUnitSample(cardPool, currentUnitStats, cardStats, sessionLength ?? 50);
           selectedIds = sampled.map(c => c.sourceCardId);
         }
 
@@ -325,7 +327,7 @@ export default function PracticePage() {
         setBeforeStats(snapshot);
         setDrillQuestions(questions);
         setDrillUnit(null);
-        setSessionLength(questions.length); // one pass through wrong questions
+        setDrillLengthOverride(questions.length); // one pass; doesn't change user's chosen session length
         setPhase('drill');
       } finally {
         setLoadingDrill(false);
@@ -343,7 +345,7 @@ export default function PracticePage() {
         subject={selectedSubject}
         unit={drillUnit}
         userId={userId}
-        sessionLength={sessionLength}
+        sessionLength={drillLengthOverride ?? sessionLength}
         onStop={handleStop}
       />
     );
@@ -360,10 +362,13 @@ export default function PracticePage() {
         currentStreak={currentStreak}
         onPracticeMore={() => {
           if (userId) void loadSubjectData(selectedSubject, userId);
-          setSessionLength(15);
+          setDrillLengthOverride(undefined);
           setPhase('select');
         }}
-        onBattle={() => router.push('/')}
+        onBattle={() => {
+          if (typeof window !== 'undefined') localStorage.setItem('lastSubject', selectedSubject);
+          router.push('/');
+        }}
         onRetryMissed={handleRetryMissed}
       />
     );
@@ -413,18 +418,23 @@ export default function PracticePage() {
           <div className="mb-7">
             <p className="text-[9px] text-[#F5F0E8]/30 uppercase tracking-[0.3em] mb-2">Session size</p>
             <div className="flex gap-2">
-              {([5, 15, 30] as [number, number, number]).map(n => (
+              {([
+                { value: 5, label: '5 Q' },
+                { value: 15, label: '15 Q' },
+                { value: 30, label: '30 Q' },
+                { value: undefined, label: '∞' },
+              ] as { value: number | undefined; label: string }[]).map(({ value, label }) => (
                 <button
-                  key={n}
-                  onClick={() => setSessionLength(n)}
+                  key={label}
+                  onClick={() => setSessionLength(value)}
                   className={[
                     'px-5 py-1.5 text-[10px] font-display font-bold uppercase tracking-[0.15em] border transition-all',
-                    sessionLength === n
+                    sessionLength === value
                       ? 'border-[#C9A84C] bg-[#C9A84C]/10 text-[#C9A84C]'
                       : 'border-[#2A2A2A] bg-[#141414] text-[#F5F0E8]/35 hover:text-[#F5F0E8]/70 hover:border-[#C9A84C]/30',
                   ].join(' ')}
                 >
-                  {n} Q
+                  {label}
                 </button>
               ))}
             </div>

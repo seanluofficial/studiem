@@ -100,7 +100,13 @@ export default function Home() {
   const [appPhase, setAppPhase] = useState<AppPhase>('idle');
   const [userId, setUserId] = useState<string | null>(null);
   const [displayName, setDisplayName] = useState('');
-  const [subject, setSubject] = useState('AP Chemistry');
+  const [subject, setSubject] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      const s = localStorage.getItem('lastSubject');
+      if (s === 'AP Chemistry' || s === 'AP Biology') return s;
+    }
+    return 'AP Chemistry';
+  });
   const [roomId, setRoomId] = useState<string | null>(null);
   const [opponent, setOpponent] = useState<{ displayName: string; userId: string } | null>(null);
   const [countdown, setCountdown] = useState(3);
@@ -120,6 +126,7 @@ export default function Home() {
   const [iqpIdx, setIqpIdx] = useState(0);
   const [iqpSelected, setIqpSelected] = useState<number | null>(null);
   const [iqpLoading, setIqpLoading] = useState(false);
+  const [queueElapsed, setQueueElapsed] = useState(0);
   const questionStartedAt = useRef<number | null>(null);
   const userIdRef = useRef<string | null>(null);
 
@@ -212,12 +219,19 @@ export default function Home() {
   useEffect(() => {
     if (appPhase === 'queuing') {
       loadInQueueQuestions();
+      setQueueElapsed(0);
     } else {
       setIqpQuestions([]);
       setIqpIdx(0);
       setIqpSelected(null);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [appPhase]);
+
+  useEffect(() => {
+    if (appPhase !== 'queuing') return;
+    const id = setInterval(() => setQueueElapsed(s => s + 1), 1000);
+    return () => clearInterval(id);
   }, [appPhase]);
 
   useEffect(() => {
@@ -710,6 +724,10 @@ export default function Home() {
               </p>
               <div className="rule-gold w-32" />
               <p className="text-[#C9A84C] text-xs uppercase tracking-[0.25em] font-bold">{subject}</p>
+              <p className="text-[11px] text-[#F5F0E8]/35">
+                {queueElapsed < 30 ? 'Matching by skill level' : 'Widening search…'}
+              </p>
+              <p className="text-[10px] text-[#F5F0E8]/20 tabular-nums -mt-3">{queueElapsed}s</p>
               <div className="flex gap-2 mt-1">
                 <span className="w-2 h-2 bg-[#C9A84C] dot-1" />
                 <span className="w-2 h-2 bg-[#C9A84C] dot-2" />
