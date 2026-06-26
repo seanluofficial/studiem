@@ -22,6 +22,16 @@ export function getAccuracyThreshold(elo: number): number {
   return 0.88;
 }
 
+// Maps current unit accuracy to an AP exam grade prediction.
+// Only returned when accuracy >= 50% so early data doesn't discourage.
+export function getExamGradeLabel(accuracy: number | null): string | null {
+  if (accuracy === null || accuracy < 0.50) return null;
+  if (accuracy >= 0.88) return 'On pace for a 5';
+  if (accuracy >= 0.75) return 'On pace for a 4';
+  if (accuracy >= 0.65) return 'On pace for a 3';
+  return 'Keep practicing';
+}
+
 export function getAccuracyColor(accuracy: number | null, elo: number): string {
   if (accuracy === null) return 'transparent';
   const threshold = getAccuracyThreshold(elo);

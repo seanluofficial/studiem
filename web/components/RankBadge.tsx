@@ -10,6 +10,8 @@ interface RankBadgeProps {
   /** Show the numeric ELO alongside the tier name. Default true. */
   showElo?: boolean;
   className?: string;
+  /** If set and current < total, show placement UI instead of rank. */
+  placement?: { current: number; total: number } | null;
 }
 
 const SIZES = {
@@ -23,9 +25,31 @@ export default function RankBadge({
   size = 'md',
   showElo = true,
   className = '',
+  placement,
 }: RankBadgeProps) {
   const rating = elo ?? 1000;
   const tier = eloToTier(rating);
+
+  // Placement mode: show "Placement X/5" instead of rank
+  if (placement && placement.current < placement.total) {
+    return (
+      <span
+        className={`inline-flex items-center font-display font-bold uppercase tracking-[0.18em] tabular-nums ${SIZES[size]} ${className}`}
+        style={{
+          color: '#9CA3AF',
+          backgroundColor: 'var(--surface)',
+          border: '1px solid #374151',
+          boxShadow: 'inset 0 1px 0 rgba(245,240,232,0.05)',
+        }}
+      >
+        <span className="inline-block w-1.5 h-1.5 flex-shrink-0 bg-[#9CA3AF]" aria-hidden="true" />
+        Placement
+        <span className="text-[#F5F0E8]/40 font-sans font-medium tracking-normal">
+          {placement.current}/{placement.total}
+        </span>
+      </span>
+    );
+  }
 
   return (
     <span

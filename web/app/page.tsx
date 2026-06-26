@@ -79,7 +79,19 @@ interface Question {
   stem: string;
   options: string[];
   correct_index: number;
+  source_card_id: string;
+  unit: string | null;
 }
+
+interface BattleReviewItem {
+  question: Question;
+  selectedIndex: number;
+  correct: boolean;
+}
+
+type ExplanationMap = Record<string, { correctExplanation: string | null; distractorExplanations: string[] }>;
+
+const PLACEMENT_TOTAL = 5;
 
 interface BattleState {
   phase: 'question' | 'reveal' | 'waiting';
@@ -127,6 +139,19 @@ export default function Home() {
   const [iqpSelected, setIqpSelected] = useState<number | null>(null);
   const [iqpLoading, setIqpLoading] = useState(false);
   const [queueElapsed, setQueueElapsed] = useState(0);
+
+  // Placements
+  const [placementsPlayed, setPlacementsPlayed] = useState<number | null>(null);
+  const [placementsAtBattleStart, setPlacementsAtBattleStart] = useState<number | null>(null);
+  const placementsPlayedRef = useRef<number | null>(null);
+
+  // Battle review + distractor explanations
+  const [battleReviewItems, setBattleReviewItems] = useState<BattleReviewItem[]>([]);
+  const [battleExplanations, setBattleExplanations] = useState<ExplanationMap>({});
+  const [showBattleReview, setShowBattleReview] = useState(false);
+  const currentBattleQuestionRef = useRef<Question | null>(null);
+  placementsPlayedRef.current = placementsPlayed; // keep in sync for socket handlers
+
   const questionStartedAt = useRef<number | null>(null);
   const userIdRef = useRef<string | null>(null);
 
@@ -187,10 +212,20 @@ export default function Home() {
       .eq('subject', subject)
       .single()
       .then(({ data }) => setMyElo(data?.rating ?? 1000));
+    supabase
+      .from('battles')
+      .select('id', { count: 'exact', head: true })
+      .or(`player1_id.eq.${userId},player2_id.eq.${userId}`)
+      .eq('subject', subject)
+      .then(({ count }) => setPlacementsPlayed(count ?? 0));
   }, [userId, subject]);
 
   const resetBattleState = useCallback(() => {
     questionStartedAt.current = null;
+    currentBattleQuestionRef.current = null;
+    setBattleReviewItems([]);
+    setBattleExplanations({});
+    setShowBattleReview(false);
     setBattle({
       phase: 'question',
       question: null,
@@ -232,6 +267,39 @@ export default function Home() {
     if (appPhase !== 'queuing') return;
     const id = setInterval(() => setQueueElapsed(s => s + 1), 1000);
     return () => clearInterval(id);
+  }, [appPhase]);
+
+  // When battle completes: fetch card content for the review panel + refresh placement count
+  useEffect(() => {
+    if (appPhase !== 'complete') return;
+    if (!userId) return;
+    const supabase = createClient();
+    // Refresh placements count to show updated badge after this battle
+    supabase
+      .from('battles')
+      .select('id', { count: 'exact', head: true })
+      .or(`player1_id.eq.${userId},player2_id.eq.${userId}`)
+      .eq('subject', subject)
+      .then(({ count }) => setPlacementsPlayed(count ?? 0));
+    // Fetch explanations for the review panel
+    if (battleReviewItems.length === 0) return;
+    const cardIds = [...new Set(battleReviewItems.map(r => r.question.source_card_id))];
+    supabase
+      .from('source_cards')
+      .select('id, content')
+      .in('id', cardIds)
+      .then(({ data }) => {
+        const map: ExplanationMap = {};
+        for (const card of data ?? []) {
+          const c = card.content as { correct_explanation?: string | null; distractor_explanations?: string[] | null } | null;
+          map[card.id as string] = {
+            correctExplanation: c?.correct_explanation ?? null,
+            distractorExplanations: c?.distractor_explanations ?? [],
+          };
+        }
+        setBattleExplanations(map);
+      });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [appPhase]);
 
   useEffect(() => {
@@ -279,6 +347,7 @@ export default function Home() {
     socket.on('queue_timeout', () => setAppPhase('idle'));
 
     socket.on('match_found', ({ roomId: rid, opponent: opp, myElo: serverMyElo }) => {
+      setPlacementsAtBattleStart(placementsPlayedRef.current); // capture before-battle count
       setRoomId(rid);
       setOpponent({ displayName: opp.displayName, userId: opp.userId ?? '' });
       setOpponentElo(opp?.elo ?? 1000);
@@ -305,8 +374,9 @@ export default function Home() {
       }, 1000);
     });
 
-    socket.on('question', ({ index, total, question }) => {
+    socket.on('question', ({ index, total, question }: { index: number; total: number; question: Question }) => {
       if (index === 0) questionStartedAt.current = Date.now();
+      currentBattleQuestionRef.current = question;
       setAppPhase('battle');
       setBattle(prev => ({
         ...prev,
@@ -328,6 +398,10 @@ export default function Home() {
       score: number;
       opponent_score: number;
     }) => {
+      if (currentBattleQuestionRef.current) {
+        const q = currentBattleQuestionRef.current;
+        setBattleReviewItems(prev => [...prev, { question: q, selectedIndex: your_answer, correct }]);
+      }
       setBattle(prev => ({
         ...prev,
         phase: 'reveal',
@@ -479,6 +553,12 @@ export default function Home() {
     setIncomingChallenge(null);
   }
 
+  // Placement badge — shown on RankBadge while still in placement matches
+  const myPlacement =
+    placementsPlayed !== null && placementsPlayed < PLACEMENT_TOTAL
+      ? { current: placementsPlayed, total: PLACEMENT_TOTAL }
+      : null;
+
   // ── Complete ───────────────────────────────────────────────────────────────
   if (appPhase === 'complete') {
     const socket = getSocket();
@@ -546,6 +626,37 @@ export default function Home() {
               </div>
             </div>
 
+            {/* Placement banner */}
+            {(() => {
+              const wasPlacement = placementsAtBattleStart !== null && placementsAtBattleStart < PLACEMENT_TOTAL;
+              const isReveal = wasPlacement && placementsAtBattleStart === PLACEMENT_TOTAL - 1;
+              const completedCount = wasPlacement ? placementsAtBattleStart + 1 : 0;
+              if (!wasPlacement) return null;
+              return (
+                <div className={`w-full px-4 py-3 border text-center animate-rise-in ${
+                  isReveal
+                    ? 'border-[#C9A84C]/40 bg-[#C9A84C]/5'
+                    : 'border-[#374151] bg-[#141414]'
+                }`}>
+                  {isReveal ? (
+                    <>
+                      <p className="text-[9px] text-[#C9A84C]/60 uppercase tracking-[0.3em] mb-1">Placements Complete</p>
+                      <p className="text-sm font-display font-black uppercase tracking-[0.15em] text-[#C9A84C]">
+                        Rank Revealed
+                      </p>
+                    </>
+                  ) : (
+                    <>
+                      <p className="text-[9px] text-[#9CA3AF]/50 uppercase tracking-[0.3em] mb-1">Placement Match</p>
+                      <p className="text-sm font-display font-bold uppercase tracking-[0.15em] text-[#9CA3AF]">
+                        {completedCount} / {PLACEMENT_TOTAL} complete
+                      </p>
+                    </>
+                  )}
+                </div>
+              );
+            })()}
+
             {/* Add friend */}
             {opponent?.userId && userId && opponent.userId !== userId && !isOpponentFriend && (
               <div className="flex justify-center w-full">
@@ -575,6 +686,54 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        {/* Battle Review — collapsible per-question breakdown with explanations */}
+        {battleReviewItems.length > 0 && (
+          <div className="w-full max-w-md mt-4 panel overflow-hidden animate-rise-in">
+            <button
+              onClick={() => setShowBattleReview(v => !v)}
+              className="w-full flex items-center justify-between px-5 py-4 text-left"
+            >
+              <p className="text-[9px] text-[#F5F0E8]/30 uppercase tracking-[0.3em]">Review</p>
+              <span className="text-[#F5F0E8]/25 text-xs">{showBattleReview ? '▲' : '▼'}</span>
+            </button>
+            {showBattleReview && (
+              <div className="border-t border-[#2A2A2A] divide-y divide-[#2A2A2A]">
+                {battleReviewItems.map((item, idx) => {
+                  const { question: q, selectedIndex, correct } = item;
+                  const exp = battleExplanations[q.source_card_id];
+                  const distractorRank = correct ? -1 : [0, 1, 2, 3].filter(i => i !== q.correct_index).indexOf(selectedIndex);
+                  const distractorExp = distractorRank >= 0 ? (exp?.distractorExplanations[distractorRank] ?? null) : null;
+                  return (
+                    <div key={idx} className="px-5 py-4">
+                      <p className="text-xs text-[#F5F0E8]/80 leading-snug mb-3">{q.stem}</p>
+                      {!correct && (
+                        <p className="text-[10px] text-[#EF4444]/80 mb-1">
+                          ✗ {q.options[selectedIndex]}
+                        </p>
+                      )}
+                      <p className="text-[10px] text-[#22C55E] mb-2">
+                        ✓ {q.options[q.correct_index]}
+                      </p>
+                      {distractorExp && (
+                        <div className="border-l-2 border-[#EF4444]/30 pl-3 mb-2">
+                          <p className="text-[9px] text-[#EF4444]/50 uppercase tracking-[0.2em] mb-1">Why that&apos;s wrong</p>
+                          <p className="text-[10px] text-[#F5F0E8]/50 leading-relaxed">{distractorExp}</p>
+                        </div>
+                      )}
+                      {exp?.correctExplanation && (
+                        <div className="border-l-2 border-[#C9A84C]/30 pl-3">
+                          <p className="text-[9px] text-[#C9A84C]/50 uppercase tracking-[0.2em] mb-1">Explanation</p>
+                          <p className="text-[10px] text-[#F5F0E8]/50 leading-relaxed">{exp.correctExplanation}</p>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        )}
       </main>
     );
   }
@@ -603,6 +762,7 @@ export default function Home() {
           displayName={displayName}
           elo={myElo}
           subject={appPhase === 'idle' ? subject : undefined}
+          placement={myPlacement}
           onFriendsClick={() => { setFriendsPanelOpen(o => !o); setFriendsUnreadCount(0); }}
           friendsBadge={friendsPendingCount + friendsUnreadCount + (incomingChallenge ? 1 : 0)}
           onPracticeClick={handlePracticeNavClick}
@@ -805,7 +965,7 @@ export default function Home() {
                 <p className="font-display font-black text-xl uppercase tracking-[0.12em] text-[#F5F0E8] truncate max-w-full">
                   {displayName || 'You'}
                 </p>
-                <RankBadge elo={myElo} size="sm" />
+                <RankBadge elo={myElo} size="sm" placement={myPlacement} />
               </div>
               <span className="font-display font-black text-3xl uppercase text-[#C9A84C] animate-vs-clash select-none">
                 VS
@@ -854,7 +1014,7 @@ export default function Home() {
                 <div className="flex flex-col items-center gap-2 flex-1">
                   <p className="text-[11px] text-[#F5F0E8]/40 uppercase tracking-[0.18em] truncate max-w-[8rem]">{displayName || 'You'}</p>
                   <p className="font-display font-black text-6xl tabular-nums text-[#F5F0E8]">{battle.myScore}</p>
-                  <RankBadge elo={myElo} size="sm" />
+                  <RankBadge elo={myElo} size="sm" placement={myPlacement} />
                 </div>
                 <span className="font-display font-black text-2xl uppercase tracking-[0.1em] text-[#2A2A2A] select-none">vs</span>
                 <div className="flex flex-col items-center gap-2 flex-1">

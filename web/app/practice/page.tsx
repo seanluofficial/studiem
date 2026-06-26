@@ -12,6 +12,7 @@ import {
   weightedUnitSample,
   getAccuracyColor,
   getAccuracyThreshold,
+  getExamGradeLabel,
   getUnitRecommendation,
   type UnitStat,
   type CardStat,
@@ -38,7 +39,7 @@ type Phase = 'select' | 'drill' | 'summary';
 interface SourceCardRow {
   id: string;
   unit: string;
-  content: { correct_explanation?: string | null } | null;
+  content: { correct_explanation?: string | null; distractor_explanations?: string[] | null } | null;
 }
 
 interface VariantRow {
@@ -196,7 +197,7 @@ export default function PracticePage() {
 
       try {
         let cardPool: { sourceCardId: string; unit: string }[];
-        let contentMap: Record<string, string | null>;
+        let contentMap: Record<string, { correctExplanation: string | null; distractorExplanations: string[] }>;
         let cardStats: Record<string, CardStat>;
         let currentUnitStats: Record<string, UnitStat>;
         let selectedIds: string[];
@@ -212,10 +213,11 @@ export default function PracticePage() {
 
           if (error) throw error;
 
-          const typedCards = (cards ?? []) as { id: string; content: { correct_explanation?: string | null } | null }[];
-          contentMap = Object.fromEntries(
-            typedCards.map(c => [c.id, c.content?.correct_explanation ?? null])
-          );
+          const typedCards = (cards ?? []) as { id: string; content: { correct_explanation?: string | null; distractor_explanations?: string[] | null } | null }[];
+          contentMap = Object.fromEntries(typedCards.map(c => [c.id, {
+            correctExplanation: c.content?.correct_explanation ?? null,
+            distractorExplanations: c.content?.distractor_explanations ?? [],
+          }]));
           cardPool = typedCards.map(c => ({ sourceCardId: c.id, unit }));
           cardStats = await fetchCardStats(supabase, userId, cardPool.map(c => c.sourceCardId));
           currentUnitStats = unitStats;
@@ -233,9 +235,10 @@ export default function PracticePage() {
           if (error) throw error;
 
           const typedCards = (cards ?? []) as SourceCardRow[];
-          contentMap = Object.fromEntries(
-            typedCards.map(c => [c.id, c.content?.correct_explanation ?? null])
-          );
+          contentMap = Object.fromEntries(typedCards.map(c => [c.id, {
+            correctExplanation: c.content?.correct_explanation ?? null,
+            distractorExplanations: c.content?.distractor_explanations ?? [],
+          }]));
           cardPool = typedCards.map(c => ({ sourceCardId: c.id, unit: c.unit }));
           cardStats = await fetchCardStats(supabase, userId, cardPool.map(c => c.sourceCardId));
           currentUnitStats = await fetchUnitStats(supabase, userId, selectedSubject);
@@ -278,7 +281,8 @@ export default function PracticePage() {
           stem: v.rendered_stem,
           options: v.rendered_options!,
           correctIndex: v.correct_index,
-          correctExplanation: contentMap[v.source_card_id] ?? null,
+          correctExplanation: contentMap[v.source_card_id]?.correctExplanation ?? null,
+          distractorExplanations: contentMap[v.source_card_id]?.distractorExplanations ?? [],
           unit: unitForCard[v.source_card_id] ?? unit ?? '',
         }));
 
@@ -705,6 +709,19 @@ function SummaryView({
                         {d}
                       </span>
                     )}
+                    {animDone && (() => {
+                      // Compute after-accuracy for grade label
+                      const b = beforeStats[u];
+                      const afterAcc = b && b.total > 0
+                        ? (b.correct + bySess.correct) / (b.total + bySess.total)
+                        : bySess.total > 0 ? bySess.correct / bySess.total : null;
+                      const grade = getExamGradeLabel(afterAcc);
+                      return grade ? (
+                        <span className="text-[9px] text-[#F5F0E8]/25 ml-auto animate-fade-up">
+                          {grade}
+                        </span>
+                      ) : null;
+                    })()}
                   </div>
                 </div>
               );

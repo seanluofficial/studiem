@@ -14,6 +14,7 @@ export interface PracticeQuestion {
   options: string[];
   correctIndex: number;
   correctExplanation: string | null;
+  distractorExplanations: string[];  // parallel to wrong options (non-correct indices in order)
   unit: string;         // for stat tracking and per-unit summary
 }
 
@@ -41,6 +42,17 @@ interface DrillState {
   currentIdx: number;
   selectedIdx: number | null;
   sessionResults: { question: PracticeQuestion; wasCorrect: boolean }[];
+}
+
+// Returns the distractor explanation matching the wrong option the user picked.
+// distractor_explanations is parallel to [0,1,2,3].filter(i => i !== correctIndex).
+function distractorExplanationFor(
+  selectedIndex: number,
+  correctIndex: number,
+  explanations: string[]
+): string | null {
+  const rank = [0, 1, 2, 3].filter(i => i !== correctIndex).indexOf(selectedIndex);
+  return rank >= 0 ? (explanations[rank] ?? null) : null;
 }
 
 function compileResults(
@@ -221,13 +233,33 @@ export default function PracticeMode({ questions, subject, unit, userId, session
           ))}
         </div>
 
-        {/* Explanation — always shown after answering if available */}
-        {isAnswered && current.correctExplanation && (
-          <div className="mt-5 panel px-5 py-4 border-l-2 border-[#C9A84C]/40 animate-fade-up">
-            <p className="text-[9px] text-[#C9A84C]/60 uppercase tracking-[0.25em] mb-2">Explanation</p>
-            <p className="text-sm text-[#F5F0E8]/70 leading-relaxed">{current.correctExplanation}</p>
-          </div>
-        )}
+        {/* Explanation — shown after answering */}
+        {isAnswered && (() => {
+          const wasCorrect = state.selectedIdx === current.correctIndex;
+          const distractor = wasCorrect ? null : distractorExplanationFor(
+            state.selectedIdx!,
+            current.correctIndex,
+            current.distractorExplanations
+          );
+          return (
+            <>
+              {distractor && (
+                <div className="mt-5 panel px-5 py-4 border-l-2 border-[#EF4444]/40 animate-fade-up">
+                  <p className="text-[9px] text-[#EF4444]/60 uppercase tracking-[0.25em] mb-2">Why that&apos;s wrong</p>
+                  <p className="text-sm text-[#F5F0E8]/70 leading-relaxed">{distractor}</p>
+                </div>
+              )}
+              {current.correctExplanation && (
+                <div className={`${distractor ? 'mt-3' : 'mt-5'} panel px-5 py-4 border-l-2 ${wasCorrect ? 'border-[#C9A84C]/40' : 'border-[#22C55E]/40'} animate-fade-up`}>
+                  <p className={`text-[9px] ${wasCorrect ? 'text-[#C9A84C]/60' : 'text-[#22C55E]/60'} uppercase tracking-[0.25em] mb-2`}>
+                    {wasCorrect ? 'Explanation' : 'Why the correct answer is right'}
+                  </p>
+                  <p className="text-sm text-[#F5F0E8]/70 leading-relaxed">{current.correctExplanation}</p>
+                </div>
+              )}
+            </>
+          );
+        })()}
 
         {/* Next / Finish button */}
         {isAnswered && (
