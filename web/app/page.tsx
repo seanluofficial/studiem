@@ -9,6 +9,7 @@ import NavBar from '@/components/NavBar';
 import RankBadge from '@/components/RankBadge';
 import AddFriendButton from '@/components/AddFriendButton';
 import FriendsPanel, { type IncomingChallenge } from '@/components/FriendsPanel';
+import AnswerButton, { deriveAnswerState } from '@/components/AnswerButton';
 
 function AnimatedEloSection({ before, after }: { before: number | null; after: number | null }) {
   const [counter, setCounter] = useState<number | null>(null);
@@ -115,7 +116,7 @@ export default function Home() {
   const [opponentEloDelta, setOpponentEloDelta] = useState<number | null>(null);
   const [isOpponentFriend, setIsOpponentFriend] = useState(false);
   const [showPracticeLeaveModal, setShowPracticeLeaveModal] = useState(false);
-  const [iqpQuestions, setIqpQuestions] = useState<{ id: string; stem: string; options: string[]; correctIndex: number }[]>([]);
+  const [iqpQuestions, setIqpQuestions] = useState<{ id: string; stem: string; options: string[]; correctIndex: number; correctExplanation: string | null }[]>([]);
   const [iqpIdx, setIqpIdx] = useState(0);
   const [iqpSelected, setIqpSelected] = useState<number | null>(null);
   const [iqpLoading, setIqpLoading] = useState(false);
@@ -394,24 +395,35 @@ export default function Home() {
       const supabase = createClient();
       const { data: cards } = await supabase
         .from('source_cards')
-        .select('id')
+        .select('id, content')
         .eq('subject', subject)
         .eq('reviewed', true);
       if (!cards?.length) return;
       const shuffled = [...cards].sort(() => Math.random() - 0.5).slice(0, 20);
       const cardIds = shuffled.map((c: { id: string }) => c.id);
+      const explanationMap = new Map<string, string | null>(
+        shuffled.map((c: { id: string; content: { correct_explanation?: string | null } | null }) => [
+          c.id,
+          c.content?.correct_explanation ?? null,
+        ])
+      );
       const { data: variants } = await supabase
         .from('question_variants')
-        .select('id, rendered_stem, rendered_options, correct_index')
+        .select('id, rendered_stem, rendered_options, correct_index, source_card_id')
         .in('source_card_id', cardIds)
         .not('rendered_options', 'is', null)
         .limit(5);
-      setIqpQuestions((variants ?? []).map((v: { id: unknown; rendered_stem: unknown; rendered_options: unknown; correct_index: unknown }) => ({
-        id: v.id as string,
-        stem: v.rendered_stem as string,
-        options: (v.rendered_options as string[]) ?? [],
-        correctIndex: (v.correct_index as number) ?? 0,
-      })));
+      setIqpQuestions(
+        (variants ?? []).map(
+          (v: { id: unknown; rendered_stem: unknown; rendered_options: unknown; correct_index: unknown; source_card_id: unknown }) => ({
+            id: v.id as string,
+            stem: v.rendered_stem as string,
+            options: (v.rendered_options as string[]) ?? [],
+            correctIndex: (v.correct_index as number) ?? 0,
+            correctExplanation: explanationMap.get(v.source_card_id as string) ?? null,
+          })
+        )
+      );
       setIqpIdx(0);
       setIqpSelected(null);
     } catch { /* non-fatal */ } finally {
@@ -711,52 +723,51 @@ export default function Home() {
               </button>
             </div>
             {iqpQuestions.length > 0 && !iqpLoading && (() => {
-              const iqpCurrent = iqpQuestions[iqpIdx];
+              const iqpCurrent = iqpQuestions[iqpIdx % iqpQuestions.length];
               if (!iqpCurrent) return null;
-              const LABELS = ['A', 'B', 'C', 'D'];
+              const isAnswered = iqpSelected !== null;
               return (
                 <div className="mt-6 w-full max-w-sm animate-fade-up">
                   <p className="text-[9px] text-[#F5F0E8]/25 uppercase tracking-[0.3em] text-center mb-4">Practice while you wait</p>
-                  <div className="panel-raised px-5 py-5 mb-4">
+                  <div
+                    key={iqpIdx}
+                    className="panel-raised panel-accent-top px-5 py-5 mb-4 animate-rise-in"
+                  >
                     <p className="text-sm font-medium leading-relaxed text-[#F5F0E8]">{iqpCurrent.stem}</p>
                   </div>
                   <div className="flex flex-col gap-2">
-                    {iqpCurrent.options.map((opt, i) => {
-                      const isAnswered = iqpSelected !== null;
-                      const isCorrect = isAnswered && i === iqpCurrent.correctIndex;
-                      const isWrong = isAnswered && i === iqpSelected && i !== iqpCurrent.correctIndex;
-                      const isDimmed = isAnswered && i !== iqpCurrent.correctIndex && i !== iqpSelected;
-                      let cls = 'panel hover:bg-[#1C1C1C] hover:border-[#C9A84C]/50';
-                      let badgeCls = 'border border-[#C9A84C]/30 text-[#C9A84C]/60';
-                      let textCls = 'text-[#F5F0E8]/80';
-                      if (isCorrect) { cls = 'border border-[#22C55E] bg-[#22C55E]/10 animate-correct'; badgeCls = 'border border-[#22C55E] text-[#22C55E] bg-[#22C55E]/20'; textCls = 'text-[#22C55E]'; }
-                      else if (isWrong) { cls = 'border border-[#EF4444] bg-[#EF4444]/10 animate-shake'; badgeCls = 'border border-[#EF4444] text-[#EF4444] bg-[#EF4444]/20'; textCls = 'text-[#EF4444]'; }
-                      else if (isDimmed) { cls = 'panel opacity-35'; badgeCls = 'border border-[#2A2A2A] text-[#374151]'; textCls = 'text-[#374151]'; }
-                      return (
-                        <button
-                          key={i}
-                          disabled={isAnswered}
-                          onClick={() => setIqpSelected(i)}
-                          className={`w-full flex items-center gap-3 px-4 py-3 transition-all duration-150 disabled:cursor-default ${cls}`}
-                        >
-                          <span className={`w-7 h-7 flex-shrink-0 flex items-center justify-center text-xs font-display font-bold ${badgeCls}`}>{LABELS[i]}</span>
-                          <span className={`text-left text-xs font-medium leading-snug ${textCls}`}>{opt}</span>
-                        </button>
-                      );
-                    })}
+                    {iqpCurrent.options.map((opt, i) => (
+                      <AnswerButton
+                        key={i}
+                        index={i}
+                        text={opt}
+                        state={deriveAnswerState({
+                          index: i,
+                          selectedIndex: iqpSelected,
+                          correctIndex: iqpCurrent.correctIndex,
+                          isReveal: isAnswered,
+                        })}
+                        disabled={isAnswered}
+                        onClick={setIqpSelected}
+                        animationDelay={0.04 * i}
+                      />
+                    ))}
                   </div>
-                  {iqpSelected !== null && (
+                  {isAnswered && iqpCurrent.correctExplanation && (
+                    <div className="mt-4 panel px-4 py-3 border-l-2 border-[#C9A84C]/40 animate-fade-up">
+                      <p className="text-[9px] text-[#C9A84C]/60 uppercase tracking-[0.25em] mb-1.5">Explanation</p>
+                      <p className="text-xs text-[#F5F0E8]/70 leading-relaxed">{iqpCurrent.correctExplanation}</p>
+                    </div>
+                  )}
+                  {isAnswered && (
                     <button
                       onClick={() => {
-                        if (iqpIdx < iqpQuestions.length - 1) {
-                          setIqpIdx(idx => idx + 1);
-                          setIqpSelected(null);
-                        }
+                        setIqpIdx(idx => idx + 1);
+                        setIqpSelected(null);
                       }}
-                      disabled={iqpIdx >= iqpQuestions.length - 1}
-                      className="mt-3 w-full btn-gold text-xs font-display font-black uppercase tracking-[0.15em] py-2.5 disabled:opacity-30"
+                      className="mt-3 w-full btn-gold text-xs font-display font-black uppercase tracking-[0.15em] py-2.5"
                     >
-                      {iqpIdx < iqpQuestions.length - 1 ? 'Next →' : 'All done'}
+                      Next →
                     </button>
                   )}
                 </div>
