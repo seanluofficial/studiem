@@ -315,7 +315,10 @@ export default function PracticePage() {
         subject={selectedSubject}
         displayName={displayName}
         myElo={myElo}
-        onPracticeMore={() => setPhase('select')}
+        onPracticeMore={() => {
+          if (userId) void loadSubjectData(selectedSubject, userId);
+          setPhase('select');
+        }}
         onBattle={() => router.push('/')}
       />
     );
@@ -487,19 +490,81 @@ function SummaryView({
 }: SummaryViewProps) {
   const [showWrong, setShowWrong] = useState(false);
 
+  const units = Object.keys(result.byUnit).sort();
+
+  // Animated accuracy counters: starts at beforeAcc, counts up to afterAcc
+  const [animPcts, setAnimPcts] = useState<Record<string, number>>(() =>
+    Object.fromEntries(
+      units.map(u => {
+        const before = beforeStats[u];
+        const beforeAcc = before && before.total > 0 ? before.correct / before.total : 0;
+        return [u, beforeAcc];
+      })
+    )
+  );
+  const [animDone, setAnimDone] = useState(false);
+
+  useEffect(() => {
+    if (units.length === 0) { setAnimDone(true); return; }
+
+    const initials: Record<string, number> = {};
+    const targets: Record<string, number> = {};
+    for (const u of units) {
+      const bySess = result.byUnit[u];
+      const before = beforeStats[u];
+      const beforeAcc = before && before.total > 0 ? before.correct / before.total : 0;
+      const afterAcc =
+        before && before.total > 0
+          ? (before.correct + bySess.correct) / (before.total + bySess.total)
+          : bySess.total > 0
+          ? bySess.correct / bySess.total
+          : 0;
+      initials[u] = beforeAcc;
+      targets[u] = afterAcc;
+    }
+
+    const DURATION = 900;
+    const startTime = performance.now();
+    let raf: number;
+
+    // 500ms delay so the page settle animation completes first
+    const timer = setTimeout(() => {
+      function tick(now: number) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / DURATION, 1);
+        // ease-out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setAnimPcts(
+          Object.fromEntries(units.map(u => [u, initials[u] + (targets[u] - initials[u]) * eased]))
+        );
+        if (progress < 1) {
+          raf = requestAnimationFrame(tick);
+        } else {
+          setAnimDone(true);
+        }
+      }
+      raf = requestAnimationFrame(tick);
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+      cancelAnimationFrame(raf);
+    };
+    // result and beforeStats are frozen at mount — deps intentionally omitted
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const overallPct =
     result.totalAnswered > 0
       ? Math.round((result.totalCorrect / result.totalAnswered) * 100)
       : 0;
-
-  const units = Object.keys(result.byUnit).sort();
 
   return (
     <div className="min-h-screen text-[#F5F0E8]">
       <NavBar displayName={displayName} elo={myElo} subject={subject} />
 
       <div className="pt-16 px-5 pb-10 max-w-xl mx-auto">
-        {/* Big accuracy */}
+        {/* Big session accuracy */}
         <div className="panel-raised panel-accent-top px-6 py-8 mb-6 text-center animate-rise-in">
           <p className="text-[9px] text-[#F5F0E8]/30 uppercase tracking-[0.3em] mb-3">
             Session Result
@@ -521,26 +586,36 @@ function SummaryView({
             {units.map((u, idx) => {
               const bySess = result.byUnit[u];
               const sessAcc = bySess.total > 0 ? bySess.correct / bySess.total : 0;
+              const before = beforeStats[u];
+              const hasHistory = before != null && before.total > 0;
+              const currentPct = animPcts[u] ?? 0;
               const d = deltaPct(beforeStats[u], bySess.correct, bySess.total);
 
               return (
                 <div
                   key={u}
-                  className={`flex items-center justify-between px-5 py-3 ${
-                    idx !== units.length - 1 ? 'border-b border-[#2A2A2A]' : ''
-                  }`}
+                  className={`px-5 py-4 ${idx !== units.length - 1 ? 'border-b border-[#2A2A2A]' : ''}`}
                 >
-                  <p className="text-xs text-[#F5F0E8]/70 flex-1 min-w-0 truncate pr-3">{u}</p>
-                  <div className="flex items-center gap-3 flex-shrink-0 text-right">
-                    <span className="text-xs tabular-nums text-[#F5F0E8]/40">
+                  {/* Row 1: unit name + session score */}
+                  <div className="flex items-center justify-between">
+                    <p className="text-xs text-[#F5F0E8]/70 flex-1 min-w-0 truncate pr-3">{u}</p>
+                    <span className="text-[10px] tabular-nums text-[#F5F0E8]/35 flex-shrink-0">
                       {bySess.correct}/{bySess.total}
+                      <span className="ml-1.5 text-[#F5F0E8]/55">{Math.round(sessAcc * 100)}% this session</span>
                     </span>
-                    <span className="text-xs font-display font-bold tabular-nums text-[#F5F0E8]/80 w-10 text-right">
-                      {Math.round(sessAcc * 100)}%
+                  </div>
+
+                  {/* Row 2: animated lifetime accuracy + delta badge */}
+                  <div className="flex items-center gap-3 mt-2">
+                    <span className="text-[9px] text-[#F5F0E8]/25 uppercase tracking-[0.2em] w-16 flex-shrink-0">
+                      {hasHistory ? 'Accuracy' : 'New'}
                     </span>
-                    {d !== null && (
+                    <span className="text-base font-display font-black tabular-nums text-[#F5F0E8]">
+                      {Math.round(currentPct * 100)}%
+                    </span>
+                    {animDone && d !== null && (
                       <span
-                        className={`text-[10px] tabular-nums w-12 text-right ${
+                        className={`text-[10px] font-bold tabular-nums animate-fade-up ${
                           d.startsWith('+') ? 'text-[#22C55E]' : 'text-[#EF4444]'
                         }`}
                       >
@@ -571,9 +646,7 @@ function SummaryView({
                 {result.wrongQuestions.map(q => (
                   <div key={`${q.id}-wrong`} className="px-5 py-4">
                     <p className="text-sm text-[#F5F0E8]/80 leading-snug mb-2">{q.stem}</p>
-                    <p className="text-[10px] text-[#22C55E]">
-                      ✓ {q.options[q.correctIndex]}
-                    </p>
+                    <p className="text-[10px] text-[#22C55E]">✓ {q.options[q.correctIndex]}</p>
                     {q.correctExplanation && (
                       <p className="text-[10px] text-[#F5F0E8]/35 mt-1 leading-relaxed">
                         {q.correctExplanation}
